@@ -1,77 +1,90 @@
-# poc-dual-checkout — 実証2：JIN をカード払いと x402 の両方で売る（型P）
+# poc-dual-checkout — 実証2：JIN を USDC の x402 とカード払いの両方で売る（型P）
 
-Japan Inflation Nowcall（JIN）の同じデータ（`series` / `movers`）を、2つの入口で同じ単価で売る。どちらの入口で、人間とエージェントのどちらが、何件買ったかを測る。
+Japan Inflation Nowcall（JIN）の同じデータ（`series` / `movers`）を、2つの入口で同じ単価で売る。手数料・着金までの時間・購入者の内訳が、入口によってどう違うかを測る。
 
-```
-                       ┌─▶ カード払い（Nevermined プラン → 実証1のゲートウェイ）
-販売ページ ─────────────┤
-（buy.jin.x402jp.com）  └─▶ x402（jin.x402jp.com、既存のまま）
-```
+どちらの入口も、買い手のエージェントには x402 の支払い要求（402）として見える。違うのは決済の通り道。
 
-本リポジトリが作るのは **販売ページ・ページ計測・日次集計・週次レポート** だけ。`jin.x402jp.com` の x402 実装には手を入れない。カードの入口は実証1（`poc-card-credits`）のゲートウェイと Nevermined のプランを使う。
+| 入口 | 中身 | 決済の通り道 |
+|---|---|---|
+| USDC 直接 | 既存の `jin.x402jp.com`（変更しない） | チェーン上で USDC が直接動く |
+| カード払い | 実証1（`poc-card-credits`）のゲートウェイ ＋ Nevermined のカードプラン | Stripe 経由でカード決済 |
+
+Nevermined のプランはカードか暗号資産のどちらか一方しか持てないので、Nevermined にはカードプランだけを置く。本リポジトリが作るのは **販売ページ・ページ計測・所要時間の計測・日次集計・週次レポート** だけ。
 
 ## 価格（期間中は変えない）
 
-| データ | x402 | カード |
+| データ | USDC 直接 | カード（前払いの例） |
 |---|---|---|
-| `/api/jin/series` | $0.01 / call | 1 クレジット |
-| `/api/jin/movers` | $0.02 / call | 2 クレジット |
-| プラン | — | $5 で 500 クレジット（1 クレジット = $0.01） |
+| `series` | $0.01 / call | 1 クレジット |
+| `movers` | $0.02 / call | 2 クレジット |
+| プラン | — | $1 で 100 クレジット（1 クレジット = $0.01） |
 
-価格は `config/site.json`。期間の開始時点の価格は `config/period.json` に固定しておき、日次集計のたびに照合する。食い違えば日次データの `price_check` に `mismatch` を残し、週次レポートの冒頭に警告を出す。
+カードを前払い（`prepaid`）にするか都度払い（`per_call`）にするかは、実証1の結果を見て `config/site.json` の `card.mode` で決める。`undecided` の間、販売ページのカード入口は「準備中」と表示される。
+
+価格は `config/site.json`、期間開始時の固定値は `config/period.json`。日次集計のたびに、入口どうしの単価と固定値を照合する。食い違えば日次データの `price_check` に `mismatch` を残し、週次レポートの冒頭に警告を出す。
 
 ## 構成
 
 | パス | 役割 |
 |---|---|
-| `site/index.template.html`, `scripts/build-site.mjs` | 販売ページ。`config/site.json` から `public/index.html` を生成する |
-| `api/track.js` | ページ計測（POST）。Cookie なし。日ごとの閲覧数・ボタン別クリック数を Upstash Redis で数えるだけで、IP アドレスや UA は保存しない |
-| `api/stats.js` | 計測値の読み出し（GET、Bearer トークン） |
+| `site/index.template.html`, `scripts/build-site.mjs` | 販売ページ（`config/site.json` から `public/index.html` を生成） |
+| `api/track.js`, `api/stats.js` | ページ計測（Cookie なし）。閲覧数と、各入口の説明を開いた回数を日ごとに数える（Upstash Redis） |
+| `scripts/probe-latency.mjs` | 決済1件の所要時間を、両方の入口で同じ手順で測る |
 | `scripts/collect-daily.mjs` | 日次集計 → `data/YYYY-MM-DD.json` |
 | `scripts/report-weekly.mjs` | 週次レポート → `reports/YYYY-Www.md` |
-| `config/classify.json` | 人間 / エージェントの判定ルールと自社ウォレット（変更履歴: `config/CHANGELOG.md`） |
-| `docs/card-source.md` | カード側のデータの取り方と、実証1ゲートウェイの利用ログの形式 |
+| `config/exclusions.json` | 自社の買い手（変更履歴: `config/CHANGELOG.md`） |
+| `docs/sources.md` | 各数字の出典、計測方法、未確認の点 |
 
-## 集計の中身
+## 集計項目
 
-**x402**: JIN の受取アドレス `4s8XQC2WzRfgH8Xiep7ybnCW11VKRCMwxQF6jknx3VPf` の USDC トークン口座の取引を Solana RPC で読み、`payTo` の残高が増えたトランザクションを1件の支払いとして数える。支払い元は、同じトランザクションで USDC が減った口座の owner。金額で series（10000）と movers（20000）に分ける。チェーン手数料は、fee payer がファシリテーター（`CjNF…eKww`）なら 0 として数える。
+| 項目 | USDC 直接 | カード払い |
+|---|---|---|
+| 成約件数 | 支払い件数 | プラン購入件数・都度払い件数 |
+| 利用回数 | 支払い件数 | 消費クレジット数 |
+| 購入者数 | 支払い元アドレス数 | 購入者数（匿名化した ID） |
+| 1件あたりの手数料 | チェーン手数料 | カード手数料（実測） |
+| 手数料率 | 売上に対する割合 | 売上に対する割合 |
+| 決済1件の所要時間 | リクエストから 200 まで | リクエストから 200 まで |
+| 着金までの日数 | 即時 | Stripe Connect の入金日 |
 
-**カード**: Stripe の charge と、実証1ゲートウェイの利用ログ（`docs/card-source.md`）。
+自社（AA、Seller Probe、実証1のゲートウェイ、実証1の検証用買い手、実証2の計測用の買い手）は全集計から除き、週次レポートに参考値として別表で出す。除外は日次データの明細に対して集計のたびに当て直すので、除外リストを直したら過去の日も数え直せる（`--resummarize`）。外部の購入者がいない週は、レポートの冒頭にそう書く。
 
-**判定**（`config/classify.json`）
-
-| 入口 | 判定方法 |
-|---|---|
-| カード払い | プラン購入者は人間。その後の呼び出しは、匿名トークンごとに1日単位で判定する。UA が HTTP ライブラリや LLM エージェントのもの、または高頻度・短間隔なら agent。curl やブラウザなどの手動クライアントで低頻度なら human。それ以外は unknown |
-| x402 | 支払い元アドレスごとに、1日の件数と支払い間隔で agent を判定する。それ以外も既定で agent とする（JIN の有料エンドポイントは機械向けで、ブラウザ用のペイウォールがないため） |
-
-自社（AA、Probe、実証1のゲートウェイ）のウォレットとトークンは全集計から除き、週次レポートに参考値として別表で出す。取れなかったソースは 0 で埋めずに `sources` に理由を残す。外部の購入者がいない週は、レポートの冒頭にそう書く。
-
-保存するのはウォレットアドレスと、HMAC で匿名化したトークン ID・Stripe 顧客 ID だけ。メールアドレス・カード情報・IP アドレス・UA は保存しない。
+保存するのは、ウォレットアドレスと匿名化した ID（Nevermined の userId、Stripe の取引 ID、実証1の payerId）だけ。
 
 ## 立ち上げ手順
 
-実証1のカード入口が動いてから始める。
+実証1が Sandbox で動いてから始める。
 
-1. **自社ウォレットを書く**: `config/classify.json` の `own.wallets` の `TODO_*` を、AA・Probe・実証1ゲートウェイの Solana アドレスに置き換える。自社のテスト用トークンと Stripe 顧客のハッシュも入れる（`scripts/anon.mjs`）。`version` を上げて `CHANGELOG.md` に記録する。
-2. **カード入口をつなぐ**: `config/site.json` の `card.plan_purchase_url`（Nevermined のプラン購入ページ）、`card.gateway_base_url`、`card.stripe_match` を設定する。未設定のあいだ、販売ページの「カードで購入」は「準備中」と表示される。
-3. **販売ページをデプロイ**: Vercel にこのリポジトリをつなぎ（ビルドは `vercel.json` のとおり）、ドメイン `buy.jin.x402jp.com` を割り当てる。Upstash Redis（Vercel Marketplace）を追加し、環境変数 `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` / `STATS_TOKEN` を設定する。
-4. **GitHub Secrets を設定**: `STATS_URL`（`https://buy.jin.x402jp.com/api/stats`）、`STATS_TOKEN`、`SOLANA_RPC_URL`、`STRIPE_API_KEY`（読み取り専用の制限付きキー）、`GATEWAY_USAGE_URL`、`GATEWAY_USAGE_TOKEN`、`ANON_SALT`。一覧は `.env.example` にある。
-5. **期間を始める**: `config/period.json` の `P1.start` に開始日を入れてコミットする。4週間（28日）は `config/site.json` の価格を変えない。
+1. **カード入口の形を決める**（実証1の結果を見て）。`config/site.json` の `card.mode`（`prepaid` / `per_call`）、`nvm_plan_id`、`nvm_agent_id`、`plan_purchase_url`、`gateway_base_url`、`stripe_match` を設定する。プランの受取先（`nvm_receiver_address`）は Nevermined の売り手ウォレット `0x6d56…43Ed5` を入れてある。
+2. **自社の買い手を書く**：`config/exclusions.json` の `TODO_*` を AA・Seller Probe・実証1ゲートウェイ・計測用の Solana アドレスに置き換える。実証1の検証用買い手と計測用の買い手を `card_buyers` に入れる（`scripts/anon.mjs`、または実証1のログの `payerId`）。`version` を上げて `CHANGELOG.md` に記録する。
+3. **実証1のゲートウェイのログを読めるようにする**（`docs/sources.md`）。
+4. **販売ページをデプロイ**：Vercel にこのリポジトリをつなぎ、ドメイン `buy.jin.x402jp.com` を割り当てる。Upstash Redis を追加し、`UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` / `STATS_TOKEN` を設定する。
+5. **GitHub Secrets を設定**：`.env.example` の集計用と計測用の値。
+6. **期間を始める**：`config/period.json` の `P1.start` と `locked.card_mode` を入れてコミットする。4週間は価格とカードの mode を変えない。
 
 以降は GitHub Actions が動く。
 
-- `daily-collect`: 毎日 06:13 JST に前日分を `data/` にコミットする
-- `weekly-report`: 毎週月曜 07:07 JST に前週分を `reports/` にコミットする
+- `daily`：毎日 06:13 JST に所要時間を測り、前日分を `data/` にコミットする
+- `weekly-report`：毎週月曜 07:07 JST に前週分を `reports/` にコミットする
 
 手で回すときは次のとおり。
 
 ```sh
+npm ci
 npm test
-npm run build                                   # public/index.html
+npm run build                                          # public/index.html
+node scripts/probe-latency.mjs
 node scripts/collect-daily.mjs --date 2026-11-03
+node scripts/collect-daily.mjs --resummarize 2026-11-01..2026-11-28
 node scripts/report-weekly.mjs --week 2026-W45
 ```
+
+## 未確認・要確認
+
+- Nevermined の組織が Premium 以上か（Events & Analytics の API に必要）
+- Stripe Connect の形（Standard / Express）と、売り手の API キーが使えるか
+- 実証1ゲートウェイのログを外から読む口
+- 都度払いにする場合のカード1件あたりの課金のされ方（Stripe の最低決済額との関係）
 
 ## やらないこと
 

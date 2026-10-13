@@ -1,4 +1,4 @@
-// POST /api/track  body: {"e":"view"} | {"e":"click_card"} | {"e":"click_x402","i":"series"}
+// POST /api/track  body: {"e":"view"} | {"e":"open","i":"usdc"} | {"e":"open","i":"card"}
 // navigator.sendBeacon から text/plain で届く。Cookie は読まない・書かない。
 import { eventKey, isBot, redis } from '../lib/track.js';
 

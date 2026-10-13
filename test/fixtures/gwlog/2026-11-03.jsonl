@@ -1,0 +1,1 @@
+{"ts":"2026-11-03T16:00:00.000Z","routeId":"jin.series","method":"GET","path":"/jin/series","payerId":"payerA","outcome":"ok","status":200,"creditsConsumed":1,"upstreamCostMicro":"10000","latencyMs":1700}

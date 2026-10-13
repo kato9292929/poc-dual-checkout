@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "updated": "2026-10-13",
+  "_comment": "自社の買い手。全集計から除外し、参考値として別表に出す。変更したら version を上げ、history と config/CHANGELOG.md に1行足す。",
+
+  "usdc_wallets": [
+    { "address": "TODO_AA_SOLANA_ADDRESS", "label": "AA（Autonomous Agent）" },
+    { "address": "TODO_SELLER_PROBE_SOLANA_ADDRESS", "label": "Seller Probe" },
+    { "address": "TODO_POC1_GATEWAY_SOLANA_ADDRESS", "label": "実証1のゲートウェイ（カード入口の裏側で JIN を買う）" },
+    { "address": "TODO_POC2_LATENCY_PROBE_SOLANA_ADDRESS", "label": "実証2の所要時間計測" }
+  ],
+
+  "card_buyers": {
+    "_comment": "nvm_user_hashes は Nevermined の userId を ANON_SALT で匿名化した値（scripts/anon.mjs）。gateway_payer_ids は実証1ゲートウェイのログの payerId（実証1の LOG_SALT で匿名化済みの値をそのまま書く）。",
+    "nvm_user_hashes": [],
+    "gateway_payer_ids": [],
+    "stripe_txn_hashes": [],
+    "labels": "実証1の検証用買い手、実証2の所要時間計測用の買い手"
+  },
+
+  "own_purchase_match_window_sec": 900,
+
+  "facilitator_fee_payers": [
+    { "address": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww", "label": "JIN の 402 の extra.feePayer" }
+  ],
+
+  "history": [
+    { "version": 1, "date": "2026-10-13", "change": "初版。自社ウォレット・検証用買い手は実証1の Sandbox 稼働後に記入する。" }
+  ]
+}

@@ -9,57 +9,83 @@ const usd = (n) => (n < 1 ? n.toFixed(2) : n.toFixed(2).replace(/\.00$/, ''));
 const configured = (v) => v && !String(v).startsWith('TODO');
 
 export function render(site) {
-  const { card, x402, items } = site;
+  const { card, usdc, items } = site;
+  const mode = card.modes[card.mode];
+  const gw = configured(card.gateway_base_url) ? card.gateway_base_url.replace(/\/$/, '') : 'https://<ゲートウェイ>';
+
+  const cardCell = (it) =>
+    card.mode === 'prepaid'
+      ? `${it.card_credits} クレジット<wbr>（$${usd(it.card_credits * card.usd_per_credit)}）`
+      : card.mode === 'per_call'
+        ? `$${usd(it.price_usd)}`
+        : '準備中';
   const priceRows = items
     .map(
       (it) =>
-        `<tr><td><strong>${esc(it.name)}</strong><br><code>${esc(new URL(it.x402_url).pathname)}</code></td><td class="desc">${esc(it.description)}</td>` +
-        `<td class="num">$${usd(it.price_usd)}</td><td class="num">${it.card_credits} クレジット<wbr>（$${usd(it.card_credits * card.usd_per_credit)}）</td></tr>`,
+        `<tr><td><strong>${esc(it.name)}</strong><br><code>${esc(new URL(it.usdc_url).pathname)}</code></td><td class="desc">${esc(it.description)}</td>` +
+        `<td class="num">$${usd(it.price_usd)}</td><td class="num">${cardCell(it)}</td></tr>`,
     )
     .join('');
 
-  const cardButton = configured(card.plan_purchase_url)
-    ? `<a class="btn" href="${esc(card.plan_purchase_url)}" data-track="click_card" rel="noopener">カードで購入（$${usd(card.plan_price_usd)}）</a>`
-    : `<a class="btn" aria-disabled="true" data-track="click_card">カードで購入（準備中）</a>`;
-
-  const first = items[0];
-  const cardExample = configured(card.gateway_base_url)
-    ? `<p class="muted">購入後の呼び出し例</p><pre>curl -H "Authorization: Bearer $JIN_API_KEY" \\\n  ${esc(card.gateway_base_url.replace(/\/$/, ''))}${esc(new URL(first.x402_url).pathname)}</pre>`
-    : '';
-
-  const x402Items = items
+  const usdcItems = items
     .map(
       (it) => `<div class="item">
-        <div class="row"><h3>${esc(it.name)}</h3><code>$${usd(it.price_usd)} / call</code></div>
-        <code>GET ${esc(it.x402_url)}</code>
-        <pre id="ex-${esc(it.id)}"># 1) 支払い要求を受け取る（HTTP 402 と PAYMENT-REQUIRED ヘッダ）
-curl -i ${esc(it.x402_url)}
-
-# 2) x402 v2 対応クライアントで支払って呼び出す
-#    scheme=exact, network=${esc(x402.network)},
-#    asset=${esc(x402.asset_symbol)}, amount=${esc(it.x402_amount_atomic)} (${usd(it.price_usd)} USDC)
-#    PAYMENT-SIGNATURE ヘッダを付けて再リクエストする</pre>
-        <div><button class="btn ghost" type="button" data-track="click_x402" data-item="${esc(it.id)}" data-copy="ex-${esc(it.id)}">呼び出し例をコピー</button></div>
-      </div>`,
+            <div class="row"><h3>${esc(it.name)}</h3><code>$${usd(it.price_usd)} / call</code></div>
+            <pre># 支払いなしで呼ぶと 402 と PAYMENT-REQUIRED ヘッダ（amount=${esc(it.usdc_amount_atomic)}）
+curl -i ${esc(it.usdc_url)}</pre>
+          </div>`,
+    )
+    .join('\n');
+  const cardItems = items
+    .map(
+      (it) => `<div class="item">
+            <div class="row"><h3>${esc(it.name)}</h3><code>${card.mode === 'prepaid' ? `${it.card_credits} クレジット` : `$${usd(it.price_usd)}`} / call</code></div>
+            <pre>curl -H "payment-signature: $NVM_ACCESS_TOKEN" \\
+  ${esc(gw)}${esc(it.card_path)}</pre>
+          </div>`,
     )
     .join('\n');
 
-  const creditRules = items.map((it) => `${it.id} = ${it.card_credits}`).join('、');
+  const ready = mode && configured(card.plan_purchase_url);
+  let cardSummary;
+  let cardPrice;
+  if (!mode) {
+    cardSummary = 'カードでの購入は準備中です。';
+    cardPrice = '準備中';
+  } else {
+    cardSummary = `Nevermined のカードプラン（${esc(mode.label)}）。${esc(mode.summary)}`;
+    cardPrice =
+      card.mode === 'prepaid'
+        ? `$${usd(mode.plan_price_usd)} <span class="muted">/ ${mode.plan_credits} クレジット（${mode.plan_credits} コール相当）</span>`
+        : `$0.01〜$0.02 <span class="muted">/ call</span>`;
+  }
+  const label = card.mode === 'per_call' ? 'カードを登録する' : 'カードでプランを購入';
+  const cardButton = ready
+    ? `<a class="btn" href="${esc(card.plan_purchase_url)}" rel="noopener">${label}</a>`
+    : `<a class="btn" aria-disabled="true">${label}（準備中）</a>`;
+  const stepBuy =
+    card.mode === 'per_call'
+      ? '<li>プランに登録する（呼び出しごとに登録カードへ課金）</li>'
+      : '<li>プランを購入する（Stripe Checkout でカード決済。クレジットが付与される）</li>';
 
   const vars = {
     summary: esc(site.product.summary),
     price_rows: priceRows,
-    plan_credits: card.plan_credits,
-    plan_price: usd(card.plan_price_usd),
-    usd_per_credit: usd(card.usd_per_credit),
-    plan_name: esc(card.plan_name),
-    credit_rules: esc(creditRules),
+    asset_symbol: esc(usdc.asset_symbol),
+    pay_to: esc(usdc.pay_to),
+    discovery_url: esc(usdc.discovery_url),
+    network: esc(usdc.network),
+    first_usdc_url: esc(items[0].usdc_url),
+    usdc_items: usdcItems,
+    card_summary: cardSummary,
+    card_price: cardPrice,
     card_button: cardButton,
-    card_example: cardExample,
-    asset_symbol: esc(x402.asset_symbol),
-    pay_to: esc(x402.pay_to),
-    discovery_url: esc(x402.discovery_url),
-    x402_items: x402Items,
+    card_step_buy: stepBuy,
+    card_items: cardItems,
+    nvm_env: esc(card.nvm_environment),
+    plan_id: esc(configured(card.nvm_plan_id) ? card.nvm_plan_id : '<PLAN_ID>'),
+    agent_id: esc(configured(card.nvm_agent_id) ? card.nvm_agent_id : '<AGENT_ID>'),
+    first_card_url: esc(`${gw}${items[0].card_path}`),
   };
   const tpl = readFileSync(join(ROOT, 'site/index.template.html'), 'utf8');
   return tpl.replace(/\{\{(\w+)\}\}/g, (_, k) => {

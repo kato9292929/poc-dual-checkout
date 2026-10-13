@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>JIN を購入する</title>
-<meta name="description" content="Japan Inflation Nowcall のデータを、カード払いまたは x402 で購入できます。">
+<meta name="description" content="Japan Inflation Nowcall のデータを、USDC（x402）またはカードで購入できます。">
 <link rel="canonical" href="https://buy.jin.x402jp.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,6 +43,15 @@ dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0;font-size:1
 dt{color:var(--muted)}dd{margin:0;min-width:0}
 footer{margin-top:40px;color:var(--muted);font-size:13px}
 footer a,.panel a:not(.btn){color:inherit}
+details.how{border-top:1px solid var(--line);padding-top:12px}
+details.how>summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+details.how>summary::-webkit-details-marker{display:none}
+details.how>summary::after{content:"＋";color:var(--accent);font-family:"IBM Plex Mono",monospace}
+details.how[open]>summary::after{content:"－"}
+details.how .body{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+ol.steps{margin:0;padding-left:1.4em;display:flex;flex-direction:column;gap:6px}
+.price{font:600 22px/1.2 "IBM Plex Mono",monospace}
+.note{border-left:3px solid var(--line);padding-left:10px;color:var(--muted);font-size:14px}
 </style>
 </head>
 <body>
@@ -52,45 +61,78 @@ footer a,.panel a:not(.btn){color:inherit}
   <p class="lead">{{summary}}</p>
 
   <table class="prices">
-    <thead><tr><th>データ</th><th class="desc">内容</th><th>x402</th><th>カード（クレジット）</th></tr></thead>
+    <thead><tr><th>データ</th><th class="desc">内容</th><th>USDC（x402）</th><th>カード</th></tr></thead>
     <tbody>{{price_rows}}</tbody>
   </table>
-  <p class="muted">どちらの方法でも1コールあたりの価格は同じです。カードでは {{plan_credits}} クレジットを ${{plan_price}} でまとめて購入し、1クレジット = ${{usd_per_credit}} として使います。</p>
+  <p class="muted">どちらの入口でも1コールあたりの価格は同じです。どちらも、エージェントからは x402 の支払い要求（HTTP 402）として見えます。違うのは決済の通り道で、USDC はチェーン上で直接、カードは Stripe 経由で決済されます。</p>
 
   <div class="grid">
-    <section class="panel" aria-labelledby="h-card">
+    <section class="panel" aria-labelledby="h-usdc">
       <div>
-        <div class="kicker">人が購入する</div>
-        <h2 id="h-card">カードで購入</h2>
-      </div>
-      <p>Nevermined のプラン「{{plan_name}}」を購入すると、API キーが発行されます。そのキーで同じデータを呼び出せます。</p>
-      <dl>
-        <dt>価格</dt><dd>${{plan_price}} / {{plan_credits}} クレジット</dd>
-        <dt>支払い</dt><dd>クレジットカード（Stripe 経由）</dd>
-        <dt>消費</dt><dd>{{credit_rules}}</dd>
-      </dl>
-      {{card_button}}
-      {{card_example}}
-    </section>
-
-    <section class="panel" aria-labelledby="h-x402">
-      <div>
-        <div class="kicker">エージェントが購入する</div>
-        <h2 id="h-x402">エージェントから x402 で購入</h2>
+        <div class="kicker">チェーン上で直接</div>
+        <h2 id="h-usdc">USDC で支払う（x402）</h2>
       </div>
       <p>呼び出しごとに Solana の USDC で支払います。アカウント登録も API キーも不要です。</p>
-      <dl>
-        <dt>ネットワーク</dt><dd>Solana mainnet / {{asset_symbol}}</dd>
-        <dt>受取先</dt><dd><code>{{pay_to}}</code></dd>
-        <dt>discovery</dt><dd><a href="{{discovery_url}}"><code>{{discovery_url}}</code></a></dd>
-      </dl>
-      {{x402_items}}
+      <div class="price">$0.01〜$0.02 <span class="muted">/ call</span></div>
+      <details class="how" data-open="usdc">
+        <summary>支払い方と呼び出し例</summary>
+        <div class="body">
+          <dl>
+            <dt>ネットワーク</dt><dd>Solana mainnet / {{asset_symbol}}</dd>
+            <dt>受取先</dt><dd><code>{{pay_to}}</code></dd>
+            <dt>discovery</dt><dd><a href="{{discovery_url}}"><code>{{discovery_url}}</code></a></dd>
+          </dl>
+          {{usdc_items}}
+          <p class="muted">x402 v2 のクライアントでの例（TypeScript）</p>
+          <pre>import { wrapFetchWithPaymentFromConfig } from "@x402/fetch";
+import { ExactSvmScheme } from "@x402/svm";
+
+const pay = wrapFetchWithPaymentFromConfig(fetch, {
+  schemes: [{ network: "{{network}}", client: new ExactSvmScheme(signer) }],
+});
+const res = await pay("{{first_usdc_url}}");</pre>
+        </div>
+      </details>
+    </section>
+
+    <section class="panel" aria-labelledby="h-card">
+      <div>
+        <div class="kicker">Stripe 経由</div>
+        <h2 id="h-card">カードで支払う</h2>
+      </div>
+      <p>{{card_summary}}</p>
+      <div class="price">{{card_price}}</div>
+      {{card_button}}
+      <details class="how" data-open="card">
+        <summary>支払い方と、エージェントからの呼び出し例</summary>
+        <div class="body">
+          <ol class="steps">
+            <li>Nevermined でカードを登録し、支出上限を決めて委任（delegation）を作る</li>
+            {{card_step_buy}}
+            <li>エージェント用のアクセストークンを発行する</li>
+            <li>リクエストに <code>payment-signature</code> ヘッダを付けて呼び出す</li>
+          </ol>
+          {{card_items}}
+          <p class="muted">トークンの発行と呼び出し（TypeScript、<code>@nevermined-io/payments</code>）</p>
+          <pre>import { Payments } from "@nevermined-io/payments";
+
+const payments = Payments.getInstance({ nvmApiKey: process.env.NVM_API_KEY, environment: "{{nvm_env}}" });
+const { accessToken } = await payments.x402.getX402AccessToken("{{plan_id}}", "{{agent_id}}", {
+  scheme: "nvm:card-delegation",
+  delegationConfig: { delegationId: process.env.NVM_DELEGATION_ID },
+});
+const res = await fetch("{{first_card_url}}", {
+  headers: { "payment-signature": accessToken },
+});</pre>
+          <p class="note">ヘッダなしで呼ぶと HTTP 402 と <code>PAYMENT-REQUIRED</code> ヘッダ（Nevermined のプラン情報）が返ります。クレジットが足りないときも 402（<code>insufficient_credits</code>）で、課金はされません。</p>
+        </div>
+      </details>
     </section>
   </div>
 
   <footer>
     単一店舗（東京都内）の観測値で、全国を代表するものではなく、予測でもありません。<br>
-    このページでは Cookie を使っていません。閲覧数とボタンのクリック数を日ごとの件数としてだけ記録しています（IP アドレスやブラウザの情報は保存しません）。<br>
+    このページでは Cookie を使っていません。閲覧数と、各入口の説明を開いた回数を日ごとの件数としてだけ記録しています（IP アドレスやブラウザの情報は保存しません）。<br>
     <a href="https://jin.x402jp.com">jin.x402jp.com</a> · x402 Inc. — Tokyo
   </footer>
 </main>
@@ -102,15 +144,11 @@ footer a,.panel a:not(.btn){color:inherit}
     try{ fetch('/api/track',{method:'POST',body:body,keepalive:true,headers:{'content-type':'text/plain'}}); }catch(e){}
   }
   send({e:'view'});
+  document.querySelectorAll('details[data-open]').forEach(function(d){
+    d.addEventListener('toggle',function(){ if(d.open) send({e:'open',i:d.dataset.open}); });
+  });
   document.addEventListener('click',function(t){
-    var el=t.target.closest('[data-track]'); if(!el) return;
-    if(el.getAttribute('aria-disabled')==='true'){ t.preventDefault(); return; }
-    var ev={e:el.dataset.track}; if(el.dataset.item) ev.i=el.dataset.item;
-    send(ev);
-    if(el.dataset.copy){
-      var pre=document.getElementById(el.dataset.copy);
-      if(pre && navigator.clipboard){ navigator.clipboard.writeText(pre.textContent).then(function(){ var o=el.textContent; el.textContent='コピーしました'; setTimeout(function(){el.textContent=o;},1500); }); }
-    }
+    var el=t.target.closest('[aria-disabled="true"]'); if(el) t.preventDefault();
   });
 })();
 </script>

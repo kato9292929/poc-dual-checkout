@@ -4,11 +4,19 @@
   "version": "0.1.0",
   "description": "実証2: JIN をカード払い（Nevermined）と x402 の両方で販売し、入口別に計測する",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "node scripts/build-site.mjs",
     "collect": "node scripts/collect-daily.mjs",
     "report": "node scripts/report-weekly.mjs",
     "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "@solana/kit": "5.5.1",
+    "@x402/core": "2.28.0",
+    "@x402/svm": "2.28.0",
+    "bs58": "6.0.0"
   }
 }

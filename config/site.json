@@ -9,8 +9,10 @@
       "name": "指数の時系列",
       "description": "excl_promo / incl_promo の日次系列と matched SKU 数。",
       "price_usd": 0.01,
-      "x402_url": "https://jin.x402jp.com/api/jin/series",
-      "x402_amount_atomic": "10000",
+      "usdc_url": "https://jin.x402jp.com/api/jin/series",
+      "usdc_amount_atomic": "10000",
+      "card_path": "/jin/series",
+      "card_route_id": "jin.series",
       "card_credits": 1
     },
     {
@@ -18,33 +20,48 @@
       "name": "その日動いた品目",
       "description": "基準比で動いた品目と特売タグ。",
       "price_usd": 0.02,
-      "x402_url": "https://jin.x402jp.com/api/jin/movers",
-      "x402_amount_atomic": "20000",
+      "usdc_url": "https://jin.x402jp.com/api/jin/movers",
+      "usdc_amount_atomic": "20000",
+      "card_path": "/jin/movers",
+      "card_route_id": "jin.movers",
       "card_credits": 2
     }
   ],
-  "card": {
-    "provider": "nevermined",
-    "plan_name": "JIN クレジット 500",
-    "plan_price_usd": 5.0,
-    "plan_credits": 500,
-    "usd_per_credit": 0.01,
-    "plan_purchase_url": "TODO_SET_AFTER_POC1",
-    "gateway_base_url": "TODO_SET_AFTER_POC1",
-    "notes": "1クレジット = $0.01。series = 1クレジット、movers = 2クレジットで x402 と同じ単価にそろえる。プラン ID とゲートウェイ URL は実証1（poc-card-credits）の稼働後に設定する。",
-    "stripe_match": {
-      "_comment": "Stripe の charge のうち JIN プランの購入だけを数えるための条件。実証1でプランの metadata が決まったら設定する。空なら全件。",
-      "metadata_key": null,
-      "metadata_value": null,
-      "description_contains": null
-    }
-  },
-  "x402": {
+  "usdc": {
     "discovery_url": "https://jin.x402jp.com/.well-known/x402.json",
     "network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
     "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
     "asset_symbol": "USDC",
     "asset_decimals": 6,
     "pay_to": "4s8XQC2WzRfgH8Xiep7ybnCW11VKRCMwxQF6jknx3VPf"
+  },
+  "card": {
+    "_comment": "カード払いの入口＝実証1のゲートウェイ＋Nevermined のカードプラン（isCrypto=false）。mode は実証1の結果を見て決める。undecided の間、販売ページのカード入口は「準備中」と表示する。",
+    "mode": "undecided",
+    "modes": {
+      "prepaid": {
+        "label": "前払い",
+        "plan_price_usd": 1.0,
+        "plan_credits": 100,
+        "summary": "$1 で 100 クレジット（1 クレジット = $0.01）を先に購入し、1コールごとに消費する。"
+      },
+      "per_call": {
+        "label": "都度払い",
+        "summary": "1コールごとに登録カードへ課金する（Nevermined の pay-as-you-go）。"
+      }
+    },
+    "usd_per_credit": 0.01,
+    "nvm_environment": "sandbox",
+    "nvm_plan_id": "TODO_SET_AFTER_POC1",
+    "nvm_agent_id": "TODO_SET_AFTER_POC1",
+    "nvm_receiver_address": "0x6d565F6091624672B6c0ef6e2D38eD4679143Ed5",
+    "plan_purchase_url": "TODO_SET_AFTER_POC1",
+    "gateway_base_url": "TODO_SET_AFTER_POC1",
+    "stripe_match": {
+      "_comment": "Stripe の charge のうち JIN プランの購入だけを数える条件。空なら全件。",
+      "metadata_key": null,
+      "metadata_value": null,
+      "description_contains": null
+    }
   }
 }

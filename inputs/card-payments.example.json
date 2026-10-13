@@ -1,0 +1,16 @@
+{
+  "$comment": "Stripe API（STRIPE_API_KEY）が使えないときだけ使う。Stripe / Nevermined の管理画面から転記し、card-payments.json として保存する。実証1の同名ファイルと同じ形に、kind・payoutDate・own を足した。金額は USD。購入者の名前やメールアドレスは書かない。",
+  "payments": [
+    {
+      "date": "2026-11-03",
+      "kind": "plan",
+      "grossUsd": "1.00",
+      "stripeFeeUsd": "0.33",
+      "neverminedFeeUsd": "0.02",
+      "netUsd": "0.65",
+      "creditsPurchased": 100,
+      "payoutDate": "2026-11-05",
+      "own": false
+    }
+  ]
+}
