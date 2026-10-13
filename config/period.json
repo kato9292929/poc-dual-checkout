@@ -1,0 +1,20 @@
+{
+  "timezone": "Asia/Tokyo",
+  "utc_offset": "+09:00",
+  "period_days": 28,
+  "periods": [
+    {
+      "id": "P1",
+      "start": "TODO_YYYY-MM-DD",
+      "locked_prices_usd": {
+        "series": 0.01,
+        "movers": 0.02
+      },
+      "locked_card": {
+        "plan_price_usd": 5.0,
+        "plan_credits": 500
+      },
+      "note": "開始日はカード入口（実証1）が動いた日に設定する。期間中は価格を変えない。"
+    }
+  ]
+}

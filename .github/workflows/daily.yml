@@ -1,0 +1,42 @@
+name: daily-collect
+on:
+  schedule:
+    # 毎日 06:13 JST（21:13 UTC）に JST の前日分を取り込む
+    - cron: '13 21 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'YYYY-MM-DD（JST）。空なら前日'
+        required: false
+permissions:
+  contents: write
+concurrency:
+  group: data-commit
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: collect
+        env:
+          STATS_URL: ${{ secrets.STATS_URL }}
+          STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
+          SOLANA_RPC_URL: ${{ secrets.SOLANA_RPC_URL }}
+          STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
+          GATEWAY_USAGE_URL: ${{ secrets.GATEWAY_USAGE_URL }}
+          GATEWAY_USAGE_TOKEN: ${{ secrets.GATEWAY_USAGE_TOKEN }}
+          ANON_SALT: ${{ secrets.ANON_SALT }}
+          DATE: ${{ inputs.date }}
+        run: |
+          if [ -n "$DATE" ]; then node scripts/collect-daily.mjs --date "$DATE"; else node scripts/collect-daily.mjs; fi
+      - name: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "data: daily $(ls -t data/*.json | head -1 | xargs basename)"
+          git push
