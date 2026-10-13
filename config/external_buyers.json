@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "updated": "2026-10-13",
+  "_comment": "外部の購入者と確定したもの。own_wallets にも、ここにも一致しないものは unclassified になり、自動で external にはならない。追加するときは、確定した根拠（evidence）と日付を書く。",
+
+  "solana": [],
+  "card_token_ids": [],
+  "stripe_txn_hashes": [],
+
+  "_example": { "id": "<アドレス or ID>", "confirmed_on": "YYYY-MM-DD", "evidence": "自社のどのウォレット・買い手とも一致しないことを確認し、…" },
+
+  "history": [
+    { "version": 1, "date": "2026-10-13", "change": "初版（空）。" }
+  ]
+}

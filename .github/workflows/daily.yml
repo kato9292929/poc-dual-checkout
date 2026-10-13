@@ -40,11 +40,11 @@ jobs:
           STATS_URL: ${{ secrets.STATS_URL }}
           STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
           SOLANA_RPC_URL: ${{ secrets.SOLANA_RPC_URL }}
-          NVM_API_KEY: ${{ secrets.NVM_API_KEY }}
-          NVM_ORG_ID: ${{ secrets.NVM_ORG_ID }}
-          STRIPE_API_KEY: ${{ secrets.STRIPE_API_KEY }}
+          STRIPE_RESTRICTED_KEY: ${{ secrets.STRIPE_RESTRICTED_KEY }}
           GATEWAY_LOG_URL: ${{ secrets.GATEWAY_LOG_URL }}
           GATEWAY_LOG_TOKEN: ${{ secrets.GATEWAY_LOG_TOKEN }}
+          NVM_API_KEY: ${{ secrets.NVM_API_KEY }}
+          NVM_ORG_ID: ${{ secrets.NVM_ORG_ID }}
           ANON_SALT: ${{ secrets.ANON_SALT }}
           DATE: ${{ inputs.date }}
         run: |

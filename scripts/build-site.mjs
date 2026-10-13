@@ -10,15 +10,10 @@ const configured = (v) => v && !String(v).startsWith('TODO');
 
 export function render(site) {
   const { card, usdc, items } = site;
-  const mode = card.modes[card.mode];
+  const plan = card.plan;
   const gw = configured(card.gateway_base_url) ? card.gateway_base_url.replace(/\/$/, '') : 'https://<ゲートウェイ>';
 
-  const cardCell = (it) =>
-    card.mode === 'prepaid'
-      ? `${it.card_credits} クレジット<wbr>（$${usd(it.card_credits * card.usd_per_credit)}）`
-      : card.mode === 'per_call'
-        ? `$${usd(it.price_usd)}`
-        : '準備中';
+  const cardCell = (it) => `${it.card_credits} クレジット<wbr>（$${usd(it.card_credits * card.usd_per_credit)}）`;
   const priceRows = items
     .map(
       (it) =>
@@ -39,34 +34,20 @@ curl -i ${esc(it.usdc_url)}</pre>
   const cardItems = items
     .map(
       (it) => `<div class="item">
-            <div class="row"><h3>${esc(it.name)}</h3><code>${card.mode === 'prepaid' ? `${it.card_credits} クレジット` : `$${usd(it.price_usd)}`} / call</code></div>
+            <div class="row"><h3>${esc(it.name)}</h3><code>${it.card_credits} クレジット / call</code></div>
             <pre>curl -H "payment-signature: $NVM_ACCESS_TOKEN" \\
   ${esc(gw)}${esc(it.card_path)}</pre>
           </div>`,
     )
     .join('\n');
 
-  const ready = mode && configured(card.plan_purchase_url);
-  let cardSummary;
-  let cardPrice;
-  if (!mode) {
-    cardSummary = 'カードでの購入は準備中です。';
-    cardPrice = '準備中';
-  } else {
-    cardSummary = `Nevermined のカードプラン（${esc(mode.label)}）。${esc(mode.summary)}`;
-    cardPrice =
-      card.mode === 'prepaid'
-        ? `$${usd(mode.plan_price_usd)} <span class="muted">/ ${mode.plan_credits} クレジット（${mode.plan_credits} コール相当）</span>`
-        : `$0.01〜$0.02 <span class="muted">/ call</span>`;
-  }
-  const label = card.mode === 'per_call' ? 'カードを登録する' : 'カードでプランを購入';
+  const ready = configured(card.plan_purchase_url);
+  const cardSummary = ready ? `Nevermined のカードプラン（前払い）。${esc(plan.summary)}` : 'カードでの購入は準備中です。';
+  const cardPrice = ready ? `$${usd(plan.plan_price_usd)} <span class="muted">/ ${plan.plan_credits} クレジット（${plan.plan_credits} コール相当）</span>` : '準備中';
   const cardButton = ready
-    ? `<a class="btn" href="${esc(card.plan_purchase_url)}" rel="noopener">${label}</a>`
-    : `<a class="btn" aria-disabled="true">${label}（準備中）</a>`;
-  const stepBuy =
-    card.mode === 'per_call'
-      ? '<li>プランに登録する（呼び出しごとに登録カードへ課金）</li>'
-      : '<li>プランを購入する（Stripe Checkout でカード決済。クレジットが付与される）</li>';
+    ? `<a class="btn" href="${esc(card.plan_purchase_url)}" rel="noopener">カードでプランを購入</a>`
+    : '<a class="btn" aria-disabled="true">カードでプランを購入（準備中）</a>';
+  const stepBuy = '<li>プランを購入する（Stripe Checkout でカード決済。クレジットが付与される）</li>';
 
   const vars = {
     summary: esc(site.product.summary),

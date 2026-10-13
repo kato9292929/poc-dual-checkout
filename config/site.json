@@ -33,23 +33,17 @@
     "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
     "asset_symbol": "USDC",
     "asset_decimals": 6,
-    "pay_to": "4s8XQC2WzRfgH8Xiep7ybnCW11VKRCMwxQF6jknx3VPf"
+    "pay_to": "4s8XQC2WzRfgH8Xiep7ybnCW11VKRCMwxQF6jknx3VPf",
+    "facilitator_fee_payers": [
+      {
+        "address": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+        "label": "JIN の 402 の extra.feePayer"
+      }
+    ]
   },
   "card": {
-    "_comment": "カード払いの入口＝実証1のゲートウェイ＋Nevermined のカードプラン（isCrypto=false）。mode は実証1の結果を見て決める。undecided の間、販売ページのカード入口は「準備中」と表示する。",
-    "mode": "undecided",
-    "modes": {
-      "prepaid": {
-        "label": "前払い",
-        "plan_price_usd": 1.0,
-        "plan_credits": 100,
-        "summary": "$1 で 100 クレジット（1 クレジット = $0.01）を先に購入し、1コールごとに消費する。"
-      },
-      "per_call": {
-        "label": "都度払い",
-        "summary": "1コールごとに登録カードへ課金する（Nevermined の pay-as-you-go）。"
-      }
-    },
+    "_comment": "カード払いの入口＝実証1のゲートウェイ＋Nevermined のカードプラン（isCrypto=false）。前払い（prepaid）に固定。都度払い（pay-as-you-go）は Stripe の最低請求額 $0.50 のため使わない。",
+    "mode": "prepaid",
     "usd_per_credit": 0.01,
     "nvm_environment": "sandbox",
     "nvm_plan_id": "TODO_SET_AFTER_POC1",
@@ -57,8 +51,13 @@
     "nvm_receiver_address": "0x6d565F6091624672B6c0ef6e2D38eD4679143Ed5",
     "plan_purchase_url": "TODO_SET_AFTER_POC1",
     "gateway_base_url": "TODO_SET_AFTER_POC1",
+    "plan": {
+      "plan_price_usd": 1.0,
+      "plan_credits": 100,
+      "summary": "$1 で 100 クレジット（1 クレジット = $0.01）を先に購入し、1コールごとに消費する。"
+    },
     "stripe_match": {
-      "_comment": "Stripe の charge のうち JIN プランの購入だけを数える条件。空なら全件。",
+      "_comment": "Stripe の取引のうち JIN プランの購入だけを数える条件。空なら全件。",
       "metadata_key": null,
       "metadata_value": null,
       "description_contains": null

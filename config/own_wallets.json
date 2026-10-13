@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "updated": "2026-10-13",
+  "_comment": "自社の支払い元。一致したものは own に分類し、全集計から除外して参考値として別表に出す。公開アドレスだけを書く（秘密鍵は読まない・書かない）。address が null のものは未取得で、照合には使われない。",
+
+  "solana": [
+    {
+      "address": null,
+      "label": "AA（Autonomous Agent）",
+      "source": "kato9292929/x402-Autonomous-Agent- の環境変数 SOLANA_WALLET_ADDRESS（Circle console で確認）。リポジトリの設定ファイルには公開アドレスが無い（2026-10-13 確認）",
+      "status": "pending"
+    },
+    {
+      "address": null,
+      "label": "Seller Probe",
+      "source": "kato9292929/seller-probe は PROBE_SOLANA_SECRET_KEY から実行時にアドレスを導出していて、設定ファイルにもコミット済みのログにも公開アドレスが無い（2026-10-13 確認）",
+      "status": "pending"
+    },
+    {
+      "address": null,
+      "label": "実証1のゲートウェイ",
+      "source": "ウォレット作成時に追加する（poc-card-credits の docs/go-live.md）。未追加の間も、ゲートウェイログの upstreamTx と一致する支払いは own にする",
+      "status": "not_created"
+    },
+    {
+      "address": null,
+      "label": "実証2の所要時間計測（scripts/probe-latency.mjs）",
+      "source": "計測用ウォレット作成時に追加する",
+      "status": "not_created"
+    }
+  ],
+
+  "card_token_ids": {
+    "_comment": "実証1ゲートウェイのログの tokenId（実証1の LOG_SALT で匿名化済みの値）。実証1の検証用買い手と、実証2の計測用の買い手",
+    "ids": []
+  },
+
+  "stripe_txn_hashes": {
+    "_comment": "自社のテスト購入の Stripe 取引（scripts/anon.mjs で匿名化した値）",
+    "ids": []
+  },
+
+  "history": [
+    { "version": 1, "date": "2026-10-13", "change": "初版。AA・Seller Probe の公開アドレスは各リポジトリの設定に無いため未取得（pending）。" }
+  ]
+}

@@ -7,12 +7,14 @@
       "id": "P1",
       "start": "TODO_YYYY-MM-DD",
       "locked": {
-        "prices_usd": { "series": 0.01, "movers": 0.02 },
-        "card_mode": "TODO_prepaid_or_per_call",
+        "prices_usd": {
+          "series": 0.01,
+          "movers": 0.02
+        },
         "plan_price_usd": 1.0,
         "plan_credits": 100
       },
-      "note": "開始日は、カード入口の mode を決めて販売ページを公開した日にする。期間中は価格もカードの mode も変えない。"
+      "note": "開始日は、カード入口を公開した日にする。期間中は価格を変えない。"
     }
   ]
 }
