@@ -1,0 +1,58 @@
+name: daily
+on:
+  schedule:
+    # 毎日 06:13 JST（21:13 UTC）。所要時間を測ってから、JST の前日分を取り込む
+    - cron: '13 21 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'YYYY-MM-DD（JST）。空なら前日'
+        required: false
+      skip_probe:
+        description: '所要時間の計測をしない'
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: data-commit
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: probe latency
+        if: ${{ !inputs.skip_probe }}
+        continue-on-error: true
+        env:
+          SOLANA_RPC_URL: ${{ secrets.SOLANA_RPC_URL }}
+          PROBE_SOLANA_SECRET_KEY: ${{ secrets.PROBE_SOLANA_SECRET_KEY }}
+          PROBE_NVM_ACCESS_TOKEN: ${{ secrets.PROBE_NVM_ACCESS_TOKEN }}
+        run: node scripts/probe-latency.mjs
+      - name: collect
+        env:
+          STATS_URL: ${{ secrets.STATS_URL }}
+          STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
+          SOLANA_RPC_URL: ${{ secrets.SOLANA_RPC_URL }}
+          STRIPE_RESTRICTED_KEY: ${{ secrets.STRIPE_RESTRICTED_KEY }}
+          GATEWAY_LOG_URL: ${{ secrets.GATEWAY_LOG_URL }}
+          LOG_READ_TOKEN: ${{ secrets.LOG_READ_TOKEN }}
+          NVM_API_KEY: ${{ secrets.NVM_API_KEY }}
+          NVM_ORG_ID: ${{ secrets.NVM_ORG_ID }}
+          ANON_SALT: ${{ secrets.ANON_SALT }}
+          DATE: ${{ inputs.date }}
+        run: |
+          if [ -n "$DATE" ]; then node scripts/collect-daily.mjs --date "$DATE"; else node scripts/collect-daily.mjs; fi
+      - name: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "data: daily $(date -u +%F)"
+          git push

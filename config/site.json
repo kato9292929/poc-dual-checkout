@@ -1,0 +1,72 @@
+{
+  "product": {
+    "name": "Japan Inflation Nowcall (JIN)",
+    "summary": "東京の店頭食品価格を毎日観測した Jevons 指数（固定基準 2026-06-04 = 100）。単一店舗の観測で、公的 CPI でも予測でもない。"
+  },
+  "items": [
+    {
+      "id": "series",
+      "name": "指数の時系列",
+      "description": "excl_promo / incl_promo の日次系列と matched SKU 数。",
+      "price_usd": 0.01,
+      "usdc_url": "https://jin.x402jp.com/api/jin/series",
+      "usdc_amount_atomic": "10000",
+      "card_path": "/jin/series",
+      "card_route_id": "jin.series",
+      "card_credits": 1
+    },
+    {
+      "id": "movers",
+      "name": "その日動いた品目",
+      "description": "基準比で動いた品目と特売タグ。",
+      "price_usd": 0.02,
+      "usdc_url": "https://jin.x402jp.com/api/jin/movers",
+      "usdc_amount_atomic": "20000",
+      "card_path": "/jin/movers",
+      "card_route_id": "jin.movers",
+      "card_credits": 2
+    }
+  ],
+  "usdc": {
+    "discovery_url": "https://jin.x402jp.com/.well-known/x402.json",
+    "network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+    "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+    "asset_symbol": "USDC",
+    "asset_decimals": 6,
+    "pay_to": "4s8XQC2WzRfgH8Xiep7ybnCW11VKRCMwxQF6jknx3VPf",
+    "facilitator_fee_payers": [
+      {
+        "address": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+        "label": "JIN の 402 の extra.feePayer"
+      }
+    ],
+    "seller_fee_payers": [],
+    "_fee_payer_comment": "tx のチェーン手数料を誰が払ったか: fee payer が facilitator_fee_payers なら facilitator、pay_to か seller_fee_payers なら seller、支払い元（payer）なら buyer、どれでもなければ other。売る側の手数料率には seller の分だけを入れる。"
+  },
+  "card": {
+    "_comment": "カード払いの入口＝実証1のゲートウェイ＋Nevermined のカードプラン（isCrypto=false）。前払い（prepaid）に固定。都度払い（pay-as-you-go）は Stripe の最低請求額 $0.50 のため使わない。",
+    "mode": "prepaid",
+    "usd_per_credit": 0.01,
+    "nvm_environment": "sandbox",
+    "nvm_plan_id": "TODO_SET_AFTER_POC1",
+    "nvm_agent_id": "TODO_SET_AFTER_POC1",
+    "nvm_receiver_address": "0x6d565F6091624672B6c0ef6e2D38eD4679143Ed5",
+    "plan_purchase_url": "TODO_SET_AFTER_POC1",
+    "gateway_base_url": "TODO_SET_AFTER_POC1",
+    "plan": {
+      "plan_price_usd": 1.0,
+      "plan_credits": 100,
+      "summary": "$1 で 100 クレジット（1 クレジット = $0.01）を先に購入し、1コールごとに消費する。"
+    },
+    "stripe_match": {
+      "_comment": "Stripe の取引のうち JIN プランの購入だけを数える条件。空なら全件。",
+      "metadata_key": null,
+      "metadata_value": null,
+      "description_contains": null
+    },
+    "purchase_source": "stripe",
+    "_purchase_source_comment": "プラン購入件数の主系。stripe（Stripe の取引数、既定）か nvm_events（Nevermined の plan.purchased イベント数）。主系でない方は照合用に残す。",
+    "gateway_log_path": "/logs/{day}",
+    "_gateway_log_comment": "実証1ゲートウェイのログの口（GET /logs/:date、Bearer は LOG_READ_TOKEN）。{day} は UTC の日付（実証1のログは UTC の日ごと）。GATEWAY_LOG_URL を設定すればそちらを優先する。"
+  }
+}
