@@ -30,3 +30,4 @@ node scripts/collect-daily.mjs --resummarize 2026-10-12..2026-11-28
 | external_buyers.json | 1 | 2026-10-13 | 初版（空） | — |
 | own_wallets.json | 2 | 2026-10-14 | candidates・nvm_user_hashes を追加。`7PVT…L6tY` を AA の候補として注記（unclassified のまま） | movers $0.02 は seller-probe の上限 $0.01 を超える。AA のアドレス確定待ち |
 | external_buyers.json | 2 | 2026-10-14 | nvm_user_hashes を追加 | プラン購入件数の主系を nvm_events に切り替えられるようにした |
+| own_wallets.json | 3 | 2026-10-14 | `7PVT…L6tY` の候補の根拠を、連日 06:00 JST の支払い（週1回の seller-probe と頻度が合わない）に差し替え。上限 $0.01 は補強 | 10/13 にも同時刻の支払いがあり、消去法が上限額に依存しなくなった |

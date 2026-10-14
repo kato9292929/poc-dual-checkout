@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "updated": "2026-10-14",
   "_comment": "自社の支払い元。一致したものは own に分類し、全集計から除外して参考値として別表に出す。公開アドレスだけを書く（秘密鍵は読まない・書かない）。address が null のものは未取得で、照合には使われない。",
   "solana": [
@@ -46,6 +46,11 @@
       "version": 2,
       "date": "2026-10-14",
       "change": "candidates（own 候補）と nvm_user_hashes を追加。7PVT…L6tY を AA の候補として注記（unclassified のまま）。"
+    },
+    {
+      "version": 3,
+      "date": "2026-10-14",
+      "change": "7PVT…L6tY の候補の根拠を差し替え：主は「連日 06:00 JST の支払いで、週1回の seller-probe とは頻度が合わない」、補強は seller-probe の上限 $0.01（コードで確認済み）。"
     }
   ],
   "nvm_user_hashes": {
@@ -59,8 +64,26 @@
         "address": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
         "likely": "AA（Autonomous Agent）",
         "first_seen_jst": "2026-10-12",
-        "reason": "2026-10-12 に movers（$0.02）を購入。seller-probe は1コール $0.01 が上限（src/config.ts の LIMITS.perCall = 10_000）なので、$0.02 の支払いは seller-probe ではない。",
-        "confirm_when": "AA の公開アドレスが own_wallets.json の solana に入り、それがこのアドレスと一致したとき"
+        "reason": "2026-10-12・10-13 と連日 06:00 JST ごろに movers（$0.02）を購入している。seller-probe の有料の測定は週1回（.github/workflows/paid-weekly.yml が月曜 04:41 UTC、self-check-weekly.yml が月曜 05:53 UTC。毎日動く free-daily.yml は支払わない）なので、連日の支払いとは頻度も時刻も合わず、seller-probe ではない。",
+        "confirm_when": "AA の公開アドレスが own_wallets.json の solana に入り、それがこのアドレスと一致したとき",
+        "observed": [
+          {
+            "date_jst": "2026-10-12",
+            "time_jst": "06:00:23",
+            "time_utc": "2026-10-11T21:00:23Z",
+            "item": "movers",
+            "usd": 0.02
+          },
+          {
+            "date_jst": "2026-10-13",
+            "time_jst": "06:00:48",
+            "time_utc": "2026-10-12T21:00:48Z",
+            "item": "movers",
+            "usd": 0.02
+          }
+        ],
+        "supporting": "補強：seller-probe は1コール $0.01 が上限で、コードで強制している（src/config.ts:37 LIMITS.perCall = 10_000n、src/budget.ts:29・src/pay.ts:54 で超過を拒否。commit 27cef8f で確認）。$0.02 の movers は買えない。",
+        "note_short": "連日 06:00 JST の支払い。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
       }
     ]
   }

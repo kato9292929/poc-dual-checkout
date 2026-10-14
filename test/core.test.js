@@ -238,7 +238,7 @@ test('日次集計: own / external / unclassified の3区分。一致しない�
   assert.deepEqual(d.parties.usdc.find((p) => p.id === 'Stranger'), { id: 'Stranger', class: 'unclassified', count: 1 });
   assert.equal(d.latency.usdc.total_ms_p50, 2500);
   assert.equal(d.latency.card.skipped, 1);
-  assert.deepEqual(d.classification, { own_wallets_version: 2, external_buyers_version: 2 });
+  assert.deepEqual(d.classification, { own_wallets_version: loadConfig().own.version, external_buyers_version: loadConfig().external.version });
 });
 
 test('日次集計: 取れなかったソースは null のまま（0 で埋めない）', () => {
@@ -338,5 +338,40 @@ test('own 候補は注記だけで、unclassified のまま', () => {
   const p = d.parties.usdc.find((x) => x.id.startsWith('7PVT'));
   assert.equal(p.class, 'unclassified');
   assert.match(p.note, /own 候補（AA/);
-  assert.match(p.note, /seller-probe ではない/);
+  assert.match(p.note, /週1回の seller-probe とは頻度が合わない/);
+});
+
+test('期間外の日: 開始日前・開始日未設定の日は本表に入れず、期間外として別に出す', async () => {
+  const { periodPhase } = await import('../lib/aggregate.js');
+  const days = weekDays('2026-W45'); // 11/02(月)〜11/08(日)
+  const allOk = { usdc_chain: 'ok', gateway_log: 'ok', stripe: 'ok' };
+  // 日次データは開始日を入れる前に作られた（period: null）
+  const before = cfg({ ownWallets: ['Probe'], ownTokens: ['tokOwn'], ownTxns: ['hOwn'], extWallets: ['ExtA'], extTokens: ['tokExt'], extTxns: ['hExt'] });
+  before.period.periods[0].start = 'TODO_YYYY-MM-DD';
+  const dailies = days.map((d) => buildDaily({ date: d, config: before, detail: detail(d), sources: allOk }));
+  assert.ok(dailies.every((d) => d.period === null && d.period_phase === 'no_period'));
+
+  // 開始日未設定のままレポートを出すと、本表は空
+  let md = renderWeekly({ label: '2026-W45', days, dailies, config: before });
+  assert.match(md, /この週に計測期間中の日はない\*\*（開始日（config\/period.json）が未設定）/);
+  assert.match(md, /## 期間外の日（参考。本表に含めない）/);
+  assert.doesNotMatch(md, /今週は外部の購入者がいなかった/);
+
+  // あとで開始日を 11/04 に入れる。保存済みの日次データ（period: null）のままでも、11/02・11/03 は期間前になる
+  const after = structuredClone(before);
+  after.period.periods[0].start = '2026-11-04';
+  assert.equal(periodPhase(after.period, '2026-11-03'), 'pre_period');
+  assert.equal(periodPhase(after.period, '2026-11-04'), 'in_period');
+  assert.equal(periodPhase(after.period, '2026-12-02'), 'post_period');
+  md = renderWeekly({ label: '2026-W45', days, dailies, config: after });
+  assert.match(md, /期間外の日（2026-11-02 期間前, 2026-11-03 期間前）は本表に含めない/);
+  const main = md.split('## 別表')[0];
+  // 本表は 11/04〜11/08 の5日分だけ（1日あたり外部の USDC 2件）
+  assert.match(main, /\| 成約件数 \| 10（支払い件数） \|/);
+  assert.match(main, /\| 5 \/ 5 \|/); // 販売ページの計測できた日数
+  assert.match(md, /\| 外部 \| 4 \| \$0\.06 \|/); // 期間外の表に 11/02・11/03 の分
+  // 期間前の日に価格を変えていても、固定値との不一致としては出さない
+  const pricey = structuredClone(dailies);
+  pricey[0].price_check = 'mismatch: series: 0.01 → 0.02';
+  assert.doesNotMatch(renderWeekly({ label: '2026-W45', days, dailies: pricey, config: after }), /価格の不一致を検知/);
 });
