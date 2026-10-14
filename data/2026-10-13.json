@@ -7,12 +7,13 @@
     "2026-10-13T15:00:00.000Z"
   ],
   "period": null,
+  "period_phase": "no_period",
   "price_check": "no_period",
   "classification": {
-    "own_wallets_version": 2,
+    "own_wallets_version": 3,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-14T08:33:09.255Z",
+  "generated_at": "2026-10-14T11:47:45.195Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -199,7 +200,7 @@
         "id": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
         "class": "unclassified",
         "count": 1,
-        "note": "own 候補（AA（Autonomous Agent））: 2026-10-12 に movers（$0.02）を購入。seller-probe は1コール $0.01 が上限（src/config.ts の LIMITS.perCall = 10_000）なので、$0.02 の支払いは seller-probe ではない。 確定: AA の公開アドレスが own_wallets.json の solana に入り、それがこのアドレスと一致したとき"
+        "note": "own 候補（AA（Autonomous Agent））: 連日 06:00 JST の支払い。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）。確定: AA の公開アドレスが own_wallets.json の solana に入り、それがこのアドレスと一致したとき"
       }
     ],
     "card_tokens": null
