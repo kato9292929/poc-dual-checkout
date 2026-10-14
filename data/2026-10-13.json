@@ -9,15 +9,15 @@
   "period": null,
   "price_check": "no_period",
   "classification": {
-    "own_wallets_version": 1,
-    "external_buyers_version": 1
+    "own_wallets_version": 2,
+    "external_buyers_version": 2
   },
-  "generated_at": "2026-10-14T00:17:23.247Z",
+  "generated_at": "2026-10-14T08:33:09.255Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
     "usdc_chain": "ok",
-    "gateway_log": "not_configured",
+    "gateway_log": "missing",
     "stripe": "missing",
     "stripe_csv": "not_found",
     "nvm_api": "not_configured",
@@ -32,11 +32,33 @@
         "buyers": 0,
         "by_item": {},
         "revenue_usd": 0,
-        "chain_fee_lamports": 0,
-        "chain_fee_usd": 0,
-        "chain_fee_usd_per_contract": null,
-        "fee_rate": null,
-        "fee_paid_by_facilitator": 0,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_contract": null,
+        "seller_fee_rate": null,
+        "facilitator_fee_usd": 0,
+        "facilitator_fee_rate": null,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
         "days_to_settlement": null
       },
       "card": {
@@ -45,6 +67,9 @@
         "buyers": null,
         "failures": null,
         "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
         "revenue_usd": null,
         "card_fee_usd": null,
         "card_fee_usd_per_contract": null,
@@ -64,11 +89,33 @@
           "movers": 1
         },
         "revenue_usd": 0.02,
-        "chain_fee_lamports": 10001,
-        "chain_fee_usd": 0.001068,
-        "chain_fee_usd_per_contract": 0.001068,
-        "fee_rate": 0.0534,
-        "fee_paid_by_facilitator": 1,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_contract": 0,
+        "seller_fee_rate": 0,
+        "facilitator_fee_usd": 0.001068,
+        "facilitator_fee_rate": 0.0534,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 1,
+            "lamports": 10001,
+            "usd": 0.001068
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
         "days_to_settlement": 0
       },
       "card": {
@@ -77,6 +124,9 @@
         "buyers": null,
         "failures": null,
         "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
         "revenue_usd": null,
         "card_fee_usd": null,
         "card_fee_usd_per_contract": null,
@@ -94,11 +144,33 @@
         "buyers": 0,
         "by_item": {},
         "revenue_usd": 0,
-        "chain_fee_lamports": 0,
-        "chain_fee_usd": 0,
-        "chain_fee_usd_per_contract": null,
-        "fee_rate": null,
-        "fee_paid_by_facilitator": 0,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_contract": null,
+        "seller_fee_rate": null,
+        "facilitator_fee_usd": 0,
+        "facilitator_fee_rate": null,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
         "days_to_settlement": null
       },
       "card": {
@@ -107,6 +179,9 @@
         "buyers": null,
         "failures": null,
         "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
         "revenue_usd": null,
         "card_fee_usd": null,
         "card_fee_usd_per_contract": null,
@@ -123,7 +198,8 @@
       {
         "id": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
         "class": "unclassified",
-        "count": 1
+        "count": 1,
+        "note": "own 候補（AA（Autonomous Agent））: 2026-10-12 に movers（$0.02）を購入。seller-probe は1コール $0.01 が上限（src/config.ts の LIMITS.perCall = 10_000）なので、$0.02 の支払いは seller-probe ではない。 確定: AA の公開アドレスが own_wallets.json の solana に入り、それがこのアドレスと一致したとき"
       }
     ],
     "card_tokens": null
@@ -168,7 +244,8 @@
           "amount_atomic": "20000",
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
-          "sol_usd": 106.75
+          "sol_usd": 106.75,
+          "fee_payer_role": "facilitator"
         }
       ],
       "sol_usd": {
