@@ -339,6 +339,16 @@ test('own 候補は注記だけで、unclassified のまま', () => {
   assert.equal(p.class, 'unclassified');
   assert.match(p.note, /own 候補（AA/);
   assert.match(p.note, /週1回の seller-probe とは頻度が合わない/);
+  // 各トランザクションにも同じ注記
+  const tx = d.detail.usdc.payments.find((x) => x.signature === 'p7');
+  assert.equal(tx.own_candidate.likely, 'AA（Autonomous Agent）');
+  assert.match(tx.own_candidate.note, /自社 AA の候補。movers \$0\.02 を毎日/);
+  assert.equal(d.detail.usdc.payments.find((x) => x.signature === 's1').own_candidate, undefined);
+  // own に確定したら注記は付かない
+  const c2 = cfg({ ownWallets: ['7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY'] });
+  const d2 = buildDaily({ date: '2026-11-03', config: c2, detail: det, sources: {} });
+  assert.equal(d2.detail.usdc.payments.find((x) => x.signature === 'p7').own_candidate, undefined);
+  assert.equal(d2.parties.usdc.find((x) => x.id.startsWith('7PVT')).class, 'own');
 });
 
 test('期間外の日: 開始日前・開始日未設定の日は本表に入れず、期間外として別に出す', async () => {

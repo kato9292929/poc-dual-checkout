@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "updated": "2026-10-14",
   "_comment": "自社の支払い元。一致したものは own に分類し、全集計から除外して参考値として別表に出す。公開アドレスだけを書く（秘密鍵は読まない・書かない）。address が null のものは未取得で、照合には使われない。",
   "solana": [
@@ -51,6 +51,11 @@
       "version": 3,
       "date": "2026-10-14",
       "change": "7PVT…L6tY の候補の根拠を差し替え：主は「連日 06:00 JST の支払いで、週1回の seller-probe とは頻度が合わない」、補強は seller-probe の上限 $0.01（コードで確認済み）。"
+    },
+    {
+      "version": 4,
+      "date": "2026-10-14",
+      "change": "候補の注記を、日次データの各トランザクション（own_candidate）にも付ける。文言を「自社 AA の候補、movers $0.02 の毎日購入」に揃えた。"
     }
   ],
   "nvm_user_hashes": {
@@ -83,7 +88,7 @@
           }
         ],
         "supporting": "補強：seller-probe は1コール $0.01 が上限で、コードで強制している（src/config.ts:37 LIMITS.perCall = 10_000n、src/budget.ts:29・src/pay.ts:54 で超過を拒否。commit 27cef8f で確認）。$0.02 の movers は買えない。",
-        "note_short": "連日 06:00 JST の支払い。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+        "note_short": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
       }
     ]
   }
