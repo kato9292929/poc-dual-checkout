@@ -1,0 +1,186 @@
+{
+  "schema": 3,
+  "date": "2026-10-13",
+  "timezone": "Asia/Tokyo",
+  "window_utc": [
+    "2026-10-12T15:00:00.000Z",
+    "2026-10-13T15:00:00.000Z"
+  ],
+  "period": null,
+  "price_check": "no_period",
+  "classification": {
+    "own_wallets_version": 1,
+    "external_buyers_version": 1
+  },
+  "generated_at": "2026-10-14T00:17:23.247Z",
+  "sources": {
+    "page": "not_configured",
+    "sol_usd": "ok",
+    "usdc_chain": "ok",
+    "gateway_log": "not_configured",
+    "stripe": "missing",
+    "stripe_csv": "not_found",
+    "nvm_api": "not_configured",
+    "latency_probe": "not_found"
+  },
+  "page": null,
+  "by_class": {
+    "external": {
+      "usdc": {
+        "contracts": 0,
+        "uses": 0,
+        "buyers": 0,
+        "by_item": {},
+        "revenue_usd": 0,
+        "chain_fee_lamports": 0,
+        "chain_fee_usd": 0,
+        "chain_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "fee_paid_by_facilitator": 0,
+        "days_to_settlement": null
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    },
+    "unclassified": {
+      "usdc": {
+        "contracts": 1,
+        "uses": 1,
+        "buyers": 1,
+        "by_item": {
+          "movers": 1
+        },
+        "revenue_usd": 0.02,
+        "chain_fee_lamports": 10001,
+        "chain_fee_usd": 0.001068,
+        "chain_fee_usd_per_contract": 0.001068,
+        "fee_rate": 0.0534,
+        "fee_paid_by_facilitator": 1,
+        "days_to_settlement": 0
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    },
+    "own": {
+      "usdc": {
+        "contracts": 0,
+        "uses": 0,
+        "buyers": 0,
+        "by_item": {},
+        "revenue_usd": 0,
+        "chain_fee_lamports": 0,
+        "chain_fee_usd": 0,
+        "chain_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "fee_paid_by_facilitator": 0,
+        "days_to_settlement": null
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    }
+  },
+  "parties": {
+    "usdc": [
+      {
+        "id": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+        "class": "unclassified",
+        "count": 1
+      }
+    ],
+    "card_tokens": null
+  },
+  "latency": {
+    "usdc": {
+      "runs": 0,
+      "ok": 0,
+      "skipped": 0,
+      "total_ms_p50": null,
+      "total_ms_p90": null,
+      "first_402_ms_median": null,
+      "sign_ms_median": null,
+      "paid_request_ms_median": null
+    },
+    "card": {
+      "runs": 0,
+      "ok": 0,
+      "skipped": 0,
+      "total_ms_p50": null,
+      "total_ms_p90": null,
+      "first_402_ms_median": null,
+      "sign_ms_median": null,
+      "paid_request_ms_median": null
+    }
+  },
+  "nvm_reconcile_incl_own": null,
+  "detail": {
+    "window_utc": [
+      "2026-10-12T15:00:00.000Z",
+      "2026-10-13T15:00:00.000Z"
+    ],
+    "page": null,
+    "usdc": {
+      "payments": [
+        {
+          "time_utc": "2026-10-12T21:00:48.000Z",
+          "date_jst": "2026-10-13",
+          "signature": "6154hajSEekD4NPjP1JKyfndn5dHP1zPaVUbZqt9Eqga4sdPmoanj9VVbQKjgWwVCAUynvvndFjWL2UpBPDCJ5md",
+          "block_time": 1791838848,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "20000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 106.75
+        }
+      ],
+      "sol_usd": {
+        "usd": 106.75,
+        "source": "binance SOLUSDC 1d close (UTC)"
+      }
+    },
+    "card": {
+      "calls": null,
+      "sales": null,
+      "nvm": null
+    },
+    "latency": []
+  }
+}
