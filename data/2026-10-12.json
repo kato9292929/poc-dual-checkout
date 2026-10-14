@@ -10,10 +10,10 @@
   "period_phase": "no_period",
   "price_check": "no_period",
   "classification": {
-    "own_wallets_version": 3,
+    "own_wallets_version": 4,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-14T11:47:45.192Z",
+  "generated_at": "2026-10-14T12:39:12.540Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -200,7 +200,7 @@
         "id": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
         "class": "unclassified",
         "count": 1,
-        "note": "own 候補（AA（Autonomous Agent））: 連日 06:00 JST の支払い。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）。確定: AA の公開アドレスが own_wallets.json の solana に入り、それがこのアドレスと一致したとき"
+        "note": "own 候補（AA（Autonomous Agent））: 自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）。確定: AA の公開アドレスが own_wallets.json の solana に入り、それがこのアドレスと一致したとき"
       }
     ],
     "card_tokens": null
@@ -246,7 +246,11 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.64,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
         }
       ],
       "sol_usd": {
