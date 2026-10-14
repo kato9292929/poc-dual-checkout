@@ -1,8 +1,7 @@
 {
-  "version": 1,
-  "updated": "2026-10-13",
+  "version": 2,
+  "updated": "2026-10-14",
   "_comment": "自社の支払い元。一致したものは own に分類し、全集計から除外して参考値として別表に出す。公開アドレスだけを書く（秘密鍵は読まない・書かない）。address が null のものは未取得で、照合には使われない。",
-
   "solana": [
     {
       "address": null,
@@ -29,18 +28,40 @@
       "status": "not_created"
     }
   ],
-
   "card_token_ids": {
     "_comment": "実証1ゲートウェイのログの tokenId（実証1の LOG_SALT で匿名化済みの値）。実証1の検証用買い手と、実証2の計測用の買い手",
     "ids": []
   },
-
   "stripe_txn_hashes": {
     "_comment": "自社のテスト購入の Stripe 取引（scripts/anon.mjs で匿名化した値）",
     "ids": []
   },
-
   "history": [
-    { "version": 1, "date": "2026-10-13", "change": "初版。AA・Seller Probe の公開アドレスは各リポジトリの設定に無いため未取得（pending）。" }
-  ]
+    {
+      "version": 1,
+      "date": "2026-10-13",
+      "change": "初版。AA・Seller Probe の公開アドレスは各リポジトリの設定に無いため未取得（pending）。"
+    },
+    {
+      "version": 2,
+      "date": "2026-10-14",
+      "change": "candidates（own 候補）と nvm_user_hashes を追加。7PVT…L6tY を AA の候補として注記（unclassified のまま）。"
+    }
+  ],
+  "nvm_user_hashes": {
+    "_comment": "Nevermined の userId を ANON_SALT で匿名化した値（card.purchase_source が nvm_events のときの購入者の照合に使う）",
+    "ids": []
+  },
+  "candidates": {
+    "_comment": "own の候補。照合には使わない（unclassified のまま）。確定条件を満たしたら solana に移し、version を上げて --resummarize で数え直す。",
+    "solana": [
+      {
+        "address": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+        "likely": "AA（Autonomous Agent）",
+        "first_seen_jst": "2026-10-12",
+        "reason": "2026-10-12 に movers（$0.02）を購入。seller-probe は1コール $0.01 が上限（src/config.ts の LIMITS.perCall = 10_000）なので、$0.02 の支払いは seller-probe ではない。",
+        "confirm_when": "AA の公開アドレスが own_wallets.json の solana に入り、それがこのアドレスと一致したとき"
+      }
+    ]
+  }
 }

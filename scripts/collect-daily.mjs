@@ -3,7 +3,8 @@
 //   node scripts/collect-daily.mjs                 JST の前日分を取り込み、data/YYYY-MM-DD.json に保存
 //   node scripts/collect-daily.mjs --date D        指定日を取り込み直す
 //   node scripts/collect-daily.mjs --resummarize D1..D2
-//                                                  保存済みの明細に、今の分類リストを当てて数え直す（外部には取りに行かない）
+//                                                  保存済みの明細に、今の分類リストを当てて数え直す。
+//                                                  ゲートウェイのログが欠損していた日は、口がつながっていれば取りに行って埋める
 // 毎回、直近 45 日分のカード決済について Stripe の着金（payout）を確認し、着金日が分かったものを書き足す。
 // 取れなかったソースは 0 で埋めず、sources に理由を残す。
 import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
@@ -31,14 +32,34 @@ const save = (daily) => {
 };
 const rebuild = (d, detail, sources) => save(buildDaily({ date: d, config, detail, sources }));
 
+// 実証1ゲートウェイのログの口（GET /logs/:date、Bearer は LOG_READ_TOKEN）
+const gw = (() => {
+  const base = config.site.card.gateway_base_url;
+  const url = env.GATEWAY_LOG_URL || (base && !base.startsWith('TODO') ? `${base.replace(/\/$/, '')}${config.site.card.gateway_log_path}` : null);
+  return { url, dir: env.GATEWAY_LOG_DIR, token: env.LOG_READ_TOKEN, ready: !!((url && env.LOG_READ_TOKEN) || env.GATEWAY_LOG_DIR) };
+})();
+const loadGateway = async (s, e) => toCalls(await fetchGatewayLog(gw, s, e), offset);
+
 if (opt('--resummarize')) {
   const [a, b = a] = opt('--resummarize').split('..');
   for (let d = a; d <= b; d = addDays(d, 1)) {
     if (!existsSync(dataFile(d))) continue;
     const old = JSON.parse(readFileSync(dataFile(d), 'utf8'));
     if (old.schema !== 3) throw new Error(`${d}: schema ${old.schema} は数え直せない。--date ${d} で取り込み直す`);
+    // ゲートウェイのログが欠損していた日は、口がつながっていれば取りに行って埋める
+    if (old.sources.gateway_log === 'not_configured') old.sources.gateway_log = 'missing';
+    if (old.sources.gateway_log !== 'ok' && gw.ready) {
+      const b = dayBounds(d, offset);
+      try {
+        old.detail.card.calls = await loadGateway(b.start, b.end);
+        old.sources.gateway_log = 'ok';
+        old.sources.gateway_log_backfilled_at = new Date().toISOString();
+      } catch (e) {
+        old.sources.gateway_log = `error: ${e.message}`;
+      }
+    }
     rebuild(d, old.detail, old.sources);
-    console.log(`resummarized ${d}`);
+    console.log(`resummarized ${d}（gateway_log: ${old.sources.gateway_log}）`);
   }
   process.exit(0);
 }
@@ -83,10 +104,9 @@ const payments = await attempt('usdc_chain', true, async () =>
   ),
 );
 
-// カード払い：件数・消費クレジット・購入者は実証1ゲートウェイのログで数える
-const calls = await attempt('gateway_log', !!(env.GATEWAY_LOG_URL || env.GATEWAY_LOG_DIR), async () =>
-  toCalls(await fetchGatewayLog({ dir: env.GATEWAY_LOG_DIR, url: env.GATEWAY_LOG_URL, token: env.GATEWAY_LOG_TOKEN }, start, end), offset),
-);
+// カード払い：利用件数・消費クレジット・購入者は実証1ゲートウェイのログで数える
+// 口がまだ無い・トークンが無い日は欠損（missing）。つながったあと --resummarize で埋める
+const calls = await attempt('gateway_log', gw.ready, () => loadGateway(start, end), { missing: 'missing' });
 
 // カード払い：手数料と着金日は Stripe（API と、手で書き出した CSV）
 let sales = await attempt(
@@ -112,13 +132,16 @@ if (csv) {
 
 // 照合用：Nevermined の Events & Analytics。403 などで取れなくても止めない
 let nvm = null;
+let nvmPurchases = null;
 if (!env.NVM_API_KEY || !env.NVM_ORG_ID) sources.nvm_api = 'not_configured';
 else {
   try {
-    nvm = await reconcile(
+    const r = await reconcile(
       { base: NVM_API[card.nvm_environment], key: env.NVM_API_KEY, orgId: env.NVM_ORG_ID },
-      { from: iso(start), to: iso(end - 1), planId: card.nvm_plan_id },
+      { from: iso(start), to: iso(end - 1), planId: card.nvm_plan_id, anonymize, offset },
     );
+    nvm = r.totals;
+    nvmPurchases = r.purchases;
     sources.nvm_api = 'ok';
   } catch (e) {
     sources.nvm_api = 'unavailable';
@@ -135,7 +158,7 @@ const detail = {
   window_utc: [iso(start), iso(end)],
   page,
   usdc: payments ? { payments, sol_usd: sol } : null,
-  card: { calls, sales, nvm },
+  card: { calls, sales, nvm_purchases: nvmPurchases, nvm },
   latency,
 };
 const daily = buildDaily({ date, config, detail, sources });

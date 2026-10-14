@@ -39,7 +39,9 @@
         "address": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
         "label": "JIN の 402 の extra.feePayer"
       }
-    ]
+    ],
+    "seller_fee_payers": [],
+    "_fee_payer_comment": "tx のチェーン手数料を誰が払ったか: fee payer が facilitator_fee_payers なら facilitator、pay_to か seller_fee_payers なら seller、支払い元（payer）なら buyer、どれでもなければ other。売る側の手数料率には seller の分だけを入れる。"
   },
   "card": {
     "_comment": "カード払いの入口＝実証1のゲートウェイ＋Nevermined のカードプラン（isCrypto=false）。前払い（prepaid）に固定。都度払い（pay-as-you-go）は Stripe の最低請求額 $0.50 のため使わない。",
@@ -61,6 +63,10 @@
       "metadata_key": null,
       "metadata_value": null,
       "description_contains": null
-    }
+    },
+    "purchase_source": "stripe",
+    "_purchase_source_comment": "プラン購入件数の主系。stripe（Stripe の取引数、既定）か nvm_events（Nevermined の plan.purchased イベント数）。主系でない方は照合用に残す。",
+    "gateway_log_path": "/logs/{day}",
+    "_gateway_log_comment": "実証1ゲートウェイのログの口（GET /logs/:date、Bearer は LOG_READ_TOKEN）。{day} は UTC の日付（実証1のログは UTC の日ごと）。GATEWAY_LOG_URL を設定すればそちらを優先する。"
   }
 }

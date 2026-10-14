@@ -213,15 +213,20 @@ test('日次集計: own / external / unclassified の3区分。一致しない�
   assert.equal(e.usdc.contracts, 2);
   assert.equal(e.usdc.buyers, 1);
   assert.equal(e.usdc.revenue_usd, 0.03);
-  assert.equal(e.usdc.chain_fee_usd, 0.001); // 10000 lamports × $100/SOL
-  assert.equal(e.usdc.fee_rate, 0.0333);
-  assert.equal(e.usdc.fee_paid_by_facilitator, 2);
+  // どちらも facilitator が fee payer → 売る側の手数料は 0、facilitator の分は参考値
+  assert.equal(e.usdc.seller_fee_usd, 0);
+  assert.equal(e.usdc.seller_fee_rate, 0);
+  assert.equal(e.usdc.facilitator_fee_usd, 0.001); // 10000 lamports × $100/SOL
+  assert.equal(e.usdc.facilitator_fee_rate, 0.0333);
+  assert.equal(e.usdc.fee_by_payer.facilitator.txs, 2);
+  assert.ok(d.detail.usdc.payments.every((p) => p.fee_payer_role === 'facilitator'));
   assert.equal(o.usdc.contracts, 2); // Probe と、ゲートウェイの裏側の購入（upstream_tx 一致）
   assert.equal(u.usdc.contracts, 1); // Stranger は自動で external にしない
   assert.equal(e.card.calls, 2);
   assert.equal(e.card.uses_credits, 3);
   assert.equal(e.card.buyers, 1);
   assert.equal(e.card.plan_purchases, 1);
+  assert.equal(e.card.plan_purchases_source, 'stripe');
   assert.equal(e.card.card_fee_usd_per_contract, 0.35);
   assert.equal(e.card.fee_rate, 0.35);
   assert.equal(e.card.days_to_payout_median, 2);
@@ -233,7 +238,7 @@ test('日次集計: own / external / unclassified の3区分。一致しない�
   assert.deepEqual(d.parties.usdc.find((p) => p.id === 'Stranger'), { id: 'Stranger', class: 'unclassified', count: 1 });
   assert.equal(d.latency.usdc.total_ms_p50, 2500);
   assert.equal(d.latency.card.skipped, 1);
-  assert.deepEqual(d.classification, { own_wallets_version: 1, external_buyers_version: 1 });
+  assert.deepEqual(d.classification, { own_wallets_version: 2, external_buyers_version: 2 });
 });
 
 test('日次集計: 取れなかったソースは null のまま（0 で埋めない）', () => {
@@ -263,7 +268,8 @@ test('週次レポート: 外部の購入者なし（未分類あり）・あり
   assert.match(md, /今週は外部の購入者がいなかった/);
   assert.match(md, /ただし未分類（unclassified）が \d+ 件ある/);
   assert.match(md, /## 別表：未分類（unclassified）/);
-  assert.match(md, /\| USDC 直接 \| `Stranger` \| 7 \|/);
+  assert.match(md, /\| USDC 直接 \| `Stranger` \| 7 \|\s*\|/);
+  assert.match(md, /参考：facilitator が払ったチェーン手数料/);
   assert.match(md, /## 参考値：自社の購入（own）/);
   const partial = renderWeekly({ label: '2026-W45', days, dailies: dailies.slice(0, 5), config: c0 });
   assert.match(partial, /計測できていない/);
@@ -279,4 +285,58 @@ test('週次レポート: 外部の購入者なし（未分類あり）・あり
   assert.match(extSection, /\| 購入者数 \| 1（支払い元アドレス数） \| 1（匿名化したトークン ID の数） \|/);
   assert.match(md2, /\| 80 \| 10 \| 6 \| 2 \/ 7 \|/);
   assert.match(md2, /\| USDC 直接 \| 2500 ms \| 2500 ms \| 2 \/ 2 \|/);
+});
+
+test('チェーン手数料: tx ごとに誰が払ったかを判定し、seller の分だけを売る側の手数料率に入れる', async () => {
+  const { feePayerRole } = await import('../lib/aggregate.js');
+  const c = cfg({ extWallets: ['B1', 'B2', 'B3'] });
+  const site = c.site;
+  assert.equal(feePayerRole({ fee_payer: FAC, payer: 'B1' }, site), 'facilitator');
+  assert.equal(feePayerRole({ fee_payer: PAY_TO, payer: 'B1' }, site), 'seller');
+  assert.equal(feePayerRole({ fee_payer: 'B1', payer: 'B1' }, site), 'buyer');
+  assert.equal(feePayerRole({ fee_payer: 'X', payer: 'B1' }, site), 'other');
+  const t0 = dayBounds('2026-11-03', '+09:00').start;
+  const pay = (sig, payer, feePayer, lamports) => ({ ...stamp(t0), signature: sig, block_time: t0, payer, amount_atomic: '10000', fee_lamports: lamports, fee_payer: feePayer, sol_usd: 100 });
+  const det = { usdc: { payments: [pay('a', 'B1', FAC, 5000), pay('b', 'B2', PAY_TO, 10000), pay('c', 'B3', 'B3', 20000)] }, card: { calls: null, sales: null }, latency: [] };
+  const d = buildDaily({ date: '2026-11-03', config: c, detail: det, sources: {} });
+  const u = d.by_class.external.usdc;
+  assert.equal(u.revenue_usd, 0.03);
+  assert.equal(u.seller_fee_usd, 0.001); // 10000 lamports
+  assert.equal(u.seller_fee_usd_per_contract, 0.000333);
+  assert.equal(u.seller_fee_rate, 0.0333);
+  assert.equal(u.facilitator_fee_usd, 0.0005);
+  assert.equal(u.fee_by_payer.buyer.usd, 0.002);
+  assert.deepEqual(d.detail.usdc.payments.map((p) => p.fee_payer_role), ['facilitator', 'seller', 'buyer']);
+});
+
+test('プラン購入件数の主系を card.purchase_source で切り替える', () => {
+  const det = detail('2026-11-03');
+  const t0 = dayBounds('2026-11-03', '+09:00').start;
+  det.card.nvm_purchases = [
+    { ...stamp(t0 + 10), buyer_hash: 'uExt', plan_id: 'pl' },
+    { ...stamp(t0 + 20), buyer_hash: 'uExt', plan_id: 'pl' },
+    { ...stamp(t0 + 30), buyer_hash: 'uNew', plan_id: 'pl' },
+  ];
+  const c = fullCfg();
+  c.external.nvm_user_hashes = [{ id: 'uExt' }];
+  let d = buildDaily({ date: '2026-11-03', config: c, detail: det, sources: {} });
+  assert.equal(d.by_class.external.card.plan_purchases, 1); // 既定は stripe
+  assert.equal(d.by_class.external.card.plan_purchases_nvm_events, 2);
+  c.site.card.purchase_source = 'nvm_events';
+  d = buildDaily({ date: '2026-11-03', config: c, detail: det, sources: {} });
+  assert.equal(d.by_class.external.card.plan_purchases, 2);
+  assert.equal(d.by_class.external.card.plan_purchases_stripe, 1);
+  assert.equal(d.by_class.unclassified.card.plan_purchases, 1);
+  assert.equal(loadConfig().site.card.purchase_source, 'stripe');
+});
+
+test('own 候補は注記だけで、unclassified のまま', () => {
+  const c = cfg();
+  const det = detail('2026-11-03');
+  det.usdc.payments.push({ ...det.usdc.payments[0], signature: 'p7', payer: '7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY', amount_atomic: '20000' });
+  const d = buildDaily({ date: '2026-11-03', config: c, detail: det, sources: {} });
+  const p = d.parties.usdc.find((x) => x.id.startsWith('7PVT'));
+  assert.equal(p.class, 'unclassified');
+  assert.match(p.note, /own 候補（AA/);
+  assert.match(p.note, /seller-probe ではない/);
 });

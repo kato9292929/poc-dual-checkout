@@ -4,7 +4,7 @@
 
 | 区分 | 条件 | リスト |
 |---|---|---|
-| own | 自社の支払い元に一致 | `config/own_wallets.json` |
+| own | 自社の支払い元に一致 | `config/own_wallets.json`（`candidates` は候補の注記だけで、照合には使わない） |
 | external | 外部の購入者と確定 | `config/external_buyers.json` |
 | unclassified | どちらにも一致しない | — |
 
@@ -28,3 +28,5 @@ node scripts/collect-daily.mjs --resummarize 2026-10-12..2026-11-28
 |---|---|---|---|---|
 | own_wallets.json | 1 | 2026-10-13 | 初版（AA・Seller Probe は pending） | 公開アドレスが各リポジトリの設定に無い |
 | external_buyers.json | 1 | 2026-10-13 | 初版（空） | — |
+| own_wallets.json | 2 | 2026-10-14 | candidates・nvm_user_hashes を追加。`7PVT…L6tY` を AA の候補として注記（unclassified のまま） | movers $0.02 は seller-probe の上限 $0.01 を超える。AA のアドレス確定待ち |
+| external_buyers.json | 2 | 2026-10-14 | nvm_user_hashes を追加 | プラン購入件数の主系を nvm_events に切り替えられるようにした |
