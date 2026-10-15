@@ -28,7 +28,7 @@ Nevermined のプランはカードか暗号資産のどちらか一方しか持
 | パス | 役割 |
 |---|---|
 | `site/index.template.html`, `scripts/build-site.mjs` | 販売ページ（`config/site.json` から `public/index.html` を生成） |
-| `api/track.js`, `api/stats.js` | ページ計測（Cookie なし）。閲覧数と、各入口の説明を開いた回数を日ごとに数える（Upstash Redis） |
+| `api/track.js`, `api/stats.js` | ページ計測（Cookie なし）。閲覧数と、各入口の説明を開いた回数を日ごとに数える（Upstash Redis。下の「外部サービスの依存」） |
 | `scripts/probe-latency.mjs` | 決済1件の所要時間を、両方の入口で同じ手順で測る |
 | `scripts/collect-daily.mjs` | 日次集計 → `data/YYYY-MM-DD.json` |
 | `scripts/report-weekly.mjs` | 週次レポート → `reports/YYYY-Www.md` |
@@ -36,6 +36,22 @@ Nevermined のプランはカードか暗号資産のどちらか一方しか持
 | `config/external_buyers.json` | 外部と確定した購入者 → external（どちらにも一致しないものは unclassified。変更履歴: `config/CHANGELOG.md`） |
 | `data/stripe/YYYY-MM.csv` | 手で書き出した Stripe の CSV（置いてよい列は `data/stripe/README.md`） |
 | `docs/sources.md` | 各数字の出典、計測方法、未確認の点 |
+
+## 外部サービスの依存：Upstash Redis（指示書に無い依存）
+
+販売ページの計測（閲覧数と、各入口の説明を開いた回数）を日ごとに数えるためだけに使う。Vercel の関数は状態を持てないので、件数を置く場所として使っている。日次集計・週次レポートのほかの数字（チェーン、Stripe、実証1のログ、Nevermined）には関わらない。
+
+| 使っている箇所 | 用途 | Redis のコマンド |
+|---|---|---|
+| `lib/track.js` の `redis()` | Upstash の REST API（`POST {UPSTASH_REDIS_REST_URL}/pipeline`）を呼ぶ唯一の関数。依存パッケージは入れていない | — |
+| `api/track.js`（`POST /api/track`） | ページからのイベントを1件受けるたびに、その日（JST）のカウンタを1増やす。400日で自動的に消える | `INCR`、`EXPIRE` |
+| `api/stats.js`（`GET /api/stats?date=`、Bearer `STATS_TOKEN`） | 日次集計がその日のカウンタを読む | `MGET` |
+| `scripts/collect-daily.mjs` | `STATS_URL` 経由で `api/stats` を呼ぶ（Upstash には直接つながない） | — |
+
+- 置いているのは、`jin:YYYY-MM-DD:view`、`jin:YYYY-MM-DD:open:usdc`、`jin:YYYY-MM-DD:open:card` の3種類の件数だけ。IP アドレス、UA、Cookie、閲覧者の ID は送らないし、保存もしない。
+- 環境変数は `UPSTASH_REDIS_REST_URL`、`UPSTASH_REDIS_REST_TOKEN`（Vercel 側だけ）。
+- Upstash が無い・落ちているとき：`/api/track` は 503 を返して何も数えない（ページの表示には影響しない）。日次集計では `sources.page` が `error: …` または `not_configured` になり、販売ページの数字は空のまま残る（0 では埋めない）。
+- 別のものに替えるときは `lib/track.js` の `redis()` だけを差し替えればよい（`INCR`・`EXPIRE`・`MGET` 相当があれば足りる）。
 
 ## 集計項目
 
