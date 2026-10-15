@@ -49,9 +49,23 @@ JST の 00:00〜24:00（`config/period.json` の `utc_offset`）。各トラン�
 
 週次レポートは external を本表、unclassified を別表（支払い元アドレス・トークン ID の一覧付き）、own を参考値の表に出す。分類は明細に対して集計のたびに当て直すので、リストを直したら `--resummarize` で過去の日も数え直せる。
 
-`own_wallets.json` の `candidates` は own の候補の注記で、照合には使わない（unclassified のまま、週次レポートの別表に注記として出る）。確定条件を満たしたら `solana` に移す。いまの候補は `7PVT…L6tY`（AA の候補。2026-10-12 に movers $0.02 を購入。seller-probe は1コール $0.01 が上限なので seller-probe ではない）。
+`own_wallets.json` には公開アドレスだけを書く。秘密鍵・環境変数・`.env` は読まない。
 
-`own_wallets.json` には公開アドレスだけを書く。AA と Seller Probe のアドレスは、各リポジトリの設定ファイルには無かった（AA は環境変数 `SOLANA_WALLET_ADDRESS`、Seller Probe は秘密鍵から実行時に導出）。そのため `status: "pending"` のままにしてある。未記入の間、その支払いは unclassified に入る。
+| 自社の支払い元 | アドレス | 出所 |
+|---|---|---|
+| AA | `7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY`（2026-10-15 確定） | 下の「AA のアドレスの確認」 |
+| Seller Probe | 未取得 | 設定ファイルにも、コミット済みのログにも公開アドレスが無い（秘密鍵から実行時に導出）。有料の測定もまだ一度も動いていない（下の「チェーン読み取りの確認」） |
+| 実証1のゲートウェイ | 未作成 | 作成時に追加する。それまでもゲートウェイログの `upstreamTx` と一致する支払いは own |
+
+`candidates` は own の候補の注記で、照合には使わない（unclassified のまま、注記だけ付く）。確定したら `solana` に移し、`resolved` に記録する。
+
+### AA のアドレスの確認（2026-10-15）
+
+- `https://aa.x402jp.com/api/runs`（公開）の各 run の結果に、支払いの tx 署名（`txHash`）が出ている。JIN（`/api/jin/movers`）への支払いは 2026-09-26〜10-14 の20件で、毎日 21:00 UTC（06:00 JST）の run と、10/14 10:22 UTC の run。
+- 20件の tx をすべてチェーンから読み（`getTransaction`）、支払い元（USDC が減った口座の owner）を取った。20件とも `7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY` だった。
+- 実証2の集計期間にかかるのは、`irt5N3uK91…`（10/12 JST）、`6154hajSEe…`（10/13）、`4Dj6mCQEV6…`（10/14）、`5xCZSNuRsM…`（10/14）。tx 署名の全文は `own_wallets.json` の `evidence`。
+- `/.well-known/agent-card.json`（EIP-8004 の登録情報。Base の agentId 55560）と `/dashboard` には、Solana のアドレスも tx 署名も出ていない。
+- 10/14 10:23:08〜10:23:13 UTC の series（$0.01）5件も同じ支払い元だが、AA の `/api/runs` には載っていない（run の記録は movers だけ）。アドレスで判定するので、これも own になる。
 
 ## USDC 直接
 
@@ -66,6 +80,20 @@ JST の 00:00〜24:00（`config/period.json` の `utc_offset`）。各トラン�
   | `other` | どれでもない |
 
 - 売る側の手数料（`seller_fee_usd`・`seller_fee_rate`）には `seller` の分だけを入れる。`facilitator` の分は `facilitator_fee_usd`・`facilitator_fee_rate` として参考値の列に出す。`buyer` の分も参考に出す。
+
+### チェーン読み取りの確認（2026-10-15）
+
+**seller-probe の 10/12 の支払い**：10/12（月曜）は seller-probe の有料測定（`paid-weekly.yml`、月曜 04:41 UTC）の曜日だが、その日に JIN への $0.01 の支払いは無かった。確認した場所は次のとおり（いずれも読み取りのみ）。
+
+- GitHub Actions の実行履歴（`kato9292929/seller-probe` の全 workflow run）：2026-10-15 時点で2回だけ。どちらも `free-probe (daily)`（10/14 08:42 UTC と 10/15 08:16 UTC、いずれも failure）。`paid-probe (weekly)` と `self-check (weekly)` は一度も動いていない。
+- コミット済みのログ：`main`・`claude/friendly-volta-rsj0kc` とも `log/`・`self-check/`・`data/` は `.gitkeep` だけ。
+- JIN の payTo の入金履歴：JST 10/12〜10/14 の入金は9件で、支払い元はすべて AA（`7PVT…`）。$0.01 の入金は 10/14 の AA の5件だけ。
+
+**取りこぼしの確認**：JST 10/12〜10/14 について、現行の方法（payTo の USDC トークン口座 `DRg7rZXr…jjjy` の署名一覧）と別経路（payTo 本体の署名一覧、トークン口座の失敗 tx を含む全署名）を突き合わせた。
+
+- 入金の tx 9件は、すべて現行の方法で拾えていた。取りこぼしは無い。
+- 現行の方法に無かったのは `tscBHt2Ff5…`（10/14 08:10 UTC）の1件だけで、これは payTo **から** `Fs2zgBUo…` への 1 USDC の出金（fee payer はファシリテーター）。入金ではないので、集計に入らないのが正しい。
+- payTo の USDC トークン口座は1つだけ（`getTokenAccountsByOwner`）。
 
 ## カード払い
 

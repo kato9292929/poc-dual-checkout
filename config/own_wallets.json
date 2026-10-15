@@ -1,13 +1,24 @@
 {
-  "version": 4,
-  "updated": "2026-10-14",
+  "version": 5,
+  "updated": "2026-10-15",
   "_comment": "自社の支払い元。一致したものは own に分類し、全集計から除外して参考値として別表に出す。公開アドレスだけを書く（秘密鍵は読まない・書かない）。address が null のものは未取得で、照合には使われない。",
   "solana": [
     {
-      "address": null,
+      "address": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
       "label": "AA（Autonomous Agent）",
-      "source": "kato9292929/x402-Autonomous-Agent- の環境変数 SOLANA_WALLET_ADDRESS（Circle console で確認）。リポジトリの設定ファイルには公開アドレスが無い（2026-10-13 確認）",
-      "status": "pending"
+      "source": "aa.x402jp.com の公開データ /api/runs（2026-10-15 取得）に、JIN への支払いの tx 署名（txHash）が出ている。そのうち 2026-09-26〜10-14 の20件をすべてチェーンから読み、支払い元（USDC が減った口座の owner）がこのアドレスであることを確認した。/.well-known/agent-card.json と /dashboard にはアドレスは出ていない。秘密鍵・環境変数・.env は読んでいない。",
+      "status": "confirmed",
+      "evidence": {
+        "url": "https://aa.x402jp.com/api/runs",
+        "retrieved_on": "2026-10-15",
+        "tx_signatures": [
+          "irt5N3uK91uygrnX5UyHK9ogCeAWhTtWiZPkkyVWV5PHX4idWVqfYghrsoz2D8PWnsYdqdBSDn7PP3xPL7nvz2q",
+          "6154hajSEekD4NPjP1JKyfndn5dHP1zPaVUbZqt9Eqga4sdPmoanj9VVbQKjgWwVCAUynvvndFjWL2UpBPDCJ5md",
+          "4Dj6mCQEV6EJ2HbFDYiZkerEpjjirRARRmmF8ixqsVSCuzLvSPdmEuW6HsHfkpHkCRXDRrvWN3XaffTYz25sNFsH",
+          "5xCZSNuRsMwDYv2zDMJtS11cWYdwS9ajRbbjPDhH26AeviqbWMhBk1yufgBu5kmWTHgBKzw5nzv7Lv8G79wNMsSX"
+        ],
+        "tx_signatures_note": "上は実証2の集計期間（10/12〜10/14 JST）にかかる4件。ほかの16件（9/26〜10/11）も同じ支払い元だった。"
+      }
     },
     {
       "address": null,
@@ -56,6 +67,11 @@
       "version": 4,
       "date": "2026-10-14",
       "change": "候補の注記を、日次データの各トランザクション（own_candidate）にも付ける。文言を「自社 AA の候補、movers $0.02 の毎日購入」に揃えた。"
+    },
+    {
+      "version": 5,
+      "date": "2026-10-15",
+      "change": "AA の公開アドレス 7PVT…L6tY を記入（confirmed）。出所は aa.x402jp.com/api/runs の tx 署名とチェーン上の支払い元。候補から外した。"
     }
   ],
   "nvm_user_hashes": {
@@ -64,31 +80,13 @@
   },
   "candidates": {
     "_comment": "own の候補。照合には使わない（unclassified のまま）。確定条件を満たしたら solana に移し、version を上げて --resummarize で数え直す。",
-    "solana": [
+    "solana": [],
+    "resolved": [
       {
         "address": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
-        "likely": "AA（Autonomous Agent）",
-        "first_seen_jst": "2026-10-12",
-        "reason": "2026-10-12・10-13 と連日 06:00 JST ごろに movers（$0.02）を購入している。seller-probe の有料の測定は週1回（.github/workflows/paid-weekly.yml が月曜 04:41 UTC、self-check-weekly.yml が月曜 05:53 UTC。毎日動く free-daily.yml は支払わない）なので、連日の支払いとは頻度も時刻も合わず、seller-probe ではない。",
-        "confirm_when": "AA の公開アドレスが own_wallets.json の solana に入り、それがこのアドレスと一致したとき",
-        "observed": [
-          {
-            "date_jst": "2026-10-12",
-            "time_jst": "06:00:23",
-            "time_utc": "2026-10-11T21:00:23Z",
-            "item": "movers",
-            "usd": 0.02
-          },
-          {
-            "date_jst": "2026-10-13",
-            "time_jst": "06:00:48",
-            "time_utc": "2026-10-12T21:00:48Z",
-            "item": "movers",
-            "usd": 0.02
-          }
-        ],
-        "supporting": "補強：seller-probe は1コール $0.01 が上限で、コードで強制している（src/config.ts:37 LIMITS.perCall = 10_000n、src/budget.ts:29・src/pay.ts:54 で超過を拒否。commit 27cef8f で確認）。$0.02 の movers は買えない。",
-        "note_short": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+        "resolved_on": "2026-10-15",
+        "to": "solana（AA）",
+        "reason": "aa.x402jp.com/api/runs の tx 署名から支払い元を確認"
       }
     ]
   }

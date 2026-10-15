@@ -332,6 +332,9 @@ test('プラン購入件数の主系を card.purchase_source で切り替える'
 
 test('own 候補は注記だけで、unclassified のまま', () => {
   const c = cfg();
+  c.own.candidates = {
+    solana: [{ address: '7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY', likely: 'AA（Autonomous Agent）', note_short: '自社 AA の候補。movers $0.02 を毎日購入。週1回の seller-probe とは頻度が合わない', confirm_when: 'test' }],
+  };
   const det = detail('2026-11-03');
   det.usdc.payments.push({ ...det.usdc.payments[0], signature: 'p7', payer: '7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY', amount_atomic: '20000' });
   const d = buildDaily({ date: '2026-11-03', config: c, detail: det, sources: {} });
@@ -346,6 +349,7 @@ test('own 候補は注記だけで、unclassified のまま', () => {
   assert.equal(d.detail.usdc.payments.find((x) => x.signature === 's1').own_candidate, undefined);
   // own に確定したら注記は付かない
   const c2 = cfg({ ownWallets: ['7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY'] });
+  c2.own.candidates = c.own.candidates;
   const d2 = buildDaily({ date: '2026-11-03', config: c2, detail: det, sources: {} });
   assert.equal(d2.detail.usdc.payments.find((x) => x.signature === 'p7').own_candidate, undefined);
   assert.equal(d2.parties.usdc.find((x) => x.id.startsWith('7PVT')).class, 'own');
@@ -384,4 +388,23 @@ test('期間外の日: 開始日前・開始日未設定の日は本表に入れ
   const pricey = structuredClone(dailies);
   pricey[0].price_check = 'mismatch: series: 0.01 → 0.02';
   assert.doesNotMatch(renderWeekly({ label: '2026-W45', days, dailies: pricey, config: after }), /価格の不一致を検知/);
+});
+
+test('checkCurrent: 旧形式を検出する', async () => {
+  const { checkCurrent, SCHEMA_VERSION } = await import('../lib/aggregate.js');
+  const c = fullCfg();
+  const d = buildDaily({ date: '2026-11-03', config: c, detail: detail('2026-11-03'), sources: {} });
+  assert.equal(d.schema_version, SCHEMA_VERSION);
+  assert.deepEqual(checkCurrent(d, c), []);
+  const old = structuredClone(d);
+  delete old.schema_version;
+  delete old.period_phase;
+  delete old.detail.usdc.payments[0].fee_payer_role;
+  const bad = checkCurrent(old, c);
+  assert.ok(bad.some((x) => /schema_version/.test(x)));
+  assert.ok(bad.some((x) => /period_phase/.test(x)));
+  assert.ok(bad.some((x) => /fee_payer_role/.test(x)));
+  const c2 = structuredClone(c);
+  c2.own.version += 1;
+  assert.ok(checkCurrent(d, c2).some((x) => /own_wallets v/.test(x)));
 });

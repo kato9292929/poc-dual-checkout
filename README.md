@@ -84,13 +84,13 @@ Nevermined のプランはカードか暗号資産のどちらか一方しか持
 実証1が Sandbox で動いてから始める。
 
 1. **カード入口を設定する**：`config/site.json` の `nvm_plan_id`、`nvm_agent_id`、`plan_purchase_url`、`gateway_base_url`、`stripe_match`。プランの受取先（`nvm_receiver_address`）は Nevermined の売り手ウォレット `0x6d56…43Ed5` を入れてある。
-2. **自社の支払い元を書く**：`config/own_wallets.json` の `address: null` を埋める（公開アドレスだけ）。AA・Seller Probe は各リポジトリの設定に公開アドレスが無かったので未取得。実証1ゲートウェイのウォレットは作成された時点で追加する。実証1の検証用買い手と計測用の買い手のトークン ID（実証1のログの `tokenId`）を `card_token_ids` に入れる。`version` を上げて `CHANGELOG.md` に記録し、`--resummarize` で数え直す。
+2. **自社の支払い元を書く**：`config/own_wallets.json` の `address: null` を埋める（公開アドレスだけ）。AA は確定済み。Seller Probe は設定に公開アドレスが無いので未取得。実証1ゲートウェイのウォレットは作成された時点で追加する。実証1の検証用買い手と計測用の買い手のトークン ID（実証1のログの `tokenId`）を `card_token_ids` に入れる。`version` を上げて `CHANGELOG.md` に記録し、`--resummarize` で数え直す。
 3. **実証1ゲートウェイのログの口（`GET /logs/:date`）につなぐ**：`gateway_base_url` を設定し、実証1の `LOG_READ_TOKEN` を Secrets に入れる。それまでの日は欠損（`gateway_log: "missing"`）として記録されるので、つながったら `--resummarize` で数え直す（`docs/sources.md`）。
 4. **販売ページをデプロイ**：Vercel にこのリポジトリをつなぎ、ドメイン `buy.jin.x402jp.com` を割り当てる。Upstash Redis を追加し、`UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` / `STATS_TOKEN` を設定する。
 5. **GitHub Secrets を設定**：`.env.example` の集計用と計測用の値。
 6. **期間を始める**：`config/period.json` の `P1.start` を入れてコミットする。4週間は価格を変えない。
 
-以降は GitHub Actions が動く。
+以降は GitHub Actions が動く。日次・週次の Action は既定ブランチ（`main`）で動き、`main` にコミットする。
 
 - `daily`：毎日 06:13 JST に所要時間を測り、前日分を `data/` にコミットする
 - `weekly-report`：毎週月曜 07:07 JST に前週分を `reports/` にコミットする
@@ -104,12 +104,13 @@ npm run build                                          # public/index.html
 node scripts/probe-latency.mjs
 node scripts/collect-daily.mjs --date 2026-11-03
 node scripts/collect-daily.mjs --resummarize 2026-10-12..2026-11-28
+node scripts/collect-daily.mjs --upgrade          # 旧形式の日次データを現行の形式（schema_version）に数え直す
 node scripts/report-weekly.mjs --week 2026-W45
 ```
 
 ## 未確認・要確認
 
-- AA・Seller Probe の Solana の公開アドレス（`config/own_wallets.json` が pending）。`7PVT…L6tY` は AA の候補として注記済み（unclassified のまま）
+- Seller Probe の Solana の公開アドレス（`config/own_wallets.json` が pending）。AA は `7PVT…L6tY` で確定済み（aa.x402jp.com/api/runs の tx 署名から。`docs/sources.md`）
 - 実証1ゲートウェイのログの口（`GET /logs/:date`）と `LOG_READ_TOKEN`
 - Nevermined の組織が Premium 以上か（照合用。無くても集計は止まらない）
 - Stripe Connect の形（Standard / Express）と、制限付きキーを発行できるか（できなければ CSV）

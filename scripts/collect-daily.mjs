@@ -2,6 +2,8 @@
 // 日次集計（区切りは JST の 00:00〜24:00）
 //   node scripts/collect-daily.mjs                 JST の前日分を取り込み、data/YYYY-MM-DD.json に保存
 //   node scripts/collect-daily.mjs --date D        指定日を取り込み直す
+//   node scripts/collect-daily.mjs --upgrade        data/*.json のうち現行の形式でないものを数え直す
+//                                                  （schema 3 は明細から数え直し、それより古いものはチェーンから取り込み直す）
 //   node scripts/collect-daily.mjs --resummarize D1..D2
 //                                                  保存済みの明細に、今の分類リストを当てて数え直す。
 //                                                  ゲートウェイのログが欠損していた日は、口がつながっていれば取りに行って埋める
@@ -18,7 +20,9 @@ import { fetchGatewayLog, toCalls, parseJsonl } from '../lib/gateway.js';
 import { NVM_API, reconcile } from '../lib/nevermined.js';
 import { solUsd } from '../lib/price.js';
 import { anonymize } from '../lib/anon.js';
-import { buildDaily } from '../lib/aggregate.js';
+import { buildDaily, checkCurrent } from '../lib/aggregate.js';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
 const args = process.argv.slice(2);
 const opt = (k) => (args.includes(k) ? args[args.indexOf(k) + 1] : null);
@@ -39,6 +43,24 @@ const gw = (() => {
   return { url, dir: env.GATEWAY_LOG_DIR, token: env.LOG_READ_TOKEN, ready: !!((url && env.LOG_READ_TOKEN) || env.GATEWAY_LOG_DIR) };
 })();
 const loadGateway = async (s, e) => toCalls(await fetchGatewayLog(gw, s, e), offset);
+
+if (args.includes('--upgrade')) {
+  for (const f of readdirSync(join(ROOT, 'data')).filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f)).sort()) {
+    const d = f.slice(0, 10);
+    const old = JSON.parse(readFileSync(dataFile(d), 'utf8'));
+    const bad = checkCurrent(old, config);
+    if (!bad.length) continue;
+    if (old.schema === 3) {
+      if (old.sources?.gateway_log === 'not_configured') old.sources.gateway_log = 'missing';
+      rebuild(d, old.detail, old.sources);
+      console.log(`upgraded ${d}（明細から数え直し）: ${bad.join(' / ')}`);
+    } else {
+      execFileSync(process.execPath, [fileURLToPath(import.meta.url), '--date', d], { stdio: 'inherit' });
+      console.log(`upgraded ${d}（取り込み直し）: ${bad.join(' / ')}`);
+    }
+  }
+  process.exit(0);
+}
 
 if (opt('--resummarize')) {
   const [a, b = a] = opt('--resummarize').split('..');
