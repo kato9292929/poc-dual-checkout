@@ -1,4 +1,5 @@
 {
+  "schema_version": 1,
   "schema": 3,
   "date": "2026-10-13",
   "timezone": "Asia/Tokyo",
@@ -10,10 +11,10 @@
   "period_phase": "no_period",
   "price_check": "no_period",
   "classification": {
-    "own_wallets_version": 4,
+    "own_wallets_version": 5,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-14T12:39:12.544Z",
+  "generated_at": "2026-10-15T14:08:21.337Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -83,6 +84,61 @@
     },
     "unclassified": {
       "usdc": {
+        "contracts": 0,
+        "uses": 0,
+        "buyers": 0,
+        "by_item": {},
+        "revenue_usd": 0,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_contract": null,
+        "seller_fee_rate": null,
+        "facilitator_fee_usd": 0,
+        "facilitator_fee_rate": null,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": null
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    },
+    "own": {
+      "usdc": {
         "contracts": 1,
         "uses": 1,
         "buyers": 1,
@@ -137,70 +193,14 @@
         "gateway_latency_ms_p50": null,
         "gateway_latency_ms_p90": null
       }
-    },
-    "own": {
-      "usdc": {
-        "contracts": 0,
-        "uses": 0,
-        "buyers": 0,
-        "by_item": {},
-        "revenue_usd": 0,
-        "seller_fee_usd": 0,
-        "seller_fee_usd_per_contract": null,
-        "seller_fee_rate": null,
-        "facilitator_fee_usd": 0,
-        "facilitator_fee_rate": null,
-        "fee_by_payer": {
-          "seller": {
-            "txs": 0,
-            "lamports": 0,
-            "usd": 0
-          },
-          "facilitator": {
-            "txs": 0,
-            "lamports": 0,
-            "usd": 0
-          },
-          "buyer": {
-            "txs": 0,
-            "lamports": 0,
-            "usd": 0
-          },
-          "other": {
-            "txs": 0,
-            "lamports": 0,
-            "usd": 0
-          }
-        },
-        "days_to_settlement": null
-      },
-      "card": {
-        "calls": null,
-        "uses_credits": null,
-        "buyers": null,
-        "failures": null,
-        "plan_purchases": null,
-        "plan_purchases_source": "stripe",
-        "plan_purchases_stripe": null,
-        "plan_purchases_nvm_events": null,
-        "revenue_usd": null,
-        "card_fee_usd": null,
-        "card_fee_usd_per_contract": null,
-        "fee_rate": null,
-        "days_to_payout_median": null,
-        "payouts_pending": null,
-        "gateway_latency_ms_p50": null,
-        "gateway_latency_ms_p90": null
-      }
     }
   },
   "parties": {
     "usdc": [
       {
         "id": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
-        "class": "unclassified",
-        "count": 1,
-        "note": "own 候補（AA（Autonomous Agent））: 自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）。確定: AA の公開アドレスが own_wallets.json の solana に入り、それがこのアドレスと一致したとき"
+        "class": "own",
+        "count": 1
       }
     ],
     "card_tokens": null
@@ -246,11 +246,7 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 106.75,
-          "fee_payer_role": "facilitator",
-          "own_candidate": {
-            "likely": "AA（Autonomous Agent）",
-            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
-          }
+          "fee_payer_role": "facilitator"
         }
       ],
       "sol_usd": {
