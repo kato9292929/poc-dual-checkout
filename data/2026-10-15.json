@@ -1,0 +1,3500 @@
+{
+  "schema": 3,
+  "date": "2026-10-15",
+  "timezone": "Asia/Tokyo",
+  "window_utc": [
+    "2026-10-14T15:00:00.000Z",
+    "2026-10-15T15:00:00.000Z"
+  ],
+  "period": null,
+  "period_phase": "no_period",
+  "price_check": "no_period",
+  "classification": {
+    "own_wallets_version": 4,
+    "external_buyers_version": 2
+  },
+  "generated_at": "2026-10-15T23:50:20.880Z",
+  "sources": {
+    "page": "not_configured",
+    "sol_usd": "ok",
+    "usdc_chain": "ok",
+    "gateway_log": "missing",
+    "stripe": "missing",
+    "stripe_csv": "not_found",
+    "nvm_api": "not_configured",
+    "latency_probe": "ok"
+  },
+  "page": null,
+  "by_class": {
+    "external": {
+      "usdc": {
+        "contracts": 0,
+        "uses": 0,
+        "buyers": 0,
+        "by_item": {},
+        "revenue_usd": 0,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_contract": null,
+        "seller_fee_rate": null,
+        "facilitator_fee_usd": 0,
+        "facilitator_fee_rate": null,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": null
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    },
+    "unclassified": {
+      "usdc": {
+        "contracts": 202,
+        "uses": 202,
+        "buyers": 1,
+        "by_item": {
+          "movers": 1,
+          "series": 5,
+          "other": 196
+        },
+        "revenue_usd": 0.266,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_contract": 0,
+        "seller_fee_rate": 0,
+        "facilitator_fee_usd": 0.212667,
+        "facilitator_fee_rate": 0.7995,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 202,
+            "lamports": 2020202,
+            "usd": 0.212667
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": 0
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    },
+    "own": {
+      "usdc": {
+        "contracts": 0,
+        "uses": 0,
+        "buyers": 0,
+        "by_item": {},
+        "revenue_usd": 0,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_contract": null,
+        "seller_fee_rate": null,
+        "facilitator_fee_usd": 0,
+        "facilitator_fee_rate": null,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": null
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    }
+  },
+  "parties": {
+    "usdc": [
+      {
+        "id": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+        "class": "unclassified",
+        "count": 202,
+        "note": "own 候補（AA（Autonomous Agent））: 自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）。確定: AA の公開アドレスが own_wallets.json の solana に入り、それがこのアドレスと一致したとき"
+      }
+    ],
+    "card_tokens": null
+  },
+  "latency": {
+    "usdc": {
+      "runs": 0,
+      "ok": 0,
+      "skipped": 1,
+      "total_ms_p50": null,
+      "total_ms_p90": null,
+      "first_402_ms_median": null,
+      "sign_ms_median": null,
+      "paid_request_ms_median": null
+    },
+    "card": {
+      "runs": 0,
+      "ok": 0,
+      "skipped": 1,
+      "total_ms_p50": null,
+      "total_ms_p90": null,
+      "first_402_ms_median": null,
+      "sign_ms_median": null,
+      "paid_request_ms_median": null
+    }
+  },
+  "nvm_reconcile_incl_own": null,
+  "detail": {
+    "window_utc": [
+      "2026-10-14T15:00:00.000Z",
+      "2026-10-15T15:00:00.000Z"
+    ],
+    "page": null,
+    "usdc": {
+      "payments": [
+        {
+          "time_utc": "2026-10-14T21:00:48.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2rwgTLXrwZmamZCbrDHxe8GZ3c3RULfJpdWPCnfj6n9XrT6k5UsG4DhcYexX2QhNsUaNZyheSLWjqt2acPhsJmJt",
+          "block_time": 1792011648,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "20000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-14T21:00:51.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "29U1n1WsskmZgGdXDJQMz3UDpmHWU2YnrKhJFnQxwZtsRS3QvRUCm3tADpzxHmuG5Amg1M2r8bUsZ3JoJPihFSrM",
+          "block_time": 1792011651,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-14T21:00:53.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5byqwqc4VcNvAksRCb5ceykwCYj5EggsFwzsDffBsKKsCSP79UpBgGLVuUaKvkk396ncEsGReiRqtM3WR9Y1LMyq",
+          "block_time": 1792011653,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-14T21:00:54.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4uCnZ4tu2MeTHyLrdbsKsU8f7KDBLsqAvbTnLT86bfucuvfjVj63JYKTKcsGNztgo1d616Q184MiGnqm6Beoz9cD",
+          "block_time": 1792011654,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-14T21:00:55.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "21ZGwQEFjbMzbZo41cuKYab2Dpp4L63apV5gcJioVBKnFMjV3y5Wb3kUkWzKP5Dvhqx4acytH2dhVCNrFXBVUJuV",
+          "block_time": 1792011655,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-14T21:00:56.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2hXhEjUwFBT7E5fmDDoc6Dxkm8ARECzJs3QKNuYhgPqzKwo6sCP5VPgSRNQ4ChgqMfzjS4vkYWQbPX1K8iBDf6Gx",
+          "block_time": 1792011656,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:00:20.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2eb7AcXKSh8j8V4a9im7UeYLhcfy5H4HFcwS7skmGP5EJp2FFkqd6ogfW9jhVx8cjjsk1G272K16PtcmS22hEpaB",
+          "block_time": 1792022420,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:00:23.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2RBXPnzRa6EbQ86EnEik3YSYmS7NM1WXhapZDm8evqMFUz2X1p9m9dEFtTSquN4LA4PmMC9dHa8eirAKbu7aaFYK",
+          "block_time": 1792022423,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:00:26.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "46WbN4CeD6FBjbKhdfVGfg1hew1pYHiCFsC3Zt1yk5tkRfwVKHXBiRzfWy5YP1eUUL3VAARBEZBr2xPnXHWjEeEa",
+          "block_time": 1792022426,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:00:29.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "33AqPZahjWAYGPuAUAbzG7E3hCcygtDNYM6JJfcoJuFbGxh4DrBd8ShVZhf9AaRCJM8KyrzVqGkEi8t9i1e5wKhT",
+          "block_time": 1792022429,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:00:31.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4syrJfbiF8AnEuAHXYkqL8LX1FJSA7S4hcFLw1pmBdgyVJiMwDMHE3fEkGa9ZG7MdoQVg1nMAdPycNwTtU29wDaC",
+          "block_time": 1792022431,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:00:40.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4BGJxLuYdhL3ZAPehutoeTG4N2kndrQCkgJw5aJXT1GffW9TvkZNQ3GXue31VHtj7zsw9hdxqHfkKmurFTKg3zM3",
+          "block_time": 1792022440,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:00:45.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4U4SRr1oFPVakkoGe3v7hwLCo8NrnbeQLdhhMo8qPKYEpsmF8m77PTNvmNkSwjGmfforSFeoZyuKDzFMuo295DYE",
+          "block_time": 1792022445,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:00:48.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5gBW75iHd1rCS5ux6h3xK6PhmER7hNkGJpfRqQSUWTFZxuMp62h2jTZMvaZheALJ9oeiEgVsTrtjVJy5XdgBeiR8",
+          "block_time": 1792022448,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:00:51.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4VczbEev51dz2h27gD9KovFy4rKDDQu1qXUNNZCuDjKLkxp4vSgf63TnLpoWubM8FUBwv7upx3UFiXixoDWdx4xi",
+          "block_time": 1792022451,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:00:53.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4AzX2bAJ2s38aUE2itjSdhGwH184bjmYKpD997bPrsVCb228pSYe4sKMu1LGaEE4kSqohZ7vZEZwbZtvSACnAaej",
+          "block_time": 1792022453,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:01:04.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "XX2t6xHQmAbM2iZKV2HfiKQepCbCFatY4NuvCw2x5nsbeAik46qXvAX65gE3CpNUVUXWrGbRQJMhaegaDmPe33b",
+          "block_time": 1792022464,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:01:13.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4tytEWueymn5Em7GRJJCKANcLFCBhiVPX3rL9RsARUWzrnjzZoBKJTcBUffsjF9RmTo1VrSSVMTYMYP5NRrXGh5f",
+          "block_time": 1792022473,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:01:17.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3Msr9hXFbvPcno9a4UrtWiNWG6Z1Y8i4MTqwiVNsJxZ28ziRM4vhryQj4SKyKvRRcqHes7sjZHpsmGR8uE6eph2e",
+          "block_time": 1792022477,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:01:20.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4o4zKiyYXLfhkG9znNYpDH3UANbSfNo5SBQRLQQrRV9Zm3pXs2KYx16UgGTM4GKWMfvEZmp6c1KwqPd8isx8PJLN",
+          "block_time": 1792022480,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:01:22.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4HMunjnTJYfYSpFMYURYsPkwCgV2ihVpr1B5QwcphLhX8Ku7KaLhaJq4buQzP4GTkk7xSXAnRZrjampyc3beAbe",
+          "block_time": 1792022482,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:01:25.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "UAmMKCQm4hVsAUHoj8mhnA8fRQirUarhuDLYCzWsuBFAT12qbPP9QS8LHRTr4EpkuAiU4KXZyfUcj5HcQCEqbX7",
+          "block_time": 1792022485,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:01:36.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "61Gn3VEGw9bxg8cz8qmYh3o416fyBUx9SW7tjU26RRWKN8eEswGSiV2H2k6dBa2M3p4j48XPtgB3fuH4A9Ssma24",
+          "block_time": 1792022496,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:01:44.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2dLfGQ3czs51wmrJ55hGdMGrmWSAHk3HGornWd89cFcHjnweBjykDLFVpEKgAgLU56nEZamPWTzw9FF6CtFZWdeD",
+          "block_time": 1792022504,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:01:48.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3Dt1fNS1d6rpyUJAr4Y4tEY8K1mxdrcJocfX9jurQjaQHzDpU8WoyQsKA7U38EmfxCBzdVXuy9ibBNPvjikj4kkB",
+          "block_time": 1792022508,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:01:51.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5uJNDdXCYXdgFLspopb9aRJqknqgaLfAjiSwVqmzHFzezymmF1M63Xmuc7cvWuQe6avNnHSZwqCoocF7gWRfPKXW",
+          "block_time": 1792022511,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:01:52.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5TLCjXefW3b2CubpPn9zzFTqVvJoCYNLhBrgA2hzCGFv8XHYwB7PgRRVfAeYV2cxpXVFT1j67U8yWy4ffvicmJHJ",
+          "block_time": 1792022512,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:01:54.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2NfL4a7k6RVuwdB3RxyL2aS4FpuU1RjveqUWD7jm3k9EgxHd1QVGXAF5NQnz4bTsFiPKQ9rgaPLyBVeMMbZTeSGs",
+          "block_time": 1792022514,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:07.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2Xhzqa7ZaiTapbgCfKA58tb3Dn5LAuBAtDXJcA8U6jNRibVVXR9E6wCfTVe5DKZdUa6KUt5zGbiJbdRkapfUAC71",
+          "block_time": 1792022527,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:09.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "43DE7Z7F8FYQyHGKRHThdhszUfPDUBiKgDLpkDgGLdVL1fcR6e9u9QwHpYPi2bnA6JZApgsw2fWyc9PvaQghVCzQ",
+          "block_time": 1792022529,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:11.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3roTuu7tzyDfmsNSMjU37diKYfZgsRQALGScmwAT3YLjwgK7wXdwwEyqsekdW39PF9vwJiDQtdaTiH4hRHdyhnig",
+          "block_time": 1792022531,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:13.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4P1nDk5tf1TUHybePy2kwgucgk89kb5BTj3LusYNAWpSikLpnPxrR4N384XgknmrUGpms7STxvP6ejYZp7vKk6nj",
+          "block_time": 1792022533,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:22.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "298WYqPibuVihDUgZgmL68Be33o9ywZ24aV4mF8WNQtQ7634vsAvc4zY4B2KQpX21biwd24EyZr8gnNWm6MdWQB4",
+          "block_time": 1792022542,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:33.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2Tc6hb46QEdJsC7MZ1mssg2rbSbUmhnaLUTrgfivExFwuGgyQCzjFowjXkxH4GfkCqRR2fpoY5sYzHAHXiBoRmWZ",
+          "block_time": 1792022553,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:36.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2UdNy7Yrd6mdn7k8GwWWG13FHF7R4s5Fm4FWNPKRhpZZLVn8znXcWnj13jbJfM23zfy8rjsWdepabapojHv5YZ2J",
+          "block_time": 1792022556,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:38.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "jjDsySHWwM7qZqG4CjbDnuCmqVW9aPJ66T6xAsYyaDhCRxasYXArqeVqkncEmxtrc1YgjcbtBYXQ5m7fJV9gaA8",
+          "block_time": 1792022558,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:40.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5Kw3MMbSHnY5rgaP3kUVNXig7UgXRX1tMeLsWQVx8LrPZG8EmgwmUAW8t4f31UUcZFHbJhFowNx93W9v7pjZCG1x",
+          "block_time": 1792022560,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:51.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3YhNzSuSPDDn72YCJaFb4Q7XY8nPkvsUEnYdEjjESwKT2vmJgd2xjzAqDG6SfWv9TwxEzaAXuz5ycpndyNMvURnt",
+          "block_time": 1792022571,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:53.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2C2Ts94pkwnqtQKu4PmB18sbERzYRdwmdTTByf7XBmrHf5vno111WQBPpsg16EPLJxgPfWPB42sgR2swLzYKTMuV",
+          "block_time": 1792022573,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:57.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "H4HwRmqdKjke4xLwjGtpNVvBQkRe86wZ9T7Qvhr8be22zvKYiqYbpxK1GnqqmNcdDDKuXFYcjGfNpnZVkPsBdkG",
+          "block_time": 1792022577,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:02:59.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4extJuUbAvt3vbQo4De3pUSV7uFbh1TnREkKSjJHGDufcyJvr6d7qxju6TvS4XoKXLp3Z25FzWHDwmewpLUQMKye",
+          "block_time": 1792022579,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:03:01.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "51EHkDBEVuYkhhzMhmntzc9ynTLdBh82PWAsguP5NkSY2NRD7o9VamEfe7MFeQfjUne4e7a5nVzRyNdPRJ7NZiJM",
+          "block_time": 1792022581,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:03:17.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2QHzVfTSrYNxU1qZoVJBQDHzVs3fMXEkDqjrKeJv7g3NEuVV9Zeikyg5ZVgLB1yMv1HB48P531ZRJVjWWN9QGUyC",
+          "block_time": 1792022597,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:03:20.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3u5FmxHoSQDoswbbXcScfgTzueo5yc7CVdSRPJFAv4ZTz73jdyemWrbG4RZ8pwg1vEo9a42QboJQLsU6DbSb2W3H",
+          "block_time": 1792022600,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:03:22.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3unfK2SQ4nmk4QaDXDRLTT9gQUsh4Ra8HTpSqwk716jQ8RoBrQJYBVr6xL91nx9LBeqdQQaDJthaxJSkxx9FD3DD",
+          "block_time": 1792022602,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:03:23.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3tHwXCu7DVQsdzS1HqoP3Hr5EKnoVjfRR9j823J3T5DHw6tjRAtTe3BdD63dNw8t4AACmtQ9sGFxyB9Fuzo6xKxi",
+          "block_time": 1792022603,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:03:25.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4ZrCiXHcwrVWCbANyyTuuPPh5V6MEr8YRDKP3xFgcrv1Y4g6h12HbRb9XwT4cmVaCGEVwardJvKs2DGq2WUHfDbK",
+          "block_time": 1792022605,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:03:35.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3HDjVgFZ4iHVi3WU5vCRXAGJnKF3wUqPd8oBhXxBWR4jVwV4CFxdJBBsj5i9FtkD16TpxGFGHewkpjJfYamiAQCW",
+          "block_time": 1792022615,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:03:45.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2bnSxSkqp9XUhxy6pDqpkbsqq1v46PXhU7PtY7WRbmJFFRk1hUiDAbPZJHnxL5RJgvqNVf6MMb4LQfiYkTTYLusy",
+          "block_time": 1792022625,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:03:48.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "XzSUvVoFGSeegmWed3cYitsAHEF9qPqT8xUeftximpCQvegTcvV7f8r2TaozumeH88YAuefDMXzNQCe7YfNcRFv",
+          "block_time": 1792022628,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:03:50.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4Qz5sd8xtrYVLWdGx7fwhCa41yu15xQgS3ctzAxw62jc9zkq8pSodz1qKbN3FVNCgAnzdEEP92KNRueJK9jUHSTv",
+          "block_time": 1792022630,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:03:52.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "61hNMo17SzSB76GJwxdr4bSTXJJm4Bd6GJeaAqfM2kXMFahnTcFtyjNKEpARJG7ekPNgr4c98k4h5h55qxe4FhhJ",
+          "block_time": 1792022632,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:04:04.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5CPkbrpCKHm6YbDWEYduQD9GKXLT8hkxTVEMyDMhCYQch1SiUQ8mL23TMrcDWDCvkm4hxY2jc6VfzzcvrYyx4YVr",
+          "block_time": 1792022644,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:04:06.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "mHFiuqhYg6nprdQs2F3eS2ByEyb16C6iMJEzYK5NVgnJ6WXzhQKPzyuEaTwE6gMaTsamFxLyBmxctDagGR6Ds3N",
+          "block_time": 1792022646,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:04:08.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4f48uXbDMAsLTpbzvC61UXMqLLmShoDem1a4PAHXhDgPTaDSeW8r31wn6ugk7NqDNreu2SeAoF8WA8VLRA8g6B4K",
+          "block_time": 1792022648,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:04:10.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "43wKSoEjueMULVfwVtR562s4x7t1tEuX6EAnBQDda1bde8HjyNG48e8VDkZo5hb9WME9wc24DwZ2bvoZUKs9fdrf",
+          "block_time": 1792022650,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:04:12.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "67oA8pWeTN9cJPsn5uZJhM3UQ54Av5Udn2RurGoSq66yBW28na2geMhfmWPjWeVaDRtLZZHwkDPd6WBqPC8Ryj8k",
+          "block_time": 1792022652,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:04:22.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "wPeYRmoHZsruFLMHMk1UUd94ZDV79PiqbiU8z7k6bH7tuiaTc28piDHDXKF8qsXysptd2pxwuAr8iGdHsjpTyns",
+          "block_time": 1792022662,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:04:35.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "ELWP95JhCNcTp86Qtu3Fr8GNmCPEeui6VQGd4bconyKbp9DH5ggV5hY9bkvVX6RGa2q3NJUpmRXFLrdtuaQkaYF",
+          "block_time": 1792022675,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:04:37.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "w2QJwYbcXFgr6TSaRFwqsTXaoMeLUmJb4vSFaL4yL2zriCZ8QJp64k1YiXyAsqgErsYh1DiLWwhzW4WSkFg9rib",
+          "block_time": 1792022677,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:04:39.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3cihonLZtL2QVZeRMWBaf6K3QAhHrUjKPhEHDw9Afu3kZX74VCq7QLq6gH2q43D2dHU49cmFz4a4CyYnaYuEbr6f",
+          "block_time": 1792022679,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:04:41.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3963SBaJy4XGKKscvvZbf6xEPyE5ikKsmNaQ8h4uzvMzFEUtsG3wKrQPpKWMMLHuxU2wikYA8G7nC7jWFiNsS6bt",
+          "block_time": 1792022681,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:04:53.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "67heCbx75wdKBa2WGh3nYnxgP62e69Nf9hCjtZCawuP8LL5rSQadW8fFJZ6R2UELMs1bx7Jq5n8a6sjQghXxxq17",
+          "block_time": 1792022693,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:05:02.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "nFuyoxTKw3GeME5Yn4f6QNxJaZgjo476Jj2CdW7KBiAJjNqr1ZADjYEV5ph2M92Tm6XP8Y8Z2WjPsFgmJnDKtJK",
+          "block_time": 1792022702,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:05:06.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "JCzWTNkTQQeGg3g5tnmtouxBHQnkr8Cv8krd8Q4GCZkM9PveznARu7ApkBfAKXho7MFVc5pBPWkyJbgvyYzirZ8",
+          "block_time": 1792022706,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:05:08.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "51P5LQCeT6SSrUxEeMbRLe1mtcaR1LU7vmniM9KqPcT1iZ3pJrbdG6pMp9gTSv7EJrgEEqk5isUYRQxhdZ2BZuij",
+          "block_time": 1792022708,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:05:10.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3AdLM4MDXvjrqyb22qwLBPhmFHWEffVhZowDDk1r3GzhxhSmd8WBS91oKHAu7QgdqTBLtHyyXPTg5vNHT32ahaum",
+          "block_time": 1792022710,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:05:12.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5j5FX8WcAbm9Hkt56ZkNJ37fsJDm3aFFxLSdgsLbMiMaxdRwz4j6uSSUVGYmeyNsnpgq8FqpGPbgnVRLt7rKidHo",
+          "block_time": 1792022712,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:05:23.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2sDuECr9zDywUc944VtdJYRscoLJVVQcqEoT2DGeb9yo8Q2YzsDzDCuH8n2BQd19ho3bnpT7v8MdPAVy2Aq5QeUS",
+          "block_time": 1792022723,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:05:32.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "H4jo2ewGLL2Qyy6qGe9CpJuFTmnYq7ejRRHvWu9KxKHrzSZoKonxCuJDz58dbAWXT1EYakHCghHCrhKXgrhCWiL",
+          "block_time": 1792022732,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:05:35.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5LxfXt9iQ2B42c5rmWQ8Zz1QLAqa9CsKNpt9wndNcF9jC6U1F64zcmno97fk4my2DaB7tcYeKEhuk3W4nfhJgsyk",
+          "block_time": 1792022735,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:05:37.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3UEidGWJVDwQfLZhD7tg2wWcfLavhnc3sobfp1NFqcQ8MziEc6Z6hy5vAx2NS63qGQF1ejBGYpuproxqJRuM74LY",
+          "block_time": 1792022737,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:05:39.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "49s1JuynJSQUNunwqTNEKp2BBSR3hnRVKuzGkRaK1zy7fBWH3FctGuzByEMHtLzz8wgr5qLq3wC7GD55dgMdzoct",
+          "block_time": 1792022739,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:05:41.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4VMoJXfim2eQAJooxciZt23ZRLRCGdcx1woVFskAQQHTutsxNuex6CeaDc4agGAJXen64UFikDoXSpxuP9Wf3dPk",
+          "block_time": 1792022741,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:05:52.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4fLoquJPrRnz6BixLCEvDo79Vh7RqtTtTv36beqT74hSKPYXasuRLAycm7aM1XGnmvrurKAN4dpPqybx3gjK6EKs",
+          "block_time": 1792022752,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:06:04.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "GXaUAqEFg3yYd4jQFoZXwieAVpYcQ9o8iJGFhDBHjATrCa3pfGkHemDY8dWvvUUzzMtJWL4EQDQfnfHkCQUJs9x",
+          "block_time": 1792022764,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:06:06.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4RZzB31tMN6DByXnvbAzBZQndE4fcLhec2yxVm1LHBjq15ymgaTM2oJWdRnLmHQhz4hwka4Hn5udTrZ3V1ULhE9L",
+          "block_time": 1792022766,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:06:08.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2ZRYVg49MYk79Cg7JsomYhvNXpccRWMNborxqW1TzGEH3f2yWWZP6WNTawGfQZX3i1sMbQQrfoSVyQPjKRhnEshU",
+          "block_time": 1792022768,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:06:10.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4m2bsEmBhkLKzotz9CzrdkBdqaZ4Wv54oeWaCznxGp1SRTTUGyFig4kp1kCkRjsDs21HTeMSNQL66r9UaGon9Aat",
+          "block_time": 1792022770,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:06:19.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5Qke3xDdRY145H9YsSPjuPZuhJmRf7XuoavY2bc8RycywNaiJeH5GH4tSoSqCphTPffxFtnA8WUTb1fddg21pHY5",
+          "block_time": 1792022779,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:06:27.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5EvUQeWU47De8sv9yyDDMUCTqju7Nnx9mcdTfUpTWQH6VmLb5VL4M72d55DQSzvcAteyUXTZnqMyo9ewCHHU76vr",
+          "block_time": 1792022787,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:06:33.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "TyWos6WVzqVAB4SQoTYoG5iCuQmM1Ffesswq7GQfdPwuapjbf2CtQWkDhbFUrZH38xynUhz6D7H6r2SNcFq7Tih",
+          "block_time": 1792022793,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:06:35.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "27qiwMQeBb5447EhjJZfWNW37FN4e6TVbnppTjd4cGh7JZNhbfvtAdh8K3Vcnc27wHQAs9UrH2KEnu5o4WTFuCC1",
+          "block_time": 1792022795,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:06:37.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3wMRqoFbogG5dQXJp3TmjadXYP2pzCTMFenT14EJfbuP5KFBpRpGkL15AckCgaEE4AFoqpEkzFwFzijjNuTyXsPG",
+          "block_time": 1792022797,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:06:39.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4XqQ2QoE8X9aKhBWeBgddRhQMFJZw2BSyGPgjqpM7trR4CEu2TBjVk45RGPJ4V9nuXWipLfiNmQG5MvBkM7bpRJV",
+          "block_time": 1792022799,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:06:41.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3QNHd4F83gzX5VKmTVf9Y7WRweokSaru21dgG6VpFgCzj61xVVv8NEEEvjMM1V4SXqb2RJ44hcbBzf7jGjNqfp2i",
+          "block_time": 1792022801,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:06:52.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4cb2rmvBPJ1hr1wEwVJHAA63DbzcQ8x81GDKcy7Es8uk8jCvAXhJDHjTmw5AC4f7y3LHUgod3EbBvtx7Z2SK554p",
+          "block_time": 1792022812,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:01.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "X92PsR3PTZeVw6tUtFXXA5LP5de5GMBZvX9JncxEwHnLQghsFjFauareCcHZ6t7DgEx1W9H6xjQBHycCao7yeAb",
+          "block_time": 1792022821,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:04.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5hNG528AKqWgY7SmARDW6HHTnLPybMaChtP8AQ4pJFur8EkwRhxCSG3qND2bCuPrcQG4HZE5e5bQ8HxJ2a9cYLxb",
+          "block_time": 1792022824,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:06.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "NH4B8W5SugiFXdu9UBRreoDywDdngiFj1wJKL7MpASNxa8pKPCRrecGVN63ADpstVVJUhsqMxZ6bF8pS4X7Yqzc",
+          "block_time": 1792022826,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:08.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4kfjN95zoSz7R9bsR8MiD8HLLduS4sNHhyUQBuBiz9Mid36FNc2Nof3zcM1a36qwRKtUpFUxjK8zj5eBzT3cSaTZ",
+          "block_time": 1792022828,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:10.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2aziiNjbVZwHMvxxysCQLVSijC8urMPUw7qyz31C5bntEu6cC7F8xrXqh6nNSiy4NALvP97mcgGiGTrhfbQJ4ui9",
+          "block_time": 1792022830,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:22.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4uKmDiXBtTcVFDs7T1uGrRUPfmvXmUJJdf3qw9p9JjUgmfe39iZnrPc2piALXkcdJeBGxDHx674nw7SHdDfVyEuh",
+          "block_time": 1792022842,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:24.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5nV49dMRNiWXNQT3WUa2qJsv6tNa8nS4AGd2HkSZ98BwDEGUZGgV2p5vYEZZzhKVuMSdbzYVC1AsduE8VbrzqpnB",
+          "block_time": 1792022844,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:26.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3pgJSkmfByUZ7RXn6ysJ3XC6Xf33xLDqgpzGf4jJyJvCVrAvunqY8j7gr6EAWWqKA3fjkCaq8Rvj1AG3c8voW21X",
+          "block_time": 1792022846,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:28.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "44FVYZrYSRvq2rvFbfuTHbacpQywXz5KNAEsw7sMNBAE7Gq2aUAjDjuSTYwkp9upprUdtEP7Wnznv4KS3G7S7ZCE",
+          "block_time": 1792022848,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:30.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "26LZzEGcsdsXVvr2idE9KTN8Qxhj47wc6q6hxmYS4sMFPyf8b66Mf9gAxGfiB881grYiZEBCJbgSRZiktLvPj7kd",
+          "block_time": 1792022850,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:34.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "ZdWhynCbM8GYXGsFxbrkbRq5pVunnpYKqTN6UxZJaNnLm5s84pZg4of78pVvQ6dQ4LVFjU7DvQ3skvmyxtNnXJ5",
+          "block_time": 1792022854,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:43.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5sH3F8s38AuZfnvUXL8Xh9UpxC4u1L91sGJBHw5oGKMztTXpkJR6q3vNmvTTiBpkR5udErfLgNTVdVzr8a9uXKkQ",
+          "block_time": 1792022863,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:52.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "59c6YsqA7SpXxV5jgXWE51kFtCPFUr1LoYsmL5DfzEZsNUzgM5ynKRSZ74mhHwsnGSjETWEbh8q7ng4FT9Qg71BB",
+          "block_time": 1792022872,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:54.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "46rjvqm7B5ZjeKvxjiG7C22SboG4DHhKE4Jmk1p6ZSyJSVUy4qBPCG5LK9FgUBGmwWR9dQrvALdejP3qajdWKnW9",
+          "block_time": 1792022874,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:56.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2f3hec6QDnqXdbFLk4X3io5wtK8AtHYG1mYoAFoTPocsLNwpkFmqqrzd4DAkL2hXScRwnsTUqBjiN481KSgDgd7d",
+          "block_time": 1792022876,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:07:58.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "xd1BNENoZ7cu5hjDjTtgjqaMzVH4kB1YnxGfYzkWBLsDKTyyq52bXRoTsEvTwqXCzWJ4yhcnzwx7ZzFQpqzygTU",
+          "block_time": 1792022878,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:08:01.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5a2xr8FuZ99bS8Wdn9EMyamVE3po3bBTNuaBShCRNfkgGFrWVX5cvY3cQLAEZz4zkZ1stGHfkzkqR7kWgqsMiFxn",
+          "block_time": 1792022881,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:08:15.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2EX95wn1dsbCw78omAgottybRrA3iJG6yRs5LRSqmVjgUuUtWZcvDbQshxPRhR9mw14BdGpeqLKArmBRryzkbX8V",
+          "block_time": 1792022895,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:08:21.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3YopoFXhu9n7HzYzyyPSUWaheHtBNU8Ac56dqxRKcQemjt28tbPD6yA9zSmQmnZqBVTyF3tyXjQkVPFko2FM4EVc",
+          "block_time": 1792022901,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:08:23.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "67rFCUfeuyKnh2fyHSjeZS1rJxQQxTGqsoZXMh5PYtquLPeu7MxqVXjZ3MSArQqjUGLPCunm2isiffnh3KLRUefX",
+          "block_time": 1792022903,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:08:25.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5XLHRkhkP3xQRxLomEGEswidRRzaVfDws5CQfx3qsgFKioTY1Rc6SDxwaNn2YNUsiPwmAzZD8tWA8hkAR6E8P7un",
+          "block_time": 1792022905,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:08:27.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4DgrC3rg8eCEqidw1vkZ73JZWEmF1wBV9Pv7AkmnSs6NkCB3gTWANeXk9XCpMLkgZRwpto5AjaRXsrsSNKWYHXw4",
+          "block_time": 1792022907,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:08:34.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3rAvXaqqD8PTktJXzdKgoJjMnhN8HLCMdAB5Hi3JEjrAENYKDEE1Zk8fuyNKzPVJdzSxEiMB9cVxBpQiHdrKbGyn",
+          "block_time": 1792022914,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:08:51.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3dbQrFPgR5QA7XKBvig7bbKAFQZTwe7bKZcGegjXtfU23s8Xr7ZnY9RRFNZakDyekToJYkK7X8SANuSn1pGjtQJx",
+          "block_time": 1792022931,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:08:53.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "zmUfkJd7rxrEsqgoZwqQ2rKVqQtnKJtUJrxmS4qmVaysLzEmVzfZqFp7ovNsYaVR2HKaih62FSTWVST622JdSR1",
+          "block_time": 1792022933,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:08:55.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "KTymo6ZPjmFkULzEViT4QPRU5LmXBKN4aBgJbHnUb7T5PzouEN73B2n6XpyQqPnLHSRURRxoWZBheAD4qUR4JFf",
+          "block_time": 1792022935,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:08:57.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "55K6nf9wQ86g9LkkPR4J6TRwDDMkCb8tPc52mWgcpC35dCkTkhESHitjNbHsg7FxFY2iDUbv4XuHwbCMR9KwCF4J",
+          "block_time": 1792022937,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:09:09.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3AcTe7E4GB17zRdLpHc67bJ2Rq1FFLKLAPzpPbZPpNj73eVFfTTpJByBFPGirPM7zh13DHPR3bCbuF16fjAqCxR5",
+          "block_time": 1792022949,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:09:11.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "59bWvczGxW8FtJCbQFFEzoUeg4TMGZBKJB12ftgqFyuVRhsJUPqDf7xEPA6otFGoiXv4CRb7VfQYc5ZJARsZUgVw",
+          "block_time": 1792022951,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:09:13.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5QaGD31Kyea4zXfpMicGLEN6NTdFu7MSDU4DxS3DqLMwNpBpt8jbziyjqHD41EdkB4HQFCYqvjnBJCa5fCAMFKpE",
+          "block_time": 1792022953,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:09:15.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4PeMrRZoC1BhPojcV8itcsgiEg9JH89YEMDRvQrSeJPc3mVBuaQo8FzvFz6EMWypJTTJ2zwMRE8GeXxHeupLF9WJ",
+          "block_time": 1792022955,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:09:17.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2aDn5sHWX1x9gY6f9igZZKpJRuv38hwQrXD2qUxvRrj7cdXh11R6rC5pQbebyZd7jqzWeizEGe9Fkj4ExB719yr7",
+          "block_time": 1792022957,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:09:30.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3tpc9nSY1LQMYvv6CogUxLjAqgckio7FMeew9q9oP3zXFdd66LHxBghxhT26uytk5Xc64L5AhFNn3z7FFVyA2dhw",
+          "block_time": 1792022970,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:09:39.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2fzKKWSbytw9X1GumcvXkREbfjDt5Es5ZA2XTLrgMsg5S5oFBtdfQbU3kWe6kAupRJFm9a25iQErmZ7vqq1uS9fh",
+          "block_time": 1792022979,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:09:41.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3h6vR7hnLT4m6UnPEXiCmNTN9XfuZRXL17yHvFsc7uLWvMJUSpPiXtA3FVScSb5fJitF2EzMGyQ8iqatrRHU8Qiz",
+          "block_time": 1792022981,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:09:43.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3AGRRBSXQ2e8YX6pBPMLAACw8awsuRk9EKLeYYVokKmyA2FAD8xybvARkGdLeFb6Gt2VubUx22AnoiuUfAfwh6Wh",
+          "block_time": 1792022983,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:09:45.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "24vbaBc7pUC7pFJ4Va382gy8dYHTDM9WSn4k63osX9YRFeVYxHdkibvVWMkJak4so5hYfN6wCiiKEfkeWFMhS7Z5",
+          "block_time": 1792022985,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:09:51.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2Vfv8DVEtQCtY7DBPZkTuzBUBgKrMME4KoSFdiHTo9tyfASRCkx4exQurFVQ14MqPjQVEwv8mgcmFg2pTwfyQtiv",
+          "block_time": 1792022991,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:10:00.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5M8takSpqR6SHbEZZey6FVmoybTGVcJqaauyacLJpcyhNMNxVoAo58JFNeXQUg121DoBBQrpUSPcm4htK7FNttZK",
+          "block_time": 1792023000,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:10:10.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5FpFcwSVF1tzse3crBoxev3zYQQ6W4Wv12gEQgBpBQ8mq6HfMtmdYmyKR8azfk5MYBAfGbsaQxhmLv6GtA2wmNVU",
+          "block_time": 1792023010,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:10:12.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5pc2rYyNfTtBue1QVoNYMKErKuDs8W5YJLLLz52EXsU3ZKWMS2mEhq2Bf6jcZN6RkNM2qNenZLgCvnjAfc2Qg3XG",
+          "block_time": 1792023012,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:10:14.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "476R85duJCqwk1jtjr6gkJQNAkZcD58GFK1oFSsnWK96TFFshxnVThTTRnbnL7E77sSHPuGc5JjwkCpDT4EauQWq",
+          "block_time": 1792023014,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:10:16.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3srTiSGXWs1fU9eAyg6ubWDkTm4Tds3E8pmcrdAixR2AU9WfeqYtVeeUE1XeLhz7hpoUe1Bkmd4nxThpzXjDvCUU",
+          "block_time": 1792023016,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:10:19.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5A2j8gytJnpPZuHFxbTKwbjiQj7MogBH1FtbkoUUh9Hp1NYLyXnme5RPzRHVo2P9NQKWyCjWR96YV3kCFg9DeYZX",
+          "block_time": 1792023019,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:10:41.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5orSnzXJAcnCGwqa9SA11xUaNweYQPtePJtKSpSripEBBaYXdYbCsqjNquQ4VZymgvbUqvgncGdshjHEuHQ26DEh",
+          "block_time": 1792023041,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:10:43.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4v43P6Y4M6zdi9y87yLpF765sYV4NDqQZBwQ2xGd1WgAX1fwHbtVEU71WWd3BmqWPX6Bt6SgtumqBDNfwjkBvfBV",
+          "block_time": 1792023043,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:10:45.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3VHaiYkTzqXf1fsTHgabfgN7d8e3VoqaGAqPXrsPGKxkBdrwf5FX9NX2n6xSFLEL6r2Leg82XGrBupLpMBj8u4ro",
+          "block_time": 1792023045,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:10:47.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2SDajcgor37zDQkmKR2PfiKL9pywZJEZqMxbmt49rXAGtMYPicQFvBDtTKjRb75xWdvoYWTP5SANjMQMYbJCMkC8",
+          "block_time": 1792023047,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:10:50.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "tmhGxoFmyERXCJkGwMuRET5YXZTrQdb25DW2J86MECKrz8etr2egbGrozpUWj6EwhAJ18Y8ycDAWnJhuJ5P3KK1",
+          "block_time": 1792023050,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:10:59.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "27BdnnkDCDsRZDk5t3BFyqWEuzqaaShuZ93dyoWDJpsFWEBLLdR37sf8goRRziVMwxzR9LaK3PDTrYQjpmE5b8Df",
+          "block_time": 1792023059,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:11:08.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2cYGQ5qYAc7tSVJuiircvpgjTEgCuXVQUaRamusrCXwHhtxvAM7Dnte2CC8vF97jzhCkLwb4VopfHZjd6cx3iiEo",
+          "block_time": 1792023068,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:11:12.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4QcHrck4fyVLoT3eH9Z91H1rCmoUy2AABrf6dVS7NF6MEa6Ft6yzTRRahDgVXnCcjgfAMRxXh5Mu586GGQLpb7uD",
+          "block_time": 1792023072,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:11:13.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2iXCWdmS2vFvJMXP5tkJv9684heWCH6NrPjLX2dSFa9yoC1aL7NwWiEoXCCARY6zMFLcjxWckn2iKsgwuEn82aVH",
+          "block_time": 1792023073,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:11:15.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "9y7YvGPU4RoUVqz51gT8FfBnWxhauQmXdkFpGYyrK6PJ8qSNiWP3TG2BdLQdjDGeNkLW1Tq7xzXMeJu6Xc2C5pq",
+          "block_time": 1792023075,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:11:17.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4F9Sa9YJqnFWAa9VtT3sHHqR6Cvsdoy2GM8zupXPu2ytf3GgvuBsqcyD8R3MhCKaXBQ6coTtMtfQfF19zd1bfrRh",
+          "block_time": 1792023077,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:11:34.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2VKjEmARUhyRQTPuDAHxoUxzSgRgxK3e6PqybktLAW4ArC1KCjNzLNuecEVQdzFmxpg6zNkYXneaHc1CJjmKeGM1",
+          "block_time": 1792023094,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:11:40.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "67dxc6pytEhT1qHJJTA1GmvqPxQkFw6KuPUUzrAkbE572AqmLLp7VjJJ1mJvkQ9e8By8U3LLEDfSBpWRgscqPCmq",
+          "block_time": 1792023100,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:11:42.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3SxFYcMEKiuqTU9DP76Byh1cKuUvv5KTz4L1pTXNexQ4gqyANy2SXK7t6mWkGLiCbrwK6tG9bGVpwQFAxc1Xxm1W",
+          "block_time": 1792023102,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:11:44.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2M2e5g5qneX3cVwwn2nrsKPhKRourN8w4ukbSvyHgsH6MMKZAQ5dYVFN93oDSbDWnkQGwhakEAFVMRjGVGDwqQS4",
+          "block_time": 1792023104,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:11:46.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4Xrq1LBprPqs5SPf2HtXf1gxXLSBTNhFSD4E5Wan5N19BPzPFnMjBNZa4BSHrwrB2EtvNfn5RPtcbzWoGxibuJ3K",
+          "block_time": 1792023106,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:12:07.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3c21simDyg4UxSMYokBZKu2Mdp8c82kL7U7yq9Rrum9VwiehxbwBUfBiAK5jFX6oRaFiUJKDe4X3Gf5sAyFfCbXc",
+          "block_time": 1792023127,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:12:10.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5fKrTD4FpUtvPugVwtSbwujyxm3kEKKj6maKeAEwxrQ8YFigndk9rMEhkTXdbh8a8C5auXFk2CBDPu9Q7M2n6QtE",
+          "block_time": 1792023130,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:12:11.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3MJ2skEtZvmtsz9nbroboo4deukY6YLxKsfgwSf3FAbHFuZywNECNbvgof9PX97sSxMXgyb5zKsJwWPhuC6B4qrv",
+          "block_time": 1792023131,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:12:14.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "55C1hXVVAYAkGrQ3BNERpnjY4Aa3Dbfd7zw3ezTqojAqicR5Hx1aULipx7F11g2TKXSXx8P4ZgYvkxTFC9TZg8rP",
+          "block_time": 1792023134,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:12:27.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2nz3V5Y8WEuWWwhMNj3KKsQ1hWuua1A1AJ12KrFd5DvjGqHTdq7Ly7zRmDJvM6Yk7V4dSJtjVNk2f9Fj9oAmHRL1",
+          "block_time": 1792023147,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:12:29.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4AoEpmpsBwJ8Y17LHoJCfEJf7oqhrbZupbciW3EpKejFAafrFnN9r5gQCtrawFXdSiQ7c821gFPcC7xbcaSLXv6t",
+          "block_time": 1792023149,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:12:31.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "oMtRJC7EB7P1nUSb38FRgXhH9Pvyo5gykDmL3Kf7nJPGkCeTnZdcAPMxKLC9UFWBJGrkPifGkhMZk3sjGNwPfEA",
+          "block_time": 1792023151,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:12:33.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5VAyqUzRohEX1r3APbs5vPMSx3THmgLYrss8UTt3soyFp1hEcU3vaY5TFmHwNhcstChS2AhTibnh4KZjzKk9adwx",
+          "block_time": 1792023153,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:12:35.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3Qeb5v1m3dQMMLHLL9pQ4nmyRYxhtXPsMKrxY2HGhLheDMEYRWHJJQFjSqaxN1PnfMTvrhzPEdTaymqdocxNQFmP",
+          "block_time": 1792023155,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:12:53.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3ebq22Xz9SZmW1LW68j9qJcRyJ5AWpAABaZdVW9SwL3twCje4AEKDLwrHeSET5Qe8Lusz9on1xDtRV93aAmtPAgE",
+          "block_time": 1792023173,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:12:58.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "63HJXTJ8r2M6b2LTLZR5JQsbMccKJTTo5VB1yVGvgf2WuDNJasqmZkA6ED8YCFqpfcFvq93xpSjs4TwhyCGrcFe4",
+          "block_time": 1792023178,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:00.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "25k9ArhRFkxndTZBX93CB3ikZA8wop5p5whmAAqvxh16QNAtpx4ABuYAwDHipg1BWUMhpfARW9cho3h79xgJj16e",
+          "block_time": 1792023180,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:02.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5PuWvt3Vva6jWaTECZsm843wTbNobeufuKCCEfGVs7N8aF9WW9WNuZJNRZGWgGnbhiF8qh5jXc9mYzKCBzBW5QX9",
+          "block_time": 1792023182,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:04.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2EhSMZUrBrkUJeHQV9Yhv1C8SX2ebNijc7ivHeFDECxZf4wDj9u8aERL5gUrULnt2AgidkW31ojUe5GYNyRjsmz",
+          "block_time": 1792023184,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:18.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "MJQH41gVRfWW7CQfHeY8woUDGXY8nWoiPMETUMqmonYRFbDBPRHJXtr5ASSwbYp9iFVTUWZA3QJ1jergwQo6AHc",
+          "block_time": 1792023198,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:26.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4zSGeRWGoh4bBFhbsKNsjc7Gzjf9g46HRuh4EQZkGjv27n7ysRTSHC3hovEPefsYiV4YEPw51qKNsSFmQPD8tnHe",
+          "block_time": 1792023206,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:28.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5UC6B8QwhN7wKANA1B86PhZQGywMyWxdVnyRcaMVByvGijPLEG9YpFRzh2YC2NqbaW72BsZfU6gWjPspd5eS1xtF",
+          "block_time": 1792023208,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:30.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "27QYhkdHVNBibPLkoBBRJ5gATuwoXzDNFbDSLYLcyWW3ha5tdDcAcUx1w9ciwChvHcikp7LJwdk8gZsox7gFqXTf",
+          "block_time": 1792023210,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:32.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2Rn1HRrcFTf5DhNX51aJFLkZg3AdGWhuJj3QSsZDqwYLLoxQLLAWPUFvHYYLJ1Lu1zsGm2Y2yQw1nDP8ZoMjThWa",
+          "block_time": 1792023212,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:34.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2pukijAAvwkEUSimGg7CDitYRZRQ7FXLKTpe8oYh1SpMgqffC96chQRFQ6T8Er16rPPT3DtYqSezeyiJuDzTP31G",
+          "block_time": 1792023214,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:46.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4JJhfGjxtMpCEko37anH16orNpbiG8kQPeHtriZh2VHvR9mf4WJe9uUfG6vf4K1sTQhWf7WPTEAP4NLyXtXrz1Ra",
+          "block_time": 1792023226,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:56.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2BJJYE7bx88dLeANRNTREJXn8WcgAV2awG5PLHTaMwS638ci2Tg6H17qiYWXF5gWGPMY2YMXa4wm2GYt2CsSoSQF",
+          "block_time": 1792023236,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:58.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4oDDcsEC2V4Y1T8cLiBAHczgE9cF6BHoM9j69xDjeLxuPuJFsSsJz4iRM76LHeviRXZm1G6Yv6WcDZmUBY42Miwy",
+          "block_time": 1792023238,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:13:59.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5zif6DSUw5U9bN6SVEPnG4BoE3drrcpyRr6DSzn9c6to2NTfTit9BWBfn4uHgrvZKMAWBY9snKsRP2it6f8NuULQ",
+          "block_time": 1792023239,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:14:01.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4DHUU6KvDh7Fz8hrKgenU28ZCZrtP1MVv7iyqihTbpVYgW3aZvk3XxtvYEhRQ9Jyxrb2vJWgG6XCtz7JwwCznoey",
+          "block_time": 1792023241,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:14:03.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5gGMHn5oT4DJsAWjmqfmfMiEDqDaCb3TimfqKjRjpGMCxKubyvzYasc9KJPihLZAiaxuH55gCZoGLe8NLaBsvod3",
+          "block_time": 1792023243,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:14:17.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "8hpyvDTHMm2p6t62PExRy7ybtYLspxymBS5SzF2h5vLSfjroUqpPg8PwW1aUVmFDSq8A6v7E1iq2jetDyaSbT9J",
+          "block_time": 1792023257,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:14:26.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2GpvXXTjQuLjSi4c6jv6Dp52SyRDM8Cm8CfwBkBmhHPUd7TB1oMoSCA52yVoQ82SbXDnSZ1vNtqRcSQ99XgtJ8Ux",
+          "block_time": 1792023266,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:14:28.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3FUktpj1gZM2yjKiRMBGwTmHcMAjeqnuksKgJMvipuEWP8VcGPRxELaXfNoVAnQqko3e2ddUtoRUy9KUzeWW5bqK",
+          "block_time": 1792023268,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:14:30.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2fSWTJsHz3no7UmJ4Y99crvnyMngLnBH94GguaKn1jkVtTMw1razdJ7ZcFZBL9QC7zNCZZ1nCwpfvKgPwvHGP3KK",
+          "block_time": 1792023270,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:14:32.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "49sAE41QGFxXz68TJcDWhQyZcRK3f2asA6UDk8YhFi9B31vsvz8we6ENBgqz6nYMHgXdUi8UajtwJENzjyqNtV4g",
+          "block_time": 1792023272,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:14:47.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "M6Yi8uu6dft631eDnZWuVx54C5WkQ7fiMfDa9Kqa3FyGUieu6PiHkRXxZQXxbhQMDdBvHvUwEd3yKoRzcQVRLFG",
+          "block_time": 1792023287,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:14:55.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "7nAXHHB6ZhjgGncur91pTiG1swVnSgEkjL2hkB89c8Hj5LczACrrNNYmrvMeFsZUTJzs1AscWEUQTfnijz2ssoM",
+          "block_time": 1792023295,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:14:57.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5j2uLGUMSdWQVKfrFexwL5cuvTyUEiQ7vwujoioRadUSJ1LPucV6xbUjJrzg1s6buQVyPs3cCkenhCqMFYcTmqUB",
+          "block_time": 1792023297,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:14:59.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3TeGGeXRVhNHPAunM4icmvftorQvjS1YeFNVEjpSET1VUu3MRq22Xvu2zciM8VwNT3HawHDZxVB7ZMJAfstAGne7",
+          "block_time": 1792023299,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:15:01.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "TkHjbGqrKaFr9n2C6MSCpKuGhZEYJtcqahhWTn5ivEXMA9DvL3h1j67szSGH2k5vziVgKmwXPqR2QFxGEzADqBs",
+          "block_time": 1792023301,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:15:14.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "51T9jQss393JYXDxuvn8fJRQLitX9usrkFpa72HN5LbVX8WSNwA4TvjCdes8MVKVnHPccqwuq25snrPs8kuJoAMx",
+          "block_time": 1792023314,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:15:24.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3CpQCEPLXvbz196UNxqajHz8zivp8fskZfg6TjYKqh8q6P8EuudJPs4ozFfckkSBKtE9bnhRi9YYkZEAXGqzhsij",
+          "block_time": 1792023324,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:15:26.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4psC8z6Cxsaiacana2HoFMHDNW2CPpCpftBH9AXHxZyZmC5BwkzGT39mn7XvP8NPPkQyBJ8W6MKN3n8tNeNv7nVu",
+          "block_time": 1792023326,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:15:28.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4Tr1JwCMz7of8JQbtB771WfGsNQz463UT7QsPj79y7R2CTBhGuvFQdoeEDeS4hvLio3VjrvX1GfoNsMnMN2ztEHr",
+          "block_time": 1792023328,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:15:30.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "QrPb9XzJTXUbLB9PrsHZZatYnURcHvJuy9NakTEsjRtjjWrVKMFrEp4vNZuK8gi16K16R9NZm7LumfwgmX5qvW2",
+          "block_time": 1792023330,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:15:39.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "LBQhQynyBmAgurkhDwuunDvyPzrRqvNEDXb4ywt3YfeeqH86bHNzCVYJFrq4jSp2DtrBaphsdrniSyUyVKmdbfB",
+          "block_time": 1792023339,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:15:48.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4JA6ssTB5SWziCASTYzN48JpN7Ye2AqWMKt8Lhuss5tBJc5RCqqqFnfsP1qLi8uYqHbdQLdzD5wVyGvkAppazgcC",
+          "block_time": 1792023348,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:15:52.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "3TYcnK7rLvdRajH4xXYFsD2FSak3kvkD8zbvrSw5YW2QdgAVmsEycY3GMh1F8bUDZAjPchaHsk9J4o2xfq9v7NHv",
+          "block_time": 1792023352,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:15:53.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "6jQZC7nLsAZgkVrKzkd5zixQawrGctu7mcSTFPFLjYYNmnGFvZtCMezb2cmGP2Snr6nfKn14B8LXVkXb9a3NUvo",
+          "block_time": 1792023353,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:15:55.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "41FHDTKugmP4fWCAJmwJNhSUekcmyToc1XwjtsAWLve4jxDLLv5cLiwahWdJRk2fiKCX1hc9jmuRjdfSQ29LQsS",
+          "block_time": 1792023355,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:15:58.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4cSdAiY952J3rpzNt6DgqYeEd7UNGH1HWTJ9JDZtwUox6yfpbf8WkgKKjUjpyCiCJBZtcHjCkMxnm27vncYLJe2W",
+          "block_time": 1792023358,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:16:10.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "5aViQCMPdoM9wSWvc1uMRmYiFtBVgSbxrNE6Lg5SwsCsdkyjcYhAdUMWsGrJ1aMNXQNjEEtX87NVcGyj8uwLj2Sw",
+          "block_time": 1792023370,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:16:21.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2gcpKuuXDAMHpRzhSBok29YJNTGvBcBZyk2uNdDwEJqqM8qdPEDfWQnuPR2HbTvprQkMxcmGNv6Z9P8bSEeT9QY9",
+          "block_time": 1792023381,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:16:22.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "42vy6bKJRZn9U6zKcv6sdCkNdFvEBRF1en7LW9QecxUnck7A5bEdoYoKNNUVbqb7k27dfAhYvCtMQhszCUS4dnqg",
+          "block_time": 1792023382,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:16:24.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2zkgAGwt8PTBKJ2md8SFkBNzpG1Fd2BD4wTfuiuQo4578S5m2aWF6NxmUWQ2FbvFtMzFMwEDUkJ7423RvsnqMpPx",
+          "block_time": 1792023384,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:16:26.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2kDDdzs5M98MP7V9BMjwJ2sdaGAJ5gm7Y1evnCGLfJKSvw2SeLFRgc3mBP7kSSDRcRsn74FsPC8VNdM2fEN2zVDB",
+          "block_time": 1792023386,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:16:30.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "4Af65Pr8GGALLNaaKHayDLJdgsmiYrzT98ceFaDne4Lv4TvbhwmfCNVZYuaHPBsAc7TryBYAkTjKo6jksZ4zUmhc",
+          "block_time": 1792023390,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:16:42.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "2beg1oiDPvdn2zaUDBbqYPeuQvnYf5s6QzWCZENvwXznwYaB2Javwy9ybWabXz6Z75fKw24hBBRx2zUhvq8z7DNo",
+          "block_time": 1792023402,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T00:16:49.000Z",
+          "date_jst": "2026-10-15",
+          "signature": "PS1w4Q8wKLZqbeqNH6an55cKuqL5dF3CEFvjttXwKBJCs2ezRctLwp8BT9oqZMEfudA6cAXRRUYSW4k7t9GWvwV",
+          "block_time": 1792023409,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "1000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 105.27,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        }
+      ],
+      "sol_usd": {
+        "usd": 105.27,
+        "source": "binance SOLUSDC 1d close (UTC)"
+      }
+    },
+    "card": {
+      "calls": null,
+      "sales": null,
+      "nvm_purchases": null,
+      "nvm": null
+    },
+    "latency": [
+      {
+        "entry": "usdc",
+        "item": "series",
+        "ts": "2026-10-14T23:54:53.036Z",
+        "skipped": "PROBE_SOLANA_SECRET_KEY 未設定"
+      },
+      {
+        "entry": "card",
+        "item": "series",
+        "ts": "2026-10-14T23:54:53.036Z",
+        "skipped": "PROBE_NVM_ACCESS_TOKEN またはゲートウェイ URL が未設定"
+      }
+    ]
+  }
+}
