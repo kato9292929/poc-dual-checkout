@@ -65,7 +65,8 @@ JST の 00:00〜24:00（`config/period.json` の `utc_offset`）。各トラン�
 - 20件の tx をすべてチェーンから読み（`getTransaction`）、支払い元（USDC が減った口座の owner）を取った。20件とも `7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY` だった。
 - 実証2の集計期間にかかるのは、`irt5N3uK91…`（10/12 JST）、`6154hajSEe…`（10/13）、`4Dj6mCQEV6…`（10/14）、`5xCZSNuRsM…`（10/14）。tx 署名の全文は `own_wallets.json` の `evidence`。
 - `/.well-known/agent-card.json`（EIP-8004 の登録情報。Base の agentId 55560）と `/dashboard` には、Solana のアドレスも tx 署名も出ていない。
-- 10/14 10:23:08〜10:23:13 UTC の series（$0.01）5件も同じ支払い元だが、AA の `/api/runs` には載っていない（run の記録は movers だけ）。アドレスで判定するので、これも own になる。
+- 10/14 10:23:08〜10:23:13 UTC の $0.01 × 5件は、JIN の series ではなく **OSD の購入**だった。AA の `/api/runs` の 10:23:07 UTC の run に OSD の5つのエンドポイントとして載っていて、tx 署名も一致する（`tnFjvvpYWe…` ほか）。2026-10-15 の報告では JIN のエンドポイントだけで突き合わせたため「載っていない」と書いたが、誤りだった。
+- **AA の公開ログに載っていない支払い**：10/15 00:00:20〜00:16:49 UTC の $0.001 × 196件（OSD の `/api/catalyst/:ticker` か `/api/edinet/:code` の価格）は、支払い元が AA のウォレットだが、`/api/runs`（直近60回分、9/27〜10/15）に該当する run が無い。AA のウォレットが、ログに出ない経路でも使われているということ。AA のログを一次資料にするときは、チェーンの記録と一致するとは限らない前提で扱う。own の判定はアドレスで行うので影響しない。
 
 ## USDC 直接
 
@@ -94,6 +95,24 @@ JST の 00:00〜24:00（`config/period.json` の `utc_offset`）。各トラン�
 - 入金の tx 9件は、すべて現行の方法で拾えていた。取りこぼしは無い。
 - 現行の方法に無かったのは `tscBHt2Ff5…`（10/14 08:10 UTC）の1件だけで、これは payTo **から** `Fs2zgBUo…` への 1 USDC の出金（fee payer はファシリテーター）。入金ではないので、集計に入らないのが正しい。
 - payTo の USDC トークン口座は1つだけ（`getTokenAccountsByOwner`）。
+
+### 受取アドレスを OSD と共有している（2026-10-16 確認）
+
+**JIN の payTo（`4s8X…3VPf`）は、OSD（`osd.x402jp.com`）の Solana の payTo と同じ。** OSD の discovery（`https://osd.x402jp.com/.well-known/x402.json`）と 402 の `PAYMENT-REQUIRED` の両方で確認した。そのため、payTo への入金には OSD の売上も入る。
+
+| 金額（atomic） | JIN | OSD | 判定 |
+|---|---|---|---|
+| 20000（$0.02） | movers | — | JIN だけ |
+| 10000（$0.01） | series | alpha の7つのエンドポイント（`/api/alpha/...`） | **区別できない** |
+| 1000（$0.001） | — | `/api/catalyst/:ticker`、`/api/edinet/:code` | OSD だけ |
+
+- tx の memo は支払いごとのランダムな値（16 バイトの16進）で、どのエンドポイントの支払いかは分からない。チェーンの情報だけでは、JIN の series と OSD の $0.01 を区別できない。
+- いまの集計（`by_item`）は 10000 を `series`、1000 を `other` としている。10000 には OSD が混ざりうる。実例として、10/14・10/15 の AA の $0.01 × 5件はすべて OSD だった。
+- 扱いは未決定（2026-10-16 時点）。期間を始める前に決める。
+
+### 読み取りの網羅性の2度目の確認（予定）
+
+seller-probe はまだ一度も有料の測定を動かしていない（Actions の実行は無料の測定が2回だけで、どちらも失敗）。上の「取りこぼし無し」は、AA の支払いと別経路の署名一覧との突き合わせで確かめたもので、seller-probe の支払いでは確かめていない。seller-probe の `paid-probe (weekly)`（月曜 04:41 UTC）が動き始めたら、その日の payTo への $0.01 の入金が日次データに現れるかを確かめる。seller-probe の公開アドレスが分かれば、own として現れるはず。
 
 ## カード払い
 
