@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "schema": 3,
   "date": "2026-10-13",
   "timezone": "Asia/Tokyo",
@@ -14,7 +14,7 @@
     "own_wallets_version": 5,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-15T14:08:21.337Z",
+  "generated_at": "2026-10-17T10:52:44.971Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -23,19 +23,32 @@
     "stripe": "missing",
     "stripe_csv": "not_found",
     "nvm_api": "not_configured",
-    "latency_probe": "not_found"
+    "latency_probe": "not_found",
+    "seller_log": "missing",
+    "aa_runs": "ok"
   },
   "page": null,
   "by_class": {
     "external": {
       "usdc": {
-        "contracts": 0,
-        "uses": 0,
-        "buyers": 0,
-        "by_item": {},
-        "revenue_usd": 0,
+        "jin_contracts_min": 0,
+        "jin_contracts_max": 0,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 0,
+          "jin_series": 0,
+          "unresolved": 0,
+          "osd": 0,
+          "other": 0
+        },
+        "jin_buyers_min": 0,
+        "jin_buyers_max": 0,
+        "jin_revenue_usd_min": 0,
+        "jin_revenue_usd_max": 0,
+        "payto_inflows": 0,
+        "payto_revenue_usd": 0,
         "seller_fee_usd": 0,
-        "seller_fee_usd_per_contract": null,
+        "seller_fee_usd_per_tx": null,
         "seller_fee_rate": null,
         "facilitator_fee_usd": 0,
         "facilitator_fee_rate": null,
@@ -84,13 +97,24 @@
     },
     "unclassified": {
       "usdc": {
-        "contracts": 0,
-        "uses": 0,
-        "buyers": 0,
-        "by_item": {},
-        "revenue_usd": 0,
+        "jin_contracts_min": 0,
+        "jin_contracts_max": 0,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 0,
+          "jin_series": 0,
+          "unresolved": 0,
+          "osd": 0,
+          "other": 0
+        },
+        "jin_buyers_min": 0,
+        "jin_buyers_max": 0,
+        "jin_revenue_usd_min": 0,
+        "jin_revenue_usd_max": 0,
+        "payto_inflows": 0,
+        "payto_revenue_usd": 0,
         "seller_fee_usd": 0,
-        "seller_fee_usd_per_contract": null,
+        "seller_fee_usd_per_tx": null,
         "seller_fee_rate": null,
         "facilitator_fee_usd": 0,
         "facilitator_fee_rate": null,
@@ -139,15 +163,24 @@
     },
     "own": {
       "usdc": {
-        "contracts": 1,
-        "uses": 1,
-        "buyers": 1,
-        "by_item": {
-          "movers": 1
+        "jin_contracts_min": 1,
+        "jin_contracts_max": 1,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 1,
+          "jin_series": 0,
+          "unresolved": 0,
+          "osd": 0,
+          "other": 0
         },
-        "revenue_usd": 0.02,
+        "jin_buyers_min": 1,
+        "jin_buyers_max": 1,
+        "jin_revenue_usd_min": 0.02,
+        "jin_revenue_usd_max": 0.02,
+        "payto_inflows": 1,
+        "payto_revenue_usd": 0.02,
         "seller_fee_usd": 0,
-        "seller_fee_usd_per_contract": 0,
+        "seller_fee_usd_per_tx": 0,
         "seller_fee_rate": 0,
         "facilitator_fee_usd": 0.001068,
         "facilitator_fee_rate": 0.0534,
@@ -246,13 +279,24 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 106.75,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "jin_movers",
+          "product_source": "seller_log:aa_runs"
         }
       ],
       "sol_usd": {
         "usd": 106.75,
         "source": "binance SOLUSDC 1d close (UTC)"
-      }
+      },
+      "seller_log": [
+        {
+          "tx_signature": "6154hajSEekD4NPjP1JKyfndn5dHP1zPaVUbZqt9Eqga4sdPmoanj9VVbQKjgWwVCAUynvvndFjWL2UpBPDCJ5md",
+          "endpoint": "https://jin.x402jp.com/api/jin/movers",
+          "amount": "20000",
+          "time_utc": "2026-10-12T21:00:00.326Z",
+          "source": "aa_runs"
+        }
+      ]
     },
     "card": {
       "calls": null,

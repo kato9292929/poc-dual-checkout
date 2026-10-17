@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "schema": 3,
   "date": "2026-10-15",
   "timezone": "Asia/Tokyo",
@@ -14,7 +14,7 @@
     "own_wallets_version": 5,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-16T07:15:39.945Z",
+  "generated_at": "2026-10-17T10:52:46.467Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -23,19 +23,32 @@
     "stripe": "missing",
     "stripe_csv": "not_found",
     "nvm_api": "not_configured",
-    "latency_probe": "ok"
+    "latency_probe": "ok",
+    "seller_log": "missing",
+    "aa_runs": "ok"
   },
   "page": null,
   "by_class": {
     "external": {
       "usdc": {
-        "contracts": 0,
-        "uses": 0,
-        "buyers": 0,
-        "by_item": {},
-        "revenue_usd": 0,
+        "jin_contracts_min": 0,
+        "jin_contracts_max": 0,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 0,
+          "jin_series": 0,
+          "unresolved": 0,
+          "osd": 0,
+          "other": 0
+        },
+        "jin_buyers_min": 0,
+        "jin_buyers_max": 0,
+        "jin_revenue_usd_min": 0,
+        "jin_revenue_usd_max": 0,
+        "payto_inflows": 0,
+        "payto_revenue_usd": 0,
         "seller_fee_usd": 0,
-        "seller_fee_usd_per_contract": null,
+        "seller_fee_usd_per_tx": null,
         "seller_fee_rate": null,
         "facilitator_fee_usd": 0,
         "facilitator_fee_rate": null,
@@ -84,13 +97,24 @@
     },
     "unclassified": {
       "usdc": {
-        "contracts": 0,
-        "uses": 0,
-        "buyers": 0,
-        "by_item": {},
-        "revenue_usd": 0,
+        "jin_contracts_min": 0,
+        "jin_contracts_max": 0,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 0,
+          "jin_series": 0,
+          "unresolved": 0,
+          "osd": 0,
+          "other": 0
+        },
+        "jin_buyers_min": 0,
+        "jin_buyers_max": 0,
+        "jin_revenue_usd_min": 0,
+        "jin_revenue_usd_max": 0,
+        "payto_inflows": 0,
+        "payto_revenue_usd": 0,
         "seller_fee_usd": 0,
-        "seller_fee_usd_per_contract": null,
+        "seller_fee_usd_per_tx": null,
         "seller_fee_rate": null,
         "facilitator_fee_usd": 0,
         "facilitator_fee_rate": null,
@@ -139,17 +163,24 @@
     },
     "own": {
       "usdc": {
-        "contracts": 202,
-        "uses": 202,
-        "buyers": 1,
-        "by_item": {
-          "movers": 1,
-          "series": 5,
-          "other": 196
+        "jin_contracts_min": 1,
+        "jin_contracts_max": 1,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 1,
+          "jin_series": 0,
+          "unresolved": 0,
+          "osd": 201,
+          "other": 0
         },
-        "revenue_usd": 0.266,
+        "jin_buyers_min": 1,
+        "jin_buyers_max": 1,
+        "jin_revenue_usd_min": 0.02,
+        "jin_revenue_usd_max": 0.02,
+        "payto_inflows": 202,
+        "payto_revenue_usd": 0.266,
         "seller_fee_usd": 0,
-        "seller_fee_usd_per_contract": 0,
+        "seller_fee_usd_per_tx": 0,
         "seller_fee_rate": 0,
         "facilitator_fee_usd": 0.212667,
         "facilitator_fee_rate": 0.7995,
@@ -248,7 +279,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "jin_movers",
+          "product_source": "seller_log:aa_runs"
         },
         {
           "time_utc": "2026-10-14T21:00:51.000Z",
@@ -260,7 +293,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "seller_log:aa_runs"
         },
         {
           "time_utc": "2026-10-14T21:00:53.000Z",
@@ -272,7 +307,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "seller_log:aa_runs"
         },
         {
           "time_utc": "2026-10-14T21:00:54.000Z",
@@ -284,7 +321,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "seller_log:aa_runs"
         },
         {
           "time_utc": "2026-10-14T21:00:55.000Z",
@@ -296,7 +335,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "seller_log:aa_runs"
         },
         {
           "time_utc": "2026-10-14T21:00:56.000Z",
@@ -308,7 +349,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "seller_log:aa_runs"
         },
         {
           "time_utc": "2026-10-15T00:00:20.000Z",
@@ -320,7 +363,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:00:23.000Z",
@@ -332,7 +377,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:00:26.000Z",
@@ -344,7 +391,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:00:29.000Z",
@@ -356,7 +405,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:00:31.000Z",
@@ -368,7 +419,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:00:40.000Z",
@@ -380,7 +433,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:00:45.000Z",
@@ -392,7 +447,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:00:48.000Z",
@@ -404,7 +461,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:00:51.000Z",
@@ -416,7 +475,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:00:53.000Z",
@@ -428,7 +489,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:01:04.000Z",
@@ -440,7 +503,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:01:13.000Z",
@@ -452,7 +517,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:01:17.000Z",
@@ -464,7 +531,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:01:20.000Z",
@@ -476,7 +545,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:01:22.000Z",
@@ -488,7 +559,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:01:25.000Z",
@@ -500,7 +573,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:01:36.000Z",
@@ -512,7 +587,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:01:44.000Z",
@@ -524,7 +601,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:01:48.000Z",
@@ -536,7 +615,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:01:51.000Z",
@@ -548,7 +629,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:01:52.000Z",
@@ -560,7 +643,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:01:54.000Z",
@@ -572,7 +657,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:07.000Z",
@@ -584,7 +671,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:09.000Z",
@@ -596,7 +685,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:11.000Z",
@@ -608,7 +699,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:13.000Z",
@@ -620,7 +713,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:22.000Z",
@@ -632,7 +727,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:33.000Z",
@@ -644,7 +741,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:36.000Z",
@@ -656,7 +755,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:38.000Z",
@@ -668,7 +769,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:40.000Z",
@@ -680,7 +783,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:51.000Z",
@@ -692,7 +797,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:53.000Z",
@@ -704,7 +811,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:57.000Z",
@@ -716,7 +825,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:02:59.000Z",
@@ -728,7 +839,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:03:01.000Z",
@@ -740,7 +853,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:03:17.000Z",
@@ -752,7 +867,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:03:20.000Z",
@@ -764,7 +881,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:03:22.000Z",
@@ -776,7 +895,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:03:23.000Z",
@@ -788,7 +909,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:03:25.000Z",
@@ -800,7 +923,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:03:35.000Z",
@@ -812,7 +937,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:03:45.000Z",
@@ -824,7 +951,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:03:48.000Z",
@@ -836,7 +965,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:03:50.000Z",
@@ -848,7 +979,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:03:52.000Z",
@@ -860,7 +993,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:04:04.000Z",
@@ -872,7 +1007,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:04:06.000Z",
@@ -884,7 +1021,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:04:08.000Z",
@@ -896,7 +1035,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:04:10.000Z",
@@ -908,7 +1049,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:04:12.000Z",
@@ -920,7 +1063,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:04:22.000Z",
@@ -932,7 +1077,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:04:35.000Z",
@@ -944,7 +1091,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:04:37.000Z",
@@ -956,7 +1105,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:04:39.000Z",
@@ -968,7 +1119,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:04:41.000Z",
@@ -980,7 +1133,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:04:53.000Z",
@@ -992,7 +1147,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:05:02.000Z",
@@ -1004,7 +1161,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:05:06.000Z",
@@ -1016,7 +1175,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:05:08.000Z",
@@ -1028,7 +1189,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:05:10.000Z",
@@ -1040,7 +1203,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:05:12.000Z",
@@ -1052,7 +1217,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:05:23.000Z",
@@ -1064,7 +1231,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:05:32.000Z",
@@ -1076,7 +1245,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:05:35.000Z",
@@ -1088,7 +1259,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:05:37.000Z",
@@ -1100,7 +1273,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:05:39.000Z",
@@ -1112,7 +1287,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:05:41.000Z",
@@ -1124,7 +1301,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:05:52.000Z",
@@ -1136,7 +1315,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:06:04.000Z",
@@ -1148,7 +1329,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:06:06.000Z",
@@ -1160,7 +1343,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:06:08.000Z",
@@ -1172,7 +1357,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:06:10.000Z",
@@ -1184,7 +1371,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:06:19.000Z",
@@ -1196,7 +1385,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:06:27.000Z",
@@ -1208,7 +1399,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:06:33.000Z",
@@ -1220,7 +1413,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:06:35.000Z",
@@ -1232,7 +1427,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:06:37.000Z",
@@ -1244,7 +1441,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:06:39.000Z",
@@ -1256,7 +1455,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:06:41.000Z",
@@ -1268,7 +1469,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:06:52.000Z",
@@ -1280,7 +1483,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:01.000Z",
@@ -1292,7 +1497,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:04.000Z",
@@ -1304,7 +1511,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:06.000Z",
@@ -1316,7 +1525,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:08.000Z",
@@ -1328,7 +1539,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:10.000Z",
@@ -1340,7 +1553,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:22.000Z",
@@ -1352,7 +1567,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:24.000Z",
@@ -1364,7 +1581,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:26.000Z",
@@ -1376,7 +1595,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:28.000Z",
@@ -1388,7 +1609,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:30.000Z",
@@ -1400,7 +1623,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:34.000Z",
@@ -1412,7 +1637,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:43.000Z",
@@ -1424,7 +1651,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:52.000Z",
@@ -1436,7 +1665,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:54.000Z",
@@ -1448,7 +1679,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:56.000Z",
@@ -1460,7 +1693,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:07:58.000Z",
@@ -1472,7 +1707,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:08:01.000Z",
@@ -1484,7 +1721,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:08:15.000Z",
@@ -1496,7 +1735,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:08:21.000Z",
@@ -1508,7 +1749,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:08:23.000Z",
@@ -1520,7 +1763,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:08:25.000Z",
@@ -1532,7 +1777,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:08:27.000Z",
@@ -1544,7 +1791,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:08:34.000Z",
@@ -1556,7 +1805,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:08:51.000Z",
@@ -1568,7 +1819,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:08:53.000Z",
@@ -1580,7 +1833,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:08:55.000Z",
@@ -1592,7 +1847,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:08:57.000Z",
@@ -1604,7 +1861,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:09:09.000Z",
@@ -1616,7 +1875,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:09:11.000Z",
@@ -1628,7 +1889,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:09:13.000Z",
@@ -1640,7 +1903,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:09:15.000Z",
@@ -1652,7 +1917,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:09:17.000Z",
@@ -1664,7 +1931,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:09:30.000Z",
@@ -1676,7 +1945,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:09:39.000Z",
@@ -1688,7 +1959,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:09:41.000Z",
@@ -1700,7 +1973,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:09:43.000Z",
@@ -1712,7 +1987,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:09:45.000Z",
@@ -1724,7 +2001,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:09:51.000Z",
@@ -1736,7 +2015,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:10:00.000Z",
@@ -1748,7 +2029,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:10:10.000Z",
@@ -1760,7 +2043,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:10:12.000Z",
@@ -1772,7 +2057,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:10:14.000Z",
@@ -1784,7 +2071,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:10:16.000Z",
@@ -1796,7 +2085,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:10:19.000Z",
@@ -1808,7 +2099,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:10:41.000Z",
@@ -1820,7 +2113,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:10:43.000Z",
@@ -1832,7 +2127,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:10:45.000Z",
@@ -1844,7 +2141,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:10:47.000Z",
@@ -1856,7 +2155,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:10:50.000Z",
@@ -1868,7 +2169,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:10:59.000Z",
@@ -1880,7 +2183,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:11:08.000Z",
@@ -1892,7 +2197,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:11:12.000Z",
@@ -1904,7 +2211,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:11:13.000Z",
@@ -1916,7 +2225,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:11:15.000Z",
@@ -1928,7 +2239,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:11:17.000Z",
@@ -1940,7 +2253,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:11:34.000Z",
@@ -1952,7 +2267,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:11:40.000Z",
@@ -1964,7 +2281,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:11:42.000Z",
@@ -1976,7 +2295,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:11:44.000Z",
@@ -1988,7 +2309,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:11:46.000Z",
@@ -2000,7 +2323,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:12:07.000Z",
@@ -2012,7 +2337,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:12:10.000Z",
@@ -2024,7 +2351,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:12:11.000Z",
@@ -2036,7 +2365,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:12:14.000Z",
@@ -2048,7 +2379,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:12:27.000Z",
@@ -2060,7 +2393,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:12:29.000Z",
@@ -2072,7 +2407,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:12:31.000Z",
@@ -2084,7 +2421,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:12:33.000Z",
@@ -2096,7 +2435,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:12:35.000Z",
@@ -2108,7 +2449,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:12:53.000Z",
@@ -2120,7 +2463,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:12:58.000Z",
@@ -2132,7 +2477,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:00.000Z",
@@ -2144,7 +2491,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:02.000Z",
@@ -2156,7 +2505,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:04.000Z",
@@ -2168,7 +2519,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:18.000Z",
@@ -2180,7 +2533,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:26.000Z",
@@ -2192,7 +2547,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:28.000Z",
@@ -2204,7 +2561,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:30.000Z",
@@ -2216,7 +2575,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:32.000Z",
@@ -2228,7 +2589,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:34.000Z",
@@ -2240,7 +2603,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:46.000Z",
@@ -2252,7 +2617,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:56.000Z",
@@ -2264,7 +2631,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:58.000Z",
@@ -2276,7 +2645,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:13:59.000Z",
@@ -2288,7 +2659,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:14:01.000Z",
@@ -2300,7 +2673,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:14:03.000Z",
@@ -2312,7 +2687,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:14:17.000Z",
@@ -2324,7 +2701,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:14:26.000Z",
@@ -2336,7 +2715,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:14:28.000Z",
@@ -2348,7 +2729,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:14:30.000Z",
@@ -2360,7 +2743,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:14:32.000Z",
@@ -2372,7 +2757,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:14:47.000Z",
@@ -2384,7 +2771,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:14:55.000Z",
@@ -2396,7 +2785,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:14:57.000Z",
@@ -2408,7 +2799,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:14:59.000Z",
@@ -2420,7 +2813,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:15:01.000Z",
@@ -2432,7 +2827,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:15:14.000Z",
@@ -2444,7 +2841,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:15:24.000Z",
@@ -2456,7 +2855,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:15:26.000Z",
@@ -2468,7 +2869,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:15:28.000Z",
@@ -2480,7 +2883,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:15:30.000Z",
@@ -2492,7 +2897,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:15:39.000Z",
@@ -2504,7 +2911,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:15:48.000Z",
@@ -2516,7 +2925,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:15:52.000Z",
@@ -2528,7 +2939,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:15:53.000Z",
@@ -2540,7 +2953,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:15:55.000Z",
@@ -2552,7 +2967,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:15:58.000Z",
@@ -2564,7 +2981,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:16:10.000Z",
@@ -2576,7 +2995,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:16:21.000Z",
@@ -2588,7 +3009,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:16:22.000Z",
@@ -2600,7 +3023,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:16:24.000Z",
@@ -2612,7 +3037,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:16:26.000Z",
@@ -2624,7 +3051,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:16:30.000Z",
@@ -2636,7 +3065,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:16:42.000Z",
@@ -2648,7 +3079,9 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         },
         {
           "time_utc": "2026-10-15T00:16:49.000Z",
@@ -2660,13 +3093,59 @@
           "fee_lamports": 10001,
           "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
           "sol_usd": 105.27,
-          "fee_payer_role": "facilitator"
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "amount"
         }
       ],
       "sol_usd": {
         "usd": 105.27,
         "source": "binance SOLUSDC 1d close (UTC)"
-      }
+      },
+      "seller_log": [
+        {
+          "tx_signature": "29U1n1WsskmZgGdXDJQMz3UDpmHWU2YnrKhJFnQxwZtsRS3QvRUCm3tADpzxHmuG5Amg1M2r8bUsZ3JoJPihFSrM",
+          "endpoint": "https://osd.x402jp.com/api/alpha/portfolio/current",
+          "amount": "10000",
+          "time_utc": "2026-10-14T21:00:50.303Z",
+          "source": "aa_runs"
+        },
+        {
+          "tx_signature": "5byqwqc4VcNvAksRCb5ceykwCYj5EggsFwzsDffBsKKsCSP79UpBgGLVuUaKvkk396ncEsGReiRqtM3WR9Y1LMyq",
+          "endpoint": "https://osd.x402jp.com/api/alpha/portfolio/scorecard",
+          "amount": "10000",
+          "time_utc": "2026-10-14T21:00:50.303Z",
+          "source": "aa_runs"
+        },
+        {
+          "tx_signature": "4uCnZ4tu2MeTHyLrdbsKsU8f7KDBLsqAvbTnLT86bfucuvfjVj63JYKTKcsGNztgo1d616Q184MiGnqm6Beoz9cD",
+          "endpoint": "https://osd.x402jp.com/api/alpha/jp/portfolio/current",
+          "amount": "10000",
+          "time_utc": "2026-10-14T21:00:50.303Z",
+          "source": "aa_runs"
+        },
+        {
+          "tx_signature": "21ZGwQEFjbMzbZo41cuKYab2Dpp4L63apV5gcJioVBKnFMjV3y5Wb3kUkWzKP5Dvhqx4acytH2dhVCNrFXBVUJuV",
+          "endpoint": "https://osd.x402jp.com/api/alpha/jp/scorecard",
+          "amount": "10000",
+          "time_utc": "2026-10-14T21:00:50.303Z",
+          "source": "aa_runs"
+        },
+        {
+          "tx_signature": "2hXhEjUwFBT7E5fmDDoc6Dxkm8ARECzJs3QKNuYhgPqzKwo6sCP5VPgSRNQ4ChgqMfzjS4vkYWQbPX1K8iBDf6Gx",
+          "endpoint": "https://osd.x402jp.com/api/alpha/jp/catalysts",
+          "amount": "10000",
+          "time_utc": "2026-10-14T21:00:50.303Z",
+          "source": "aa_runs"
+        },
+        {
+          "tx_signature": "2rwgTLXrwZmamZCbrDHxe8GZ3c3RULfJpdWPCnfj6n9XrT6k5UsG4DhcYexX2QhNsUaNZyheSLWjqt2acPhsJmJt",
+          "endpoint": "https://jin.x402jp.com/api/jin/movers",
+          "amount": "20000",
+          "time_utc": "2026-10-14T21:00:00.248Z",
+          "source": "aa_runs"
+        }
+      ]
     },
     "card": {
       "calls": null,
