@@ -43,6 +43,8 @@ jobs:
           STRIPE_RESTRICTED_KEY: ${{ secrets.STRIPE_RESTRICTED_KEY }}
           GATEWAY_LOG_URL: ${{ secrets.GATEWAY_LOG_URL }}
           LOG_READ_TOKEN: ${{ secrets.LOG_READ_TOKEN }}
+          SELLER_LOG_URL: ${{ secrets.SELLER_LOG_URL }}
+          SELLER_LOG_TOKEN: ${{ secrets.SELLER_LOG_TOKEN }}
           NVM_API_KEY: ${{ secrets.NVM_API_KEY }}
           NVM_ORG_ID: ${{ secrets.NVM_ORG_ID }}
           ANON_SALT: ${{ secrets.ANON_SALT }}

@@ -97,10 +97,10 @@ test('匿名化', () => {
   assert.equal(parseJsonl('{"a":1}\n\n{"a":2}\n').length, 2);
 });
 
-test('実証1ゲートウェイのログ: JST の1日分を UTC の2ファイルから読み、UTC 時刻と JST 日付を付ける', async () => {
+test('実証1ゲートウェイのログ: /logs/:date（JST の日付）の1日分を読み、範囲外の行は落とし、UTC 時刻と JST 日付を付ける', async () => {
   const dir = new URL('./fixtures/gwlog/', import.meta.url).pathname;
   const { start, end } = dayBounds('2026-11-03', '+09:00');
-  const calls = toCalls(await fetchGatewayLog({ dir }, start, end), '+09:00');
+  const calls = toCalls(await fetchGatewayLog({ dir }, '2026-11-03', start, end), '+09:00');
   assert.equal(calls.length, 4); // 2026-11-03T16:00Z は JST 11/4
   assert.deepEqual(calls[0], {
     time_utc: '2026-11-02T15:10:00.000Z',
@@ -210,9 +210,15 @@ test('日次集計: own / external / unclassified の3区分。一致しない�
   const d = buildDaily({ date: '2026-11-03', config: fullCfg(), detail: detail('2026-11-03'), sources: {} });
   assert.equal(d.price_check, 'ok');
   const { external: e, unclassified: u, own: o } = d.by_class;
-  assert.equal(e.usdc.contracts, 2);
-  assert.equal(e.usdc.buyers, 1);
-  assert.equal(e.usdc.revenue_usd, 0.03);
+  // ExtA: movers（$0.02、JIN と確定）と $0.01（JIN の series か OSD か不明）
+  assert.equal(e.usdc.jin_contracts_min, 1);
+  assert.equal(e.usdc.jin_contracts_max, 2);
+  assert.equal(e.usdc.unresolved, 1);
+  assert.equal(e.usdc.jin_buyers_min, 1);
+  assert.equal(e.usdc.jin_buyers_max, 1);
+  assert.equal(e.usdc.jin_revenue_usd_min, 0.02);
+  assert.equal(e.usdc.jin_revenue_usd_max, 0.03);
+  assert.equal(e.usdc.payto_revenue_usd, 0.03);
   // どちらも facilitator が fee payer → 売る側の手数料は 0、facilitator の分は参考値
   assert.equal(e.usdc.seller_fee_usd, 0);
   assert.equal(e.usdc.seller_fee_rate, 0);
@@ -220,8 +226,8 @@ test('日次集計: own / external / unclassified の3区分。一致しない�
   assert.equal(e.usdc.facilitator_fee_rate, 0.0333);
   assert.equal(e.usdc.fee_by_payer.facilitator.txs, 2);
   assert.ok(d.detail.usdc.payments.every((p) => p.fee_payer_role === 'facilitator'));
-  assert.equal(o.usdc.contracts, 2); // Probe と、ゲートウェイの裏側の購入（upstream_tx 一致）
-  assert.equal(u.usdc.contracts, 1); // Stranger は自動で external にしない
+  assert.equal(o.usdc.payto_inflows, 2); // Probe と、ゲートウェイの裏側の購入（upstream_tx 一致）
+  assert.equal(u.usdc.payto_inflows, 1); // Stranger は自動で external にしない
   assert.equal(e.card.calls, 2);
   assert.equal(e.card.uses_credits, 3);
   assert.equal(e.card.buyers, 1);
@@ -253,9 +259,9 @@ test('日次集計: 取れなかったソースは null のまま（0 で埋め�
 
 test('日次集計: 分類リストが空なら、全部 unclassified（ゲートウェイの裏側の購入だけは own）', () => {
   const d = buildDaily({ date: '2026-11-03', config: cfg(), detail: detail('2026-11-03'), sources: {} });
-  assert.equal(d.by_class.external.usdc.contracts, 0);
-  assert.equal(d.by_class.own.usdc.contracts, 1);
-  assert.equal(d.by_class.unclassified.usdc.contracts, 4);
+  assert.equal(d.by_class.external.usdc.payto_inflows, 0);
+  assert.equal(d.by_class.own.usdc.payto_inflows, 1);
+  assert.equal(d.by_class.unclassified.usdc.payto_inflows, 4);
   assert.equal(d.by_class.external.card.calls, 0);
 });
 
@@ -281,7 +287,7 @@ test('週次レポート: 外部の購入者なし（未分類あり）・あり
   assert.doesNotMatch(md2, /外部の購入者がいなかった/);
   const extSection = md2.split('## 別表')[0];
   // 2日分。支払い元アドレス・購入者は週で重複を数えない
-  assert.match(extSection, /\| 成約件数 \| 4（支払い件数） \| 2（プラン購入件数・Stripe） \|/);
+  assert.match(extSection, /\| 成約件数 \| 2 〜 4（JIN への支払い件数。[^|]*\| 2（プラン購入件数・Stripe） \|/);
   assert.match(extSection, /\| 購入者数 \| 1（支払い元アドレス数） \| 1（匿名化したトークン ID の数） \|/);
   assert.match(md2, /\| 80 \| 10 \| 6 \| 2 \/ 7 \|/);
   assert.match(md2, /\| USDC 直接 \| 2500 ms \| 2500 ms \| 2 \/ 2 \|/);
@@ -300,9 +306,9 @@ test('チェーン手数料: tx ごとに誰が払ったかを判定し、seller
   const det = { usdc: { payments: [pay('a', 'B1', FAC, 5000), pay('b', 'B2', PAY_TO, 10000), pay('c', 'B3', 'B3', 20000)] }, card: { calls: null, sales: null }, latency: [] };
   const d = buildDaily({ date: '2026-11-03', config: c, detail: det, sources: {} });
   const u = d.by_class.external.usdc;
-  assert.equal(u.revenue_usd, 0.03);
+  assert.equal(u.payto_revenue_usd, 0.03);
   assert.equal(u.seller_fee_usd, 0.001); // 10000 lamports
-  assert.equal(u.seller_fee_usd_per_contract, 0.000333);
+  assert.equal(u.seller_fee_usd_per_tx, 0.000333);
   assert.equal(u.seller_fee_rate, 0.0333);
   assert.equal(u.facilitator_fee_usd, 0.0005);
   assert.equal(u.fee_by_payer.buyer.usd, 0.002);
@@ -381,9 +387,9 @@ test('期間外の日: 開始日前・開始日未設定の日は本表に入れ
   assert.match(md, /期間外の日（2026-11-02 期間前, 2026-11-03 期間前）は本表に含めない/);
   const main = md.split('## 別表')[0];
   // 本表は 11/04〜11/08 の5日分だけ（1日あたり外部の USDC 2件）
-  assert.match(main, /\| 成約件数 \| 10（支払い件数） \|/);
+  assert.match(main, /\| 成約件数 \| 5 〜 10（JIN への支払い件数。/);
   assert.match(main, /\| 5 \/ 5 \|/); // 販売ページの計測できた日数
-  assert.match(md, /\| 外部 \| 4 \| \$0\.06 \|/); // 期間外の表に 11/02・11/03 の分
+  assert.match(md, /\| 外部 \| 2 〜 4 \| \$0\.04 〜 \$0\.06 \|/); // 期間外の表に 11/02・11/03 の分
   // 期間前の日に価格を変えていても、固定値との不一致としては出さない
   const pricey = structuredClone(dailies);
   pricey[0].price_check = 'mismatch: series: 0.01 → 0.02';
@@ -407,4 +413,101 @@ test('checkCurrent: 旧形式を検出する', async () => {
   const c2 = structuredClone(c);
   c2.own.version += 1;
   assert.ok(checkCurrent(d, c2).some((x) => /own_wallets v/.test(x)));
+});
+
+test('$0.01 は JIN か OSD か不明（unresolved）。売り手ログで一致した tx だけ確定する', async () => {
+  const { parseSellerLog, sellerLogUrl } = await import('../lib/seller-log.js');
+  const c = fullCfg();
+  const det = detail('2026-11-03');
+  // 売り手ログ: s1（ExtA の $0.01）は JIN の series、s5（Stranger の $0.01）は OSD
+  det.usdc.seller_log = parseSellerLog(JSON.stringify([
+    { tx_signature: 's1', endpoint: 'https://jin.x402jp.com/api/jin/series', amount: '10000', time_utc: '2026-11-02T15:01:40Z' },
+    { tx_signature: 's5', endpoint: 'https://osd.x402jp.com/api/alpha/portfolio/current', amount: '10000', time_utc: '2026-11-02T15:08:20Z' },
+  ]));
+  const d = buildDaily({ date: '2026-11-03', config: c, detail: det, sources: {} });
+  const bySig = Object.fromEntries(d.detail.usdc.payments.map((p) => [p.signature, p]));
+  assert.equal(bySig.s1.product, 'jin_series');
+  assert.equal(bySig.s1.product_source, 'seller_log:seller');
+  assert.equal(bySig.s2.product, 'jin_movers');
+  assert.equal(bySig.s2.product_source, 'amount');
+  assert.equal(bySig.s3.product, 'unresolved'); // ログに無い $0.01
+  assert.equal(bySig.s5.product, 'osd');
+  const e = d.by_class.external.usdc;
+  assert.equal(e.jin_contracts_min, 2); // movers ＋ ログで確定した series
+  assert.equal(e.jin_contracts_max, 2);
+  assert.equal(e.unresolved, 0);
+  assert.equal(d.by_class.unclassified.usdc.by_product.osd, 1);
+  assert.equal(d.by_class.unclassified.usdc.jin_contracts_max, 0);
+  // $0.001 は OSD
+  const det2 = detail('2026-11-03');
+  det2.usdc.payments[0].amount_atomic = '1000';
+  assert.equal(buildDaily({ date: '2026-11-03', config: c, detail: det2, sources: {} }).detail.usdc.payments[0].product, 'osd');
+  // ログの形
+  assert.equal(sellerLogUrl('https://jin.x402jp.com/', '2026-11-03'), 'https://jin.x402jp.com/sales/2026-11-03');
+  assert.equal(sellerLogUrl('https://x.example/s/{date}.json', '2026-11-03'), 'https://x.example/s/2026-11-03.json');
+  assert.throws(() => parseSellerLog('[{"tx_signature":"a","endpoint":"e","amount":"1"}]'), /time_utc/);
+  assert.equal(parseSellerLog('{"tx_signature":"a","endpoint":"e","amount":"1","time_utc":"2026-11-03T00:00:00Z"}\n{"tx_signature":"b","endpoint":"e","amount":"1","time_utc":"2026-11-03T00:00:01Z"}').length, 2);
+});
+
+test('売り手ログ: 404 は null（その日のログが無い）、それ以外のエラーは例外', async () => {
+  const { fetchSellerLog } = await import('../lib/seller-log.js');
+  const realFetch = globalThis.fetch;
+  const seen = [];
+  globalThis.fetch = async (url, init) => {
+    seen.push([url, init.headers.authorization]);
+    if (url.endsWith('2026-11-01')) return new Response('', { status: 404 });
+    if (url.endsWith('2026-11-02')) return new Response('', { status: 401 });
+    return new Response('[{"tx_signature":"a","endpoint":"https://jin.x402jp.com/api/jin/series","amount":"10000","time_utc":"2026-11-03T00:00:00Z"}]');
+  };
+  try {
+    assert.equal(await fetchSellerLog({ url: 'https://s.test', token: 'T' }, '2026-11-01'), null);
+    await assert.rejects(fetchSellerLog({ url: 'https://s.test', token: 'T' }, '2026-11-02'), /HTTP 401/);
+    assert.equal((await fetchSellerLog({ url: 'https://s.test', token: 'T' }, '2026-11-03')).length, 1);
+    assert.deepEqual(seen[2], ['https://s.test/sales/2026-11-03', 'Bearer T']);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test('AA の公開 run ログ: JIN・OSD の購入だけを売り手ログの形にし、売り手ログを優先してまとめる', async () => {
+  const { rowsFromRuns, mergeSellerRows } = await import('../lib/aa-runs.js');
+  const body = {
+    runs: [
+      {
+        timestamp: '2026-10-14T10:23:07.322Z',
+        results: [
+          { endpoint: 'https://osd.x402jp.com/api/alpha/portfolio/current', costUsdc: 0.01, txHash: 'tnFj' },
+          { endpoint: 'https://jin.x402jp.com/api/jin/latest', costUsdc: 0 },
+          { endpoint: 'https://x402yi.vercel.app/api/yield/scan', costUsdc: 0.2, txHash: '0x8f3b' },
+        ],
+      },
+    ],
+  };
+  const rows = rowsFromRuns(body);
+  assert.deepEqual(rows, [{ tx_signature: 'tnFj', endpoint: 'https://osd.x402jp.com/api/alpha/portfolio/current', amount: '10000', time_utc: '2026-10-14T10:23:07.322Z', source: 'aa_runs' }]);
+  const seller = [{ tx_signature: 'tnFj', endpoint: 'https://jin.x402jp.com/api/jin/series', amount: '10000', time_utc: 'x', source: 'seller' }];
+  assert.equal(mergeSellerRows(seller, rows)[0].source, 'seller');
+  assert.equal(mergeSellerRows(null, rows)[0].source, 'aa_runs');
+  // 集計では aa_runs で OSD と確定する
+  const c = fullCfg();
+  const det = detail('2026-11-03');
+  det.usdc.seller_log = [{ ...rows[0], tx_signature: 's3' }];
+  const d = buildDaily({ date: '2026-11-03', config: c, detail: det, sources: {} });
+  const p = d.detail.usdc.payments.find((x) => x.signature === 's3');
+  assert.deepEqual([p.product, p.product_source], ['osd', 'seller_log:aa_runs']);
+});
+
+test('売り手ログを OSD が出す場合: その日のログに無い $0.01 は消去法で JIN の series', () => {
+  const c = fullCfg();
+  const det = detail('2026-11-03');
+  det.usdc.seller_log = [{ tx_signature: 's5', endpoint: 'https://osd.x402jp.com/api/alpha/portfolio/current', amount: '10000', time_utc: 'x', source: 'seller' }];
+  det.usdc.seller_log_complete = 'osd';
+  const d = buildDaily({ date: '2026-11-03', config: c, detail: det, sources: {} });
+  const bySig = Object.fromEntries(d.detail.usdc.payments.map((p) => [p.signature, p]));
+  assert.deepEqual([bySig.s5.product, bySig.s1.product, bySig.s1.product_source], ['osd', 'jin_series', 'seller_log_exclusion:osd']);
+  assert.equal(bySig.s2.product, 'jin_movers');
+  // ログが取れなかった日（complete が無い）は unresolved のまま
+  delete det.usdc.seller_log_complete;
+  const d2 = buildDaily({ date: '2026-11-03', config: c, detail: det, sources: {} });
+  assert.equal(d2.detail.usdc.payments.find((p) => p.signature === 's1').product, 'unresolved');
 });

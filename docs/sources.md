@@ -66,7 +66,17 @@ JST の 00:00〜24:00（`config/period.json` の `utc_offset`）。各トラン�
 - 実証2の集計期間にかかるのは、`irt5N3uK91…`（10/12 JST）、`6154hajSEe…`（10/13）、`4Dj6mCQEV6…`（10/14）、`5xCZSNuRsM…`（10/14）。tx 署名の全文は `own_wallets.json` の `evidence`。
 - `/.well-known/agent-card.json`（EIP-8004 の登録情報。Base の agentId 55560）と `/dashboard` には、Solana のアドレスも tx 署名も出ていない。
 - 10/14 10:23:08〜10:23:13 UTC の $0.01 × 5件は、JIN の series ではなく **OSD の購入**だった。AA の `/api/runs` の 10:23:07 UTC の run に OSD の5つのエンドポイントとして載っていて、tx 署名も一致する（`tnFjvvpYWe…` ほか）。2026-10-15 の報告では JIN のエンドポイントだけで突き合わせたため「載っていない」と書いたが、誤りだった。
-- **AA の公開ログに載っていない支払い**：10/15 00:00:20〜00:16:49 UTC の $0.001 × 196件（OSD の `/api/catalyst/:ticker` か `/api/edinet/:code` の価格）は、支払い元が AA のウォレットだが、`/api/runs`（直近60回分、9/27〜10/15）に該当する run が無い。AA のウォレットが、ログに出ない経路でも使われているということ。AA のログを一次資料にするときは、チェーンの記録と一致するとは限らない前提で扱う。own の判定はアドレスで行うので影響しない。
+- **AA の公開ログに載っていない支払い（10/15 の $0.001 × 196件）**：チェーン上の事実は次のとおり。AA の `/api/runs`（直近60回分、9/27〜10/15）に該当する run は無い。何の実行だったかは AA の運用者の確認待ち。AA のログを一次資料にするときは、チェーンの記録と一致するとは限らない前提で扱う。own の判定はアドレスで行うので影響しない。
+
+  | 項目 | 値 |
+  |---|---|
+  | 件数・合計 | 196件、各 1000（$0.001）、合計 0.196 USDC |
+  | 時刻 | 2026-10-15 00:00:20〜00:16:49 UTC（09:00:20〜09:16:49 JST）。間隔の中央値 2秒（最短 1秒、最長 22秒） |
+  | 支払い元 | `7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY`（AA）だけ |
+  | 送金先 | JIN・OSD 共有の payTo `4s8X…3VPf`（USDC 口座 `DRg7rZXr…jjjy`） |
+  | 商品 | 金額 $0.001 は OSD の `/api/catalyst/:ticker` か `/api/edinet/:code`（JIN に $0.001 のエンドポイントは無い） |
+  | チェーン手数料 | すべて PayAI（`CjNF…eKww`）が fee payer |
+  | 最初と最後の tx | `2eb7AcXKSh8j8V4a9im7UeYLhcfy5H4HFcwS7skmGP5EJp2FFkqd6ogfW9jhVx8cjjsk1G272K16PtcmS22hEpaB` / `PS1w4Q8wKLZqbeqNH6an55cKuqL5dF3CEFvjttXwKBJCs2ezRctLwp8BT9oqZMEfudA6cAXRRUYSW4k7t9GWvwV` |
 
 ## USDC 直接
 
@@ -108,18 +118,33 @@ JST の 00:00〜24:00（`config/period.json` の `utc_offset`）。各トラン�
 
 - tx の memo は支払いごとのランダムな値（16 バイトの16進）で、どのエンドポイントの支払いかは分からない。チェーンの情報だけでは、JIN の series と OSD の $0.01 を区別できない。
 - いまの集計（`by_item`）は 10000 を `series`、1000 を `other` としている。10000 には OSD が混ざりうる。実例として、10/14・10/15 の AA の $0.01 × 5件はすべて OSD だった。
-- 扱いは未決定（2026-10-16 時点）。期間を始める前に決める。
+- **扱い（2026-10-17〜）**：各支払いに `product`（`jin_movers` / `jin_series` / `osd` / `unresolved` / `other`）と `product_source` を付ける。金額で決まるのは $0.02 → `jin_movers`、$0.001 → `osd` で、$0.01 は `unresolved`。売り手ログ（`docs/seller-log.md`）か AA の公開 run ログで tx が一致したものだけ確定する。JIN の成約数は、確定したものだけの下限〜`unresolved` を含めた上限の幅で出す（日次データの `schema_version` 2）。チェーン手数料・着金・所要時間は受取口座の性質なので、商品に関係なく入金すべてで数える。
+
+### 外部の公開情報で振り分けられるか（2026-10-17 確認）
+
+| 調べたもの | 結果 |
+|---|---|
+| ファシリテーター `CjNF…eKww` | **PayAI**（payai.network）の Solana の署名者。`https://facilitator.payai.network/supported` の `signers` に載っている。x402scan のファシリテーター一覧（`https://www.x402scan.com/facilitators`）でも PayAI の項目にある |
+| PayAI の決済履歴 | 公開の API は `/supported`・`/verify`・`/settle`・`/discovery/resources` だけ。`/settlements`・`/transactions`・`/history` は 404。`/discovery/resources` は商品の一覧（Bazaar）で tx は含まない。決済履歴は公開されていない |
+| x402scan | 受取先・サーバーのページはクライアント側で描画していて、HTML に tx もエンドポイントも無い。公開ソース（`Merit-Systems/x402scan`）では、決済の記録（`TransferEvent`）は送り手・受取先・tx・ファシリテーターだけで、エンドポイントを持たない。チェーンの転送から作っているので、同じ受取口座の2商品は区別できない |
+| AA の公開 run ログ（`https://aa.x402jp.com/api/runs`） | AA 自身の購入について「エンドポイント ↔ tx 署名」がある。**売り手ログと同じ形で取り込んでいる**（`lib/aa-runs.js`）。直近の run しか公開されていないので、日次集計のたびに取り込んで明細に残す。対象は AA の購入だけ |
+
+結果：外部の購入者の $0.01 を振り分けられる公開情報は無い。売り手ログ（`docs/seller-log.md`）が要る。AA の購入は AA の公開 run ログで確定でき、10/12〜10/16 の AA の $0.01 はすべて OSD だった。
+
+### seller-probe の公開アドレス（2026-10-17 時点で未特定）
+
+- 設定ファイル・コミット済みのログ（`main`・`claude/friendly-volta-rsj0kc`）・Actions の実行ログ（無料の測定2回）のどれにも、ウォレットの公開アドレスは出ていない。無料の測定はウォレットを使わないので、実行ログにも出ない。
+- **代わりの特定方法**：有料の測定（`paid-probe (weekly)`、月曜 04:41 UTC＝13:41 JST）が初めて動いた週に、その月曜の日次データを見る。04:41 UTC の直後に、AA 以外の支払い元から JIN の series（$0.01）か OSD の $0.01 の入金があれば、それが seller-probe のウォレット。seller-probe は1コール $0.01 が上限なので movers（$0.02）は買わない。seller-probe のコミット済みのログ（`log/YYYY-MM-DD.jsonl` の `paid` レコードの `tx`）が出ていれば、その tx をチェーンで読んで支払い元を取るほうが確実。確定したら `own_wallets.json` に出所（URL と tx 署名）を添えて書き、`--resummarize` で数え直す。
 
 ### 読み取りの網羅性の2度目の確認（予定）
 
-seller-probe はまだ一度も有料の測定を動かしていない（Actions の実行は無料の測定が2回だけで、どちらも失敗）。上の「取りこぼし無し」は、AA の支払いと別経路の署名一覧との突き合わせで確かめたもので、seller-probe の支払いでは確かめていない。seller-probe の `paid-probe (weekly)`（月曜 04:41 UTC）が動き始めたら、その日の payTo への $0.01 の入金が日次データに現れるかを確かめる。seller-probe の公開アドレスが分かれば、own として現れるはず。
+seller-probe はまだ一度も有料の測定を動かしていない（Actions の実行は無料の測定が2回だけで、どちらも失敗。失敗の原因は測定ではなく、結果をコミットするときの `git pull --rebase` で README が競合したこと。seller-probe の側の問題）。上の「取りこぼし無し」は、AA の支払いと別経路の署名一覧との突き合わせで確かめたもので、seller-probe の支払いでは確かめていない。seller-probe の `paid-probe (weekly)`（月曜 04:41 UTC）が動き始めたら、その日の payTo への $0.01 の入金が日次データに現れるかを確かめる。seller-probe の公開アドレスが分かれば、own として現れるはず。
 
 ## カード払い
 
 ### 実証1ゲートウェイのログ
 
-- 実証1の `src/log.ts` の `RequestLogEntry`（1リクエスト1行、UTC の日ごとのファイル）を、実証1ゲートウェイの口 `GET /logs/:date` から読む。URL は `config/site.json` の `card.gateway_base_url` ＋ `card.gateway_log_path`（`/logs/{day}`）。`:date` は UTC の日付として扱う。Bearer は実証1の `LOG_READ_TOKEN`（読み取り専用）。`GATEWAY_LOG_URL` を設定すればそちらを優先する。
-- JST の1日は UTC の2日にまたがるので、2ファイルを読んで時刻で絞る。
+- 実証1の `src/log.ts` の `RequestLogEntry`（1リクエスト1行）を、実証1ゲートウェイの口 `GET /logs/:date` から読む。URL は `config/site.json` の `card.gateway_base_url` ＋ `card.gateway_log_path`（`/logs/{day}`）。**`:date` は JST の日付**（実証1の B1 と揃えた。2026-10-17）。受け取った行は、念のため JST のその日の範囲でも絞る。Bearer は実証1の `LOG_READ_TOKEN`（読み取り専用）。`GATEWAY_LOG_URL` を設定すればそちらを優先する。
 - 残すのは `ts`・`tokenId`・`routeId`・`outcome`・`creditsConsumed`・`latencyMs`・`upstreamTx` だけ。パスやエラー本文は残さない。
 - **2026-10-14 時点で、実証1にはこの口がまだ無い。** それまでの日は `gateway_log: "missing"`（欠損）として記録する。口がつながったら `node scripts/collect-daily.mjs --resummarize <開始日>..<終了日>` を実行すると、欠損の日だけログを取りに行って埋め、数え直す。
 

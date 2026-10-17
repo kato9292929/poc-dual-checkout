@@ -17,6 +17,8 @@ import { fetchPayments, DEFAULT_RPC } from '../lib/solana.js';
 import { fetchSales, matchesPlan, toSale, fetchPayoutArrivals, withPayout } from '../lib/stripe.js';
 import { csvSalesForDate } from '../lib/stripe-csv.js';
 import { fetchGatewayLog, toCalls, parseJsonl } from '../lib/gateway.js';
+import { fetchSellerLog } from '../lib/seller-log.js';
+import { fetchAaRuns, mergeSellerRows } from '../lib/aa-runs.js';
 import { NVM_API, reconcile } from '../lib/nevermined.js';
 import { solUsd } from '../lib/price.js';
 import { anonymize } from '../lib/anon.js';
@@ -42,7 +44,10 @@ const gw = (() => {
   const url = env.GATEWAY_LOG_URL || (base && !base.startsWith('TODO') ? `${base.replace(/\/$/, '')}${config.site.card.gateway_log_path}` : null);
   return { url, dir: env.GATEWAY_LOG_DIR, token: env.LOG_READ_TOKEN, ready: !!((url && env.LOG_READ_TOKEN) || env.GATEWAY_LOG_DIR) };
 })();
-const loadGateway = async (s, e) => toCalls(await fetchGatewayLog(gw, s, e), offset);
+const loadGateway = async (d, s, e) => toCalls(await fetchGatewayLog(gw, d, s, e), offset);
+
+// 売り手側の「エンドポイント ↔ tx 署名」ログ（docs/seller-log.md）
+const seller = { url: env.SELLER_LOG_URL, token: env.SELLER_LOG_TOKEN, ready: !!(env.SELLER_LOG_URL && env.SELLER_LOG_TOKEN) };
 
 if (args.includes('--upgrade')) {
   for (const f of readdirSync(join(ROOT, 'data')).filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f)).sort()) {
@@ -52,6 +57,7 @@ if (args.includes('--upgrade')) {
     if (!bad.length) continue;
     if (old.schema === 3) {
       if (old.sources?.gateway_log === 'not_configured') old.sources.gateway_log = 'missing';
+      if (!old.sources.seller_log) old.sources.seller_log = 'missing';
       rebuild(d, old.detail, old.sources);
       console.log(`upgraded ${d}（明細から数え直し）: ${bad.join(' / ')}`);
     } else {
@@ -73,15 +79,42 @@ if (opt('--resummarize')) {
     if (old.sources.gateway_log !== 'ok' && gw.ready) {
       const b = dayBounds(d, offset);
       try {
-        old.detail.card.calls = await loadGateway(b.start, b.end);
+        old.detail.card.calls = await loadGateway(d, b.start, b.end);
         old.sources.gateway_log = 'ok';
         old.sources.gateway_log_backfilled_at = new Date().toISOString();
       } catch (e) {
         old.sources.gateway_log = `error: ${e.message}`;
       }
     }
+    // 売り手ログも、無かった日は取りに行って埋める
+    if (old.sources.seller_log !== 'ok' && seller.ready && old.detail.usdc) {
+      try {
+        const rows = await fetchSellerLog(seller, d);
+        if (rows) {
+          old.detail.usdc.seller_log = mergeSellerRows(rows, (old.detail.usdc.seller_log || []).filter((r) => r.source === 'aa_runs'));
+          old.detail.usdc.seller_log_complete = config.site.usdc.seller_log_covers || null;
+          old.sources.seller_log = 'ok';
+          old.sources.seller_log_backfilled_at = new Date().toISOString();
+        } else old.sources.seller_log = 'missing';
+      } catch (e) {
+        old.sources.seller_log = `error: ${e.message}`;
+      }
+    }
+    if (!old.sources.seller_log) old.sources.seller_log = 'missing';
+    // AA の公開 run ログ（直近の run しか公開されていないので、取れる範囲で足す）
+    if (old.detail.usdc && !args.includes('--offline')) {
+      try {
+        const sigs = new Set(old.detail.usdc.payments.map((p) => p.signature));
+        const rows = (await fetchAaRuns()).filter((r) => sigs.has(r.tx_signature));
+        const have = old.detail.usdc.seller_log || [];
+        old.detail.usdc.seller_log = mergeSellerRows(have.filter((r) => r.source !== 'aa_runs'), [...have.filter((r) => r.source === 'aa_runs'), ...rows]);
+        old.sources.aa_runs = 'ok';
+      } catch (e) {
+        old.sources.aa_runs = old.sources.aa_runs === 'ok' ? 'ok' : `error: ${e.message}`;
+      }
+    }
     rebuild(d, old.detail, old.sources);
-    console.log(`resummarized ${d}（gateway_log: ${old.sources.gateway_log}）`);
+    console.log(`resummarized ${d}（gateway_log: ${old.sources.gateway_log}, seller_log: ${old.sources.seller_log}）`);
   }
   process.exit(0);
 }
@@ -128,7 +161,25 @@ const payments = await attempt('usdc_chain', true, async () =>
 
 // カード払い：利用件数・消費クレジット・購入者は実証1ゲートウェイのログで数える
 // 口がまだ無い・トークンが無い日は欠損（missing）。つながったあと --resummarize で埋める
-const calls = await attempt('gateway_log', gw.ready, () => loadGateway(start, end), { missing: 'missing' });
+const calls = await attempt('gateway_log', gw.ready, () => loadGateway(date, start, end), { missing: 'missing' });
+
+// AA の公開 run ログ（AA 自身の購入の エンドポイント ↔ tx）。その日の支払いに一致するものだけ残す
+const aaRows = await attempt('aa_runs', true, async () => {
+  const sigs = new Set((payments || []).map((p) => p.signature));
+  return (await fetchAaRuns()).filter((r) => sigs.has(r.tx_signature));
+});
+
+// 売り手ログ：無い日（未設定・404）は missing。$0.01 は unresolved のまま残り、つながったら --resummarize で埋める
+let sellerLog = null;
+if (!seller.ready) sources.seller_log = 'missing';
+else {
+  try {
+    sellerLog = await fetchSellerLog(seller, date);
+    sources.seller_log = sellerLog ? 'ok' : 'missing';
+  } catch (e) {
+    sources.seller_log = `error: ${e.message}`;
+  }
+}
 
 // カード払い：手数料と着金日は Stripe（API と、手で書き出した CSV）
 let sales = await attempt(
@@ -179,7 +230,15 @@ sources.latency_probe = latency.length ? 'ok' : 'not_found';
 const detail = {
   window_utc: [iso(start), iso(end)],
   page,
-  usdc: payments ? { payments, sol_usd: sol } : null,
+  usdc: payments
+    ? {
+        payments,
+        sol_usd: sol,
+        seller_log: mergeSellerRows(sellerLog, aaRows),
+        // 売り手ログがその日取れたときだけ、そのログが何をすべて含むか（消去法に使う）
+        seller_log_complete: sources.seller_log === 'ok' ? config.site.usdc.seller_log_covers || null : null,
+      }
+    : null,
   card: { calls, sales, nvm_purchases: nvmPurchases, nvm },
   latency,
 };

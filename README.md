@@ -36,6 +36,7 @@ Nevermined のプランはカードか暗号資産のどちらか一方しか持
 | `config/external_buyers.json` | 外部と確定した購入者 → external（どちらにも一致しないものは unclassified。変更履歴: `config/CHANGELOG.md`） |
 | `data/stripe/YYYY-MM.csv` | 手で書き出した Stripe の CSV（置いてよい列は `data/stripe/README.md`） |
 | `docs/sources.md` | 各数字の出典、計測方法、未確認の点 |
+| `docs/seller-log.md` | 売り手側の「エンドポイント ↔ tx 署名」ログの形式（$0.01 を JIN と OSD に振り分ける） |
 
 ## 外部サービスの依存：Upstash Redis（指示書に無い依存）
 
@@ -57,7 +58,7 @@ Nevermined のプランはカードか暗号資産のどちらか一方しか持
 
 | 項目 | USDC 直接 | カード払い |
 |---|---|---|
-| 成約件数 | 支払い件数 | プラン購入件数（主系は `card.purchase_source`：`stripe`〔既定〕/ `nvm_events`） |
+| 成約件数 | JIN への支払い件数（下限〜上限。受取口座を OSD と共有していて、$0.01 は JIN の series か OSD か区別できないため。`docs/seller-log.md`） | プラン購入件数（主系は `card.purchase_source`：`stripe`〔既定〕/ `nvm_events`） |
 | 利用回数 | 支払い件数 | 消費クレジット数（実証1ゲートウェイのログ） |
 | 購入者数 | 支払い元アドレス数 | 匿名化したトークン ID の数（同上） |
 | 1件あたりの手数料 | チェーン手数料のうち seller が払った分（facilitator の分は参考値として別の列） | カード手数料（実測） |

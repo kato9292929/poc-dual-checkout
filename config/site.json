@@ -41,7 +41,36 @@
       }
     ],
     "seller_fee_payers": [],
-    "_fee_payer_comment": "tx のチェーン手数料を誰が払ったか: fee payer が facilitator_fee_payers なら facilitator、pay_to か seller_fee_payers なら seller、支払い元（payer）なら buyer、どれでもなければ other。売る側の手数料率には seller の分だけを入れる。"
+    "_fee_payer_comment": "tx のチェーン手数料を誰が払ったか: fee payer が facilitator_fee_payers なら facilitator、pay_to か seller_fee_payers なら seller、支払い元（payer）なら buyer、どれでもなければ other。売る側の手数料率には seller の分だけを入れる。",
+    "_shared_comment": "この payTo は OSD（osd.x402jp.com）の Solana の payTo と同じ（2026-10-16 確認）。金額だけでは $0.01 が JIN の series か OSD か区別できないので unresolved とし、売り手ログ（docs/seller-log.md）で一致した tx だけ確定する。",
+    "shared_with": [
+      {
+        "name": "OSD",
+        "host": "osd.x402jp.com",
+        "discovery_url": "https://osd.x402jp.com/.well-known/x402.json"
+      }
+    ],
+    "amount_products": {
+      "20000": "jin_movers",
+      "10000": "unresolved",
+      "1000": "osd"
+    },
+    "endpoint_products": [
+      {
+        "prefix": "https://jin.x402jp.com/api/jin/series",
+        "product": "jin_series"
+      },
+      {
+        "prefix": "https://jin.x402jp.com/api/jin/movers",
+        "product": "jin_movers"
+      },
+      {
+        "prefix": "https://osd.x402jp.com/",
+        "product": "osd"
+      }
+    ],
+    "seller_log_covers": null,
+    "_seller_log_comment": "売り手ログ（docs/seller-log.md）を出すのがどちらか: \"jin\" / \"osd\" / null（まだ無い）。その日のログが取れたとき、ログに無い $0.01 は消去法でもう一方の商品とする（jin のログなら OSD、osd のログなら JIN の series）。"
   },
   "card": {
     "_comment": "カード払いの入口＝実証1のゲートウェイ＋Nevermined のカードプラン（isCrypto=false）。前払い（prepaid）に固定。都度払い（pay-as-you-go）は Stripe の最低請求額 $0.50 のため使わない。",
