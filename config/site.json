@@ -83,9 +83,11 @@
     "plan_purchase_url": "TODO_SET_AFTER_POC1",
     "gateway_base_url": "TODO_SET_AFTER_POC1",
     "plan": {
+      "name": "prepaid-100",
       "plan_price_usd": 1.0,
       "plan_credits": 100,
-      "summary": "$1 で 100 クレジット（1 クレジット = $0.01）を先に購入し、1コールごとに消費する。"
+      "valid_days": 30,
+      "summary": "$1 で 100 クレジット（1 クレジット = $0.01）を先に購入し、1コールごとに消費する。購入から30日有効。"
     },
     "stripe_match": {
       "_comment": "Stripe の取引のうち JIN プランの購入だけを数える条件。空なら全件。",
@@ -96,6 +98,7 @@
     "purchase_source": "stripe",
     "_purchase_source_comment": "プラン購入件数の主系。stripe（Stripe の取引数、既定）か nvm_events（Nevermined の plan.purchased イベント数）。主系でない方は照合用に残す。",
     "gateway_log_path": "/logs/{day}",
-    "_gateway_log_comment": "実証1ゲートウェイのログの口（GET /logs/:date、Bearer は LOG_READ_TOKEN）。{day} は UTC の日付（実証1のログは UTC の日ごと）。GATEWAY_LOG_URL を設定すればそちらを優先する。"
+    "_gateway_log_comment": "実証1ゲートウェイのログの口（GET /logs/:date、Bearer は LOG_READ_TOKEN）。{day} は UTC の日付（実証1のログは UTC の日ごと）。GATEWAY_LOG_URL を設定すればそちらを優先する。",
+    "_plan_comment": "実証1（poc-card-credits）の config/plans.json の prepaid-100 と同じ値。プラン ID と購入 URL は、実証1で npm run plan:register を実行したあとに入れる。"
   }
 }
