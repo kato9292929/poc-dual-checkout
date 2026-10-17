@@ -1,0 +1,363 @@
+{
+  "schema": 3,
+  "date": "2026-10-16",
+  "timezone": "Asia/Tokyo",
+  "window_utc": [
+    "2026-10-15T15:00:00.000Z",
+    "2026-10-16T15:00:00.000Z"
+  ],
+  "period": null,
+  "period_phase": "no_period",
+  "price_check": "no_period",
+  "classification": {
+    "own_wallets_version": 4,
+    "external_buyers_version": 2
+  },
+  "generated_at": "2026-10-16T23:35:07.822Z",
+  "sources": {
+    "page": "not_configured",
+    "sol_usd": "ok",
+    "usdc_chain": "ok",
+    "gateway_log": "missing",
+    "stripe": "missing",
+    "stripe_csv": "not_found",
+    "nvm_api": "not_configured",
+    "latency_probe": "ok"
+  },
+  "page": null,
+  "by_class": {
+    "external": {
+      "usdc": {
+        "contracts": 0,
+        "uses": 0,
+        "buyers": 0,
+        "by_item": {},
+        "revenue_usd": 0,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_contract": null,
+        "seller_fee_rate": null,
+        "facilitator_fee_usd": 0,
+        "facilitator_fee_rate": null,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": null
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    },
+    "unclassified": {
+      "usdc": {
+        "contracts": 6,
+        "uses": 6,
+        "buyers": 1,
+        "by_item": {
+          "movers": 1,
+          "series": 5
+        },
+        "revenue_usd": 0.07,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_contract": 0,
+        "seller_fee_rate": 0,
+        "facilitator_fee_usd": 0.00625,
+        "facilitator_fee_rate": 0.0893,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 6,
+            "lamports": 60006,
+            "usd": 0.00625
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": 0
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    },
+    "own": {
+      "usdc": {
+        "contracts": 0,
+        "uses": 0,
+        "buyers": 0,
+        "by_item": {},
+        "revenue_usd": 0,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_contract": null,
+        "seller_fee_rate": null,
+        "facilitator_fee_usd": 0,
+        "facilitator_fee_rate": null,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": null
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    }
+  },
+  "parties": {
+    "usdc": [
+      {
+        "id": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+        "class": "unclassified",
+        "count": 6,
+        "note": "own 候補（AA（Autonomous Agent））: 自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）。確定: AA の公開アドレスが own_wallets.json の solana に入り、それがこのアドレスと一致したとき"
+      }
+    ],
+    "card_tokens": null
+  },
+  "latency": {
+    "usdc": {
+      "runs": 0,
+      "ok": 0,
+      "skipped": 1,
+      "total_ms_p50": null,
+      "total_ms_p90": null,
+      "first_402_ms_median": null,
+      "sign_ms_median": null,
+      "paid_request_ms_median": null
+    },
+    "card": {
+      "runs": 0,
+      "ok": 0,
+      "skipped": 1,
+      "total_ms_p50": null,
+      "total_ms_p90": null,
+      "first_402_ms_median": null,
+      "sign_ms_median": null,
+      "paid_request_ms_median": null
+    }
+  },
+  "nvm_reconcile_incl_own": null,
+  "detail": {
+    "window_utc": [
+      "2026-10-15T15:00:00.000Z",
+      "2026-10-16T15:00:00.000Z"
+    ],
+    "page": null,
+    "usdc": {
+      "payments": [
+        {
+          "time_utc": "2026-10-15T21:00:53.000Z",
+          "date_jst": "2026-10-16",
+          "signature": "nRuYwb9LTNBsijxmVsky1fsiUdDEKe3w4UAwtrPWVby8LFAzmtbFSTGipVzaNHTerz1wryCSg3B5fJZrDjSqFQ6",
+          "block_time": 1792098053,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "20000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 104.15,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T21:00:56.000Z",
+          "date_jst": "2026-10-16",
+          "signature": "4BncoEADAKTFswPGhn5YEWfdS3SPay8Hqtorn9dUcxqwmUFKVaPrs7qp8CXTnT25k8KFzL7adB9dPM35UQ4v9mvk",
+          "block_time": 1792098056,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 104.15,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T21:00:58.000Z",
+          "date_jst": "2026-10-16",
+          "signature": "4RYYCQh8XPXZgZfo1PnhCR5XeS4t49XBjqipc9eMdMQQWHDHfmaJhtFtBrf7G3v5Y2HLkt78i5z3DfDSTQ2q63ae",
+          "block_time": 1792098058,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 104.15,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T21:00:59.000Z",
+          "date_jst": "2026-10-16",
+          "signature": "4kBWLEZ9SaNfYzjVVZq9m6LqirJg16zZbjF54GgdjyNUMjHcuvGn6Ya9a1411LtyNCJR3vGfjH5Jn6jRguqbQwrW",
+          "block_time": 1792098059,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 104.15,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T21:01:00.000Z",
+          "date_jst": "2026-10-16",
+          "signature": "5txPSvYsz3o156bc3TMagVYSJSsLfR8KhZedknHtgraEVNVoyNykqmDLoHYVPBCvX6WRY3RXWqs6rU42HsJ8bpoX",
+          "block_time": 1792098060,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 104.15,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        },
+        {
+          "time_utc": "2026-10-15T21:01:01.000Z",
+          "date_jst": "2026-10-16",
+          "signature": "oLMeHgoWaDyJWX37giiUogkj6GTCkAxKha4c17u4VSuwNBCtH6fz6Nzb69uSbDDGgvJ2gac6oFsHVR4QXxti9zB",
+          "block_time": 1792098061,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 104.15,
+          "fee_payer_role": "facilitator",
+          "own_candidate": {
+            "likely": "AA（Autonomous Agent）",
+            "note": "自社 AA の候補。movers $0.02 を毎日 06:00 JST ごろに購入（10/12・10/13）。週1回の seller-probe とは頻度が合わない（上限 $0.01 も超える）"
+          }
+        }
+      ],
+      "sol_usd": {
+        "usd": 104.15,
+        "source": "binance SOLUSDC 1d close (UTC)"
+      }
+    },
+    "card": {
+      "calls": null,
+      "sales": null,
+      "nvm_purchases": null,
+      "nvm": null
+    },
+    "latency": [
+      {
+        "entry": "usdc",
+        "item": "series",
+        "ts": "2026-10-15T23:41:21.500Z",
+        "skipped": "PROBE_SOLANA_SECRET_KEY 未設定"
+      },
+      {
+        "entry": "card",
+        "item": "series",
+        "ts": "2026-10-15T23:41:21.500Z",
+        "skipped": "PROBE_NVM_ACCESS_TOKEN またはゲートウェイ URL が未設定"
+      }
+    ]
+  }
+}
