@@ -69,8 +69,8 @@
         "product": "osd"
       }
     ],
-    "seller_log_covers": null,
-    "_seller_log_comment": "売り手ログ（docs/seller-log.md）を出すのがどちらか: \"jin\" / \"osd\" / null（まだ無い）。その日のログが取れたとき、ログに無い $0.01 は消去法でもう一方の商品とする（jin のログなら OSD、osd のログなら JIN の series）。"
+    "seller_log_covers": "jin",
+    "_seller_log_comment": "売り手ログ（docs/seller-log.md）は JIN が出す（2026-10-18 決定）。その日のログが取れたとき、ログに無い $0.01 は消去法で OSD とする。JIN 側の変更は docs/patches/jin-seller-log.patch。"
   },
   "card": {
     "_comment": "カード払いの入口＝実証1のゲートウェイ＋Nevermined のカードプラン（isCrypto=false）。前払い（prepaid）に固定。都度払い（pay-as-you-go）は Stripe の最低請求額 $0.50 のため使わない。",

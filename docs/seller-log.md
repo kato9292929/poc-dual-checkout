@@ -54,4 +54,33 @@ JSON の配列（JSON Lines でもよい）。1行が settle した支払い1件
 | 実証2にとって | 測りたい商品（JIN）を直接確定できる。対象のルートが少ない（JIN の有料ルートだけ）ので、ログの書き損ねで取り違える範囲が狭い | 対象のルートが多く（約18）、どれかでログを書き損ねると、その OSD の支払いを JIN と取り違える |
 | 指示書との関係 | 「jin.x402jp.com の x402 実装を変えない」に触れる（支払いの処理は変えず、settle 後に記録を足すだけ） | JIN には触れない |
 
-どちらにするかは本人の判断（`card.purchase_source` と同じく、`config/site.json` の `usdc.seller_log_covers` で切り替える）。
+**決定（2026-10-18）：JIN が出す。** `config/site.json` の `usdc.seller_log_covers` は `"jin"`。
+
+## JIN 側の変更（docs/patches/jin-seller-log.patch）
+
+実証2からは JIN のリポジトリに書き込まないので、変更はパッチとして置いてある。JIN の `main`（`e133889`）にそのまま当たり、当てた状態で JIN のテスト（vitest）が17件すべて通ることと、型チェック（`npm run typecheck`）が通ることを確かめた。
+
+| ファイル | 変更 |
+|---|---|
+| `src/lib/x402-route.ts` | `withSolanaOnlyPaywall` の中で、`withX402` の応答に `PAYMENT-RESPONSE`（`success: true`）があれば1件記録する。支払いの処理は変えない。記録に失敗しても応答は返し、`console.error` に残す |
+| `src/lib/sales-log.ts`（新規） | Upstash Redis の REST に、JST の日付ごと（`jin:sales:YYYY-MM-DD`）に `RPUSH` する。400日で消える。KV が未設定なら何もしない |
+| `src/app/sales/[date]/route.ts`（新規） | `GET /sales/:date`。`SELLER_LOG_TOKEN`（32文字以上）の Bearer が一致したときだけ、その日の配列を返す。未設定・短いときは 404、記録が無い日は 404 |
+| `tests-ts/sales-log.test.ts`（新規） | 記録の中身、未払い・settle 失敗で記録しないこと、記録の失敗で応答が止まらないこと、認証 |
+
+当て方（JIN のリポジトリで）：
+
+```sh
+git apply /path/to/poc-dual-checkout/docs/patches/jin-seller-log.patch
+npm test && npm run typecheck
+```
+
+JIN の Vercel に入れる環境変数：
+
+| 名前 | 中身 |
+|---|---|
+| `SALES_LOG_KV_REST_URL` / `SALES_LOG_KV_REST_TOKEN` | Upstash Redis（Vercel Marketplace）の REST の URL とトークン（読み書き） |
+| `SELLER_LOG_TOKEN` | 実証2が読むための読み取り専用トークン（32文字以上の乱数。例：`openssl rand -hex 32`） |
+
+実証2の GitHub Secrets には、`SELLER_LOG_URL` = `https://jin.x402jp.com`（`/sales/:date` は自動で付く）と、同じ `SELLER_LOG_TOKEN` を入れる。つながったら `node scripts/collect-daily.mjs --resummarize <開始日>..<終了日>` で、ログが無かった日を埋める（JIN が記録を始める前の日は 404 のまま `missing` になる）。
+
+注意：JIN のログを書き損ねた支払いは、その日のログが取れている限り「ログに無い $0.01」＝ OSD と判定される。JIN 側の `[sales-log] 記録に失敗` のログが出ていないかを確かめる。

@@ -1,0 +1,274 @@
+diff --git a/src/lib/x402-route.ts b/src/lib/x402-route.ts
+index d990c40..6bd08f9 100644
+--- a/src/lib/x402-route.ts
++++ b/src/lib/x402-route.ts
+@@ -8,6 +8,7 @@ import { withX402 } from "@x402/next";
+ import { NextResponse, type NextRequest } from "next/server";
+ import { x402Server } from "./x402-server";
+ import { PAY_TO, PUBLIC_BASE_URL, SOLANA_NETWORK } from "./x402-config";
++import { priceToAtomic, recordSale, settledTx } from "./sales-log";
+ 
+ export type PaywallOptions = { price: string; description: string; resourcePath: string };
+ 
+@@ -64,6 +65,21 @@ export function withSolanaOnlyPaywall(
+   return async (req: NextRequest): Promise<NextResponse> => {
+     if (req.method === "OPTIONS") return corsPreflight();
+     // 未払い→402(v2ヘッダ)・支払い済→verify/settle、両方 withX402 が担当。
+-    return applyCors(await wrapped(req));
++    const res = await wrapped(req);
++    // settle に成功したら売り手ログに1件記録する（支払いの処理は変えない。記録に失敗しても応答は返す）
++    const tx = settledTx(res.headers.get("payment-response"));
++    if (tx) {
++      try {
++        await recordSale({
++          tx_signature: tx,
++          endpoint: `${PUBLIC_BASE_URL}${opts.resourcePath}`,
++          amount: priceToAtomic(opts.price),
++          time_utc: new Date().toISOString(),
++        });
++      } catch (e) {
++        console.error("[sales-log] 記録に失敗", tx, e);
++      }
++    }
++    return applyCors(res);
+   };
+ }
+diff --git a/src/lib/sales-log.ts b/src/lib/sales-log.ts
+new file mode 100644
+index 0000000..77b7151
+--- /dev/null
++++ b/src/lib/sales-log.ts
+@@ -0,0 +1,66 @@
++// 売り手ログ（エンドポイント ↔ tx 署名）。実証2（kato9292929/poc-dual-checkout）が $0.01 の支払いを
++// JIN と OSD に振り分けるために読む（JIN と OSD は Solana の受取口座を共有していて、チェーンだけでは区別できない）。
++// 形式は poc-dual-checkout の docs/seller-log.md: { tx_signature, endpoint, amount, time_utc }。
++// 保存先は Upstash Redis（REST）。キーは JST の日付ごと（jin:sales:YYYY-MM-DD）。
++// 購入者を特定できる情報（IP・UA・支払い元）は保存しない。
++
++export type SaleRecord = { tx_signature: string; endpoint: string; amount: string; time_utc: string };
++
++const KEY_PREFIX = "jin:sales:";
++const TTL_SEC = 60 * 60 * 24 * 400;
++
++function kv() {
++  const url = process.env.SALES_LOG_KV_REST_URL;
++  const token = process.env.SALES_LOG_KV_REST_TOKEN;
++  return url && token ? { url: url.replace(/\/$/, ""), token } : null;
++}
++
++export function jstDate(d: Date): string {
++  return new Date(d.getTime() + 9 * 3600 * 1000).toISOString().slice(0, 10);
++}
++
++// "$0.02" → "20000"（USDC の最小単位）
++export function priceToAtomic(price: string): string {
++  const m = /^\$?(\d+)(?:\.(\d{1,6}))?$/.exec(price.trim());
++  if (!m) throw new Error(`bad price: ${price}`);
++  return String(BigInt(m[1]) * 1_000_000n + BigInt((m[2] ?? "").padEnd(6, "0") || "0"));
++}
++
++async function pipeline(commands: (string | number)[][]): Promise<unknown[]> {
++  const c = kv();
++  if (!c) throw new Error("SALES_LOG_KV_REST_URL / SALES_LOG_KV_REST_TOKEN が未設定");
++  const res = await fetch(`${c.url}/pipeline`, {
++    method: "POST",
++    headers: { authorization: `Bearer ${c.token}`, "content-type": "application/json" },
++    body: JSON.stringify(commands),
++  });
++  if (!res.ok) throw new Error(`sales log kv: HTTP ${res.status}`);
++  return ((await res.json()) as { result: unknown }[]).map((r) => r.result);
++}
++
++// settle に成功した支払いを1件記録する。保存先が未設定なら何もしない（JIN の応答は止めない）
++export async function recordSale(rec: SaleRecord): Promise<void> {
++  if (!kv()) return;
++  const key = KEY_PREFIX + jstDate(new Date(rec.time_utc));
++  await pipeline([
++    ["RPUSH", key, JSON.stringify(rec)],
++    ["EXPIRE", key, TTL_SEC],
++  ]);
++}
++
++export async function readSales(date: string): Promise<SaleRecord[] | null> {
++  const [rows] = (await pipeline([["LRANGE", KEY_PREFIX + date, 0, -1]])) as [string[] | null];
++  if (!rows || rows.length === 0) return null;
++  return rows.map((r) => JSON.parse(r) as SaleRecord);
++}
++
++// PAYMENT-RESPONSE（base64 の JSON）から tx 署名を取り出す。成功していなければ null
++export function settledTx(header: string | null): string | null {
++  if (!header) return null;
++  try {
++    const s = JSON.parse(Buffer.from(header, "base64").toString("utf8")) as { success?: boolean; transaction?: string };
++    return s.success && s.transaction ? s.transaction : null;
++  } catch {
++    return null;
++  }
++}
+diff --git a/src/app/sales/[date]/route.ts b/src/app/sales/[date]/route.ts
+new file mode 100644
+index 0000000..1d85d9b
+--- /dev/null
++++ b/src/app/sales/[date]/route.ts
+@@ -0,0 +1,29 @@
++// GET /sales/:date — 売り手ログ（JST の日付ごと）。実証2（poc-dual-checkout）が読む。読み取り専用。
++// 認証は Authorization: Bearer <SELLER_LOG_TOKEN>（32文字以上。未設定・短すぎるときは口ごと閉じて 404）。
++import { createHash, timingSafeEqual } from "node:crypto";
++import { readSales } from "@/lib/sales-log";
++import { NextResponse, type NextRequest } from "next/server";
++
++export const runtime = "nodejs";
++export const dynamic = "force-dynamic";
++
++const digest = (s: string) => createHash("sha256").update(s).digest();
++
++export async function GET(req: NextRequest, ctx: { params: Promise<{ date: string }> }) {
++  const expected = process.env.SELLER_LOG_TOKEN;
++  if (!expected || expected.length < 32) return NextResponse.json({ error: "not_found" }, { status: 404 });
++  const m = /^Bearer\s+(\S+)$/i.exec(req.headers.get("authorization") ?? "");
++  if (!m || !timingSafeEqual(digest(m[1]), digest(expected))) {
++    return NextResponse.json({ error: "unauthorized" }, { status: 401, headers: { "www-authenticate": "Bearer" } });
++  }
++  const { date } = await ctx.params;
++  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return NextResponse.json({ error: "date must be JST YYYY-MM-DD" }, { status: 400 });
++  try {
++    const rows = await readSales(date);
++    if (!rows) return NextResponse.json({ error: "no_sales", date }, { status: 404, headers: { "cache-control": "no-store" } });
++    return NextResponse.json(rows, { headers: { "cache-control": "no-store" } });
++  } catch (e) {
++    console.error(e);
++    return NextResponse.json({ error: "sales_log_unavailable" }, { status: 502 });
++  }
++}
+diff --git a/tests-ts/sales-log.test.ts b/tests-ts/sales-log.test.ts
+new file mode 100644
+index 0000000..96d6e0f
+--- /dev/null
++++ b/tests-ts/sales-log.test.ts
+@@ -0,0 +1,126 @@
++import { afterEach, beforeEach, expect, it, vi } from "vitest";
++import { NextRequest } from "next/server";
++
++// 売り手ログ（poc-dual-checkout の docs/seller-log.md）。外部 facilitator と KV（Upstash REST）だけを合成にする。
++const facilitator = vi.hoisted(() => ({ getSupported: vi.fn(), verify: vi.fn(), settle: vi.fn() }));
++const network = "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp";
++const recipient = "11111111111111111111111111111111";
++const TOKEN = "t".repeat(40);
++
++vi.mock("@/lib/x402-server", async () => {
++  const { x402ResourceServer } = await import("@x402/core/server");
++  const { registerExactSvmScheme } = await import("@x402/svm/exact/server");
++  const x402Server = new x402ResourceServer([facilitator]);
++  registerExactSvmScheme(x402Server);
++  return { x402Server };
++});
++
++// 合成 KV：RPUSH / EXPIRE / LRANGE だけ
++const store = new Map<string, string[]>();
++const kvCalls: unknown[][] = [];
++const realFetch = globalThis.fetch;
++
++beforeEach(() => {
++  vi.resetModules();
++  vi.clearAllMocks();
++  store.clear();
++  kvCalls.length = 0;
++  vi.stubEnv("X402_RECIPIENT", recipient);
++  vi.stubEnv("PUBLIC_BASE_URL", "https://jin.test/");
++  vi.stubEnv("SALES_LOG_KV_REST_URL", "https://kv.test");
++  vi.stubEnv("SALES_LOG_KV_REST_TOKEN", "kvtoken");
++  vi.stubEnv("SELLER_LOG_TOKEN", TOKEN);
++  facilitator.getSupported.mockResolvedValue({
++    kinds: [{ x402Version: 2, scheme: "exact", network, extra: { feePayer: recipient } }],
++    extensions: [], signers: { [network]: [recipient] },
++  });
++  facilitator.verify.mockResolvedValue({ isValid: true, payer: recipient });
++  facilitator.settle.mockResolvedValue({ success: true, payer: recipient, network, transaction: "TXSIG1" });
++  globalThis.fetch = (async (url: string | URL, init?: RequestInit) => {
++    if (!String(url).startsWith("https://kv.test/")) return realFetch(url, init);
++    const cmds = JSON.parse(String(init!.body)) as (string | number)[][];
++    const out = cmds.map(([op, key, ...rest]) => {
++      kvCalls.push([op, key, ...rest]);
++      const k = String(key);
++      if (op === "RPUSH") return { result: store.set(k, [...(store.get(k) ?? []), String(rest[0])]).get(k)!.length };
++      if (op === "LRANGE") return { result: store.get(k) ?? [] };
++      return { result: 1 };
++    });
++    return new Response(JSON.stringify(out), { status: 200 });
++  }) as typeof fetch;
++});
++afterEach(() => {
++  vi.unstubAllEnvs();
++  globalThis.fetch = realFetch;
++});
++
++async function payMovers() {
++  const route = await import("@/app/api/jin/movers/route");
++  const req = (headers?: HeadersInit) => new NextRequest("https://jin.test/api/jin/movers", { headers });
++  const challenge = await route.GET(req());
++  const payment = JSON.parse(Buffer.from(challenge.headers.get("PAYMENT-REQUIRED")!, "base64").toString());
++  const signature = Buffer.from(JSON.stringify({
++    x402Version: 2, resource: payment.resource, accepted: payment.accepts[0], payload: { transaction: "合成テスト" },
++  })).toString("base64");
++  return route.GET(req({ "PAYMENT-SIGNATURE": signature }));
++}
++
++it("settle に成功した支払いを JST の日付ごとに1件記録する（エンドポイント・金額・tx 署名）", async () => {
++  const res = await payMovers();
++  expect(res.status).toBe(200);
++  const keys = [...store.keys()];
++  expect(keys).toHaveLength(1);
++  expect(keys[0]).toMatch(/^jin:sales:\d{4}-\d{2}-\d{2}$/);
++  const rec = JSON.parse(store.get(keys[0])![0]);
++  expect(rec).toMatchObject({ tx_signature: "TXSIG1", endpoint: "https://jin.test/api/jin/movers", amount: "20000" });
++  expect(Object.keys(rec).sort()).toEqual(["amount", "endpoint", "time_utc", "tx_signature"]);
++  expect(kvCalls.some(([op]) => op === "EXPIRE")).toBe(true);
++});
++
++it("未払い（402）と settle 失敗は記録しない", async () => {
++  const route = await import("@/app/api/jin/movers/route");
++  expect((await route.GET(new NextRequest("https://jin.test/api/jin/movers"))).status).toBe(402);
++  facilitator.settle.mockResolvedValue({ success: false, errorReason: "合成失敗", network, transaction: "" });
++  await payMovers().catch(() => null);
++  expect(store.size).toBe(0);
++});
++
++it("記録に失敗しても JIN の応答は返す", async () => {
++  vi.stubEnv("SALES_LOG_KV_REST_URL", "https://kv-down.test");
++  globalThis.fetch = (async (url: string | URL, init?: RequestInit) =>
++    String(url).startsWith("https://kv-down.test/") ? new Response("", { status: 500 }) : realFetch(url, init)) as typeof fetch;
++  const err = vi.spyOn(console, "error").mockImplementation(() => {});
++  try {
++    expect((await payMovers()).status).toBe(200);
++    expect(err).toHaveBeenCalled();
++  } finally {
++    err.mockRestore();
++  }
++});
++
++it("GET /sales/:date は Bearer が一致したときだけ、その日の記録を返す", async () => {
++  await payMovers();
++  const date = [...store.keys()][0].slice("jin:sales:".length);
++  const route = await import("@/app/sales/[date]/route");
++  const call = (auth?: string, d = date) =>
++    route.GET(new NextRequest(`https://jin.test/sales/${d}`, { headers: auth ? { authorization: auth } : {} }), {
++      params: Promise.resolve({ date: d }),
++    });
++  expect((await call()).status).toBe(401);
++  expect((await call("Bearer wrong")).status).toBe(401);
++  const ok = await call(`Bearer ${TOKEN}`);
++  expect(ok.status).toBe(200);
++  expect((await ok.json())[0].tx_signature).toBe("TXSIG1");
++  expect((await call(`Bearer ${TOKEN}`, "2000-01-01")).status).toBe(404);
++  expect((await call(`Bearer ${TOKEN}`, "bad")).status).toBe(400);
++  vi.stubEnv("SELLER_LOG_TOKEN", "short");
++  expect((await call(`Bearer ${TOKEN}`)).status).toBe(404); // 短いトークンでは口を開けない
++});
++
++it("priceToAtomic と jstDate", async () => {
++  const { priceToAtomic, jstDate } = await import("@/lib/sales-log");
++  expect(priceToAtomic("$0.02")).toBe("20000");
++  expect(priceToAtomic("$0.01")).toBe("10000");
++  expect(priceToAtomic("$1")).toBe("1000000");
++  expect(jstDate(new Date("2026-10-17T15:00:00Z"))).toBe("2026-10-18");
++});
