@@ -22,7 +22,7 @@ import { fetchAaRuns, mergeSellerRows } from '../lib/aa-runs.js';
 import { NVM_API, reconcile } from '../lib/nevermined.js';
 import { solUsd } from '../lib/price.js';
 import { anonymize } from '../lib/anon.js';
-import { buildDaily, checkCurrent } from '../lib/aggregate.js';
+import { buildDaily, checkCurrent, sellerLogCompleteFor } from '../lib/aggregate.js';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
@@ -92,7 +92,6 @@ if (opt('--resummarize')) {
         const rows = await fetchSellerLog(seller, d);
         if (rows) {
           old.detail.usdc.seller_log = mergeSellerRows(rows, (old.detail.usdc.seller_log || []).filter((r) => r.source === 'aa_runs'));
-          old.detail.usdc.seller_log_complete = config.site.usdc.seller_log_covers || null;
           old.sources.seller_log = 'ok';
           old.sources.seller_log_backfilled_at = new Date().toISOString();
         } else old.sources.seller_log = 'missing';
@@ -101,6 +100,8 @@ if (opt('--resummarize')) {
       }
     }
     if (!old.sources.seller_log) old.sources.seller_log = 'missing';
+    // 消去法に使ってよいかは、いまの設定（seller_log_since）で毎回決め直す
+    if (old.detail.usdc) old.detail.usdc.seller_log_complete = sellerLogCompleteFor(config.site, d, old.sources.seller_log === 'ok');
     // AA の公開 run ログ（直近の run しか公開されていないので、取れる範囲で足す）
     if (old.detail.usdc && !args.includes('--offline')) {
       try {
@@ -236,7 +237,7 @@ const detail = {
         sol_usd: sol,
         seller_log: mergeSellerRows(sellerLog, aaRows),
         // 売り手ログがその日取れたときだけ、そのログが何をすべて含むか（消去法に使う）
-        seller_log_complete: sources.seller_log === 'ok' ? config.site.usdc.seller_log_covers || null : null,
+        seller_log_complete: sellerLogCompleteFor(config.site, date, sources.seller_log === 'ok'),
       }
     : null,
   card: { calls, sales, nvm_purchases: nvmPurchases, nvm },

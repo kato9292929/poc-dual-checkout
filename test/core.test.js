@@ -511,3 +511,22 @@ test('売り手ログを OSD が出す場合: その日のログに無い $0.01 
   const d2 = buildDaily({ date: '2026-11-03', config: c, detail: det, sources: {} });
   assert.equal(d2.detail.usdc.payments.find((p) => p.signature === 's1').product, 'unresolved');
 });
+
+test('売り手ログの消去法は、売り手が記録を始めた日（seller_log_since）以降だけ', async () => {
+  const { sellerLogCompleteFor } = await import('../lib/aggregate.js');
+  const c = fullCfg();
+  c.site.usdc.seller_log_covers = 'jin';
+  c.site.usdc.seller_log_since = null;
+  assert.equal(sellerLogCompleteFor(c.site, '2026-11-03', true), null); // 未設定の間は使わない（[] の日と区別できない）
+  c.site.usdc.seller_log_since = '2026-11-04';
+  assert.equal(sellerLogCompleteFor(c.site, '2026-11-03', true), null); // 記録を始める前の日
+  assert.equal(sellerLogCompleteFor(c.site, '2026-11-04', true), 'jin');
+  assert.equal(sellerLogCompleteFor(c.site, '2026-11-04', false), null); // ログが取れなかった日
+  // JIN の [] の日（記録0件）を消去法に使うと、その日の $0.01 はすべて OSD
+  const det = detail('2026-11-04');
+  det.usdc.seller_log = [];
+  det.usdc.seller_log_complete = sellerLogCompleteFor(c.site, '2026-11-04', true);
+  const d = buildDaily({ date: '2026-11-04', config: c, detail: det, sources: {} });
+  assert.equal(d.detail.usdc.payments.find((p) => p.signature === 's1').product, 'osd');
+  assert.equal(d.detail.usdc.payments.find((p) => p.signature === 's2').product, 'jin_movers');
+});

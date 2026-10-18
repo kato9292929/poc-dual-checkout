@@ -70,7 +70,9 @@
       }
     ],
     "seller_log_covers": "jin",
-    "_seller_log_comment": "売り手ログ（docs/seller-log.md）は JIN が出す（2026-10-18 決定）。その日のログが取れたとき、ログに無い $0.01 は消去法で OSD とする。JIN 側の変更は docs/patches/jin-seller-log.patch。"
+    "_seller_log_comment": "売り手ログ（docs/seller-log.md）は JIN が出す（2026-10-18 決定）。その日のログが取れたとき、ログに無い $0.01 は消去法で OSD とする。JIN 側の変更は docs/patches/jin-seller-log.patch。",
+    "seller_log_since": null,
+    "_seller_log_since_comment": "JIN が売り手ログを記録し始めた日（JST、YYYY-MM-DD）。JIN の GET /sales/:date は記録が無い日に [] を返すので、記録を始める前の日と区別できない。この日より前、または未設定（null）の間は、ログに無い $0.01 を消去法で OSD にしない（ログで一致したものだけ確定し、残りは unresolved）。"
   },
   "card": {
     "_comment": "カード払いの入口＝実証1のゲートウェイ＋Nevermined のカードプラン（isCrypto=false）。前払い（prepaid）に固定。都度払い（pay-as-you-go）は Stripe の最低請求額 $0.50 のため使わない。",
