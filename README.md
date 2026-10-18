@@ -113,11 +113,12 @@ node scripts/report-weekly.mjs --week 2026-W45
 
 - Seller Probe の Solana の公開アドレス（`config/own_wallets.json` が pending）。AA は `7PVT…L6tY` で確定済み（aa.x402jp.com/api/runs の tx 署名から。`docs/sources.md`）
 - 実証1ゲートウェイのログの口（`GET /logs/:date`）と `LOG_READ_TOKEN`
+- JIN の売り手ログの口（`GET /sales/:date`）。JIN の PR #10 が未マージで、まだ動いていない（2026-10-18 時点）。動き始めた日を `config/site.json` の `usdc.seller_log_since` に入れるまで、$0.01 は JIN の series か OSD か「不明」のまま残る（`docs/seller-log.md`）
 - Nevermined の組織が Premium 以上か（照合用。無くても集計は止まらない）
 - Stripe Connect の形（Standard / Express）と、制限付きキーを発行できるか（できなければ CSV）
 
 ## やらないこと
 
-- `jin.x402jp.com` の x402 実装の変更、他のリポジトリ（AA・seller-probe・JIN・OSD・実証1）への書き込み
+- `jin.x402jp.com` の x402 実装の変更、他のリポジトリ（AA・seller-probe・JIN・OSD・実証1）への書き込み（例外：売り手ログの記録だけは JIN に PR を出した。支払いの処理は変えず、settle 後に1件記録するだけ。`docs/seller-log.md`）
 - 購入者を特定できる個人情報の保存
 - 期間中の価格変更

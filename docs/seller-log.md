@@ -57,23 +57,33 @@ JSON の配列（JSON Lines でもよい）。1行が settle した支払い1件
 
 **決定（2026-10-18）：JIN が出す。** `config/site.json` の `usdc.seller_log_covers` は `"jin"`。
 
-## JIN 側の変更（docs/patches/jin-seller-log.patch）
+## JIN 側の変更
 
-実証2からは JIN のリポジトリに書き込まないので、変更はパッチとして置いてある。JIN の `main`（`e133889`）にそのまま当たり、当てた状態で JIN のテスト（vitest）が17件すべて通ることと、型チェック（`npm run typecheck`）が通ることを確かめた。
+### 状況（2026-10-18 時点）
 
-| ファイル | 変更 |
+- JIN の口はまだ動いていない。`https://jin.x402jp.com/sales/:date` は Next.js の 404 ページ（`x-matched-path: /404`）を返す
+- 変更は JIN の PR [kato9292929/Japan-Inflation-Nowcast#10](https://github.com/kato9292929/Japan-Inflation-Nowcast/pull/10)（ブランチ `claude/jin-seller-log`）。未マージ
+- **口が動き始めた日：未定。** マージと環境変数の投入のあと、最初に記録が取れた日を確かめて、ここと `config/site.json` の `usdc.seller_log_since` に書く
+- それより前の日（2026-10-12〜口が動き始める前日）の $0.01 は「不明」（unresolved）のまま残る。AA 自身の購入だけは AA の公開 run ログで確定する
+
+### PR #10 の中身
+
+`docs/patches/jin-seller-log.patch` を JIN の `main`（`e133889`）に当て、3 点を変えた。パッチをそのまま当てた状態で JIN のテスト（vitest）17 件と型チェックが通ることを先に確かめてある。PR の状態では vitest 22 件（既存 12・パッチ由来 5・追加 5）と型チェック・ビルドが通る。
+
+| ファイル | 内容 |
 |---|---|
-| `src/lib/x402-route.ts` | `withSolanaOnlyPaywall` の中で、`withX402` の応答に `PAYMENT-RESPONSE`（`success: true`）があれば1件記録する。支払いの処理は変えない。記録に失敗しても応答は返し、`console.error` に残す |
-| `src/lib/sales-log.ts`（新規） | Upstash Redis の REST に、JST の日付ごと（`jin:sales:YYYY-MM-DD`）に `RPUSH` する。400日で消える。KV が未設定なら何もしない |
-| `src/app/sales/[date]/route.ts`（新規） | `GET /sales/:date`。`SELLER_LOG_TOKEN`（32文字以上）の Bearer が一致したときだけ、その日の配列を返す。未設定・短いときは 404、記録が無い日は 404 |
-| `tests-ts/sales-log.test.ts`（新規） | 記録の中身、未払い・settle 失敗で記録しないこと、記録の失敗で応答が止まらないこと、認証 |
+| `src/lib/x402-route.ts` | パッチと同じ。`withSolanaOnlyPaywall` の中で、`withX402` の応答に `PAYMENT-RESPONSE`（`success: true`）があれば1件記録する。支払いの処理は変えない。記録に失敗しても応答は返し、`console.error` に `[sales-log] 記録に失敗` を残す |
+| `src/lib/sales-log.ts`（新規） | Upstash Redis の REST に、JST の日付ごと（`sales:YYYY-MM-DD`）に `RPUSH` する。400日で消える。KV が未設定なら何もしない。KV への呼び出しは 2 秒で打ち切る |
+| `src/app/sales/[date]/route.ts`（新規） | `GET /sales/:date`。`SELLER_LOG_TOKEN`（32文字以上）の Bearer が一致したときだけ、その日の配列を返す。記録が無い日は `[]`。トークンが未設定・短いときは 404、不一致は 401、日付の形式不正は 400、KV 障害は 502 |
+| `tests-ts/sales-log.test.ts`（新規） | 記録の中身、未払い・settle 失敗で記録しないこと、KV が 500・無応答・未設定でも支払いの応答が返ること、認証、記録が無い日の `[]`、KV 障害の 502 |
 
-当て方（JIN のリポジトリで）：
+パッチから変えた 3 点：
 
-```sh
-git apply /path/to/poc-dual-checkout/docs/patches/jin-seller-log.patch
-npm test && npm run typecheck
-```
+1. 記録が無い日は 404 ではなく `[]`。開始前の日との区別は、上の「読み方」のとおり `usdc.seller_log_since` で読み手が行う
+2. キーの接頭辞を `jin:sales:` から `sales:` に
+3. KV への fetch に 2 秒のタイムアウト。パッチは記録を `await` しているので、KV が応答しないと支払い済みの応答が止まっていた
+
+`docs/patches/jin-seller-log.patch` は元の形のまま残してある（JIN の PR とは上の 3 点が違う）。PR がマージされたら、パッチの見出しに「適用済み（JIN の commit <hash>）」と注記する。
 
 JIN の Vercel に入れる環境変数：
 
