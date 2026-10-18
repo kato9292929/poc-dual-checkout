@@ -10,7 +10,7 @@ JIN と OSD は Solana の受取口座（payTo `4s8X…3VPf`）を共有して�
 - 認証は `Authorization: Bearer {SELLER_LOG_TOKEN}`（読み取り専用のトークン）
 - `SELLER_LOG_URL` に `{date}` を含めた場合は、`/sales/:date` を付けずにそこを置き換える
 - 404 は「その日のログが無い」。その日の $0.01 は unresolved のまま残る（`sources.seller_log: "missing"`）
-- 200 の `[]` は「その日の記録が0件」。JIN の口は記録が無い日に `[]` を返すので、記録を始める前の日とは区別できない。そのため **`config/site.json` の `usdc.seller_log_since`（JIN が記録を始めた日、JST）より前の日、または未設定の間は、消去法を使わない**（ログで一致した tx だけ確定し、残りの $0.01 は unresolved）
+- 200 の `[]` は「その日の記録が0件」。JIN の口は記録が無い日に `[]` を返すので、記録を始める前の日とは区別できない。そのため **`config/site.json` の `usdc.seller_log_since`（JIN の記録が丸一日動いた最初の日＝デプロイの翌日、JST）より前の日、または未設定の間は、消去法を使わない**（ログで一致した tx だけ確定し、残りの $0.01 は unresolved）
 - 401 などのエラーは `sources.seller_log: "error: …"` として残し、集計は止めない
 - ログがつながったら `node scripts/collect-daily.mjs --resummarize <開始日>..<終了日>` を実行すると、ログが無かった日だけ取りに行って埋め、数え直す
 
@@ -63,7 +63,8 @@ JSON の配列（JSON Lines でもよい）。1行が settle した支払い1件
 
 - JIN の口はまだ動いていない。`https://jin.x402jp.com/sales/:date` は Next.js の 404 ページ（`x-matched-path: /404`）を返す
 - 変更は JIN の PR [kato9292929/Japan-Inflation-Nowcast#10](https://github.com/kato9292929/Japan-Inflation-Nowcast/pull/10)（ブランチ `claude/jin-seller-log`）。未マージ
-- **口が動き始めた日：未定。** マージと環境変数の投入のあと、最初に記録が取れた日を確かめて、ここと `config/site.json` の `usdc.seller_log_since` に書く
+- **口が動き始めた日：未定。** `usdc.seller_log_since` には「記録のコードが丸一日動いていた最初の JST の日」＝ **JIN にデプロイした日（環境変数を入れて記録が有効になった日）の翌日**を入れる。デプロイ当日はデプロイ前の時間帯を含むので外す。最初の記録が来た日ではない（最初の記録が数日後だと、そのあいだの日の消去法が使われず $0.01 が不明のまま残るため）
+- `seller_log_since` の設定と `--resummarize` は実証2（poc-dual-checkout）のセッションが担当する（同じ設定を複数のセッションが書くと食い違うので一本化）。JIN 側は、デプロイした日付を伝えるだけ
 - それより前の日（2026-10-12〜口が動き始める前日）の $0.01 は「不明」（unresolved）のまま残る。AA 自身の購入だけは AA の公開 run ログで確定する
 
 ### PR #10 の中身
@@ -92,6 +93,6 @@ JIN の Vercel に入れる環境変数：
 | `SALES_LOG_KV_REST_URL` / `SALES_LOG_KV_REST_TOKEN` | Upstash Redis（Vercel Marketplace）の REST の URL とトークン（読み書き） |
 | `SELLER_LOG_TOKEN` | 実証2が読むための読み取り専用トークン（32文字以上の乱数。例：`openssl rand -hex 32`） |
 
-実証2の GitHub Secrets には、`SELLER_LOG_URL` = `https://jin.x402jp.com`（`/sales/:date` は自動で付く）と、同じ `SELLER_LOG_TOKEN` を入れる。JIN の口が動き始めたら、その日付を `usdc.seller_log_since` に入れてから `node scripts/collect-daily.mjs --resummarize <開始日>..<終了日>` を実行する。`seller_log_since` より前の日の $0.01 は「不明」のまま残る（AA の分は AA の公開 run ログで確定する）。
+実証2の GitHub Secrets には、`SELLER_LOG_URL` = `https://jin.x402jp.com`（`/sales/:date` は自動で付く）と、同じ `SELLER_LOG_TOKEN` を入れる。JIN にデプロイしたら、その翌日の日付を `usdc.seller_log_since` に入れてから `node scripts/collect-daily.mjs --resummarize <開始日>..<終了日>` を実行する。`seller_log_since` より前の日の $0.01 は「不明」のまま残る（AA の分は AA の公開 run ログで確定する）。
 
 注意：JIN のログを書き損ねた支払いは、その日のログが取れている限り「ログに無い $0.01」＝ OSD と判定される。JIN 側の `[sales-log] 記録に失敗` のログが出ていないかを確かめる。
