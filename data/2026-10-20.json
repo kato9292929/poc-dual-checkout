@@ -1,0 +1,428 @@
+{
+  "schema_version": 2,
+  "schema": 3,
+  "date": "2026-10-20",
+  "timezone": "Asia/Tokyo",
+  "window_utc": [
+    "2026-10-19T15:00:00.000Z",
+    "2026-10-20T15:00:00.000Z"
+  ],
+  "period": null,
+  "period_phase": "no_period",
+  "price_check": "no_period",
+  "classification": {
+    "own_wallets_version": 5,
+    "external_buyers_version": 2
+  },
+  "generated_at": "2026-10-20T23:52:19.503Z",
+  "sources": {
+    "page": "not_configured",
+    "sol_usd": "ok",
+    "usdc_chain": "ok",
+    "gateway_log": "missing",
+    "aa_runs": "ok",
+    "seller_log": "ok",
+    "stripe": "missing",
+    "stripe_csv": "not_found",
+    "nvm_api": "not_configured",
+    "latency_probe": "ok"
+  },
+  "page": null,
+  "by_class": {
+    "external": {
+      "usdc": {
+        "jin_contracts_min": 0,
+        "jin_contracts_max": 0,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 0,
+          "jin_series": 0,
+          "unresolved": 0,
+          "osd": 0,
+          "other": 0
+        },
+        "jin_buyers_min": 0,
+        "jin_buyers_max": 0,
+        "jin_revenue_usd_min": 0,
+        "jin_revenue_usd_max": 0,
+        "payto_inflows": 0,
+        "payto_revenue_usd": 0,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_tx": null,
+        "seller_fee_rate": null,
+        "facilitator_fee_usd": 0,
+        "facilitator_fee_rate": null,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": null
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    },
+    "unclassified": {
+      "usdc": {
+        "jin_contracts_min": 0,
+        "jin_contracts_max": 0,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 0,
+          "jin_series": 0,
+          "unresolved": 0,
+          "osd": 0,
+          "other": 0
+        },
+        "jin_buyers_min": 0,
+        "jin_buyers_max": 0,
+        "jin_revenue_usd_min": 0,
+        "jin_revenue_usd_max": 0,
+        "payto_inflows": 0,
+        "payto_revenue_usd": 0,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_tx": null,
+        "seller_fee_rate": null,
+        "facilitator_fee_usd": 0,
+        "facilitator_fee_rate": null,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": null
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    },
+    "own": {
+      "usdc": {
+        "jin_contracts_min": 1,
+        "jin_contracts_max": 1,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 1,
+          "jin_series": 0,
+          "unresolved": 0,
+          "osd": 5,
+          "other": 0
+        },
+        "jin_buyers_min": 1,
+        "jin_buyers_max": 1,
+        "jin_revenue_usd_min": 0.02,
+        "jin_revenue_usd_max": 0.02,
+        "payto_inflows": 6,
+        "payto_revenue_usd": 0.07,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_tx": 0,
+        "seller_fee_rate": 0,
+        "facilitator_fee_usd": 0.00639,
+        "facilitator_fee_rate": 0.0913,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 6,
+            "lamports": 60006,
+            "usd": 0.00639
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": 0
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null
+      }
+    }
+  },
+  "parties": {
+    "usdc": [
+      {
+        "id": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+        "class": "own",
+        "count": 6
+      }
+    ],
+    "card_tokens": null
+  },
+  "latency": {
+    "usdc": {
+      "runs": 0,
+      "ok": 0,
+      "skipped": 1,
+      "total_ms_p50": null,
+      "total_ms_p90": null,
+      "first_402_ms_median": null,
+      "sign_ms_median": null,
+      "paid_request_ms_median": null
+    },
+    "card": {
+      "runs": 0,
+      "ok": 0,
+      "skipped": 1,
+      "total_ms_p50": null,
+      "total_ms_p90": null,
+      "first_402_ms_median": null,
+      "sign_ms_median": null,
+      "paid_request_ms_median": null
+    }
+  },
+  "nvm_reconcile_incl_own": null,
+  "detail": {
+    "window_utc": [
+      "2026-10-19T15:00:00.000Z",
+      "2026-10-20T15:00:00.000Z"
+    ],
+    "page": null,
+    "usdc": {
+      "payments": [
+        {
+          "time_utc": "2026-10-19T21:00:49.000Z",
+          "date_jst": "2026-10-20",
+          "signature": "2VQgWhxDuNGYwED8zoYrqm4z8wDVuRdwLvN1d4hHDUTyDm9D6Sko6KysWDPeS8hzwyP3gCYH8SuVFPiJrfvQZHF8",
+          "block_time": 1792443649,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "20000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 106.49,
+          "fee_payer_role": "facilitator",
+          "product": "jin_movers",
+          "product_source": "seller_log:seller"
+        },
+        {
+          "time_utc": "2026-10-19T21:00:52.000Z",
+          "date_jst": "2026-10-20",
+          "signature": "3znCF1TkMdnEAUefj6EVWngaKMMgb8hJmLTUSGjBZn253UdNF92FYDQ4QpAkvmvJS1JJ3fJDPnhCAzWFeTQwcS6c",
+          "block_time": 1792443652,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 106.49,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "seller_log:aa_runs"
+        },
+        {
+          "time_utc": "2026-10-19T21:00:53.000Z",
+          "date_jst": "2026-10-20",
+          "signature": "4K5zsnV9XGWTvu2uw1kXWXmceDUf4NRrGRmUvEv35T2yxUZ5hWzph9wdWS7d3AjDxpU9Ki7Nd1J56Vc8zBBRYnzm",
+          "block_time": 1792443653,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 106.49,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "seller_log:aa_runs"
+        },
+        {
+          "time_utc": "2026-10-19T21:00:54.000Z",
+          "date_jst": "2026-10-20",
+          "signature": "2rKqVN5DUT8K49TCWJSTrQ3jQMqaVNZdKfMJzi86qq9H42BJyqaZUek3huBwy5QeJAU6FcpG4j9jvQ7BYRExkfSx",
+          "block_time": 1792443654,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 106.49,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "seller_log:aa_runs"
+        },
+        {
+          "time_utc": "2026-10-19T21:00:55.000Z",
+          "date_jst": "2026-10-20",
+          "signature": "2mTKFXbpyXedAF2g9yyFqCsPhGgSry4jU6TpsUpXwg5SQhFR9gP5fAyLjwBeBbrreTWE41ZbcYJDHdHwXodvzbPC",
+          "block_time": 1792443655,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 106.49,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "seller_log:aa_runs"
+        },
+        {
+          "time_utc": "2026-10-19T21:00:57.000Z",
+          "date_jst": "2026-10-20",
+          "signature": "4S8rEzC5AS1ipLo3YuBc4vGQoy5i2pNxenhYpSC2AuqxGreNbNSqN4SLK7eYmTe3eWMXkkt8Qr8mJbphVQgJU5zm",
+          "block_time": 1792443657,
+          "payer": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 106.49,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "seller_log:aa_runs"
+        }
+      ],
+      "sol_usd": {
+        "usd": 106.49,
+        "source": "binance SOLUSDC 1d close (UTC)"
+      },
+      "seller_log": [
+        {
+          "tx_signature": "3znCF1TkMdnEAUefj6EVWngaKMMgb8hJmLTUSGjBZn253UdNF92FYDQ4QpAkvmvJS1JJ3fJDPnhCAzWFeTQwcS6c",
+          "endpoint": "https://osd.x402jp.com/api/alpha/portfolio/current",
+          "amount": "10000",
+          "time_utc": "2026-10-19T21:00:50.589Z",
+          "source": "aa_runs"
+        },
+        {
+          "tx_signature": "4K5zsnV9XGWTvu2uw1kXWXmceDUf4NRrGRmUvEv35T2yxUZ5hWzph9wdWS7d3AjDxpU9Ki7Nd1J56Vc8zBBRYnzm",
+          "endpoint": "https://osd.x402jp.com/api/alpha/portfolio/scorecard",
+          "amount": "10000",
+          "time_utc": "2026-10-19T21:00:50.589Z",
+          "source": "aa_runs"
+        },
+        {
+          "tx_signature": "2rKqVN5DUT8K49TCWJSTrQ3jQMqaVNZdKfMJzi86qq9H42BJyqaZUek3huBwy5QeJAU6FcpG4j9jvQ7BYRExkfSx",
+          "endpoint": "https://osd.x402jp.com/api/alpha/jp/portfolio/current",
+          "amount": "10000",
+          "time_utc": "2026-10-19T21:00:50.589Z",
+          "source": "aa_runs"
+        },
+        {
+          "tx_signature": "2mTKFXbpyXedAF2g9yyFqCsPhGgSry4jU6TpsUpXwg5SQhFR9gP5fAyLjwBeBbrreTWE41ZbcYJDHdHwXodvzbPC",
+          "endpoint": "https://osd.x402jp.com/api/alpha/jp/scorecard",
+          "amount": "10000",
+          "time_utc": "2026-10-19T21:00:50.589Z",
+          "source": "aa_runs"
+        },
+        {
+          "tx_signature": "4S8rEzC5AS1ipLo3YuBc4vGQoy5i2pNxenhYpSC2AuqxGreNbNSqN4SLK7eYmTe3eWMXkkt8Qr8mJbphVQgJU5zm",
+          "endpoint": "https://osd.x402jp.com/api/alpha/jp/catalysts",
+          "amount": "10000",
+          "time_utc": "2026-10-19T21:00:50.589Z",
+          "source": "aa_runs"
+        },
+        {
+          "tx_signature": "2VQgWhxDuNGYwED8zoYrqm4z8wDVuRdwLvN1d4hHDUTyDm9D6Sko6KysWDPeS8hzwyP3gCYH8SuVFPiJrfvQZHF8",
+          "endpoint": "https://jin.x402jp.com/api/jin/movers",
+          "amount": "20000",
+          "time_utc": "2026-10-19T21:00:49.685Z",
+          "source": "seller"
+        }
+      ],
+      "seller_log_complete": "jin"
+    },
+    "card": {
+      "calls": null,
+      "sales": null,
+      "nvm_purchases": null,
+      "nvm": null
+    },
+    "latency": [
+      {
+        "entry": "usdc",
+        "item": "series",
+        "ts": "2026-10-20T00:19:25.287Z",
+        "skipped": "PROBE_SOLANA_SECRET_KEY 未設定"
+      },
+      {
+        "entry": "card",
+        "item": "series",
+        "ts": "2026-10-20T00:19:25.287Z",
+        "skipped": "PROBE_NVM_ACCESS_TOKEN またはゲートウェイ URL が未設定"
+      }
+    ]
+  }
+}
