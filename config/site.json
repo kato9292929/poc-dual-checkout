@@ -83,7 +83,7 @@
     "nvm_agent_id": "TODO_SET_AFTER_POC1",
     "nvm_receiver_address": "0x6d565F6091624672B6c0ef6e2D38eD4679143Ed5",
     "plan_purchase_url": "TODO_SET_AFTER_POC1",
-    "gateway_base_url": "TODO_SET_AFTER_POC1",
+    "gateway_base_url": "https://poc-card-credits.vercel.app",
     "plan": {
       "name": "prepaid-100",
       "plan_price_usd": 1.0,
@@ -100,7 +100,15 @@
     "purchase_source": "stripe",
     "_purchase_source_comment": "プラン購入件数の主系。stripe（Stripe の取引数、既定）か nvm_events（Nevermined の plan.purchased イベント数）。主系でない方は照合用に残す。",
     "gateway_log_path": "/logs/{day}",
-    "_gateway_log_comment": "実証1ゲートウェイのログの口（GET /logs/:date、Bearer は LOG_READ_TOKEN）。{day} は UTC の日付（実証1のログは UTC の日ごと）。GATEWAY_LOG_URL を設定すればそちらを優先する。",
+    "buyer_log_path": "/logs/buyer/{day}",
+    "products": ["jin_series"],
+    "_products_comment": "カード入口で買える商品。プランが 1 リクエスト 1 クレジット（$0.01）固定のため JIN series だけ。movers（$0.02）は USDC 入口のみ。入口ごとの比較は jin_series でそろえる（2026-10-22 実証1 から）",
+    "contract_definition": "settle_ok",
+    "_contract_definition_comment": "カード経由の成約＝ゲートウェイのログで outcome が ok（settle 成功・クレジット消費）の行。settle_failed（上流の JIN には払ったがクレジット未消費）は成約に入れず settle_failed として別に数える。JIN の売り手ログには売上として出るので、JIN 側の件数とはその分ずれる",
+    "known_gaps": [
+      { "date": "2026-10-21", "missing_calls": 3, "reason": "実証1のゲートウェイのログが Blob の不具合で 3 回分残らなかった（実証1で修正済み）。JIN の売り手ログとチェーン側は 3 件多い" }
+    ],
+    "_gateway_log_comment": "実証1ゲートウェイのログの口（GET /logs/:date、Bearer は LOG_READ_TOKEN）。{day} は JST の日付。GATEWAY_LOG_URL を設定すればそちらを優先する。",
     "_plan_comment": "実証1（poc-card-credits）の config/plans.json の prepaid-100 と同じ値。プラン ID と購入 URL は、実証1で npm run plan:register を実行したあとに入れる。"
   }
 }

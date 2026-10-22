@@ -108,10 +108,16 @@ test('実証1ゲートウェイのログ: /logs/:date（JST の日付）の1日�
     token_id: 't1',
     route_id: 'jin.series',
     outcome: 'ok',
+    verify: 'valid',
+    settle: 'ok',
     credits: 1,
     latency_ms: 1800,
+    upstream_latency_ms: 1500,
     upstream_tx: 'GwTx1',
+    upstream_network: 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp',
   });
+  assert.equal(calls[1].time_utc, '2026-11-02T16:00:00.000Z'); // 旧形式（ts）も読める
+  assert.equal(toCalls([{ time_utc: '2026-11-02T15:00:00.000Z', outcome: 'no_token', upstreamTx: 'none' }], '+09:00')[0].upstream_tx, null);
   assert.ok(calls.every((c) => c.date_jst === '2026-11-03'));
   assert.ok(!JSON.stringify(calls).includes('/jin/series')); // パスは残さない
 });
@@ -529,4 +535,29 @@ test('売り手ログの消去法は、売り手が記録を始めた日（selle
   const d = buildDaily({ date: '2026-11-04', config: c, detail: det, sources: {} });
   assert.equal(d.detail.usdc.payments.find((p) => p.signature === 's1').product, 'osd');
   assert.equal(d.detail.usdc.payments.find((p) => p.signature === 's2').product, 'jin_movers');
+});
+
+test('実証1のゲートウェイ: ウォレット発の JIN 支払いは own。ログの ok は成約、settle_failed は別に数え、ログに無いチェーン側の支払いも数える', () => {
+  const config = structuredClone(loadConfig());
+  const gw = config.own.solana.find((w) => w.role === 'card_gateway').address;
+  const pay = (signature, payer) => ({ signature, payer, amount_micro: 10000, fee_payer: null, time_utc: '2026-10-21T01:00:00.000Z', date_jst: '2026-10-21' });
+  const detail = {
+    usdc: { payments: [pay('A', gw), pay('B', gw), pay('C', gw), pay('X', 'someoneElse')] },
+    card: {
+      calls: [
+        { token_id: 't1', outcome: 'ok', credits: 1, upstream_tx: 'A' },
+        { token_id: 't1', outcome: 'settle_failed', credits: 0, upstream_tx: 'B' },
+      ],
+    },
+  };
+  const d = buildDaily({ date: '2026-10-21', config, detail, sources: {} });
+  assert.equal(d.by_class.own.usdc.payto_inflows, 3);
+  assert.equal(d.by_class.unclassified.usdc.payto_inflows, 1);
+  assert.equal(d.by_class.unclassified.card.calls, 1);
+  assert.equal(d.by_class.unclassified.card.settle_failed, 1);
+  assert.equal(d.gateway_upstream.chain_payments, 3);
+  assert.equal(d.gateway_upstream.log_calls_ok, 1);
+  assert.equal(d.gateway_upstream.log_settle_failed, 1);
+  assert.equal(d.gateway_upstream.chain_not_in_log, 1);
+  assert.equal(d.gateway_upstream.known_gap.missing_calls, 3);
 });

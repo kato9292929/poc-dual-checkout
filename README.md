@@ -85,8 +85,8 @@ Nevermined のプランはカードか暗号資産のどちらか一方しか持
 実証1が Sandbox で動いてから始める。
 
 1. **カード入口を設定する**：`config/site.json` の `nvm_plan_id`、`nvm_agent_id`、`plan_purchase_url`、`gateway_base_url`、`stripe_match`。プランの受取先（`nvm_receiver_address`）は Nevermined の売り手ウォレット `0x6d56…43Ed5` を入れてある。
-2. **自社の支払い元を書く**：`config/own_wallets.json` の `address: null` を埋める（公開アドレスだけ）。AA は確定済み。Seller Probe は設定に公開アドレスが無いので未取得。実証1ゲートウェイのウォレットは作成された時点で追加する。実証1の検証用買い手と計測用の買い手のトークン ID（実証1のログの `tokenId`）を `card_token_ids` に入れる。`version` を上げて `CHANGELOG.md` に記録し、`--resummarize` で数え直す。
-3. **実証1ゲートウェイのログの口（`GET /logs/:date`）につなぐ**：`gateway_base_url` を設定し、実証1の `LOG_READ_TOKEN` を Secrets に入れる。それまでの日は欠損（`gateway_log: "missing"`）として記録されるので、つながったら `--resummarize` で数え直す（`docs/sources.md`）。
+2. **自社の支払い元を書く**：`config/own_wallets.json` の `address: null` を埋める（公開アドレスだけ）。AA は確定済み。Seller Probe は設定に公開アドレスが無いので未取得。実証1ゲートウェイのウォレット（`3HG2…rcgV`）は追加済み。実証1の検証用買い手と計測用の買い手のトークン ID（実証1のログの `tokenId`）を `card_token_ids` に入れる。`version` を上げて `CHANGELOG.md` に記録し、`--resummarize` で数え直す。
+3. **実証1ゲートウェイのログの口（`GET /logs/:date`）につなぐ**：`gateway_base_url` は設定済み。実証1の `LOG_READ_TOKEN` を Secrets に入れる。それまでの日は欠損（`gateway_log: "missing"`）として記録されるので、つながったら `--resummarize` で数え直す（`docs/sources.md`）。
 4. **販売ページをデプロイ**：Vercel にこのリポジトリをつなぎ、ドメイン `buy.jin.x402jp.com` を割り当てる。Upstash Redis を追加し、`UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` / `STATS_TOKEN` を設定する。
 5. **GitHub Secrets を設定**：`.env.example` の集計用と計測用の値。
 6. **期間を始める**：`config/period.json` の `P1.start` を入れてコミットする。4週間は価格を変えない。

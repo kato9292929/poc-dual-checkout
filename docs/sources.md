@@ -145,8 +145,13 @@ seller-probe はまだ一度も有料の測定を動かしていない（Actions
 ### 実証1ゲートウェイのログ
 
 - 実証1の `src/log.ts` の `RequestLogEntry`（1リクエスト1行）を、実証1ゲートウェイの口 `GET /logs/:date` から読む。URL は `config/site.json` の `card.gateway_base_url` ＋ `card.gateway_log_path`（`/logs/{day}`）。**`:date` は JST の日付**（実証1の B1 と揃えた。2026-10-17）。受け取った行は、念のため JST のその日の範囲でも絞る。Bearer は実証1の `LOG_READ_TOKEN`（読み取り専用）。`GATEWAY_LOG_URL` を設定すればそちらを優先する。
-- 残すのは `ts`・`tokenId`・`routeId`・`outcome`・`creditsConsumed`・`latencyMs`・`upstreamTx` だけ。パスやエラー本文は残さない。
-- **2026-10-14 時点で、実証1にはこの口がまだ無い。** それまでの日は `gateway_log: "missing"`（欠損）として記録する。口がつながったら `node scripts/collect-daily.mjs --resummarize <開始日>..<終了日>` を実行すると、欠損の日だけログを取りに行って埋め、数え直す。
+- 残すのは `time_utc`（旧形式の `ts` も読む）・`tokenId`・`routeId`・`outcome`・`verify`・`settle`・`creditsConsumed`・`latencyMs`・`upstreamLatencyMs`・`upstreamTx`・`upstreamNetwork` だけ。パスやエラー本文は残さない。`upstreamTx` の `'none'` は null にする。
+- **口は 2026-10-22 から開いている**（`https://poc-card-credits.vercel.app`、`card.gateway_base_url`）。読むには GitHub Secrets の `LOG_READ_TOKEN` が要る。それまでの日は `gateway_log: "missing"`（欠損）として記録してある。トークンを入れたら、daily の Action を `resummarize` に範囲（例 `2026-10-19..2026-10-21`）を入れて手動で実行するか、`node scripts/collect-daily.mjs --resummarize <開始日>..<終了日>` を実行すると、欠損の日だけログを取りに行って埋め、数え直す。
+- **カード入口の成約**＝ログの `outcome: "ok"`（settle 成功・クレジット消費）。`settle_failed`（上流の JIN には払ったがクレジット未消費）は成約に入れず、`card.settle_failed` として別に数える。JIN の売り手ログには売上として出るので、JIN 側の件数とはその分ずれる（`card.contract_definition`）。
+- **カード入口は JIN series（$0.01）だけ**（プランが 1 リクエスト 1 クレジット固定）。movers は USDC 入口のみなので、入口の比較は series でそろえる（`card.products`）。
+- **ゲートウェイのウォレット** `3HG2…rcgV`（実証1 の `docs/wallet.md`）は `own_wallets.json` に `role: "card_gateway"` で入れてある。ここから JIN / OSD への支払いは USDC 入口の外部の買い手から外れる（own）。日次の `gateway_upstream` に、チェーン側の件数（商品別）とログの ok / settle_failed の件数、ログに無いチェーン側の支払いの件数を並べて照合する。
+- **ログの欠け**は `card.known_gaps` に書く。2026-10-21 はゲートウェイのログが 3 回分欠けている（Blob の不具合、実証1で修正済み）。その日はチェーン側と JIN の売り手ログの方が 3 件多い。
+- 買い手エージェントのログ `GET /logs/buyer/:date`（同じトークン、`card.buyer_log_path`）は週次レポート用。まだ読んでいない。
 
 ### Stripe
 

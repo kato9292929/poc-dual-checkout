@@ -1,6 +1,6 @@
 {
-  "version": 5,
-  "updated": "2026-10-15",
+  "version": 6,
+  "updated": "2026-10-22",
   "_comment": "自社の支払い元。一致したものは own に分類し、全集計から除外して参考値として別表に出す。公開アドレスだけを書く（秘密鍵は読まない・書かない）。address が null のものは未取得で、照合には使われない。",
   "solana": [
     {
@@ -27,10 +27,11 @@
       "status": "pending"
     },
     {
-      "address": null,
+      "address": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
       "label": "実証1のゲートウェイ",
-      "source": "ウォレット作成時に追加する（poc-card-credits の docs/go-live.md）。未追加の間も、ゲートウェイログの upstreamTx と一致する支払いは own にする",
-      "status": "not_created"
+      "role": "card_gateway",
+      "source": "poc-card-credits の docs/wallet.md（2026-10-19T14:17:39Z 作成、Solana mainnet、ゲートウェイの x402 の支払い元）。実証1 のセッションから 2026-10-22 に受け取った。カード払いの裏側で JIN を買った支払いで、USDC 入口の外部の買い手ではない。カード入口の利用はゲートウェイのログで数え、こちらは gateway_upstream で照合する",
+      "status": "confirmed"
     },
     {
       "address": null,
@@ -72,6 +73,11 @@
       "version": 5,
       "date": "2026-10-15",
       "change": "AA の公開アドレス 7PVT…L6tY を記入（confirmed）。出所は aa.x402jp.com/api/runs の tx 署名とチェーン上の支払い元。候補から外した。"
+    },
+    {
+      "version": 6,
+      "date": "2026-10-22",
+      "change": "実証1のゲートウェイの公開アドレス 3HG2…rcgV を記入（role: card_gateway）。"
     }
   ],
   "nvm_user_hashes": {

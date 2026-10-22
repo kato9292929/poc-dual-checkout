@@ -8,6 +8,9 @@ on:
       date:
         description: 'YYYY-MM-DD（JST）。空なら前日'
         required: false
+      resummarize:
+        description: 'YYYY-MM-DD..YYYY-MM-DD（JST）。入れると、その範囲を後から取れたログで数え直す（date より優先）'
+        required: false
       skip_probe:
         description: '所要時間の計測をしない'
         type: boolean
@@ -49,8 +52,10 @@ jobs:
           NVM_ORG_ID: ${{ secrets.NVM_ORG_ID }}
           ANON_SALT: ${{ secrets.ANON_SALT }}
           DATE: ${{ inputs.date }}
+          RESUMMARIZE: ${{ inputs.resummarize }}
         run: |
-          if [ -n "$DATE" ]; then node scripts/collect-daily.mjs --date "$DATE"; else node scripts/collect-daily.mjs; fi
+          if [ -n "$RESUMMARIZE" ]; then node scripts/collect-daily.mjs --resummarize "$RESUMMARIZE"
+          elif [ -n "$DATE" ]; then node scripts/collect-daily.mjs --date "$DATE"; else node scripts/collect-daily.mjs; fi
       - name: commit
         run: |
           git config user.name "github-actions[bot]"

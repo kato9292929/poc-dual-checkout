@@ -11,10 +11,10 @@
   "period_phase": "no_period",
   "price_check": "no_period",
   "classification": {
-    "own_wallets_version": 5,
+    "own_wallets_version": 6,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-22T00:00:21.997Z",
+  "generated_at": "2026-10-22T05:10:36.339Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -81,6 +81,7 @@
         "uses_credits": null,
         "buyers": null,
         "failures": null,
+        "settle_failed": null,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -92,76 +93,12 @@
         "days_to_payout_median": null,
         "payouts_pending": null,
         "gateway_latency_ms_p50": null,
-        "gateway_latency_ms_p90": null
+        "gateway_latency_ms_p90": null,
+        "upstream_latency_ms_p50": null,
+        "upstream_latency_ms_p90": null
       }
     },
     "unclassified": {
-      "usdc": {
-        "jin_contracts_min": 6,
-        "jin_contracts_max": 6,
-        "unresolved": 0,
-        "by_product": {
-          "jin_movers": 0,
-          "jin_series": 6,
-          "unresolved": 0,
-          "osd": 4,
-          "other": 0
-        },
-        "jin_buyers_min": 1,
-        "jin_buyers_max": 1,
-        "jin_revenue_usd_min": 0.06,
-        "jin_revenue_usd_max": 0.06,
-        "payto_inflows": 10,
-        "payto_revenue_usd": 0.1,
-        "seller_fee_usd": 0,
-        "seller_fee_usd_per_tx": 0,
-        "seller_fee_rate": 0,
-        "facilitator_fee_usd": 0.010689,
-        "facilitator_fee_rate": 0.1069,
-        "fee_by_payer": {
-          "seller": {
-            "txs": 0,
-            "lamports": 0,
-            "usd": 0
-          },
-          "facilitator": {
-            "txs": 10,
-            "lamports": 100010,
-            "usd": 0.010689
-          },
-          "buyer": {
-            "txs": 0,
-            "lamports": 0,
-            "usd": 0
-          },
-          "other": {
-            "txs": 0,
-            "lamports": 0,
-            "usd": 0
-          }
-        },
-        "days_to_settlement": 0
-      },
-      "card": {
-        "calls": null,
-        "uses_credits": null,
-        "buyers": null,
-        "failures": null,
-        "plan_purchases": null,
-        "plan_purchases_source": "stripe",
-        "plan_purchases_stripe": null,
-        "plan_purchases_nvm_events": null,
-        "revenue_usd": null,
-        "card_fee_usd": null,
-        "card_fee_usd_per_contract": null,
-        "fee_rate": null,
-        "days_to_payout_median": null,
-        "payouts_pending": null,
-        "gateway_latency_ms_p50": null,
-        "gateway_latency_ms_p90": null
-      }
-    },
-    "own": {
       "usdc": {
         "jin_contracts_min": 0,
         "jin_contracts_max": 0,
@@ -213,6 +150,7 @@
         "uses_credits": null,
         "buyers": null,
         "failures": null,
+        "settle_failed": null,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -224,7 +162,78 @@
         "days_to_payout_median": null,
         "payouts_pending": null,
         "gateway_latency_ms_p50": null,
-        "gateway_latency_ms_p90": null
+        "gateway_latency_ms_p90": null,
+        "upstream_latency_ms_p50": null,
+        "upstream_latency_ms_p90": null
+      }
+    },
+    "own": {
+      "usdc": {
+        "jin_contracts_min": 6,
+        "jin_contracts_max": 6,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 0,
+          "jin_series": 6,
+          "unresolved": 0,
+          "osd": 4,
+          "other": 0
+        },
+        "jin_buyers_min": 1,
+        "jin_buyers_max": 1,
+        "jin_revenue_usd_min": 0.06,
+        "jin_revenue_usd_max": 0.06,
+        "payto_inflows": 10,
+        "payto_revenue_usd": 0.1,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_tx": 0,
+        "seller_fee_rate": 0,
+        "facilitator_fee_usd": 0.010689,
+        "facilitator_fee_rate": 0.1069,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 10,
+            "lamports": 100010,
+            "usd": 0.010689
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": 0
+      },
+      "card": {
+        "calls": null,
+        "uses_credits": null,
+        "buyers": null,
+        "failures": null,
+        "settle_failed": null,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null,
+        "upstream_latency_ms_p50": null,
+        "upstream_latency_ms_p90": null
       }
     }
   },
@@ -232,7 +241,7 @@
     "usdc": [
       {
         "id": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
-        "class": "unclassified",
+        "class": "own",
         "count": 10
       }
     ],
@@ -258,6 +267,21 @@
       "first_402_ms_median": null,
       "sign_ms_median": null,
       "paid_request_ms_median": null
+    }
+  },
+  "gateway_upstream": {
+    "chain_payments": 10,
+    "by_product": {
+      "jin_series": 6,
+      "osd": 4
+    },
+    "log_calls_ok": null,
+    "log_settle_failed": null,
+    "chain_not_in_log": null,
+    "known_gap": {
+      "date": "2026-10-21",
+      "missing_calls": 3,
+      "reason": "実証1のゲートウェイのログが Blob の不具合で 3 回分残らなかった（実証1で修正済み）。JIN の売り手ログとチェーン側は 3 件多い"
     }
   },
   "nvm_reconcile_incl_own": null,
