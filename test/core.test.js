@@ -106,6 +106,7 @@ test('実証1ゲートウェイのログ: /logs/:date（JST の日付）の1日�
     time_utc: '2026-11-02T15:10:00.000Z',
     date_jst: '2026-11-03',
     token_id: 't1',
+    payer_id: 'payerA',
     route_id: 'jin.series',
     outcome: 'ok',
     verify: 'valid',
@@ -540,26 +541,31 @@ test('売り手ログの消去法は、売り手が記録を始めた日（selle
 test('実証1のゲートウェイ: ウォレット発の JIN 支払いは own。ログの ok は成約、settle_failed は別に数え、ログに無いチェーン側の支払いも数える', () => {
   const config = structuredClone(loadConfig());
   const gw = config.own.solana.find((w) => w.role === 'card_gateway').address;
+  config.own.card_payer_ids.ids = ['pOwn'];
   const pay = (signature, payer) => ({ signature, payer, amount_micro: 10000, fee_payer: null, time_utc: '2026-10-21T01:00:00.000Z', date_jst: '2026-10-21' });
   const detail = {
     usdc: { payments: [pay('A', gw), pay('B', gw), pay('C', gw), pay('X', 'someoneElse')] },
     card: {
       calls: [
-        { token_id: 't1', route_id: 'jin.series', outcome: 'ok', credits: 1, upstream_tx: 'A' },
-        { token_id: 't1', route_id: 'jin.series', outcome: 'settle_failed', credits: 0, upstream_tx: 'B' },
-        { token_id: 't1', route_id: 'osd.jp.catalysts', outcome: 'ok', credits: 1, upstream_tx: 'C' },
+        { token_id: 't1', payer_id: 'p1', route_id: 'jin.series', outcome: 'ok', credits: 1, upstream_tx: 'A' },
+        { token_id: 't2', payer_id: 'p1', route_id: 'jin.series', outcome: 'settle_failed', credits: 0, upstream_tx: 'B' },
+        { token_id: 't3', payer_id: 'p1', route_id: 'osd.jp.catalysts', outcome: 'ok', credits: 1, upstream_tx: 'C' },
+        { token_id: 't4', payer_id: 'p1', route_id: 'jin.series', outcome: 'ok', credits: 1, upstream_tx: 'D' },
+        { token_id: 't5', payer_id: 'pOwn', route_id: 'jin.series', outcome: 'ok', credits: 1, upstream_tx: 'E' },
       ],
     },
   };
   const d = buildDaily({ date: '2026-10-21', config, detail, sources: {} });
   assert.equal(d.by_class.own.usdc.payto_inflows, 3);
   assert.equal(d.by_class.unclassified.usdc.payto_inflows, 1);
-  assert.equal(d.by_class.unclassified.card.calls, 1); // 比較は JIN series だけ。OSD は内訳に出る
-  assert.deepEqual(d.by_class.unclassified.card.calls_by_product, { jin_series: 1, osd: 1 });
+  assert.equal(d.by_class.unclassified.card.calls, 2); // 比較は JIN series だけ。OSD は内訳に出る
+  assert.deepEqual(d.by_class.unclassified.card.calls_by_product, { jin_series: 2, osd: 1 });
+  assert.equal(d.by_class.unclassified.card.buyers, 1); // tokenId は購入ごとに変わる。買い手は payerId で数える
+  assert.equal(d.by_class.own.card.calls, 1); // card_payer_ids に入れた買い手は own
   assert.equal(d.by_class.unclassified.card.settle_failed, 1);
   assert.equal(d.gateway_upstream.chain_payments, 3);
-  assert.equal(d.gateway_upstream.log_calls_ok, 2);
-  assert.deepEqual(d.gateway_upstream.log_ok_by_product, { jin_series: 1, osd: 1 });
+  assert.equal(d.gateway_upstream.log_calls_ok, 4);
+  assert.deepEqual(d.gateway_upstream.log_ok_by_product, { jin_series: 3, osd: 1 });
   assert.equal(d.gateway_upstream.log_settle_failed, 1);
   assert.equal(d.gateway_upstream.chain_not_in_log, 0);
   assert.deepEqual(d.gateway_upstream.known_gap.missing_by_product, { jin_series: 2, osd: 1 });

@@ -11,10 +11,10 @@
   "period_phase": "no_period",
   "price_check": "no_period",
   "classification": {
-    "own_wallets_version": 6,
+    "own_wallets_version": 7,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-22T05:10:36.333Z",
+  "generated_at": "2026-10-23T05:38:54.510Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -78,6 +78,10 @@
       },
       "card": {
         "calls": null,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": null,
         "uses_credits": null,
         "buyers": null,
         "failures": null,
@@ -147,6 +151,10 @@
       },
       "card": {
         "calls": null,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": null,
         "uses_credits": null,
         "buyers": null,
         "failures": null,
@@ -216,6 +224,10 @@
       },
       "card": {
         "calls": null,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": null,
         "uses_credits": null,
         "buyers": null,
         "failures": null,
@@ -245,7 +257,7 @@
         "count": 6
       }
     ],
-    "card_tokens": null
+    "card_payers": null
   },
   "latency": {
     "usdc": {
@@ -274,6 +286,8 @@
     "by_product": {},
     "log_calls_ok": null,
     "log_settle_failed": null,
+    "log_ok_by_product": null,
+    "log_settle_failed_by_product": null,
     "chain_not_in_log": null,
     "known_gap": null
   },

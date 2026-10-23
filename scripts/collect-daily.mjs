@@ -74,9 +74,10 @@ if (opt('--resummarize')) {
     if (!existsSync(dataFile(d))) continue;
     const old = JSON.parse(readFileSync(dataFile(d), 'utf8'));
     if (old.schema !== 3) throw new Error(`${d}: schema ${old.schema} は数え直せない。--date ${d} で取り込み直す`);
-    // ゲートウェイのログが欠損していた日は、口がつながっていれば取りに行って埋める
+    // ゲートウェイのログが欠損していた日と、payer_id を残す前に取った日は、口がつながっていれば取りに行って埋める
     if (old.sources.gateway_log === 'not_configured') old.sources.gateway_log = 'missing';
-    if (old.sources.gateway_log !== 'ok' && gw.ready) {
+    const noPayer = (old.detail.card?.calls || []).some((c) => !('payer_id' in c));
+    if ((old.sources.gateway_log !== 'ok' || noPayer) && gw.ready) {
       const b = dayBounds(d, offset);
       try {
         old.detail.card.calls = await loadGateway(d, b.start, b.end);

@@ -145,7 +145,8 @@ seller-probe はまだ一度も有料の測定を動かしていない（Actions
 ### 実証1ゲートウェイのログ
 
 - 実証1の `src/log.ts` の `RequestLogEntry`（1リクエスト1行）を、実証1ゲートウェイの口 `GET /logs/:date` から読む。URL は `config/site.json` の `card.gateway_base_url` ＋ `card.gateway_log_path`（`/logs/{day}`）。**`:date` は JST の日付**（実証1の B1 と揃えた。2026-10-17）。受け取った行は、念のため JST のその日の範囲でも絞る。Bearer は実証1の `LOG_READ_TOKEN`（読み取り専用）。`GATEWAY_LOG_URL` を設定すればそちらを優先する。
-- 残すのは `time_utc`（旧形式の `ts` も読む）・`tokenId`・`routeId`・`outcome`・`verify`・`settle`・`creditsConsumed`・`latencyMs`・`upstreamLatencyMs`・`upstreamTx`・`upstreamNetwork` だけ。パスやエラー本文は残さない。`upstreamTx` の `'none'` は null にする。
+- 残すのは `time_utc`（旧形式の `ts` も読む）・`tokenId`・`payerId`・`routeId`・`outcome`・`verify`・`settle`・`creditsConsumed`・`latencyMs`・`upstreamLatencyMs`・`upstreamTx`・`upstreamNetwork` だけ。パスやエラー本文は残さない。`upstreamTx` の `'none'` は null にする。
+- **買い手は `payerId`（Nevermined の購入者を実証1で匿名化した値）で数える。** `tokenId` は x402 の支払いトークンで購入ごとに変わるため、買い手の数には使えない。自社の買い手（実証1の買い手エージェント、実証2の計測用）は `own_wallets.json` の `card_payer_ids` に入れる。`payerId` を残す前に取った日は、`--resummarize` でログを取り直す。
 - **口は 2026-10-22 から開いている**（`https://poc-card-credits.vercel.app`、`card.gateway_base_url`）。読むには GitHub Secrets の `LOG_READ_TOKEN` が要る。それまでの日は `gateway_log: "missing"`（欠損）として記録してある。トークンを入れたら、daily の Action を `resummarize` に範囲（例 `2026-10-19..2026-10-21`）を入れて手動で実行するか、`node scripts/collect-daily.mjs --resummarize <開始日>..<終了日>` を実行すると、欠損の日だけログを取りに行って埋め、数え直す。
 - **カード入口の成約**＝ログの `outcome: "ok"`（settle 成功・クレジット消費）。`settle_failed`（上流の JIN には払ったがクレジット未消費）は成約に入れず、`card.settle_failed` として別に数える。JIN の売り手ログには売上として出るので、JIN 側の件数とはその分ずれる（`card.contract_definition`）。
 - **カード入口は JIN series と OSD JP catalysts（どちらも $0.01）を交互に買う**（プランが 1 リクエスト 1 クレジット固定なので movers は無い）。入口の比較は JIN series でそろえ、OSD の行（`routeId: osd.jp.catalysts`）は外す。`card.calls` などは `card.products` の商品だけで数え、全商品の成約は `calls_by_product` に出す（`card.route_products` で routeId を商品に対応づける）。

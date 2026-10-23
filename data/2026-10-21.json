@@ -11,10 +11,10 @@
   "period_phase": "no_period",
   "price_check": "no_period",
   "classification": {
-    "own_wallets_version": 6,
+    "own_wallets_version": 7,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-23T05:35:56.431Z",
+  "generated_at": "2026-10-23T05:38:54.516Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -264,7 +264,7 @@
         "count": 10
       }
     ],
-    "card_tokens": [
+    "card_payers": [
       {
         "id": "e4ce7a9f228e20cd",
         "class": "unclassified",
