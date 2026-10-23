@@ -14,18 +14,20 @@
     "own_wallets_version": 8,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-23T06:01:54.913Z",
+  "generated_at": "2026-10-23T23:52:05.623Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
     "usdc_chain": "ok",
-    "gateway_log": "missing",
+    "gateway_log": "ok",
     "stripe": "missing",
     "stripe_csv": "not_found",
     "nvm_api": "not_configured",
     "latency_probe": "ok",
-    "seller_log": "missing",
-    "aa_runs": "ok"
+    "seller_log": "ok",
+    "aa_runs": "ok",
+    "gateway_log_backfilled_at": "2026-10-23T23:52:03.471Z",
+    "seller_log_backfilled_at": "2026-10-23T23:52:04.003Z"
   },
   "page": null,
   "by_class": {
@@ -77,15 +79,15 @@
         "days_to_settlement": null
       },
       "card": {
-        "calls": null,
+        "calls": 0,
         "calls_products": [
           "jin_series"
         ],
-        "calls_by_product": null,
-        "uses_credits": null,
-        "buyers": null,
-        "failures": null,
-        "settle_failed": null,
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {},
+        "settle_failed": 0,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -150,15 +152,15 @@
         "days_to_settlement": null
       },
       "card": {
-        "calls": null,
+        "calls": 0,
         "calls_products": [
           "jin_series"
         ],
-        "calls_by_product": null,
-        "uses_credits": null,
-        "buyers": null,
-        "failures": null,
-        "settle_failed": null,
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {},
+        "settle_failed": 0,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -223,15 +225,15 @@
         "days_to_settlement": 0
       },
       "card": {
-        "calls": null,
+        "calls": 0,
         "calls_products": [
           "jin_series"
         ],
-        "calls_by_product": null,
-        "uses_credits": null,
-        "buyers": null,
-        "failures": null,
-        "settle_failed": null,
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {},
+        "settle_failed": 0,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -257,7 +259,7 @@
         "count": 6
       }
     ],
-    "card_payers": null
+    "card_payers": []
   },
   "latency": {
     "usdc": {
@@ -284,11 +286,11 @@
   "gateway_upstream": {
     "chain_payments": 0,
     "by_product": {},
-    "log_calls_ok": null,
-    "log_settle_failed": null,
-    "log_ok_by_product": null,
-    "log_settle_failed_by_product": null,
-    "chain_not_in_log": null,
+    "log_calls_ok": 0,
+    "log_settle_failed": 0,
+    "log_ok_by_product": {},
+    "log_settle_failed_by_product": {},
+    "chain_not_in_log": 0,
     "known_gap": null
   },
   "nvm_reconcile_incl_own": null,
@@ -432,10 +434,11 @@
           "time_utc": "2026-10-15T21:00:00.479Z",
           "source": "aa_runs"
         }
-      ]
+      ],
+      "seller_log_complete": null
     },
     "card": {
-      "calls": null,
+      "calls": [],
       "sales": null,
       "nvm_purchases": null,
       "nvm": null
