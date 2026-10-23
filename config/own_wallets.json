@@ -1,5 +1,5 @@
 {
-  "version": 7,
+  "version": 8,
   "updated": "2026-10-23",
   "_comment": "自社の支払い元。一致したものは own に分類し、全集計から除外して参考値として別表に出す。公開アドレスだけを書く（秘密鍵は読まない・書かない）。address が null のものは未取得で、照合には使われない。",
   "solana": [
@@ -46,7 +46,10 @@
   },
   "card_payer_ids": {
     "_comment": "実証1ゲートウェイのログの payerId（Nevermined の購入者を実証1の LOG_SALT で匿名化した値）。実証1の買い手エージェント（定期実行）と、実証2の計測用の買い手。tokenId は購入ごとに変わるので、自社の買い手はこちらで見分ける",
-    "ids": []
+    "ids": [
+      "d0c6c75243d07e82"
+    ],
+    "note": "d0c6c75243d07e82＝実証1の買い手エージェント（定期実行）。10/21〜10/22 のゲートウェイのログの成約・settle 失敗 26 行がすべてこの payerId だった。カードのプランはまだ一般に売っていないので、ほかの買い手はいない"
   },
   "stripe_txn_hashes": {
     "_comment": "自社のテスト購入の Stripe 取引（scripts/anon.mjs で匿名化した値）",
@@ -87,6 +90,11 @@
       "version": 7,
       "date": "2026-10-23",
       "change": "card_payer_ids を追加。実証1ゲートウェイのログの tokenId は購入ごとに変わるため、カードの買い手は payerId で数え、自社の買い手も payerId で見分ける。"
+    },
+    {
+      "version": 8,
+      "date": "2026-10-23",
+      "change": "card_payer_ids に実証1の買い手エージェント d0c6c75243d07e82 を追加。"
     }
   ],
   "nvm_user_hashes": {

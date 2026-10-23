@@ -35,3 +35,4 @@ node scripts/collect-daily.mjs --resummarize 2026-10-12..2026-11-28
 | own_wallets.json | 5 | 2026-10-15 | AA の公開アドレス `7PVT…L6tY` を記入し、候補から外した | aa.x402jp.com/api/runs の tx 署名20件をチェーンで読み、支払い元がすべてこのアドレスだった |
 | own_wallets.json | 6 | 2026-10-22 | 実証1のゲートウェイの公開アドレス `3HG2…rcgV` を記入（`role: card_gateway`） | 実証1 の docs/wallet.md。カード払いの裏側の JIN 購入で、USDC 入口の外部の買い手ではない。10/12〜10/21 を `--upgrade` で数え直した（10/21 の 10 件が own に移った） |
 | own_wallets.json | 7 | 2026-10-23 | `card_payer_ids` を追加（カードの自社の買い手を payerId で見分ける） | 実証1ゲートウェイのログの tokenId は購入ごとに変わり（10/22 は成約18回で18種類）、買い手数が成約数と同じになっていた |
+| own_wallets.json | 8 | 2026-10-23 | `card_payer_ids` に `d0c6c75243d07e82`（実証1の買い手エージェント）を追加 | 10/21〜10/22 のゲートウェイのログの成約・settle 失敗 26 行がすべてこの payerId。カードのプランはまだ一般に売っていない |

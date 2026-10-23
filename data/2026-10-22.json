@@ -11,10 +11,10 @@
   "period_phase": "no_period",
   "price_check": "no_period",
   "classification": {
-    "own_wallets_version": 7,
+    "own_wallets_version": 8,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-23T06:01:20.357Z",
+  "generated_at": "2026-10-23T06:01:54.925Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -151,16 +151,13 @@
         "days_to_settlement": 0
       },
       "card": {
-        "calls": 10,
+        "calls": 0,
         "calls_products": [
           "jin_series"
         ],
-        "calls_by_product": {
-          "jin_series": 10,
-          "osd": 8
-        },
-        "uses_credits": 10,
-        "buyers": 1,
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
         "failures": {
           "no_token": 2
         },
@@ -175,10 +172,10 @@
         "fee_rate": null,
         "days_to_payout_median": null,
         "payouts_pending": null,
-        "gateway_latency_ms_p50": 5305,
-        "gateway_latency_ms_p90": 6192,
-        "upstream_latency_ms_p50": 2215,
-        "upstream_latency_ms_p90": 2407
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null,
+        "upstream_latency_ms_p50": null,
+        "upstream_latency_ms_p90": null
       }
     },
     "own": {
@@ -229,13 +226,16 @@
         "days_to_settlement": 0
       },
       "card": {
-        "calls": 0,
+        "calls": 10,
         "calls_products": [
           "jin_series"
         ],
-        "calls_by_product": {},
-        "uses_credits": 0,
-        "buyers": 0,
+        "calls_by_product": {
+          "jin_series": 10,
+          "osd": 8
+        },
+        "uses_credits": 10,
+        "buyers": 1,
         "failures": {},
         "settle_failed": 0,
         "plan_purchases": null,
@@ -248,10 +248,10 @@
         "fee_rate": null,
         "days_to_payout_median": null,
         "payouts_pending": null,
-        "gateway_latency_ms_p50": null,
-        "gateway_latency_ms_p90": null,
-        "upstream_latency_ms_p50": null,
-        "upstream_latency_ms_p90": null
+        "gateway_latency_ms_p50": 5305,
+        "gateway_latency_ms_p90": 6192,
+        "upstream_latency_ms_p50": 2215,
+        "upstream_latency_ms_p90": 2407
       }
     }
   },
@@ -271,7 +271,7 @@
     "card_payers": [
       {
         "id": "d0c6c75243d07e82",
-        "class": "unclassified",
+        "class": "own",
         "count": 18
       }
     ]
