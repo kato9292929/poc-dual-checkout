@@ -14,18 +14,19 @@
     "own_wallets_version": 6,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-22T05:10:36.337Z",
+  "generated_at": "2026-10-23T05:35:54.410Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
     "usdc_chain": "ok",
-    "gateway_log": "missing",
+    "gateway_log": "ok",
     "aa_runs": "ok",
     "seller_log": "ok",
     "stripe": "missing",
     "stripe_csv": "not_found",
     "nvm_api": "not_configured",
-    "latency_probe": "ok"
+    "latency_probe": "ok",
+    "gateway_log_backfilled_at": "2026-10-23T05:35:53.681Z"
   },
   "page": null,
   "by_class": {
@@ -77,11 +78,15 @@
         "days_to_settlement": null
       },
       "card": {
-        "calls": null,
-        "uses_credits": null,
-        "buyers": null,
-        "failures": null,
-        "settle_failed": null,
+        "calls": 0,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {},
+        "settle_failed": 0,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -146,11 +151,17 @@
         "days_to_settlement": null
       },
       "card": {
-        "calls": null,
-        "uses_credits": null,
-        "buyers": null,
-        "failures": null,
-        "settle_failed": null,
+        "calls": 0,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {
+          "no_token": 1
+        },
+        "settle_failed": 0,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -215,11 +226,15 @@
         "days_to_settlement": 0
       },
       "card": {
-        "calls": null,
-        "uses_credits": null,
-        "buyers": null,
-        "failures": null,
-        "settle_failed": null,
+        "calls": 0,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {},
+        "settle_failed": 0,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -245,7 +260,7 @@
         "count": 6
       }
     ],
-    "card_tokens": null
+    "card_tokens": []
   },
   "latency": {
     "usdc": {
@@ -272,9 +287,11 @@
   "gateway_upstream": {
     "chain_payments": 0,
     "by_product": {},
-    "log_calls_ok": null,
-    "log_settle_failed": null,
-    "chain_not_in_log": null,
+    "log_calls_ok": 0,
+    "log_settle_failed": 0,
+    "log_ok_by_product": {},
+    "log_settle_failed_by_product": {},
+    "chain_not_in_log": 0,
     "known_gap": null
   },
   "nvm_reconcile_incl_own": null,
@@ -422,7 +439,64 @@
       "seller_log_complete": "jin"
     },
     "card": {
-      "calls": null,
+      "calls": [
+        {
+          "time_utc": "2026-10-19T15:21:44.000Z",
+          "date_jst": "2026-10-20",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-19T15:21:44.000Z",
+          "date_jst": "2026-10-20",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-19T15:22:05.000Z",
+          "date_jst": "2026-10-20",
+          "token_id": "none",
+          "route_id": "jin.series",
+          "outcome": "no_token",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-19T15:23:19.000Z",
+          "date_jst": "2026-10-20",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 1,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        }
+      ],
       "sales": null,
       "nvm_purchases": null,
       "nvm": null

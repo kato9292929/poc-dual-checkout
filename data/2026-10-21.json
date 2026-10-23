@@ -14,18 +14,19 @@
     "own_wallets_version": 6,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-22T05:10:36.339Z",
+  "generated_at": "2026-10-23T05:35:56.431Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
     "usdc_chain": "ok",
-    "gateway_log": "missing",
+    "gateway_log": "ok",
     "aa_runs": "ok",
     "seller_log": "ok",
     "stripe": "missing",
     "stripe_csv": "not_found",
     "nvm_api": "not_configured",
-    "latency_probe": "ok"
+    "latency_probe": "ok",
+    "gateway_log_backfilled_at": "2026-10-23T05:35:55.744Z"
   },
   "page": null,
   "by_class": {
@@ -77,11 +78,15 @@
         "days_to_settlement": null
       },
       "card": {
-        "calls": null,
-        "uses_credits": null,
-        "buyers": null,
-        "failures": null,
-        "settle_failed": null,
+        "calls": 0,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {},
+        "settle_failed": 0,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -146,11 +151,21 @@
         "days_to_settlement": null
       },
       "card": {
-        "calls": null,
-        "uses_credits": null,
-        "buyers": null,
-        "failures": null,
-        "settle_failed": null,
+        "calls": 3,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": {
+          "jin_series": 3,
+          "osd": 3
+        },
+        "uses_credits": 3,
+        "buyers": 3,
+        "failures": {
+          "gateway_cap_exceeded": 1,
+          "settle_failed": 1
+        },
+        "settle_failed": 1,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -161,10 +176,10 @@
         "fee_rate": null,
         "days_to_payout_median": null,
         "payouts_pending": null,
-        "gateway_latency_ms_p50": null,
-        "gateway_latency_ms_p90": null,
-        "upstream_latency_ms_p50": null,
-        "upstream_latency_ms_p90": null
+        "gateway_latency_ms_p50": 5507,
+        "gateway_latency_ms_p90": 5552,
+        "upstream_latency_ms_p50": 2416,
+        "upstream_latency_ms_p90": 2440
       }
     },
     "own": {
@@ -215,11 +230,15 @@
         "days_to_settlement": 0
       },
       "card": {
-        "calls": null,
-        "uses_credits": null,
-        "buyers": null,
-        "failures": null,
-        "settle_failed": null,
+        "calls": 0,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {},
+        "settle_failed": 0,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -245,7 +264,38 @@
         "count": 10
       }
     ],
-    "card_tokens": null
+    "card_tokens": [
+      {
+        "id": "e4ce7a9f228e20cd",
+        "class": "unclassified",
+        "count": 1
+      },
+      {
+        "id": "a502326b5781d8e7",
+        "class": "unclassified",
+        "count": 1
+      },
+      {
+        "id": "d4afa0abb4bbf3fd",
+        "class": "unclassified",
+        "count": 1
+      },
+      {
+        "id": "7ef33d0ca2c67314",
+        "class": "unclassified",
+        "count": 1
+      },
+      {
+        "id": "cd3cb3e8ba47dd89",
+        "class": "unclassified",
+        "count": 1
+      },
+      {
+        "id": "d025b7c249c0963d",
+        "class": "unclassified",
+        "count": 1
+      }
+    ]
   },
   "latency": {
     "usdc": {
@@ -275,13 +325,24 @@
       "jin_series": 6,
       "osd": 4
     },
-    "log_calls_ok": null,
-    "log_settle_failed": null,
-    "chain_not_in_log": null,
+    "log_calls_ok": 6,
+    "log_settle_failed": 1,
+    "log_ok_by_product": {
+      "jin_series": 3,
+      "osd": 3
+    },
+    "log_settle_failed_by_product": {
+      "jin_series": 1
+    },
+    "chain_not_in_log": 3,
     "known_gap": {
       "date": "2026-10-21",
       "missing_calls": 3,
-      "reason": "実証1のゲートウェイのログが Blob の不具合で 3 回分残らなかった（実証1で修正済み）。JIN の売り手ログとチェーン側は 3 件多い"
+      "missing_by_product": {
+        "jin_series": 2,
+        "osd": 1
+      },
+      "reason": "実証1のゲートウェイのログが Blob の不具合で 3 回分残らなかった（実証1の d6f036e で修正）。JIN の売り手ログでは series がゲートウェイのログより 2 件多い。この日は実証1の確認のための手動呼び出し（09:01〜09:16 UTC）も含む。定期実行は 10/22 から"
     }
   },
   "nvm_reconcile_incl_own": null,
@@ -485,7 +546,470 @@
       "seller_log_complete": "jin"
     },
     "card": {
-      "calls": null,
+      "calls": [
+        {
+          "time_utc": "2026-10-21T08:28:33.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T08:28:33.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T08:34:59.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T08:34:59.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:07:31.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:07:31.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 21,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:07:45.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:08:17.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "1de81bfab7f61190",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "upstream_failed",
+          "verify": "valid",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 2183,
+          "upstream_latency_ms": 441,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:08:53.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "e4ce7a9f228e20cd",
+          "route_id": "jin.series",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 4372,
+          "upstream_latency_ms": 1115,
+          "upstream_tx": "2CVfKwzA5HdF7ZzeGzzU94f7YAwyZdRAKvUMtCe12E43STdkqY9gUXe1h9qstsNPaJMwJQpVeVM8Bs4pL26MwyVz",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-21T09:10:39.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:10:39.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:11:22.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:11:22.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:11:38.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "57244676e6609ef2",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "upstream_failed",
+          "verify": "valid",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 2156,
+          "upstream_latency_ms": 257,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:12:08.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "1eeabde5dcb7717a",
+          "route_id": "jin.series",
+          "outcome": "gateway_cap_exceeded",
+          "verify": "valid",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 1763,
+          "upstream_latency_ms": 269,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:13:26.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 1,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:13:26.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:15:44.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 1,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:15:54.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:16:04.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:16:14.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:16:24.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:16:25.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:17:47.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:17:47.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 0,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:18:30.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 1,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:18:30.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "none",
+          "route_id": null,
+          "outcome": "no_route",
+          "verify": "skipped",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 1,
+          "upstream_latency_ms": null,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-21T09:20:48.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "a502326b5781d8e7",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5264,
+          "upstream_latency_ms": 2090,
+          "upstream_tx": "4evMWWqu2CnRckPetUX4ezTQoTpocJZQSewVujFU7XuC9xCVrPpjZXHCbX21Uz7WxbbZZNqd1f3zApoJEz4RWGnN",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-21T10:43:55.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "1c1c72367f4e8a4f",
+          "route_id": "jin.series",
+          "outcome": "settle_failed",
+          "verify": "valid",
+          "settle": "Permission settlement failed. Permission settlement failed",
+          "credits": 0,
+          "latency_ms": 5522,
+          "upstream_latency_ms": 2063,
+          "upstream_tx": "yv4sf4HboA4dET3bx9oQ5sLEWNZdofqgQgyHqwsM1EEbx1LjTj5HiSD4eeaQSwwxHvCRb9VqQ15prSfkMVPqRbE",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-21T12:05:22.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "d4afa0abb4bbf3fd",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5332,
+          "upstream_latency_ms": 2116,
+          "upstream_tx": "fkHATPqDGHGruCNTpcQExu813xM8aazK1cRBacmmD1XjY38fX9dWaQn3QjzvZEJVCwitYNDM6E443JYEPWBxZvp",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-21T12:51:57.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "7ef33d0ca2c67314",
+          "route_id": "jin.series",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5552,
+          "upstream_latency_ms": 2440,
+          "upstream_tx": "4g2if9kWig4pYN3sEfdGGM5AdyKbA8mZY9W8KBW8KkKs3vL2wfXbgyE65AqNp3LjVhUUL2Xe3roSos854AWrCg51",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-21T13:12:02.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "cd3cb3e8ba47dd89",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5201,
+          "upstream_latency_ms": 2074,
+          "upstream_tx": "4uvspt6JjHdvNnbqxi3pDWY86P4qpC4Cj116TjgHRUxPXMX7v7TvnWDqWPastveBTPwjDVgceg1kfcc94FDYEKqf",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-21T14:19:13.000Z",
+          "date_jst": "2026-10-21",
+          "token_id": "d025b7c249c0963d",
+          "route_id": "jin.series",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5507,
+          "upstream_latency_ms": 2416,
+          "upstream_tx": "2kUpWH13jxpWw2juJVCvKxoqKvth1YXB4p7vu5X48BbFZq9DHmg68Zjwtj4Fe8xm86rSA8Y6kxxcXrsLRUpFdEaR",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        }
+      ],
       "sales": null,
       "nvm_purchases": null,
       "nvm": null
