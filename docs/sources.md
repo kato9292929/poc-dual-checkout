@@ -148,9 +148,12 @@ seller-probe はまだ一度も有料の測定を動かしていない（Actions
 - 残すのは `time_utc`（旧形式の `ts` も読む）・`tokenId`・`routeId`・`outcome`・`verify`・`settle`・`creditsConsumed`・`latencyMs`・`upstreamLatencyMs`・`upstreamTx`・`upstreamNetwork` だけ。パスやエラー本文は残さない。`upstreamTx` の `'none'` は null にする。
 - **口は 2026-10-22 から開いている**（`https://poc-card-credits.vercel.app`、`card.gateway_base_url`）。読むには GitHub Secrets の `LOG_READ_TOKEN` が要る。それまでの日は `gateway_log: "missing"`（欠損）として記録してある。トークンを入れたら、daily の Action を `resummarize` に範囲（例 `2026-10-19..2026-10-21`）を入れて手動で実行するか、`node scripts/collect-daily.mjs --resummarize <開始日>..<終了日>` を実行すると、欠損の日だけログを取りに行って埋め、数え直す。
 - **カード入口の成約**＝ログの `outcome: "ok"`（settle 成功・クレジット消費）。`settle_failed`（上流の JIN には払ったがクレジット未消費）は成約に入れず、`card.settle_failed` として別に数える。JIN の売り手ログには売上として出るので、JIN 側の件数とはその分ずれる（`card.contract_definition`）。
-- **カード入口は JIN series（$0.01）だけ**（プランが 1 リクエスト 1 クレジット固定）。movers は USDC 入口のみなので、入口の比較は series でそろえる（`card.products`）。
+- **カード入口は JIN series と OSD JP catalysts（どちらも $0.01）を交互に買う**（プランが 1 リクエスト 1 クレジット固定なので movers は無い）。入口の比較は JIN series でそろえ、OSD の行（`routeId: osd.jp.catalysts`）は外す。`card.calls` などは `card.products` の商品だけで数え、全商品の成約は `calls_by_product` に出す（`card.route_products` で routeId を商品に対応づける）。
 - **ゲートウェイのウォレット** `3HG2…rcgV`（実証1 の `docs/wallet.md`）は `own_wallets.json` に `role: "card_gateway"` で入れてある。ここから JIN / OSD への支払いは USDC 入口の外部の買い手から外れる（own）。日次の `gateway_upstream` に、チェーン側の件数（商品別）とログの ok / settle_failed の件数、ログに無いチェーン側の支払いの件数を並べて照合する。
-- **ログの欠け**は `card.known_gaps` に書く。2026-10-21 はゲートウェイのログが 3 回分欠けている（Blob の不具合、実証1で修正済み）。その日はチェーン側と JIN の売り手ログの方が 3 件多い。
+- **ログの欠け**は `card.known_gaps` に書く。2026-10-21 はゲートウェイのログが 3 回分欠けている（JIN series 2・OSD 1。Blob の不具合、実証1の `d6f036e` で修正済み）。その日の JIN の売り手ログは series がゲートウェイのログより 2 件多い。10/21 は実証1の手動確認の呼び出しも含み、定期実行は 10/22 から。
+- settle 失敗は 10/23 時点で 2 回（JIN series 1＝2026-10-21T10:43:55Z、OSD 1）。`gateway_upstream.log_settle_failed_by_product` で商品別に出る。
+- `upstreamNetwork` は上流に支払った行だけに入る。全行に入るのは `upstreamNetworkMode`。
+- 入金までの日数（カード側）：実証1の Stripe Connect は Sandbox で接続済みだが、テスト決済で実際の入金が起きないため、本番（Live）に移るまで出ない。
 - 買い手エージェントのログ `GET /logs/buyer/:date`（同じトークン、`card.buyer_log_path`）は週次レポート用。まだ読んでいない。
 
 ### Stripe

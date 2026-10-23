@@ -545,19 +545,22 @@ test('実証1のゲートウェイ: ウォレット発の JIN 支払いは own�
     usdc: { payments: [pay('A', gw), pay('B', gw), pay('C', gw), pay('X', 'someoneElse')] },
     card: {
       calls: [
-        { token_id: 't1', outcome: 'ok', credits: 1, upstream_tx: 'A' },
-        { token_id: 't1', outcome: 'settle_failed', credits: 0, upstream_tx: 'B' },
+        { token_id: 't1', route_id: 'jin.series', outcome: 'ok', credits: 1, upstream_tx: 'A' },
+        { token_id: 't1', route_id: 'jin.series', outcome: 'settle_failed', credits: 0, upstream_tx: 'B' },
+        { token_id: 't1', route_id: 'osd.jp.catalysts', outcome: 'ok', credits: 1, upstream_tx: 'C' },
       ],
     },
   };
   const d = buildDaily({ date: '2026-10-21', config, detail, sources: {} });
   assert.equal(d.by_class.own.usdc.payto_inflows, 3);
   assert.equal(d.by_class.unclassified.usdc.payto_inflows, 1);
-  assert.equal(d.by_class.unclassified.card.calls, 1);
+  assert.equal(d.by_class.unclassified.card.calls, 1); // 比較は JIN series だけ。OSD は内訳に出る
+  assert.deepEqual(d.by_class.unclassified.card.calls_by_product, { jin_series: 1, osd: 1 });
   assert.equal(d.by_class.unclassified.card.settle_failed, 1);
   assert.equal(d.gateway_upstream.chain_payments, 3);
-  assert.equal(d.gateway_upstream.log_calls_ok, 1);
+  assert.equal(d.gateway_upstream.log_calls_ok, 2);
+  assert.deepEqual(d.gateway_upstream.log_ok_by_product, { jin_series: 1, osd: 1 });
   assert.equal(d.gateway_upstream.log_settle_failed, 1);
-  assert.equal(d.gateway_upstream.chain_not_in_log, 1);
-  assert.equal(d.gateway_upstream.known_gap.missing_calls, 3);
+  assert.equal(d.gateway_upstream.chain_not_in_log, 0);
+  assert.deepEqual(d.gateway_upstream.known_gap.missing_by_product, { jin_series: 2, osd: 1 });
 });

@@ -102,11 +102,13 @@
     "gateway_log_path": "/logs/{day}",
     "buyer_log_path": "/logs/buyer/{day}",
     "products": ["jin_series"],
-    "_products_comment": "カード入口で買える商品。プランが 1 リクエスト 1 クレジット（$0.01）固定のため JIN series だけ。movers（$0.02）は USDC 入口のみ。入口ごとの比較は jin_series でそろえる（2026-10-22 実証1 から）",
+    "_products_comment": "入口の比較に使うカード側の商品。ゲートウェイは JIN series と OSD JP catalysts（どちらも $0.01）を交互に買う。プランが 1 リクエスト 1 クレジット固定なので JIN movers（$0.02）はカード側に無い。card の calls / uses / buyers / settle_failed はここに挙げた商品だけで数え、全商品の内訳は calls_by_product に出す（2026-10-23 実証1 の docs/handoff-jissho2.md）",
+    "route_products": { "jin.series": "jin_series", "osd.jp.catalysts": "osd" },
+    "_route_products_comment": "ゲートウェイのログの routeId と商品の対応。ここに無い routeId は other",
     "contract_definition": "settle_ok",
-    "_contract_definition_comment": "カード経由の成約＝ゲートウェイのログで outcome が ok（settle 成功・クレジット消費）の行。settle_failed（上流の JIN には払ったがクレジット未消費）は成約に入れず settle_failed として別に数える。JIN の売り手ログには売上として出るので、JIN 側の件数とはその分ずれる",
+    "_contract_definition_comment": "カード経由の成約＝ゲートウェイのログで outcome が ok（settle 成功・クレジット消費）の行。settle_failed（上流には払ったがクレジット未消費）は成約に入れず settle_failed として別に数える。JIN の売り手ログには売上として出るので、JIN 側の件数とはその分ずれる（10/23 時点で JIN series 1 回＝2026-10-21T10:43:55Z、OSD 1 回）",
     "known_gaps": [
-      { "date": "2026-10-21", "missing_calls": 3, "reason": "実証1のゲートウェイのログが Blob の不具合で 3 回分残らなかった（実証1で修正済み）。JIN の売り手ログとチェーン側は 3 件多い" }
+      { "date": "2026-10-21", "missing_calls": 3, "missing_by_product": { "jin_series": 2, "osd": 1 }, "reason": "実証1のゲートウェイのログが Blob の不具合で 3 回分残らなかった（実証1の d6f036e で修正）。JIN の売り手ログでは series がゲートウェイのログより 2 件多い。この日は実証1の確認のための手動呼び出し（09:01〜09:16 UTC）も含む。定期実行は 10/22 から" }
     ],
     "_gateway_log_comment": "実証1ゲートウェイのログの口（GET /logs/:date、Bearer は LOG_READ_TOKEN）。{day} は JST の日付。GATEWAY_LOG_URL を設定すればそちらを優先する。",
     "_plan_comment": "実証1（poc-card-credits）の config/plans.json の prepaid-100 と同じ値。プラン ID と購入 URL は、実証1で npm run plan:register を実行したあとに入れる。"
