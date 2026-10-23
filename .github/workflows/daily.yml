@@ -55,7 +55,12 @@ jobs:
           RESUMMARIZE: ${{ inputs.resummarize }}
         run: |
           if [ -n "$RESUMMARIZE" ]; then node scripts/collect-daily.mjs --resummarize "$RESUMMARIZE"
-          elif [ -n "$DATE" ]; then node scripts/collect-daily.mjs --date "$DATE"; else node scripts/collect-daily.mjs; fi
+          elif [ -n "$DATE" ]; then node scripts/collect-daily.mjs --date "$DATE"
+          else
+            node scripts/collect-daily.mjs
+            # 直近1週間で、ゲートウェイ・売り手のログが欠けていた日を自動で埋める（埋められた日だけ書き直す）
+            node scripts/collect-daily.mjs --resummarize "$(TZ=Asia/Tokyo date -d '-8 days' +%F)..$(TZ=Asia/Tokyo date -d '-1 days' +%F)" --only-gaps
+          fi
       - name: commit
         run: |
           git config user.name "github-actions[bot]"

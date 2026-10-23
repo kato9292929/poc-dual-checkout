@@ -4,7 +4,7 @@
 //   node scripts/collect-daily.mjs --date D        指定日を取り込み直す
 //   node scripts/collect-daily.mjs --upgrade        data/*.json のうち現行の形式でないものを数え直す
 //                                                  （schema 3 は明細から数え直し、それより古いものはチェーンから取り込み直す）
-//   node scripts/collect-daily.mjs --resummarize D1..D2
+//   node scripts/collect-daily.mjs --resummarize D1..D2 [--only-gaps]
 //                                                  保存済みの明細に、今の分類リストを当てて数え直す。
 //                                                  ゲートウェイのログが欠損していた日は、口がつながっていれば取りに行って埋める
 // 毎回、直近 45 日分のカード決済について Stripe の着金（payout）を確認し、着金日が分かったものを書き足す。
@@ -70,7 +70,10 @@ if (args.includes('--upgrade')) {
 
 if (opt('--resummarize')) {
   const [a, b = a] = opt('--resummarize').split('..');
+  // --only-gaps：欠けていたログを埋められた日だけ書き直す（毎朝の自動の数え直し用。変わらない日はファイルに触らない）
+  const onlyGaps = args.includes('--only-gaps');
   for (let d = a; d <= b; d = addDays(d, 1)) {
+    let filled = false;
     if (!existsSync(dataFile(d))) continue;
     const old = JSON.parse(readFileSync(dataFile(d), 'utf8'));
     if (old.schema !== 3) throw new Error(`${d}: schema ${old.schema} は数え直せない。--date ${d} で取り込み直す`);
@@ -83,6 +86,7 @@ if (opt('--resummarize')) {
         old.detail.card.calls = await loadGateway(d, b.start, b.end);
         old.sources.gateway_log = 'ok';
         old.sources.gateway_log_backfilled_at = new Date().toISOString();
+        filled = true;
       } catch (e) {
         old.sources.gateway_log = `error: ${e.message}`;
       }
@@ -95,11 +99,13 @@ if (opt('--resummarize')) {
           old.detail.usdc.seller_log = mergeSellerRows(rows, (old.detail.usdc.seller_log || []).filter((r) => r.source === 'aa_runs'));
           old.sources.seller_log = 'ok';
           old.sources.seller_log_backfilled_at = new Date().toISOString();
+          filled = true;
         } else old.sources.seller_log = 'missing';
       } catch (e) {
         old.sources.seller_log = `error: ${e.message}`;
       }
     }
+    if (onlyGaps && !filled) continue;
     if (!old.sources.seller_log) old.sources.seller_log = 'missing';
     // 消去法に使ってよいかは、いまの設定（seller_log_since）で毎回決め直す
     if (old.detail.usdc) old.detail.usdc.seller_log_complete = sellerLogCompleteFor(config.site, d, old.sources.seller_log === 'ok');
