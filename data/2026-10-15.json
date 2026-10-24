@@ -14,7 +14,7 @@
     "own_wallets_version": 8,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-23T06:01:54.902Z",
+  "generated_at": "2026-10-24T06:21:12.359Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -3176,7 +3176,8 @@
           "time_utc": "2026-10-14T21:00:00.248Z",
           "source": "aa_runs"
         }
-      ]
+      ],
+      "seller_log_complete": null
     },
     "card": {
       "calls": null,

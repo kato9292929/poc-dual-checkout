@@ -14,7 +14,7 @@
     "own_wallets_version": 8,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-23T06:01:54.925Z",
+  "generated_at": "2026-10-24T06:21:12.370Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -351,7 +351,7 @@
           "sol_usd": 103.58,
           "fee_payer_role": "facilitator",
           "product": "osd",
-          "product_source": "seller_log_exclusion:jin"
+          "product_source": "gateway_log"
         },
         {
           "time_utc": "2026-10-21T17:46:07.000Z",
@@ -379,7 +379,7 @@
           "sol_usd": 103.58,
           "fee_payer_role": "facilitator",
           "product": "osd",
-          "product_source": "seller_log_exclusion:jin"
+          "product_source": "gateway_log"
         },
         {
           "time_utc": "2026-10-21T19:30:24.000Z",
@@ -407,7 +407,7 @@
           "sol_usd": 103.58,
           "fee_payer_role": "facilitator",
           "product": "osd",
-          "product_source": "seller_log_exclusion:jin"
+          "product_source": "gateway_log"
         },
         {
           "time_utc": "2026-10-22T01:42:58.000Z",
@@ -421,7 +421,7 @@
           "sol_usd": 103.58,
           "fee_payer_role": "facilitator",
           "product": "osd",
-          "product_source": "seller_log_exclusion:jin"
+          "product_source": "gateway_log"
         },
         {
           "time_utc": "2026-10-22T03:00:28.000Z",
@@ -449,7 +449,7 @@
           "sol_usd": 103.58,
           "fee_payer_role": "facilitator",
           "product": "osd",
-          "product_source": "seller_log_exclusion:jin"
+          "product_source": "gateway_log"
         },
         {
           "time_utc": "2026-10-22T04:25:01.000Z",
@@ -491,7 +491,7 @@
           "sol_usd": 103.58,
           "fee_payer_role": "facilitator",
           "product": "osd",
-          "product_source": "seller_log_exclusion:jin"
+          "product_source": "gateway_log"
         },
         {
           "time_utc": "2026-10-22T08:30:46.000Z",
@@ -519,7 +519,7 @@
           "sol_usd": 103.58,
           "fee_payer_role": "facilitator",
           "product": "osd",
-          "product_source": "seller_log_exclusion:jin"
+          "product_source": "gateway_log"
         },
         {
           "time_utc": "2026-10-22T10:43:58.000Z",
@@ -547,7 +547,7 @@
           "sol_usd": 103.58,
           "fee_payer_role": "facilitator",
           "product": "osd",
-          "product_source": "seller_log_exclusion:jin"
+          "product_source": "gateway_log"
         },
         {
           "time_utc": "2026-10-22T12:52:01.000Z",
@@ -575,7 +575,7 @@
           "sol_usd": 103.58,
           "fee_payer_role": "facilitator",
           "product": "osd",
-          "product_source": "seller_log_exclusion:jin"
+          "product_source": "gateway_log"
         },
         {
           "time_utc": "2026-10-22T14:19:17.000Z",

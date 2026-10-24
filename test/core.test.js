@@ -295,7 +295,7 @@ test('週次レポート: 外部の購入者なし（未分類あり）・あり
   const extSection = md2.split('## 別表')[0];
   // 2日分。支払い元アドレス・購入者は週で重複を数えない
   assert.match(extSection, /\| 成約件数 \| 2 〜 4（JIN への支払い件数。[^|]*\| 2（プラン購入件数・Stripe） \|/);
-  assert.match(extSection, /\| 購入者数 \| 1（支払い元アドレス数） \| 1（匿名化したトークン ID の数） \|/);
+  assert.match(extSection, /\| 購入者数 \| 1（支払い元アドレス数） \| 1（匿名化した購入者 ID＝payerId の数） \|/);
   assert.match(md2, /\| 80 \| 10 \| 6 \| 2 \/ 7 \|/);
   assert.match(md2, /\| USDC 直接 \| 2500 ms \| 2500 ms \| 2 \/ 2 \|/);
 });
@@ -564,6 +564,7 @@ test('実証1のゲートウェイ: ウォレット発の JIN 支払いは own�
   assert.equal(d.by_class.own.card.calls, 1); // card_payer_ids に入れた買い手は own
   assert.equal(d.by_class.unclassified.card.settle_failed, 1);
   assert.equal(d.gateway_upstream.chain_payments, 3);
+  assert.deepEqual(d.gateway_upstream.by_product, { jin_series: 2, osd: 1 }); // $0.01 でも、ゲートウェイのログの routeId で商品が決まる
   assert.equal(d.gateway_upstream.log_calls_ok, 4);
   assert.deepEqual(d.gateway_upstream.log_ok_by_product, { jin_series: 3, osd: 1 });
   assert.equal(d.gateway_upstream.log_settle_failed, 1);
