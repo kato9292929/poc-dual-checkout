@@ -1,0 +1,938 @@
+{
+  "schema_version": 2,
+  "schema": 3,
+  "date": "2026-10-24",
+  "timezone": "Asia/Tokyo",
+  "window_utc": [
+    "2026-10-23T15:00:00.000Z",
+    "2026-10-24T15:00:00.000Z"
+  ],
+  "period": null,
+  "period_phase": "no_period",
+  "price_check": "no_period",
+  "classification": {
+    "own_wallets_version": 8,
+    "external_buyers_version": 2
+  },
+  "generated_at": "2026-10-24T23:13:51.963Z",
+  "sources": {
+    "page": "not_configured",
+    "sol_usd": "ok",
+    "usdc_chain": "ok",
+    "gateway_log": "ok",
+    "aa_runs": "ok",
+    "seller_log": "ok",
+    "stripe": "missing",
+    "stripe_csv": "not_found",
+    "nvm_api": "not_configured",
+    "latency_probe": "ok"
+  },
+  "page": null,
+  "by_class": {
+    "external": {
+      "usdc": {
+        "jin_contracts_min": 0,
+        "jin_contracts_max": 0,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 0,
+          "jin_series": 0,
+          "unresolved": 0,
+          "osd": 0,
+          "other": 0
+        },
+        "jin_buyers_min": 0,
+        "jin_buyers_max": 0,
+        "jin_revenue_usd_min": 0,
+        "jin_revenue_usd_max": 0,
+        "payto_inflows": 0,
+        "payto_revenue_usd": 0,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_tx": null,
+        "seller_fee_rate": null,
+        "facilitator_fee_usd": 0,
+        "facilitator_fee_rate": null,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": null
+      },
+      "card": {
+        "calls": 0,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {},
+        "settle_failed": 0,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null,
+        "upstream_latency_ms_p50": null,
+        "upstream_latency_ms_p90": null
+      }
+    },
+    "unclassified": {
+      "usdc": {
+        "jin_contracts_min": 0,
+        "jin_contracts_max": 0,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 0,
+          "jin_series": 0,
+          "unresolved": 0,
+          "osd": 0,
+          "other": 0
+        },
+        "jin_buyers_min": 0,
+        "jin_buyers_max": 0,
+        "jin_revenue_usd_min": 0,
+        "jin_revenue_usd_max": 0,
+        "payto_inflows": 0,
+        "payto_revenue_usd": 0,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_tx": null,
+        "seller_fee_rate": null,
+        "facilitator_fee_usd": 0,
+        "facilitator_fee_rate": null,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": null
+      },
+      "card": {
+        "calls": 0,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {},
+        "settle_failed": 0,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null,
+        "upstream_latency_ms_p50": null,
+        "upstream_latency_ms_p90": null
+      }
+    },
+    "own": {
+      "usdc": {
+        "jin_contracts_min": 7,
+        "jin_contracts_max": 7,
+        "unresolved": 0,
+        "by_product": {
+          "jin_movers": 0,
+          "jin_series": 7,
+          "unresolved": 0,
+          "osd": 10,
+          "other": 0
+        },
+        "jin_buyers_min": 1,
+        "jin_buyers_max": 1,
+        "jin_revenue_usd_min": 0.07,
+        "jin_revenue_usd_max": 0.07,
+        "payto_inflows": 17,
+        "payto_revenue_usd": 0.17,
+        "seller_fee_usd": 0,
+        "seller_fee_usd_per_tx": 0,
+        "seller_fee_rate": 0,
+        "facilitator_fee_usd": 0.01726,
+        "facilitator_fee_rate": 0.1015,
+        "fee_by_payer": {
+          "seller": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "facilitator": {
+            "txs": 17,
+            "lamports": 170017,
+            "usd": 0.01726
+          },
+          "buyer": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          },
+          "other": {
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
+          }
+        },
+        "days_to_settlement": 0
+      },
+      "card": {
+        "calls": 7,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": {
+          "jin_series": 7,
+          "osd": 10
+        },
+        "uses_credits": 7,
+        "buyers": 1,
+        "failures": {
+          "upstream_failed": 3
+        },
+        "settle_failed": 0,
+        "plan_purchases": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": 5233,
+        "gateway_latency_ms_p90": 7405,
+        "upstream_latency_ms_p50": 2181,
+        "upstream_latency_ms_p90": 4265
+      }
+    }
+  },
+  "parties": {
+    "usdc": [
+      {
+        "id": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+        "class": "own",
+        "count": 17
+      }
+    ],
+    "card_payers": [
+      {
+        "id": "d0c6c75243d07e82",
+        "class": "own",
+        "count": 17
+      }
+    ]
+  },
+  "latency": {
+    "usdc": {
+      "runs": 0,
+      "ok": 0,
+      "skipped": 1,
+      "total_ms_p50": null,
+      "total_ms_p90": null,
+      "first_402_ms_median": null,
+      "sign_ms_median": null,
+      "paid_request_ms_median": null
+    },
+    "card": {
+      "runs": 0,
+      "ok": 0,
+      "skipped": 1,
+      "total_ms_p50": null,
+      "total_ms_p90": null,
+      "first_402_ms_median": null,
+      "sign_ms_median": null,
+      "paid_request_ms_median": null
+    }
+  },
+  "gateway_upstream": {
+    "chain_payments": 17,
+    "by_product": {
+      "jin_series": 7,
+      "osd": 10
+    },
+    "log_calls_ok": 17,
+    "log_settle_failed": 0,
+    "log_ok_by_product": {
+      "jin_series": 7,
+      "osd": 10
+    },
+    "log_settle_failed_by_product": {},
+    "chain_not_in_log": 0,
+    "known_gap": null
+  },
+  "nvm_reconcile_incl_own": null,
+  "detail": {
+    "window_utc": [
+      "2026-10-23T15:00:00.000Z",
+      "2026-10-24T15:00:00.000Z"
+    ],
+    "page": null,
+    "usdc": {
+      "payments": [
+        {
+          "time_utc": "2026-10-23T15:42:45.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "bGGzcJR8szs3si7RghyTdxPXipr8ms1V6aWSjc79NJy2pY8VMiQ7C2KFhik3srp2cCFbUcVTLRmUkKbx2EvScmL",
+          "block_time": 1792770165,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "jin_series",
+          "product_source": "seller_log:seller"
+        },
+        {
+          "time_utc": "2026-10-23T16:55:09.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "5eCXdrneE4Dsuj1658b1P2JjoQF4adLis3FMjNvPYTQdgPayTqAPHEVLrm3HRXNtYz3Qd63eBRFoTe5deo8WnttJ",
+          "block_time": 1792774509,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "gateway_log"
+        },
+        {
+          "time_utc": "2026-10-23T17:46:07.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "5hmxcid3z6BgAZCF9SRTSpbR8QWPxnfoaPrcKTfNpctgZjSVdr7CFP4gmjoLWVfveWugWAStqHmTE1SLkjdqPojM",
+          "block_time": 1792777567,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "jin_series",
+          "product_source": "seller_log:seller"
+        },
+        {
+          "time_utc": "2026-10-23T18:16:10.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "2j9GQq9EJ4zFc5wsdH7uPDTfbsfNhDyDHfCyPNYnsKUKpNmnPf93es1AW9fr1QKFqS4vWbwY5gfCrioVCgMii1QQ",
+          "block_time": 1792779370,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "gateway_log"
+        },
+        {
+          "time_utc": "2026-10-23T19:30:27.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "XfAbQNsR9pfbyTXsgojmg5gQr93nMWP4QNurJMis83ZihG2Dobm1GthhVy9hygb5ZQyYCVhaLp7AbyWLr8fY8Mp",
+          "block_time": 1792783827,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "jin_series",
+          "product_source": "seller_log:seller"
+        },
+        {
+          "time_utc": "2026-10-24T00:29:52.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "BFkEa5Yyg7z3hks5TmEE6NMwFZfW9WbF4VQ6Mi6qxXECcynrN7Jtgc9tMNe7pufEmr9g5kjm3osVJYHaFk2dUS6",
+          "block_time": 1792801792,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "gateway_log"
+        },
+        {
+          "time_utc": "2026-10-24T01:42:57.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "5M2PQmADqwNeZ7WM4rYWetKEJLC3u4sedWdo4Pp865Cb8T1QpmHXiKrX96spQshckr3xWtiQbaMh9MVi2kB1WW9U",
+          "block_time": 1792806177,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "jin_series",
+          "product_source": "seller_log:seller"
+        },
+        {
+          "time_utc": "2026-10-24T03:00:27.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "3yj4QxozFFash5CYLCVqHqkhrVzkLCa2W65j7ABQLUyMun6UHVsxRUxsgHVqHp2jvJB1gAqmkJLZ838z6WiQ7JuS",
+          "block_time": 1792810827,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "gateway_log"
+        },
+        {
+          "time_utc": "2026-10-24T03:57:46.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "5FEwZAegnhyMYfvR9DXv4TJLQPwcS3WyPMa2eP1Zo4FWKeE3zeyxTAEtymywi2xbS5dtG27Mh3zhrPhUDQrT9SQL",
+          "block_time": 1792814266,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "jin_series",
+          "product_source": "seller_log:seller"
+        },
+        {
+          "time_utc": "2026-10-24T04:25:00.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "63VHXwjoDgusf5EVvTmA5BvzimEGRPE5C1xJ41JWmb9CtynMrrJJyHCmEAjxuzwckGmkckRSqz5h1oVbD8pmFanh",
+          "block_time": 1792815900,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "gateway_log"
+        },
+        {
+          "time_utc": "2026-10-24T05:52:36.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "2SWahKTZit6owpdkEWMHWJGPuUKyDSpSunYZhr4YieysB2NN8H6Xp6AZNCd8E4QsSvPdqXMiVQw6q4cyXSqss9SH",
+          "block_time": 1792821156,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "jin_series",
+          "product_source": "seller_log:seller"
+        },
+        {
+          "time_utc": "2026-10-24T06:10:18.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "2Zsuapp7ZBN8zKtHJC5ajNhscTaeG7xh3strN8EeUHmYxAXxzt3Lm8d9tBYYDCxN1h1V7FyhxbzNv1hcbLcr8BD",
+          "block_time": 1792822218,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "gateway_log"
+        },
+        {
+          "time_utc": "2026-10-24T08:30:47.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "2FTpzaksVd2J7eytUymkf42XTnEeCU499NY5PofbuvUdjnJfysPZffSdzb3YMfrTmu53edHMxnu2av1XhK8ahz8z",
+          "block_time": 1792830647,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "gateway_log"
+        },
+        {
+          "time_utc": "2026-10-24T10:43:59.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "4TkqdrseaM76NsD6oN3TxpKMPYYtyPvQWoFx3cNjyyf7J2fXCHiZXJQrxwKBcmH7ht8PVK7yddTjKJY8G6v15iWm",
+          "block_time": 1792838639,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "gateway_log"
+        },
+        {
+          "time_utc": "2026-10-24T12:52:00.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "5CpVttxX4XM3sHjvNn2UWLpeYaSskirkUjqaQKFVg79F5WPHbRYvBeQSdMk62tEznNgErxMKYocrKaGoZE4bVZkh",
+          "block_time": 1792846320,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "gateway_log"
+        },
+        {
+          "time_utc": "2026-10-24T13:12:04.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "57yeCRH1n2ikrY1NCcTMYvvQJm9eSom3h9DXQJifKiA52LuHPNjPzxBRSx3SqCMF4jYrsDZyCjXVjGpfmQVTvbzq",
+          "block_time": 1792847524,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "jin_series",
+          "product_source": "seller_log:seller"
+        },
+        {
+          "time_utc": "2026-10-24T14:19:16.000Z",
+          "date_jst": "2026-10-24",
+          "signature": "LwUt6K6syhS8wp9QdgqJQ67poFgcoreufduaSMt5RWgMoaaRD3jPdFb6AgToB2mw98a57DRY5bg5TfJg1EWgraU",
+          "block_time": 1792851556,
+          "payer": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
+          "amount_atomic": "10000",
+          "fee_lamports": 10001,
+          "fee_payer": "CjNFTjvBhbJJd2B5ePPMHRLx1ELZpa8dwQgGL727eKww",
+          "sol_usd": 101.52,
+          "fee_payer_role": "facilitator",
+          "product": "osd",
+          "product_source": "gateway_log"
+        }
+      ],
+      "sol_usd": {
+        "usd": 101.52,
+        "source": "binance SOLUSDC 1d close (UTC)"
+      },
+      "seller_log": [
+        {
+          "tx_signature": "bGGzcJR8szs3si7RghyTdxPXipr8ms1V6aWSjc79NJy2pY8VMiQ7C2KFhik3srp2cCFbUcVTLRmUkKbx2EvScmL",
+          "endpoint": "https://jin.x402jp.com/api/jin/series",
+          "amount": "10000",
+          "time_utc": "2026-10-23T15:42:45.687Z",
+          "source": "seller"
+        },
+        {
+          "tx_signature": "5hmxcid3z6BgAZCF9SRTSpbR8QWPxnfoaPrcKTfNpctgZjSVdr7CFP4gmjoLWVfveWugWAStqHmTE1SLkjdqPojM",
+          "endpoint": "https://jin.x402jp.com/api/jin/series",
+          "amount": "10000",
+          "time_utc": "2026-10-23T17:46:08.279Z",
+          "source": "seller"
+        },
+        {
+          "tx_signature": "XfAbQNsR9pfbyTXsgojmg5gQr93nMWP4QNurJMis83ZihG2Dobm1GthhVy9hygb5ZQyYCVhaLp7AbyWLr8fY8Mp",
+          "endpoint": "https://jin.x402jp.com/api/jin/series",
+          "amount": "10000",
+          "time_utc": "2026-10-23T19:30:28.063Z",
+          "source": "seller"
+        },
+        {
+          "tx_signature": "5M2PQmADqwNeZ7WM4rYWetKEJLC3u4sedWdo4Pp865Cb8T1QpmHXiKrX96spQshckr3xWtiQbaMh9MVi2kB1WW9U",
+          "endpoint": "https://jin.x402jp.com/api/jin/series",
+          "amount": "10000",
+          "time_utc": "2026-10-24T01:42:57.883Z",
+          "source": "seller"
+        },
+        {
+          "tx_signature": "5FEwZAegnhyMYfvR9DXv4TJLQPwcS3WyPMa2eP1Zo4FWKeE3zeyxTAEtymywi2xbS5dtG27Mh3zhrPhUDQrT9SQL",
+          "endpoint": "https://jin.x402jp.com/api/jin/series",
+          "amount": "10000",
+          "time_utc": "2026-10-24T03:57:47.116Z",
+          "source": "seller"
+        },
+        {
+          "tx_signature": "2SWahKTZit6owpdkEWMHWJGPuUKyDSpSunYZhr4YieysB2NN8H6Xp6AZNCd8E4QsSvPdqXMiVQw6q4cyXSqss9SH",
+          "endpoint": "https://jin.x402jp.com/api/jin/series",
+          "amount": "10000",
+          "time_utc": "2026-10-24T05:52:36.560Z",
+          "source": "seller"
+        },
+        {
+          "tx_signature": "57yeCRH1n2ikrY1NCcTMYvvQJm9eSom3h9DXQJifKiA52LuHPNjPzxBRSx3SqCMF4jYrsDZyCjXVjGpfmQVTvbzq",
+          "endpoint": "https://jin.x402jp.com/api/jin/series",
+          "amount": "10000",
+          "time_utc": "2026-10-24T13:12:04.897Z",
+          "source": "seller"
+        }
+      ],
+      "seller_log_complete": "jin"
+    },
+    "card": {
+      "calls": [
+        {
+          "time_utc": "2026-10-23T15:42:42.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "14282da93c06744c",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "jin.series",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 4129,
+          "upstream_latency_ms": 2033,
+          "upstream_tx": "bGGzcJR8szs3si7RghyTdxPXipr8ms1V6aWSjc79NJy2pY8VMiQ7C2KFhik3srp2cCFbUcVTLRmUkKbx2EvScmL",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-23T16:55:05.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "13cddfebdef51b80",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 4975,
+          "upstream_latency_ms": 2371,
+          "upstream_tx": "5eCXdrneE4Dsuj1658b1P2JjoQF4adLis3FMjNvPYTQdgPayTqAPHEVLrm3HRXNtYz3Qd63eBRFoTe5deo8WnttJ",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-23T17:46:04.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "46da2be33f5d4ecf",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "jin.series",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5233,
+          "upstream_latency_ms": 2230,
+          "upstream_tx": "5hmxcid3z6BgAZCF9SRTSpbR8QWPxnfoaPrcKTfNpctgZjSVdr7CFP4gmjoLWVfveWugWAStqHmTE1SLkjdqPojM",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-23T18:16:06.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "7dbc5d4b739066bc",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 6312,
+          "upstream_latency_ms": 2407,
+          "upstream_tx": "2j9GQq9EJ4zFc5wsdH7uPDTfbsfNhDyDHfCyPNYnsKUKpNmnPf93es1AW9fr1QKFqS4vWbwY5gfCrioVCgMii1QQ",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-23T19:30:22.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "afea41fe531f7420",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "jin.series",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 7405,
+          "upstream_latency_ms": 4265,
+          "upstream_tx": "XfAbQNsR9pfbyTXsgojmg5gQr93nMWP4QNurJMis83ZihG2Dobm1GthhVy9hygb5ZQyYCVhaLp7AbyWLr8fY8Mp",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T00:29:49.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "d559d86cd6eb8045",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 4152,
+          "upstream_latency_ms": 1458,
+          "upstream_tx": "BFkEa5Yyg7z3hks5TmEE6NMwFZfW9WbF4VQ6Mi6qxXECcynrN7Jtgc9tMNe7pufEmr9g5kjm3osVJYHaFk2dUS6",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T01:42:53.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "e074b593c68c7617",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "jin.series",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5156,
+          "upstream_latency_ms": 2181,
+          "upstream_tx": "5M2PQmADqwNeZ7WM4rYWetKEJLC3u4sedWdo4Pp865Cb8T1QpmHXiKrX96spQshckr3xWtiQbaMh9MVi2kB1WW9U",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T03:00:23.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "2db882737760aca4",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5420,
+          "upstream_latency_ms": 2226,
+          "upstream_tx": "3yj4QxozFFash5CYLCVqHqkhrVzkLCa2W65j7ABQLUyMun6UHVsxRUxsgHVqHp2jvJB1gAqmkJLZ838z6WiQ7JuS",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T03:57:43.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "7d0c5b9d7cbf8518",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "jin.series",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 4780,
+          "upstream_latency_ms": 2233,
+          "upstream_tx": "5FEwZAegnhyMYfvR9DXv4TJLQPwcS3WyPMa2eP1Zo4FWKeE3zeyxTAEtymywi2xbS5dtG27Mh3zhrPhUDQrT9SQL",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T04:24:56.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "9e36819ac317904b",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 6138,
+          "upstream_latency_ms": 2894,
+          "upstream_tx": "63VHXwjoDgusf5EVvTmA5BvzimEGRPE5C1xJ41JWmb9CtynMrrJJyHCmEAjxuzwckGmkckRSqz5h1oVbD8pmFanh",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T05:52:33.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "41333aba669cc165",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "jin.series",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5556,
+          "upstream_latency_ms": 2018,
+          "upstream_tx": "2SWahKTZit6owpdkEWMHWJGPuUKyDSpSunYZhr4YieysB2NN8H6Xp6AZNCd8E4QsSvPdqXMiVQw6q4cyXSqss9SH",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T06:10:14.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "43eb4346c1ca82b8",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5529,
+          "upstream_latency_ms": 2321,
+          "upstream_tx": "2Zsuapp7ZBN8zKtHJC5ajNhscTaeG7xh3strN8EeUHmYxAXxzt3Lm8d9tBYYDCxN1h1V7FyhxbzNv1hcbLcr8BD",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T07:26:01.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "5a12ce7d99442b1e",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "jin.series",
+          "outcome": "upstream_failed",
+          "verify": "valid",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 11862,
+          "upstream_latency_ms": 10014,
+          "upstream_tx": null,
+          "upstream_network": null
+        },
+        {
+          "time_utc": "2026-10-24T08:30:43.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "cad47c8e5c4300f9",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 7073,
+          "upstream_latency_ms": 2674,
+          "upstream_tx": "2FTpzaksVd2J7eytUymkf42XTnEeCU499NY5PofbuvUdjnJfysPZffSdzb3YMfrTmu53edHMxnu2av1XhK8ahz8z",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T09:20:51.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "2067e4b208f8e67d",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "jin.series",
+          "outcome": "upstream_failed",
+          "verify": "valid",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 2583,
+          "upstream_latency_ms": 1271,
+          "upstream_tx": null,
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T10:43:55.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "2466f7ac2dd5c453",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5873,
+          "upstream_latency_ms": 2335,
+          "upstream_tx": "4TkqdrseaM76NsD6oN3TxpKMPYYtyPvQWoFx3cNjyyf7J2fXCHiZXJQrxwKBcmH7ht8PVK7yddTjKJY8G6v15iWm",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T12:05:22.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "b8bf754ef90262ee",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "jin.series",
+          "outcome": "upstream_failed",
+          "verify": "valid",
+          "settle": "skipped",
+          "credits": 0,
+          "latency_ms": 2777,
+          "upstream_latency_ms": 1313,
+          "upstream_tx": null,
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T12:51:56.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "41ee0c0e32f585e0",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5110,
+          "upstream_latency_ms": 2302,
+          "upstream_tx": "5CpVttxX4XM3sHjvNn2UWLpeYaSskirkUjqaQKFVg79F5WPHbRYvBeQSdMk62tEznNgErxMKYocrKaGoZE4bVZkh",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T13:12:00.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "3dc2d6712eda0f78",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "jin.series",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 5987,
+          "upstream_latency_ms": 2140,
+          "upstream_tx": "57yeCRH1n2ikrY1NCcTMYvvQJm9eSom3h9DXQJifKiA52LuHPNjPzxBRSx3SqCMF4jYrsDZyCjXVjGpfmQVTvbzq",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        },
+        {
+          "time_utc": "2026-10-24T14:19:12.000Z",
+          "date_jst": "2026-10-24",
+          "token_id": "e706f5ec0a9d86ce",
+          "payer_id": "d0c6c75243d07e82",
+          "route_id": "osd.jp.catalysts",
+          "outcome": "ok",
+          "verify": "valid",
+          "settle": "ok",
+          "credits": 1,
+          "latency_ms": 4586,
+          "upstream_latency_ms": 2274,
+          "upstream_tx": "LwUt6K6syhS8wp9QdgqJQ67poFgcoreufduaSMt5RWgMoaaRD3jPdFb6AgToB2mw98a57DRY5bg5TfJg1EWgraU",
+          "upstream_network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+        }
+      ],
+      "sales": null,
+      "nvm_purchases": null,
+      "nvm": null
+    },
+    "latency": [
+      {
+        "entry": "usdc",
+        "item": "series",
+        "ts": "2026-10-23T23:51:23.216Z",
+        "skipped": "PROBE_SOLANA_SECRET_KEY 未設定"
+      },
+      {
+        "entry": "card",
+        "item": "series",
+        "ts": "2026-10-23T23:51:23.216Z",
+        "skipped": "PROBE_NVM_ACCESS_TOKEN またはゲートウェイ URL が未設定"
+      }
+    ]
+  }
+}
