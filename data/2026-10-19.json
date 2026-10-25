@@ -11,10 +11,10 @@
   "period_phase": "no_period",
   "price_check": "no_period",
   "classification": {
-    "own_wallets_version": 8,
+    "own_wallets_version": 9,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-24T06:21:12.367Z",
+  "generated_at": "2026-10-25T07:18:14.613Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -105,27 +105,27 @@
     },
     "unclassified": {
       "usdc": {
-        "jin_contracts_min": 1,
-        "jin_contracts_max": 2,
-        "unresolved": 1,
+        "jin_contracts_min": 0,
+        "jin_contracts_max": 0,
+        "unresolved": 0,
         "by_product": {
           "jin_movers": 0,
-          "jin_series": 1,
-          "unresolved": 1,
+          "jin_series": 0,
+          "unresolved": 0,
           "osd": 0,
           "other": 0
         },
-        "jin_buyers_min": 1,
-        "jin_buyers_max": 1,
-        "jin_revenue_usd_min": 0.01,
-        "jin_revenue_usd_max": 0.02,
-        "payto_inflows": 2,
-        "payto_revenue_usd": 0.02,
+        "jin_buyers_min": 0,
+        "jin_buyers_max": 0,
+        "jin_revenue_usd_min": 0,
+        "jin_revenue_usd_max": 0,
+        "payto_inflows": 0,
+        "payto_revenue_usd": 0,
         "seller_fee_usd": 0,
-        "seller_fee_usd_per_tx": 0,
-        "seller_fee_rate": 0,
-        "facilitator_fee_usd": 0.0021,
-        "facilitator_fee_rate": 0.105,
+        "seller_fee_usd_per_tx": null,
+        "seller_fee_rate": null,
+        "facilitator_fee_usd": 0,
+        "facilitator_fee_rate": null,
         "fee_by_payer": {
           "seller": {
             "txs": 0,
@@ -133,9 +133,9 @@
             "usd": 0
           },
           "facilitator": {
-            "txs": 2,
-            "lamports": 20002,
-            "usd": 0.0021
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
           },
           "buyer": {
             "txs": 0,
@@ -148,7 +148,7 @@
             "usd": 0
           }
         },
-        "days_to_settlement": 0
+        "days_to_settlement": null
       },
       "card": {
         "calls": 0,
@@ -178,27 +178,27 @@
     },
     "own": {
       "usdc": {
-        "jin_contracts_min": 1,
-        "jin_contracts_max": 1,
-        "unresolved": 0,
+        "jin_contracts_min": 2,
+        "jin_contracts_max": 3,
+        "unresolved": 1,
         "by_product": {
           "jin_movers": 1,
-          "jin_series": 0,
-          "unresolved": 0,
+          "jin_series": 1,
+          "unresolved": 1,
           "osd": 5,
           "other": 0
         },
-        "jin_buyers_min": 1,
-        "jin_buyers_max": 1,
-        "jin_revenue_usd_min": 0.02,
-        "jin_revenue_usd_max": 0.02,
-        "payto_inflows": 6,
-        "payto_revenue_usd": 0.07,
+        "jin_buyers_min": 2,
+        "jin_buyers_max": 2,
+        "jin_revenue_usd_min": 0.03,
+        "jin_revenue_usd_max": 0.04,
+        "payto_inflows": 8,
+        "payto_revenue_usd": 0.09,
         "seller_fee_usd": 0,
         "seller_fee_usd_per_tx": 0,
         "seller_fee_rate": 0,
-        "facilitator_fee_usd": 0.006299,
-        "facilitator_fee_rate": 0.09,
+        "facilitator_fee_usd": 0.008398,
+        "facilitator_fee_rate": 0.0933,
         "fee_by_payer": {
           "seller": {
             "txs": 0,
@@ -206,9 +206,9 @@
             "usd": 0
           },
           "facilitator": {
-            "txs": 6,
-            "lamports": 60006,
-            "usd": 0.006299
+            "txs": 8,
+            "lamports": 80008,
+            "usd": 0.008398
           },
           "buyer": {
             "txs": 0,
@@ -259,7 +259,7 @@
       },
       {
         "id": "xgtJ5j3VfuYG4cxAxsQjTKWsnVdFTLPYK8NxQnpFZW5",
-        "class": "unclassified",
+        "class": "own",
         "count": 2
       }
     ],

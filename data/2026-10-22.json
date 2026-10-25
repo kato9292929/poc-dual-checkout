@@ -11,10 +11,10 @@
   "period_phase": "no_period",
   "price_check": "no_period",
   "classification": {
-    "own_wallets_version": 8,
+    "own_wallets_version": 9,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-24T06:21:12.370Z",
+  "generated_at": "2026-10-25T07:18:24.325Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -265,7 +265,8 @@
       {
         "id": "6JKVugbVRXR92sacDzgxBU6k6Mb9AAhxLbEy3DyWvEzA",
         "class": "unclassified",
-        "count": 1
+        "count": 1,
+        "note": "own 候補（own）: AA の旧ウォレットの可能性（本人確認待ち）。確定: 本人が自分のウォレット（AA の旧ウォレットなど）と確認したとき"
       }
     ],
     "card_payers": [
@@ -603,7 +604,11 @@
           "sol_usd": 103.58,
           "fee_payer_role": "buyer",
           "product": "other",
-          "product_source": "amount"
+          "product_source": "amount",
+          "own_candidate": {
+            "likely": "own",
+            "note": "AA の旧ウォレットの可能性（本人確認待ち）"
+          }
         }
       ],
       "sol_usd": {

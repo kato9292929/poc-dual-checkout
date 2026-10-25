@@ -1,6 +1,6 @@
 {
-  "version": 8,
-  "updated": "2026-10-23",
+  "version": 9,
+  "updated": "2026-10-25",
   "_comment": "自社の支払い元。一致したものは own に分類し、全集計から除外して参考値として別表に出す。公開アドレスだけを書く（秘密鍵は読まない・書かない）。address が null のものは未取得で、照合には使われない。",
   "solana": [
     {
@@ -21,10 +21,10 @@
       }
     },
     {
-      "address": null,
+      "address": "xgtJ5j3VfuYG4cxAxsQjTKWsnVdFTLPYK8NxQnpFZW5",
       "label": "Seller Probe",
-      "source": "kato9292929/seller-probe は PROBE_SOLANA_SECRET_KEY から実行時にアドレスを導出していて、設定ファイルにもコミット済みのログにも公開アドレスが無い（2026-10-13 確認）",
-      "status": "pending"
+      "source": "kato9292929/seller-probe の docs/wallet.md（f084aad、2026-10-17 コミット）に PROBE_SOLANA_SECRET_KEY の公開アドレスとして記載。2026-10-19 の self-check（weekly, own sellers only）の実行開始 11:18:24Z の 23〜26 秒後に、このアドレスから JIN series と OSD portfolio/current へ $0.01 ずつ支払いがあり、tx 署名 3zhwTqjop9g2… と 5fUsftHTbGmH… が seller-probe の self-check/2026-10-19.jsonl に出ている。paid-probe（weekly）も同じ鍵を使う。秘密鍵は読んでいない。",
+      "status": "confirmed"
     },
     {
       "address": "3HG2HYh5EyGR5BnL5UaHeNkz2qA1tdwFizSbGKmkrcgV",
@@ -95,6 +95,11 @@
       "version": 8,
       "date": "2026-10-23",
       "change": "card_payer_ids に実証1の買い手エージェント d0c6c75243d07e82 を追加。"
+    },
+    {
+      "version": 9,
+      "date": "2026-10-25",
+      "change": "Seller Probe の公開アドレス xgtJ5…FZW5 を記入（confirmed）。6JKV…vEzA を own 候補に追加（AA の旧ウォレットの可能性）。"
     }
   ],
   "nvm_user_hashes": {
@@ -103,13 +108,27 @@
   },
   "candidates": {
     "_comment": "own の候補。照合には使わない（unclassified のまま）。確定条件を満たしたら solana に移し、version を上げて --resummarize で数え直す。",
-    "solana": [],
+    "solana": [
+      {
+        "address": "6JKVugbVRXR92sacDzgxBU6k6Mb9AAhxLbEy3DyWvEzA",
+        "likely": "own",
+        "note_short": "AA の旧ウォレットの可能性（本人確認待ち）",
+        "note": "2026-08-15〜08-26 に毎日 21:00 UTC（06:00 JST、AA と同じ時刻）、受取口座へ $0.01 / $0.02 を x402（facilitator 払い）で支払っていた。その後は動きがなく、2026-10-22T14:56:53Z に USDC の残高 2.710147 をすべて受取口座へ通常の送金（手数料は送り手）で移した。x402 の購入ではなく、金額も商品に当たらない（product: other）ので、JIN の件数には入っていない。",
+        "confirm_when": "本人が自分のウォレット（AA の旧ウォレットなど）と確認したとき"
+      }
+    ],
     "resolved": [
       {
         "address": "7PVToVBASYgo7c7BfqdditPgud1xnDrSpCgCBaQyL6tY",
         "resolved_on": "2026-10-15",
         "to": "solana（AA）",
         "reason": "aa.x402jp.com/api/runs の tx 署名から支払い元を確認"
+      },
+      {
+        "address": "xgtJ5j3VfuYG4cxAxsQjTKWsnVdFTLPYK8NxQnpFZW5",
+        "resolved_on": "2026-10-25",
+        "to": "solana（Seller Probe）",
+        "reason": "seller-probe の docs/wallet.md と、10/19 の self-check の実行時刻・tx 署名が一致"
       }
     ]
   }

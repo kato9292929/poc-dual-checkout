@@ -36,3 +36,4 @@ node scripts/collect-daily.mjs --resummarize 2026-10-12..2026-11-28
 | own_wallets.json | 6 | 2026-10-22 | 実証1のゲートウェイの公開アドレス `3HG2…rcgV` を記入（`role: card_gateway`） | 実証1 の docs/wallet.md。カード払いの裏側の JIN 購入で、USDC 入口の外部の買い手ではない。10/12〜10/21 を `--upgrade` で数え直した（10/21 の 10 件が own に移った） |
 | own_wallets.json | 7 | 2026-10-23 | `card_payer_ids` を追加（カードの自社の買い手を payerId で見分ける） | 実証1ゲートウェイのログの tokenId は購入ごとに変わり（10/22 は成約18回で18種類）、買い手数が成約数と同じになっていた |
 | own_wallets.json | 8 | 2026-10-23 | `card_payer_ids` に `d0c6c75243d07e82`（実証1の買い手エージェント）を追加 | 10/21〜10/22 のゲートウェイのログの成約・settle 失敗 26 行がすべてこの payerId。カードのプランはまだ一般に売っていない |
+| own_wallets.json | 9 | 2026-10-25 | Seller Probe の公開アドレス `xgtJ5…FZW5` を記入。`6JKV…vEzA` を own 候補に追加 | seller-probe の docs/wallet.md と 10/19 の self-check の時刻・tx 署名が一致。6JKV は 8 月に AA と同じ時刻で買っていたウォレットで、10/22 に残高を受取口座へ送金（購入ではない） |
