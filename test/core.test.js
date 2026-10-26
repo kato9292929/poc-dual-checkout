@@ -116,6 +116,7 @@ test('実証1ゲートウェイのログ: /logs/:date（JST の日付）の1日�
     upstream_latency_ms: 1500,
     upstream_tx: 'GwTx1',
     upstream_network: 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp',
+    upstream_status: null,
   });
   assert.equal(calls[1].time_utc, '2026-11-02T16:00:00.000Z'); // 旧形式（ts）も読める
   assert.equal(toCalls([{ time_utc: '2026-11-02T15:00:00.000Z', outcome: 'no_token', upstreamTx: 'none' }], '+09:00')[0].upstream_tx, null);
