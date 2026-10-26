@@ -8,7 +8,7 @@ import { renderWeekly } from '../lib/report.js';
 import { eventKey, statsKeys, statsFromValues, isBot } from '../lib/track.js';
 import { matchesPlan, toSale } from '../lib/stripe.js';
 import { salesFromCsv, checkHeader } from '../lib/stripe-csv.js';
-import { parseJsonl, toCalls, fetchGatewayLog } from '../lib/gateway.js';
+import { parseJsonl, toCalls, fetchGatewayLog, upstreamErrorCode } from '../lib/gateway.js';
 import { summarizeReconcile, assertOrgId, reconcile } from '../lib/nevermined.js';
 import { refuseUsdc, measureCard } from '../lib/probe.js';
 import { anonymize } from '../lib/anon.js';
@@ -117,7 +117,11 @@ test('実証1ゲートウェイのログ: /logs/:date（JST の日付）の1日�
     upstream_tx: 'GwTx1',
     upstream_network: 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp',
     upstream_status: null,
+    upstream_error: null,
   });
+  assert.equal(upstreamErrorCode('upstream 402 after payment: invalid_exact_svm_payload_transaction'), 'invalid_exact_svm_payload_transaction');
+  assert.equal(upstreamErrorCode('upstream 402 after payment'), null); // 文章は残さない
+  assert.equal(upstreamErrorCode('<html>oops</html>'), null);
   assert.equal(calls[1].time_utc, '2026-11-02T16:00:00.000Z'); // 旧形式（ts）も読める
   assert.equal(toCalls([{ time_utc: '2026-11-02T15:00:00.000Z', outcome: 'no_token', upstreamTx: 'none' }], '+09:00')[0].upstream_tx, null);
   assert.ok(calls.every((c) => c.date_jst === '2026-11-03'));

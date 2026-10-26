@@ -154,6 +154,9 @@ seller-probe はまだ一度も有料の測定を動かしていない（Actions
 - **ログの欠け**は `card.known_gaps` に書く。2026-10-21 はゲートウェイのログが 3 回分欠けている（JIN series 2・OSD 1。Blob の不具合、実証1の `d6f036e` で修正済み）。欠けた 3 回はどれも成約（支払い・クレジット消費とも正常）で、10/21 の JIN series の成約は実際には 5 件（ログ 3＋欠け 2、`known_gaps.contracts_incl_missing`）。JIN の売り手ログとの差は、欠け 2 と settle 失敗 1 の計 3 件。10/21 は実証1の手動確認の呼び出しも含み、定期実行は 10/22 から。
 - settle 失敗は 10/23 時点で 2 回（JIN series 1＝2026-10-21T10:43:55Z、OSD 1）。`gateway_upstream.log_settle_failed_by_product` で商品別に出る。
 - `upstreamNetwork` は上流に支払った行だけに入る。全行に入るのは `upstreamNetworkMode`。
+- 上流のステータス（`upstreamStatus`）は `upstream_status` に残す。上流が 402 で返した理由（実証1の `c404cd4` から `error` に入る）は、x402 のエラーコードの形（英小文字と `_`）のときだけ `upstream_error` に残し、本文や文章は残さない。
+- 2026-10-26T12:05:21Z の JIN の失敗は、支払いを送った後に JIN がもう一度 402 を返したもの（`upstream 402 after payment`、チェーン上の動きなし、クレジット消費なし）。成約にも settle 失敗にも入らない。
+- settle 失敗 3 件（10/21 JIN・10/22 OSD・10/23 JIN）は、どれもチェーンで成立している。JIN の 2 件は JIN の売り手ログにも出ている（実証2の日次データで確認）。
 - 入金までの日数（カード側）：実証1の Stripe Connect は Sandbox で接続済みだが、テスト決済で実際の入金が起きないため、本番（Live）に移るまで出ない。
 - 買い手エージェントのログ `GET /logs/buyer/:date`（同じトークン、`card.buyer_log_path`）は週次レポート用。まだ読んでいない。
 
