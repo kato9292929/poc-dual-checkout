@@ -11,10 +11,10 @@
   "period_phase": "no_period",
   "price_check": "no_period",
   "classification": {
-    "own_wallets_version": 9,
+    "own_wallets_version": 10,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-25T07:18:24.325Z",
+  "generated_at": "2026-10-26T12:43:56.538Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -113,19 +113,19 @@
           "jin_series": 0,
           "unresolved": 0,
           "osd": 0,
-          "other": 1
+          "other": 0
         },
         "jin_buyers_min": 0,
         "jin_buyers_max": 0,
         "jin_revenue_usd_min": 0,
         "jin_revenue_usd_max": 0,
-        "payto_inflows": 1,
-        "payto_revenue_usd": 2.710147,
+        "payto_inflows": 0,
+        "payto_revenue_usd": 0,
         "seller_fee_usd": 0,
-        "seller_fee_usd_per_tx": 0,
-        "seller_fee_rate": 0,
+        "seller_fee_usd_per_tx": null,
+        "seller_fee_rate": null,
         "facilitator_fee_usd": 0,
-        "facilitator_fee_rate": 0,
+        "facilitator_fee_rate": null,
         "fee_by_payer": {
           "seller": {
             "txs": 0,
@@ -138,9 +138,9 @@
             "usd": 0
           },
           "buyer": {
-            "txs": 1,
-            "lamports": 79938,
-            "usd": 0.00828
+            "txs": 0,
+            "lamports": 0,
+            "usd": 0
           },
           "other": {
             "txs": 0,
@@ -148,7 +148,7 @@
             "usd": 0
           }
         },
-        "days_to_settlement": 0
+        "days_to_settlement": null
       },
       "card": {
         "calls": 0,
@@ -188,19 +188,19 @@
           "jin_series": 10,
           "unresolved": 0,
           "osd": 9,
-          "other": 0
+          "other": 1
         },
         "jin_buyers_min": 1,
         "jin_buyers_max": 1,
         "jin_revenue_usd_min": 0.1,
         "jin_revenue_usd_max": 0.1,
-        "payto_inflows": 19,
-        "payto_revenue_usd": 0.19,
+        "payto_inflows": 20,
+        "payto_revenue_usd": 2.900147,
         "seller_fee_usd": 0,
         "seller_fee_usd_per_tx": 0,
         "seller_fee_rate": 0,
         "facilitator_fee_usd": 0.019682,
-        "facilitator_fee_rate": 0.1036,
+        "facilitator_fee_rate": 0.0068,
         "fee_by_payer": {
           "seller": {
             "txs": 0,
@@ -213,9 +213,9 @@
             "usd": 0.019682
           },
           "buyer": {
-            "txs": 0,
-            "lamports": 0,
-            "usd": 0
+            "txs": 1,
+            "lamports": 79938,
+            "usd": 0.00828
           },
           "other": {
             "txs": 0,
@@ -264,9 +264,8 @@
       },
       {
         "id": "6JKVugbVRXR92sacDzgxBU6k6Mb9AAhxLbEy3DyWvEzA",
-        "class": "unclassified",
-        "count": 1,
-        "note": "own 候補（own）: AA の旧ウォレットの可能性（本人確認待ち）。確定: 本人が自分のウォレット（AA の旧ウォレットなど）と確認したとき"
+        "class": "own",
+        "count": 1
       }
     ],
     "card_payers": [
@@ -604,11 +603,7 @@
           "sol_usd": 103.58,
           "fee_payer_role": "buyer",
           "product": "other",
-          "product_source": "amount",
-          "own_candidate": {
-            "likely": "own",
-            "note": "AA の旧ウォレットの可能性（本人確認待ち）"
-          }
+          "product_source": "amount"
         }
       ],
       "sol_usd": {
