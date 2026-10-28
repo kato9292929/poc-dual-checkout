@@ -118,7 +118,9 @@ test('実証1ゲートウェイのログ: /logs/:date（JST の日付）の1日�
     upstream_network: 'solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp',
     upstream_status: null,
     upstream_error: null,
+    card_topup: false,
   });
+  assert.equal(toCalls([{ time_utc: '2026-11-02T15:00:00.000Z', outcome: 'ok', cardTopUpOrderTx: '0xabc' }], '+09:00')[0].card_topup, true);
   assert.equal(upstreamErrorCode('upstream 402 after payment: invalid_exact_svm_payload_transaction'), 'invalid_exact_svm_payload_transaction');
   assert.equal(upstreamErrorCode('upstream 402 after payment'), null); // 文章は残さない
   assert.equal(upstreamErrorCode('<html>oops</html>'), null);

@@ -114,6 +114,10 @@
     "_route_products_comment": "ゲートウェイのログの routeId と商品の対応。ここに無い routeId は other",
     "contract_definition": "settle_ok",
     "_contract_definition_comment": "カード経由の成約＝ゲートウェイのログで outcome が ok（settle 成功・クレジット消費）の行。settle_failed（上流には払ったがクレジット未消費）は成約に入れず settle_failed として別に数える。JIN の売り手ログには売上として出るので、JIN 側の件数とはその分ずれる（10/23 時点で JIN series 1 回＝2026-10-21T10:43:55Z、OSD 1 回）",
+    "buyer_outages": [
+      { "from_utc": "2026-10-26T16:55:07Z", "to_utc": "2026-10-28T05:49:00Z", "reason": "実証1の買い手エージェントがクレジット切れで停止（約 36.9 時間）。この間はゲートウェイのログに買い手の行が無い。再開時に Nevermined の自動補充を有効にした" }
+    ],
+    "_buyer_outages_comment": "実証1の買い手エージェント（自社）が止まっていた時間。カード側の自社分はこの間 0 になる。週次レポートに注記する",
     "known_gaps": [
       { "date": "2026-10-21", "missing_calls": 3, "missing_by_product": { "jin_series": 2, "osd": 1 }, "missing_outcome": "ok", "contracts_incl_missing": { "jin_series": 5 }, "reason": "実証1のゲートウェイのログが Blob の不具合で 3 回分残らなかった（実証1の d6f036e で修正）。JIN の売り手ログでは series がゲートウェイのログより 2 件多い。欠けた 3 回はどれも支払い・クレジット消費とも正常（成約）で、10/21 の JIN series の成約は実際には 5 件（ログ 3＋欠け 2。証拠は実証1の docs/sandbox-log.md の取引 ID と買い手側のログ）。JIN の売り手ログとの差は、欠け 2 と settle 失敗 1 の計 3 件。この日は実証1の確認のための手動呼び出し（09:01〜09:16 UTC）も含む。定期実行は 10/22 から" }
     ],
