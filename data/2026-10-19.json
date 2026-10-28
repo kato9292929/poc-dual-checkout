@@ -8,13 +8,13 @@
     "2026-10-19T15:00:00.000Z"
   ],
   "period": null,
-  "period_phase": "no_period",
+  "period_phase": "pre_period",
   "price_check": "no_period",
   "classification": {
     "own_wallets_version": 10,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-26T12:43:56.531Z",
+  "generated_at": "2026-10-28T05:43:50.449Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",

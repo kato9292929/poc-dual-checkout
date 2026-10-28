@@ -7,14 +7,18 @@
     "2026-10-23T15:00:00.000Z",
     "2026-10-24T15:00:00.000Z"
   ],
-  "period": null,
-  "period_phase": "no_period",
-  "price_check": "no_period",
+  "period": {
+    "id": "P1",
+    "day": 3,
+    "of": 28
+  },
+  "period_phase": "in_period",
+  "price_check": "ok",
   "classification": {
     "own_wallets_version": 10,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-26T12:43:56.549Z",
+  "generated_at": "2026-10-28T05:46:21.383Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",

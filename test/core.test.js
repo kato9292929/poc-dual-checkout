@@ -85,7 +85,7 @@ test('所要時間の計測: 設定と違う提示には署名しない／カー
   const r = await measureCard({ baseUrl: 'https://gw.test/', item, token: 'TOKEN', fetchImpl: fake });
   assert.equal(r.ok, true);
   assert.equal(r.credits_consumed, 1);
-  assert.deepEqual(seen, [['https://gw.test/jin/series', undefined], ['https://gw.test/jin/series', 'TOKEN']]);
+  assert.deepEqual(seen, [['https://gw.test/api/jin/series', undefined], ['https://gw.test/api/jin/series', 'TOKEN']]);
   assert.ok(r.total_ms >= 0);
 });
 

@@ -11,7 +11,7 @@
       "price_usd": 0.01,
       "usdc_url": "https://jin.x402jp.com/api/jin/series",
       "usdc_amount_atomic": "10000",
-      "card_path": "/jin/series",
+      "card_path": "/api/jin/series",
       "card_route_id": "jin.series",
       "card_credits": 1
     },
@@ -22,9 +22,10 @@
       "price_usd": 0.02,
       "usdc_url": "https://jin.x402jp.com/api/jin/movers",
       "usdc_amount_atomic": "20000",
-      "card_path": "/jin/movers",
-      "card_route_id": "jin.movers",
-      "card_credits": 2
+      "card_path": null,
+      "card_route_id": null,
+      "card_credits": null,
+      "_card_comment": "カードでは買えない。実証1のプランは 1 リクエスト 1 クレジット固定で、2 クレジットの movers はゲートウェイに無い（実証1の config/pricing.json）。USDC 直接のみ"
     }
   ],
   "usdc": {
@@ -74,11 +75,17 @@
     "seller_log_since": "2026-10-20",
     "_seller_log_since_comment": "JIN の記録のコードが丸一日動いた最初の日＝JIN にデプロイした日の翌日（JST、YYYY-MM-DD）。JIN の GET /sales/:date は記録が無い日に [] を返すので、記録を始める前の日と区別できない。この日より前、または未設定（null）の間は、ログに無い $0.01 を消去法で OSD にしない（ログで一致したものだけ確定し、残りは unresolved）。"
   },
+  "page": {
+    "url": "https://buy.jin.x402jp.com",
+    "published_on": null,
+    "_published_on_comment": "販売ページを公開した日（JST、YYYY-MM-DD）。カード入口は販売ページからしか買えないので、この日より前（未公開の間を含む）のカード側の外部の利用は構造的に 0 件。週次レポートに注記する。USDC 入口は jin.x402jp.com で以前から買える"
+  },
   "card": {
     "_comment": "カード払いの入口＝実証1のゲートウェイ＋Nevermined のカードプラン（isCrypto=false）。前払い（prepaid）に固定。都度払い（pay-as-you-go）は Stripe の最低請求額 $0.50 のため使わない。",
     "mode": "prepaid",
     "usd_per_credit": 0.01,
     "nvm_environment": "sandbox",
+    "_nvm_environment_comment": "販売ページの購入ボタンは live のときだけ出す（Sandbox はテストカードしか通らない）。実証1が本番（Live）に移ったら、本番のプラン ID を nvm_plan_id に入れて live にする。plan_purchase_url は空でもよい（nvm_plan_id から https://nevermined.app/checkout/plan/<id> を作る）",
     "nvm_plan_id": "TODO_SET_AFTER_POC1",
     "nvm_agent_id": "TODO_SET_AFTER_POC1",
     "nvm_receiver_address": "0x6d565F6091624672B6c0ef6e2D38eD4679143Ed5",
