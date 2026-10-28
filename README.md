@@ -111,6 +111,8 @@ node scripts/report-weekly.mjs --week 2026-W45
 
 ## 未確認・要確認
 
+- **Stripe のキーを入れたら、自動補充の請求を Stripe の件数から自動で差し引く形に直す。** 今は差し引いておらず、両方がある週は週次レポートに警告が出る。どの取引が補充かを Stripe 側で見分ける方法（金額・説明・メタデータなど）は、実データを見て決める。
+
 - Seller Probe の Solana の公開アドレス（`config/own_wallets.json` が pending）。AA は `7PVT…L6tY` で確定済み（aa.x402jp.com/api/runs の tx 署名から。`docs/sources.md`）
 - 実証1ゲートウェイのログの口（`GET /logs/:date`）と `LOG_READ_TOKEN`
 - JIN の売り手ログの口（`GET /sales/:date`）。JIN の PR #10 が未マージで、まだ動いていない（2026-10-18 時点）。動き始めた日を `config/site.json` の `usdc.seller_log_since` に入れるまで、$0.01 は JIN の series か OSD か「不明」のまま残る（`docs/seller-log.md`）
