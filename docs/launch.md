@@ -15,6 +15,12 @@
 | 4b | `STATS_URL` | `https://buy.jin.x402jp.com/api/stats` | GitHub Secrets | 日次集計が閲覧数を読むこと |
 | 5 | 本番のカードプラン | 実証1が本番に移ったら（`docs/go-live.md`）、本番のプラン ID を教えてもらう。こちらで `config/site.json` の `card.nvm_plan_id` に入れ、`nvm_environment` を `live` にする。購入 URL（`https://nevermined.app/checkout/plan/<id>`）はそこから作る | 実証2の CC に伝える | カードの「準備中」を外すこと。Sandbox のプランはテストカードしか通らないので、公開ページには出さない |
 
+貼り付ける値（そのまま使える形）
+
+- CNAME：名前 `buy.jin`（x402jp.com のゾーン内）、値 `cname.vercel-dns.com`。Vercel の Domains 画面が別の値を出したら、そちらを使う
+- Vercel の環境変数（Production）：`STATS_TOKEN`（Upstash の `KV_REST_API_URL` / `KV_REST_API_TOKEN` は Storage が自動で入れる）
+- GitHub Secrets（kato9292929/poc-dual-checkout）：`STATS_TOKEN`（Vercel と同じ値）、`STATS_URL` = `https://buy.jin.x402jp.com/api/stats`
+
 公開できたら、その日付（JST）を CC に伝える。`page.published_on` に入れて、レポートに記録する。
 
 ## Sandbox のプランを公開ページに出さない理由
