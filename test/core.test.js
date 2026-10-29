@@ -58,8 +58,8 @@ test('payTo への USDC 入金を取り出す', () => {
 
 test('ページ計測: 閲覧と、各入口の説明を開いた回数', () => {
   const now = Date.parse('2026-10-13T15:30:00Z') / 1000; // JST 10/14 00:30
-  assert.equal(eventKey({ e: 'view' }, now), 'jin:2026-10-14:view');
-  assert.equal(eventKey({ e: 'open', i: 'usdc' }, now), 'jin:2026-10-14:open:usdc');
+  assert.equal(eventKey({ e: 'view' }, now), 'poc2:jin:2026-10-14:view');
+  assert.equal(eventKey({ e: 'open', i: 'usdc' }, now), 'poc2:jin:2026-10-14:open:usdc');
   assert.equal(eventKey({ e: 'open', i: 'x' }, now), null);
   assert.equal(eventKey({ e: 'click' }, now), null);
   assert.equal(eventKey(null, now), null);
