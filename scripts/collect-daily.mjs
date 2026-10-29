@@ -14,7 +14,7 @@ import { join } from 'node:path';
 import { loadConfig, ROOT } from '../lib/config.js';
 import { addDays, dayBounds, stamp, yesterday } from '../lib/dates.js';
 import { fetchPayments, DEFAULT_RPC } from '../lib/solana.js';
-import { fetchSales, matchesPlan, toSale, fetchPayoutArrivals, withPayout } from '../lib/stripe.js';
+import { fetchSales, matchesPlan, matchesTopup, toSale, fetchPayoutArrivals, withPayout } from '../lib/stripe.js';
 import { csvSalesForDate } from '../lib/stripe-csv.js';
 import { fetchGatewayLog, toCalls, parseJsonl } from '../lib/gateway.js';
 import { fetchSellerLog } from '../lib/seller-log.js';
@@ -194,7 +194,7 @@ let sales = await attempt(
   'stripe',
   !!env.STRIPE_RESTRICTED_KEY,
   async () =>
-    (await fetchSales(env.STRIPE_RESTRICTED_KEY, start, end)).filter((bt) => matchesPlan(bt, card.stripe_match)).map((bt) => toSale(bt, anonymize, offset)),
+    (await fetchSales(env.STRIPE_RESTRICTED_KEY, start, end)).filter((bt) => matchesPlan(bt, card.stripe_match)).map((bt) => ({ ...toSale(bt, anonymize, offset), topup: matchesTopup(bt, card.stripe_topup_match) })),
   { missing: 'missing' },
 );
 let csv = null;

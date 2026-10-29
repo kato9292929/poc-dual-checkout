@@ -6,7 +6,7 @@ import { parsePayment } from '../lib/solana.js';
 import { buildDaily, priceCheck, findPeriod } from '../lib/aggregate.js';
 import { renderWeekly } from '../lib/report.js';
 import { eventKey, statsKeys, statsFromValues, isBot } from '../lib/track.js';
-import { matchesPlan, toSale } from '../lib/stripe.js';
+import { matchesPlan, matchesTopup, toSale } from '../lib/stripe.js';
 import { salesFromCsv, checkHeader } from '../lib/stripe-csv.js';
 import { parseJsonl, toCalls, fetchGatewayLog, upstreamErrorCode } from '../lib/gateway.js';
 import { summarizeReconcile, assertOrgId, reconcile } from '../lib/nevermined.js';
@@ -577,4 +577,11 @@ test('実証1のゲートウェイ: ウォレット発の JIN 支払いは own�
   assert.equal(d.gateway_upstream.log_settle_failed, 1);
   assert.equal(d.gateway_upstream.chain_not_in_log, 0);
   assert.deepEqual(d.gateway_upstream.known_gap.missing_by_product, { jin_series: 2, osd: 1 });
+});
+
+test('Stripe: 自動補充の見分け方が未設定なら null（不明）、設定すれば一致で true', () => {
+  const bt = { source: { description: 'Nevermined auto top-up', metadata: { kind: 'topup' } } };
+  assert.equal(matchesTopup(bt, null), null);
+  assert.equal(matchesTopup(bt, { metadata_key: 'kind', metadata_value: 'topup' }), true);
+  assert.equal(matchesTopup({ source: { description: 'Plan purchase' } }, { description_contains: 'top-up' }), false);
 });

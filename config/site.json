@@ -104,6 +104,8 @@
       "metadata_value": null,
       "description_contains": null
     },
+    "stripe_topup_match": null,
+    "_stripe_topup_match_comment": "Stripe の取引のうち自動補充の請求を見分ける条件（metadata_key / metadata_value / description_contains）。最初の取引を見て決める。null の間は差し引かず、週次レポートに警告を出す",
     "purchase_source": "stripe",
     "_purchase_source_comment": "プラン購入件数の主系。stripe（Stripe の取引数、既定）か nvm_events（Nevermined の plan.purchased イベント数）。主系でない方は照合用に残す。",
     "gateway_log_path": "/logs/{day}",

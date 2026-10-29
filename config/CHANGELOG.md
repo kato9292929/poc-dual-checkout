@@ -38,3 +38,4 @@ node scripts/collect-daily.mjs --resummarize 2026-10-12..2026-11-28
 | own_wallets.json | 8 | 2026-10-23 | `card_payer_ids` に `d0c6c75243d07e82`（実証1の買い手エージェント）を追加 | 10/21〜10/22 のゲートウェイのログの成約・settle 失敗 26 行がすべてこの payerId。カードのプランはまだ一般に売っていない |
 | own_wallets.json | 9 | 2026-10-25 | Seller Probe の公開アドレス `xgtJ5…FZW5` を記入。`6JKV…vEzA` を own 候補に追加 | seller-probe の docs/wallet.md と 10/19 の self-check の時刻・tx 署名が一致。6JKV は 8 月に AA と同じ時刻で買っていたウォレットで、10/22 に残高を受取口座へ送金（購入ではない） |
 | own_wallets.json | 10 | 2026-10-26 | `6JKV…vEzA` を AA の署名ウォレットとして確定。`3EX6…218f` を追加 | 6JKV は本人が確認。3EX6 は 10/18 に受取口座から 0.5 USDC と SOL を受け取ったウォレットで、10/25 に JIN を 4 件買っていた（W43 の未分類 4 件） |
+| own_wallets.json | 11 | 2026-10-29 | 実証2の所要時間計測用ウォレット `4iAi…W46B` を記入 | USDC 直接の所要時間の計測を始めるため（毎日1回 JIN series を買う） |

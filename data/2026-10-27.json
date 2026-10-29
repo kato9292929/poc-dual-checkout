@@ -15,10 +15,10 @@
   "period_phase": "in_period",
   "price_check": "ok",
   "classification": {
-    "own_wallets_version": 10,
+    "own_wallets_version": 11,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-28T05:46:21.389Z",
+  "generated_at": "2026-10-29T06:25:13.905Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -90,6 +90,7 @@
         "buyers": 0,
         "failures": {},
         "settle_failed": 0,
+        "auto_topups": 0,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -163,6 +164,7 @@
         "buyers": 0,
         "failures": {},
         "settle_failed": 0,
+        "auto_topups": 0,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -238,6 +240,7 @@
         "buyers": 1,
         "failures": {},
         "settle_failed": 0,
+        "auto_topups": 0,
         "plan_purchases": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
@@ -297,6 +300,13 @@
       "sign_ms_median": null,
       "paid_request_ms_median": null
     }
+  },
+  "card_gateway_latency": {
+    "n": 1,
+    "total_ms_p50": 4370,
+    "total_ms_p90": 4370,
+    "upstream_ms_p50": 2166,
+    "upstream_ms_p90": 2166
   },
   "gateway_upstream": {
     "chain_payments": 1,

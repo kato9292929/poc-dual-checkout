@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // 決済1件の所要時間を、2つの入口で同じ手順で1回ずつ測り、data/latency/YYYY-MM-DD.jsonl（JST）に追記する。
 //   node scripts/probe-latency.mjs [--item series] [--only usdc|card]
-// 必要な環境変数: PROBE_SOLANA_SECRET_KEY（USDC 直接）、PROBE_NVM_ACCESS_TOKEN（カード払い）
-// どちらかが無ければ、その入口は skipped として記録する。
+// 必要な環境変数: PROBE_SOLANA_SECRET_KEY（USDC 直接）。無ければ skipped として記録する。
+// カード払いの所要時間は実証1ゲートウェイのログの latencyMs をそのまま使うので、既定では測らない（--only card のときだけ測る）。
 import { appendFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { loadConfig, ROOT } from '../lib/config.js';
@@ -25,7 +25,7 @@ if (only !== 'card') {
     recs.push({ ...(await measureUsdc({ http, item, usdc: site.usdc })), payer: address });
   }
 }
-if (only !== 'usdc') {
+if (only === 'card') {
   const base = site.card.gateway_base_url;
   if (!env.PROBE_NVM_ACCESS_TOKEN || !base || base.startsWith('TODO')) {
     recs.push({ entry: 'card', item: item.id, ts: new Date().toISOString(), skipped: 'PROBE_NVM_ACCESS_TOKEN またはゲートウェイ URL が未設定' });

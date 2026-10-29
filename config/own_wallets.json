@@ -1,6 +1,6 @@
 {
-  "version": 10,
-  "updated": "2026-10-26",
+  "version": 11,
+  "updated": "2026-10-29",
   "_comment": "自社の支払い元。一致したものは own に分類し、全集計から除外して参考値として別表に出す。公開アドレスだけを書く（秘密鍵は読まない・書かない）。address が null のものは未取得で、照合には使われない。",
   "solana": [
     {
@@ -40,10 +40,11 @@
       "status": "confirmed"
     },
     {
-      "address": null,
+      "address": "4iAiE9YQGqmtBkcBAMduVsZGE3iDyAKTuZ2ocpR1W46B",
       "label": "実証2の所要時間計測（scripts/probe-latency.mjs）",
-      "source": "計測用ウォレット作成時に追加する",
-      "status": "not_created"
+      "role": "latency_probe",
+      "source": "2026-10-29 に計測専用として新しく作った（鍵はローカルで生成し、リポジトリには置かない。GitHub Secrets の PROBE_SOLANA_SECRET_KEY）。毎日1回 JIN series（$0.01）を買う",
+      "status": "confirmed"
     },
     {
       "address": "3EX6L11khPXTRC6wdRbrEibHi8tH7TZ1PRTYSX7R218f",
@@ -117,6 +118,11 @@
       "version": 10,
       "date": "2026-10-26",
       "change": "6JKV…vEzA を AA の署名ウォレットとして確定（本人確認）。3EX6…218f（受取口座から資金を受けたテスト用ウォレット）を追加。"
+    },
+    {
+      "version": 11,
+      "date": "2026-10-29",
+      "change": "実証2の所要時間計測用ウォレット 4iAi…W46B を記入。"
     }
   ],
   "nvm_user_hashes": {

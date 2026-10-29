@@ -15,10 +15,10 @@
   "period_phase": "in_period",
   "price_check": "ok",
   "classification": {
-    "own_wallets_version": 10,
+    "own_wallets_version": 11,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-29T00:57:17.023Z",
+  "generated_at": "2026-10-29T06:25:13.906Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -303,6 +303,13 @@
       "sign_ms_median": null,
       "paid_request_ms_median": null
     }
+  },
+  "card_gateway_latency": {
+    "n": 10,
+    "total_ms_p50": 5123,
+    "total_ms_p90": 5977,
+    "upstream_ms_p50": 2245,
+    "upstream_ms_p90": 2427
   },
   "gateway_upstream": {
     "chain_payments": 10,
