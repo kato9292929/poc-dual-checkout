@@ -9,7 +9,7 @@
 | # | 項目 | 必要な値・操作 | 入れる場所 | 無いと止まるもの |
 |---|---|---|---|---|
 | 1 | Vercel のプロジェクト | Vercel で「Add New → Project」から `kato9292929/poc-dual-checkout` を取り込む。設定は既定のまま（`vercel.json` がビルドと出力先を決める）。Production Branch は `main` | Vercel | 販売ページそのもの |
-| 2 | Upstash Redis | 同じプロジェクトの Storage（Marketplace）で Upstash Redis を追加し、プロジェクトにつなぐ。環境変数は自動で入る（`KV_REST_API_URL` / `KV_REST_API_TOKEN` の名前でもそのまま読む） | Vercel（Storage） | 閲覧数・「説明を開いた回数」の記録 |
+| 2 | Upstash Redis | 既存の Upstash のデータベース `x402`（giving-viper-93471、JIN の売上ログと共用。実証2のキーは `poc2:` で始まる）を使う。Vercel の Environment Variables に `UPSTASH_REDIS_REST_URL` = `https://giving-viper-93471.upstash.io` と `UPSTASH_REDIS_REST_TOKEN`（Upstash の画面の REST の Token）を入れる。Vercel の Marketplace から足す経路は支払い方法の登録を求められるので使わない | Vercel（環境変数） | 閲覧数・「説明を開いた回数」の記録 |
 | 3 | `STATS_TOKEN` | `openssl rand -hex 32` で作った値。Vercel の Environment Variables（Production）に入れ、**同じ値**を GitHub Secrets にも入れる。入れたら Vercel で Redeploy | Vercel（環境変数）と GitHub Secrets | 日次集計が閲覧数を読むこと（`page: "not_configured"` のまま） |
 | 4 | ドメイン | Vercel のプロジェクト → Settings → Domains に `buy.jin.x402jp.com` を追加。x402jp.com の DNS に、Vercel が表示する CNAME（通常 `buy.jin` → `cname.vercel-dns.com`）を足す | Vercel と DNS | `buy.jin.x402jp.com` での公開 |
 | 4b | `STATS_URL` | `https://buy.jin.x402jp.com/api/stats` | GitHub Secrets | 日次集計が閲覧数を読むこと |
@@ -17,8 +17,9 @@
 
 貼り付ける値（そのまま使える形）
 
-- CNAME：名前 `buy.jin`（x402jp.com のゾーン内）、値 `cname.vercel-dns.com`。Vercel の Domains 画面が別の値を出したら、そちらを使う
-- Vercel の環境変数（Production）：`STATS_TOKEN`（Upstash の `KV_REST_API_URL` / `KV_REST_API_TOKEN` は Storage が自動で入れる）
+- CNAME：名前 `buy.jin`（x402jp.com のゾーン内）、値は Vercel の Domains 画面に出るもの
+- Vercel の環境変数（Production）：`UPSTASH_REDIS_REST_URL`、`UPSTASH_REDIS_REST_TOKEN`、`STATS_TOKEN`
+- x402jp.com の DNS は Xserver にある。CNAME は Vercel の Domains 画面に出る値（プロジェクトごとの `…vercel-dns-0xx.com` の形）を使う。TXT の確認を求められたら、それも Xserver に足す
 - GitHub Secrets（kato9292929/poc-dual-checkout）：`STATS_TOKEN`（Vercel と同じ値）、`STATS_URL` = `https://buy.jin.x402jp.com/api/stats`
 
 公開できたら、その日付（JST）を CC に伝える。`page.published_on` に入れて、レポートに記録する。
