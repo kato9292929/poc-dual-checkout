@@ -77,7 +77,7 @@
   },
   "page": {
     "url": "https://buy.jin.x402jp.com",
-    "published_on": null,
+    "published_on": "2026-10-31",
     "_published_on_comment": "販売ページを公開した日（JST、YYYY-MM-DD）。カード入口は販売ページからしか買えないので、この日より前（未公開の間を含む）のカード側の外部の利用は構造的に 0 件。週次レポートに注記する。USDC 入口は jin.x402jp.com で以前から買える"
   },
   "card": {
