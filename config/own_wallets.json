@@ -1,6 +1,6 @@
 {
-  "version": 11,
-  "updated": "2026-10-29",
+  "version": 12,
+  "updated": "2026-11-01",
   "_comment": "自社の支払い元。一致したものは own に分類し、全集計から除外して参考値として別表に出す。公開アドレスだけを書く（秘密鍵は読まない・書かない）。address が null のものは未取得で、照合には使われない。",
   "solana": [
     {
@@ -50,6 +50,13 @@
       "address": "3EX6L11khPXTRC6wdRbrEibHi8tH7TZ1PRTYSX7R218f",
       "label": "受取口座から資金を受けたテスト用ウォレット（用途は未確認）",
       "source": "チェーンの記録で、2026-10-18T12:12:57Z に JIN / OSD の受取口座 4s8X…3VPf から 0.5 USDC と SOL を受け取っている（売り手側が資金を入れたウォレットなので外部の買い手ではない）。10/18・10/25・10/26 に JIN series と movers を交互に買っている。実証2の所要時間計測（PROBE_SOLANA_SECRET_KEY 未設定）ではない。",
+      "status": "confirmed"
+    },
+    {
+      "address": "2AjCRJWDH1ecvURP6ie7iMSTTtRYxcXmGLYmvdQ8MJjv",
+      "label": "Crossmint エージェントウォレット（Solana、poc-crossmint-buyer）",
+      "role": "crossmint_wallet",
+      "source": "kato9292929/poc-crossmint-buyer の docs/blockers.md A-1。2026-10-24 に Crossmint の本番で作成（サーバー署名者、alias poc-crossmint-buyer-sol）。Crossmint の Solana ウォレットは x402 に署名できないため、JIN には支払っていない。今後 Solana で支払いが出た場合に own に入るよう登録する",
       "status": "confirmed"
     }
   ],
@@ -123,11 +130,26 @@
       "version": 11,
       "date": "2026-10-29",
       "change": "実証2の所要時間計測用ウォレット 4iAi…W46B を記入。"
+    },
+    {
+      "version": 12,
+      "date": "2026-11-01",
+      "change": "Crossmint 経由の買い手を追加：Solana ウォレット 2AjC…MJjv、Base ウォレット 0xcFe6…307d（evm、照合には未使用）、カードの買い手の userId（nvm_user_hashes._pending、匿名化待ち）。"
     }
   ],
   "nvm_user_hashes": {
     "_comment": "Nevermined の userId を ANON_SALT で匿名化した値（card.purchase_source が nvm_events のときの購入者の照合に使う）",
-    "ids": []
+    "ids": [],
+    "_pending": [
+      {
+        "user_id": "0xa670D5e40c7c4B82f16E0E09118Daf8402Eb873e",
+        "label": "Crossmint エージェントカードの買い手（poc-crossmint-buyer 専用の Nevermined アカウント）",
+        "environment": "sandbox",
+        "role": "crossmint_card",
+        "source": "kato9292929/poc-crossmint-buyer の docs/evidence/phase-b-2026-10-30.jsonl（2026-10-30 21:15 JST、prepaid-100 を1回購入。Stripe pi_3UWEiMPh60bb0BjN12CaN4hJ）。値は買い手の API キーの sub（アカウントのアドレス）",
+        "todo": "ANON_SALT で匿名化して ids に入れる: ANON_SALT=... node scripts/anon.mjs 0xa670D5e40c7c4B82f16E0E09118Daf8402Eb873e 。Nevermined の plan.purchased の actorUserId がこのアドレスと同じ形かは未確認（違えば、その購入の actorUserId を匿名化して入れる）"
+      }
+    ]
   },
   "candidates": {
     "_comment": "own の候補。照合には使わない（unclassified のまま）。確定条件を満たしたら solana に移し、version を上げて --resummarize で数え直す。",
@@ -152,5 +174,16 @@
         "reason": "本人が確認"
       }
     ]
-  }
+  },
+  "evm": [
+    {
+      "address": "0xcFe61527Bd815688B3c24fD0Bf57b3A7d62B307d",
+      "chain": "base",
+      "label": "Crossmint エージェントウォレット（Base、poc-crossmint-buyer）",
+      "role": "crossmint_wallet",
+      "source": "kato9292929/poc-crossmint-buyer。2026-11-01 時点で作成済み（サーバー署名者、alias poc-crossmint-buyer）。Base の x402 エンドポイントへの支払い元",
+      "status": "confirmed",
+      "_note": "実証2の日次集計は Solana だけを読むので、今はこの項目は照合に使われない（記録用）。Base の読み取りを足すときの照合先"
+    }
+  ]
 }

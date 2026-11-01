@@ -39,3 +39,4 @@ node scripts/collect-daily.mjs --resummarize 2026-10-12..2026-11-28
 | own_wallets.json | 9 | 2026-10-25 | Seller Probe の公開アドレス `xgtJ5…FZW5` を記入。`6JKV…vEzA` を own 候補に追加 | seller-probe の docs/wallet.md と 10/19 の self-check の時刻・tx 署名が一致。6JKV は 8 月に AA と同じ時刻で買っていたウォレットで、10/22 に残高を受取口座へ送金（購入ではない） |
 | own_wallets.json | 10 | 2026-10-26 | `6JKV…vEzA` を AA の署名ウォレットとして確定。`3EX6…218f` を追加 | 6JKV は本人が確認。3EX6 は 10/18 に受取口座から 0.5 USDC と SOL を受け取ったウォレットで、10/25 に JIN を 4 件買っていた（W43 の未分類 4 件） |
 | own_wallets.json | 11 | 2026-10-29 | 実証2の所要時間計測用ウォレット `4iAi…W46B` を記入 | USDC 直接の所要時間の計測を始めるため（毎日1回 JIN series を買う） |
+| own_wallets.json | 12 | 2026-11-01 | Crossmint 経由の買い手を追加：Solana `2AjC…MJjv`（`solana`）、Base `0xcFe6…307d`（新設の `evm`。集計は Solana だけを読むので照合には未使用）、カードの買い手の userId `0xa670…873e`（`nvm_user_hashes._pending`。ANON_SALT での匿名化待ち） | 実証6（poc-crossmint-buyer）の自社の購入を own として除外するため |
