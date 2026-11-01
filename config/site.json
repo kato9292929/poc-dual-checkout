@@ -85,6 +85,8 @@
     "mode": "prepaid",
     "usd_per_credit": 0.01,
     "nvm_environment": "sandbox",
+    "live_since": null,
+    "_live_since_comment": "カードのプランを本番（Live）に移した日（JST、YYYY-MM-DD）。この日以降をカード側の外部の利用の計測対象にする。nvm_environment を live にするときに一緒に入れる",
     "_nvm_environment_comment": "販売ページの購入ボタンは live のときだけ出す（Sandbox はテストカードしか通らない）。実証1が本番（Live）に移ったら、本番のプラン ID を nvm_plan_id に入れて live にする。plan_purchase_url は空でもよい（nvm_plan_id から https://nevermined.app/checkout/plan/<id> を作る）",
     "nvm_plan_id": "TODO_SET_AFTER_POC1",
     "nvm_agent_id": "TODO_SET_AFTER_POC1",

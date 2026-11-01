@@ -34,6 +34,17 @@
 - 購入画面で保存済みのカードを選んで払う経路は Sandbox で通らない（カード番号を直接入れる経路と自動補充は通る）。外部の買い手に開くときは直接入力の経路を使う。
 - 11/18 までに本番へ移れない場合、カード側の外部の利用は「0（本番未移行のため）」として扱う。週次レポートは `card.nvm_environment` が `live` でない間、この注記を出す。
 
+## 本番に移したときに実証2でやること
+
+実証1から本番のプラン ID を受け取ったら、次の4つを1つのコミットで行う。
+
+1. `config/site.json` の `card.nvm_plan_id` に本番のプラン ID を入れ、`card.nvm_environment` を `live`、`card.live_since` を移った日（JST）にする。購入 URL は `https://nevermined.app/checkout/plan/<id>` が自動で作られ、販売ページのカードの「準備中」が外れる
+2. 本番のゲートウェイのウォレットを新しく作った場合は、その公開アドレスを `own_wallets.json` の `solana` に `role: "card_gateway"` で足す（チェーン側との照合に使う）
+3. 本番で自社が1回買ったときの payerId を `own_wallets.json` の `card_payer_ids` に足す。本番の買い手は Nevermined 上のアカウントが Sandbox と違うので、payerId も変わる（LOG_SALT は同じ）
+4. `own_wallets.json` の version を上げて `CHANGELOG.md` に書き、`--upgrade` で数え直す
+
+週次レポートは `live_since` より前の日に「0（本番未移行のため）」と注記し、それ以降の日をカード側の外部の利用の計測対象にする。
+
 ## カードで買える商品
 
 JIN series（$0.01 = 1 クレジット）だけ。実証1のプランは 1 リクエスト 1 クレジット固定で、2 クレジットの movers はゲートウェイに無い（実証1の `config/pricing.json`）。販売ページの価格表では、movers のカードの欄を「カードでは買えません（USDC のみ）」にしている。カードでの呼び出し先は `https://poc-card-credits.vercel.app/api/jin/series`。

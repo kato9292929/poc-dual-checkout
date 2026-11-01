@@ -39,3 +39,16 @@ test('販売ページ: Sandbox のプランでは購入ボタンを出さない�
   site.card.nvm_environment = 'live';
   assert.match(render(site), /href="https:\/\/nevermined\.app\/checkout\/plan\/123456"/);
 });
+
+test('週次レポート: 本番に移った日より前は、カード側の外部の利用が 0（本番未移行のため）と注記する', async () => {
+  const { renderWeekly } = await import('../lib/report.js');
+  const config = structuredClone(loadConfig());
+  const d = (date) => ({ date, sources: {}, detail: { usdc: { payments: [] }, card: { calls: [] } }, classification: {} });
+  const days = ['2026-11-02', '2026-11-03', '2026-11-04', '2026-11-05', '2026-11-06', '2026-11-07', '2026-11-08'];
+  config.site.card.nvm_environment = 'live';
+  config.site.card.live_since = '2026-11-05';
+  const md = renderWeekly({ label: '2026-W45', days, dailies: days.map(d), config });
+  assert.match(md, /2026-11-05 に本番（Live）に移った。2026-11-02〜2026-11-04 は本番前/);
+  config.site.card.live_since = '2026-11-01';
+  assert.doesNotMatch(renderWeekly({ label: '2026-W45', days, dailies: days.map(d), config }), /本番未移行のため/);
+});
