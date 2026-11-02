@@ -11,10 +11,10 @@
   "period_phase": "pre_period",
   "price_check": "no_period",
   "classification": {
-    "own_wallets_version": 11,
+    "own_wallets_version": 12,
     "external_buyers_version": 2
   },
-  "generated_at": "2026-10-29T06:25:13.890Z",
+  "generated_at": "2026-11-01T10:01:15.838Z",
   "sources": {
     "page": "not_configured",
     "sol_usd": "ok",
@@ -88,6 +88,7 @@
         "settle_failed": null,
         "auto_topups": null,
         "plan_purchases": null,
+        "stripe_topups": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
         "plan_purchases_nvm_events": null,
@@ -162,6 +163,7 @@
         "settle_failed": null,
         "auto_topups": null,
         "plan_purchases": null,
+        "stripe_topups": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
         "plan_purchases_nvm_events": null,
@@ -236,6 +238,7 @@
         "settle_failed": null,
         "auto_topups": null,
         "plan_purchases": null,
+        "stripe_topups": null,
         "plan_purchases_source": "stripe",
         "plan_purchases_stripe": null,
         "plan_purchases_nvm_events": null,
