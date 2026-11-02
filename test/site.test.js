@@ -57,8 +57,11 @@ test('週次レポート: 本番に移った日より前は、カード側の外
   assert.doesNotMatch(renderWeekly({ label: '2026-W45', days, dailies: days.map(d), config }), /本番未移行のため/);
 });
 
-test('販売ページ: 本番のプランが入っていれば購入ボタンを出す（今の設定）', () => {
-  const html = render(structuredClone(loadConfig().site));
+test('販売ページ: 本番のプランが入っていれば購入ボタンを出す。purchase_paused の間は止める', () => {
+  const site = structuredClone(loadConfig().site);
+  assert.match(render(site), site.card.purchase_paused ? /カードでプランを購入（準備中）/ : /カードでプランを購入</);
+  site.card.purchase_paused = null;
+  const html = render(site);
   assert.match(html, /href="https:\/\/nevermined\.app\/checkout\/plan\/109390300569784239149001680992260682156573712120263169260609849660793213537158"/);
   assert.doesNotMatch(html, /カードでプランを購入（準備中）/);
 });

@@ -86,6 +86,8 @@
     "usd_per_credit": 0.01,
     "nvm_environment": "live",
     "live_since": "2026-11-02",
+    "purchase_paused": "本番で $1 の請求は通ったが、クレジットが買い手に付かなかった（2026-11-02 12:34 UTC 時点、実証1の docs/live.md）。外部の買い手が払って使えないことを避けるため、付与が確かめられるまで購入ボタンを止める",
+    "_purchase_paused_comment": "文字列（理由）が入っている間は、販売ページのカードの購入ボタンを「準備中」にする。null で再開",
     "_live_since_comment": "カードのプランを本番（Live）に移した日（JST、YYYY-MM-DD）。この日以降をカード側の外部の利用の計測対象にする。nvm_environment を live にするときに一緒に入れる",
     "_nvm_environment_comment": "販売ページの購入ボタンは live のときだけ出す（Sandbox はテストカードしか通らない）。実証1が本番（Live）に移ったら、本番のプラン ID を nvm_plan_id に入れて live にする。plan_purchase_url は空でもよい（nvm_plan_id から https://nevermined.app/checkout/plan/<id> を作る）",
     "nvm_plan_id": "109390300569784239149001680992260682156573712120263169260609849660793213537158",

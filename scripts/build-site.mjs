@@ -46,7 +46,8 @@ curl -i ${esc(it.usdc_url)}</pre>
   // 購入 URL は Nevermined App の購入ページ（plan_purchase_url が無ければ nvm_plan_id から作る）。
   // Sandbox のプランはテストカードしか通らず実際の請求が起きないので、公開ページでは live のときだけ購入ボタンを出す
   const purchaseUrl = configured(card.plan_purchase_url) ? card.plan_purchase_url : configured(card.nvm_plan_id) ? `https://nevermined.app/checkout/plan/${card.nvm_plan_id}` : null;
-  const ready = !!purchaseUrl && card.nvm_environment === 'live';
+  // purchase_paused（理由の文字列）が入っている間は、本番のプランでもボタンを出さない
+  const ready = !!purchaseUrl && card.nvm_environment === 'live' && !card.purchase_paused;
   const cardSummary = ready ? `Nevermined のカードプラン（前払い）。${esc(plan.summary)}` : 'カードでの購入は準備中です。';
   const cardPrice = ready ? `$${usd(plan.plan_price_usd)} <span class="muted">/ ${plan.plan_credits} クレジット（${plan.plan_credits} コール相当）</span>` : '準備中';
   const cardButton = ready
