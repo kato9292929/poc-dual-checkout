@@ -23,6 +23,7 @@ test('販売ページ: 前払いの価格表示が USDC とそろう', () => {
   const site = structuredClone(loadConfig().site);
   site.card.plan_purchase_url = 'https://nevermined.app/checkout/plan-1';
   site.card.nvm_environment = 'live';
+  site.card.purchase_paused = null;
   site.card.gateway_base_url = 'https://gw.example.com/';
   const html = render(site);
   assert.match(html, /href="https:\/\/nevermined\.app\/checkout\/plan-1"/);
@@ -41,6 +42,7 @@ test('販売ページ: Sandbox のプランでは購入ボタンを出さない�
   site.card.nvm_environment = 'sandbox';
   assert.match(render(site), /カードでプランを購入（準備中）/);
   site.card.nvm_environment = 'live';
+  site.card.purchase_paused = null;
   assert.match(render(site), /href="https:\/\/nevermined\.app\/checkout\/plan\/123456"/);
 });
 
