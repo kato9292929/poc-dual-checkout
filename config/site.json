@@ -84,14 +84,14 @@
     "_comment": "カード払いの入口＝実証1のゲートウェイ＋Nevermined のカードプラン（isCrypto=false）。前払い（prepaid）に固定。都度払い（pay-as-you-go）は Stripe の最低請求額 $0.50 のため使わない。",
     "mode": "prepaid",
     "usd_per_credit": 0.01,
-    "nvm_environment": "sandbox",
-    "live_since": null,
+    "nvm_environment": "live",
+    "live_since": "2026-11-02",
     "_live_since_comment": "カードのプランを本番（Live）に移した日（JST、YYYY-MM-DD）。この日以降をカード側の外部の利用の計測対象にする。nvm_environment を live にするときに一緒に入れる",
     "_nvm_environment_comment": "販売ページの購入ボタンは live のときだけ出す（Sandbox はテストカードしか通らない）。実証1が本番（Live）に移ったら、本番のプラン ID を nvm_plan_id に入れて live にする。plan_purchase_url は空でもよい（nvm_plan_id から https://nevermined.app/checkout/plan/<id> を作る）",
-    "nvm_plan_id": "TODO_SET_AFTER_POC1",
-    "nvm_agent_id": "TODO_SET_AFTER_POC1",
+    "nvm_plan_id": "109390300569784239149001680992260682156573712120263169260609849660793213537158",
+    "nvm_agent_id": "40597898777609448364666718252952480148470005949452368282165923844683523900188",
     "nvm_receiver_address": "0x6d565F6091624672B6c0ef6e2D38eD4679143Ed5",
-    "plan_purchase_url": "TODO_SET_AFTER_POC1",
+    "plan_purchase_url": "https://nevermined.app/checkout/plan/109390300569784239149001680992260682156573712120263169260609849660793213537158",
     "gateway_base_url": "https://poc-card-credits.vercel.app",
     "plan": {
       "name": "prepaid-100",
@@ -119,9 +119,11 @@
     "contract_definition": "settle_ok",
     "_contract_definition_comment": "カード経由の成約＝ゲートウェイのログで outcome が ok（settle 成功・クレジット消費）の行。settle_failed（上流には払ったがクレジット未消費）は成約に入れず settle_failed として別に数える。JIN の売り手ログには売上として出るので、JIN 側の件数とはその分ずれる（10/23 時点で JIN series 1 回＝2026-10-21T10:43:55Z、OSD 1 回）",
     "buyer_outages": [
-      { "from_utc": "2026-10-26T16:55:07Z", "to_utc": "2026-10-28T05:49:00Z", "reason": "実証1の買い手エージェントがクレジット切れで停止（約 36.9 時間）。この間はゲートウェイのログに買い手の行が無い。再開時に Nevermined の自動補充を有効にした" }
+      { "from_utc": "2026-10-26T16:55:07Z", "to_utc": "2026-10-28T05:49:00Z", "reason": "実証1の買い手エージェントがクレジット切れで停止（約 36.9 時間）。この間はゲートウェイのログに買い手の行が無い。再開時に Nevermined の自動補充を有効にした" },
+      { "from_utc": "2026-11-02T10:52:00Z", "to_utc": "2026-11-18T15:00:00Z", "reason": "本番（Live）への切り替えで、実証1の買い手エージェントの定期購入を止めた（自社のカードに実費がかかるため）。期間の終わりまで、カード側の自社分は本番での確認の数回だけ" }
     ],
     "_buyer_outages_comment": "実証1の買い手エージェント（自社）が止まっていた時間。カード側の自社分はこの間 0 になる。週次レポートに注記する",
+    "_live_comment": "2026-11-02 19:52 JST（10:52 UTC）に実証1が本番に切り替え、同日に本番のプランで $1 の購入が通った（100 クレジット付与）。本番のプランは個人の下（orgId: null）、受取は 0xc2A2…40FA（Sandbox の nvm_receiver_address とは別）。ゲートウェイのウォレットは 3HG2…rcgV のまま（実証1の docs/live.md）",
     "known_gaps": [
       { "date": "2026-10-21", "missing_calls": 3, "missing_by_product": { "jin_series": 2, "osd": 1 }, "missing_outcome": "ok", "contracts_incl_missing": { "jin_series": 5 }, "reason": "実証1のゲートウェイのログが Blob の不具合で 3 回分残らなかった（実証1の d6f036e で修正）。JIN の売り手ログでは series がゲートウェイのログより 2 件多い。欠けた 3 回はどれも支払い・クレジット消費とも正常（成約）で、10/21 の JIN series の成約は実際には 5 件（ログ 3＋欠け 2。証拠は実証1の docs/sandbox-log.md の取引 ID と買い手側のログ）。JIN の売り手ログとの差は、欠け 2 と settle 失敗 1 の計 3 件。この日は実証1の確認のための手動呼び出し（09:01〜09:16 UTC）も含む。定期実行は 10/22 から" }
     ],

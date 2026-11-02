@@ -5,6 +5,9 @@ import { loadConfig } from '../lib/config.js';
 
 test('販売ページ: プラン未設定ならカード入口は準備中', () => {
   const site = structuredClone(loadConfig().site);
+  site.card.nvm_plan_id = null;
+  site.card.plan_purchase_url = null;
+  site.card.nvm_environment = 'sandbox';
   const html = render(site);
   assert.doesNotMatch(html, /\{\{/);
   assert.match(html, /aria-disabled="true">カードでプランを購入（準備中）/);
@@ -34,6 +37,7 @@ test('販売ページ: 前払いの価格表示が USDC とそろう', () => {
 test('販売ページ: Sandbox のプランでは購入ボタンを出さない（テストカードしか通らない）', () => {
   const site = structuredClone(loadConfig().site);
   site.card.nvm_plan_id = '123456';
+  site.card.plan_purchase_url = null;
   site.card.nvm_environment = 'sandbox';
   assert.match(render(site), /カードでプランを購入（準備中）/);
   site.card.nvm_environment = 'live';
@@ -51,4 +55,10 @@ test('週次レポート: 本番に移った日より前は、カード側の外
   assert.match(md, /2026-11-05 に本番（Live）に移った。2026-11-02〜2026-11-04 は本番前/);
   config.site.card.live_since = '2026-11-01';
   assert.doesNotMatch(renderWeekly({ label: '2026-W45', days, dailies: days.map(d), config }), /本番未移行のため/);
+});
+
+test('販売ページ: 本番のプランが入っていれば購入ボタンを出す（今の設定）', () => {
+  const html = render(structuredClone(loadConfig().site));
+  assert.match(html, /href="https:\/\/nevermined\.app\/checkout\/plan\/109390300569784239149001680992260682156573712120263169260609849660793213537158"/);
+  assert.doesNotMatch(html, /カードでプランを購入（準備中）/);
 });
