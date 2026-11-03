@@ -155,6 +155,7 @@ seller-probe はまだ一度も有料の測定を動かしていない（Actions
 - settle 失敗は 10/23 時点で 2 回（JIN series 1＝2026-10-21T10:43:55Z、OSD 1）。`gateway_upstream.log_settle_failed_by_product` で商品別に出る。
 - `upstreamNetwork` は上流に支払った行だけに入る。全行に入るのは `upstreamNetworkMode`。
 - 実証1の買い手エージェント（自社）は 10/27 01:55〜10/28 14:49 JST にクレジット切れで止まっていた（`card.buyer_outages`、週次レポートに注記）。再開時に Nevermined の自動補充を有効にした。補充が起きた行（`cardTopUpOrderTx` がある行）は `card_topup: true` にし、`card.auto_topups` として数える。プラン購入（人の購入）には入れない。Stripe の取引には補充の請求も出るので、Stripe でプラン購入件数を数えるときはこの分を差し引いて読む。
+- **本番（2026-11-02〜）**：本番のプランの $1 の購入は、Nevermined の記録（クレジット付与）が支払いから約 5 時間遅れた。カードの売り手の取り分は $1 のうち $0.65 で、Nevermined の手数料 $0.02 と、Stripe 手数料の見積もり $0.33 が先に引かれる（実際の Stripe 手数料は $0.039）。カードの手数料率を出すときは、この先引きの $0.35（35%）が売り手の負担になる。自社の本番の購入者の payerId は Sandbox と同じ `d0c6c75243d07e82`。
 - 上流のステータス（`upstreamStatus`）は `upstream_status` に残す。上流が 402 で返した理由（実証1の `c404cd4` から `error` に入る）は、x402 のエラーコードの形（英小文字と `_`）のときだけ `upstream_error` に残し、本文や文章は残さない。
 - 2026-10-26T12:05:21Z の JIN の失敗は、支払いを送った後に JIN がもう一度 402 を返したもの（`upstream 402 after payment`、チェーン上の動きなし、クレジット消費なし）。成約にも settle 失敗にも入らない。
 - settle 失敗 3 件（10/21 JIN・10/22 OSD・10/23 JIN）は、どれもチェーンで成立している。JIN の 2 件は JIN の売り手ログにも出ている（実証2の日次データで確認）。

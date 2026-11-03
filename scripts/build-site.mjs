@@ -53,7 +53,7 @@ curl -i ${esc(it.usdc_url)}</pre>
   const cardButton = ready
     ? `<a class="btn" href="${esc(purchaseUrl)}" rel="noopener">カードでプランを購入</a>`
     : '<a class="btn" aria-disabled="true">カードでプランを購入（準備中）</a>';
-  const stepBuy = '<li>プランを購入する（Stripe Checkout でカード決済。クレジットが付与される）</li>';
+  const stepBuy = '<li>プランを購入する（Stripe Checkout でカード決済。クレジットが付与される。購入完了の画面が出てからクレジットが反映されるまで、数時間かかることがあります）</li>';
 
   const vars = {
     summary: esc(site.product.summary),
