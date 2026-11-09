@@ -1,0 +1,198 @@
+{
+  "schema_version": 2,
+  "schema": 3,
+  "date": "2026-11-08",
+  "timezone": "Asia/Tokyo",
+  "window_utc": [
+    "2026-11-07T15:00:00.000Z",
+    "2026-11-08T15:00:00.000Z"
+  ],
+  "period": {
+    "id": "P1",
+    "day": 18,
+    "of": 28
+  },
+  "period_phase": "in_period",
+  "price_check": "ok",
+  "classification": {
+    "own_wallets_version": 12,
+    "external_buyers_version": 2
+  },
+  "generated_at": "2026-11-09T00:53:47.892Z",
+  "sources": {
+    "page": "ok",
+    "sol_usd": "ok",
+    "usdc_chain": "error: getTransaction: {\"code\":-32015,\"message\":\"Transaction version (1) is not supported by the requesting client. Please try the request again with the following configuration parameter: \\\"maxSupportedTransactionVersion\\\": 1\"}",
+    "gateway_log": "ok",
+    "aa_runs": "ok",
+    "seller_log": "ok",
+    "stripe": "missing",
+    "stripe_csv": "not_found",
+    "nvm_api": "not_configured",
+    "latency_probe": "ok"
+  },
+  "page": {
+    "date": "2026-11-08",
+    "views": 0,
+    "opens": {
+      "usdc": 0,
+      "card": 0
+    }
+  },
+  "by_class": {
+    "external": {
+      "usdc": null,
+      "card": {
+        "calls": 0,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {},
+        "settle_failed": 0,
+        "auto_topups": 0,
+        "plan_purchases": null,
+        "stripe_topups": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null,
+        "upstream_latency_ms_p50": null,
+        "upstream_latency_ms_p90": null
+      }
+    },
+    "unclassified": {
+      "usdc": null,
+      "card": {
+        "calls": 0,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {},
+        "settle_failed": 0,
+        "auto_topups": 0,
+        "plan_purchases": null,
+        "stripe_topups": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null,
+        "upstream_latency_ms_p50": null,
+        "upstream_latency_ms_p90": null
+      }
+    },
+    "own": {
+      "usdc": null,
+      "card": {
+        "calls": 0,
+        "calls_products": [
+          "jin_series"
+        ],
+        "calls_by_product": {},
+        "uses_credits": 0,
+        "buyers": 0,
+        "failures": {},
+        "settle_failed": 0,
+        "auto_topups": 0,
+        "plan_purchases": null,
+        "stripe_topups": null,
+        "plan_purchases_source": "stripe",
+        "plan_purchases_stripe": null,
+        "plan_purchases_nvm_events": null,
+        "revenue_usd": null,
+        "card_fee_usd": null,
+        "card_fee_usd_per_contract": null,
+        "fee_rate": null,
+        "days_to_payout_median": null,
+        "payouts_pending": null,
+        "gateway_latency_ms_p50": null,
+        "gateway_latency_ms_p90": null,
+        "upstream_latency_ms_p50": null,
+        "upstream_latency_ms_p90": null
+      }
+    }
+  },
+  "parties": {
+    "usdc": null,
+    "card_payers": []
+  },
+  "latency": {
+    "usdc": {
+      "runs": 0,
+      "ok": 0,
+      "skipped": 1,
+      "total_ms_p50": null,
+      "total_ms_p90": null,
+      "first_402_ms_median": null,
+      "sign_ms_median": null,
+      "paid_request_ms_median": null
+    },
+    "card": {
+      "runs": 0,
+      "ok": 0,
+      "skipped": 0,
+      "total_ms_p50": null,
+      "total_ms_p90": null,
+      "first_402_ms_median": null,
+      "sign_ms_median": null,
+      "paid_request_ms_median": null
+    }
+  },
+  "card_gateway_latency": {
+    "n": 0,
+    "total_ms_p50": null,
+    "total_ms_p90": null,
+    "upstream_ms_p50": null,
+    "upstream_ms_p90": null
+  },
+  "gateway_upstream": null,
+  "nvm_reconcile_incl_own": null,
+  "detail": {
+    "window_utc": [
+      "2026-11-07T15:00:00.000Z",
+      "2026-11-08T15:00:00.000Z"
+    ],
+    "page": {
+      "date": "2026-11-08",
+      "views": 0,
+      "opens": {
+        "usdc": 0,
+        "card": 0
+      }
+    },
+    "usdc": null,
+    "card": {
+      "calls": [],
+      "sales": null,
+      "nvm_purchases": null,
+      "nvm": null
+    },
+    "latency": [
+      {
+        "entry": "usdc",
+        "item": "series",
+        "ts": "2026-11-08T00:34:18.499Z",
+        "skipped": "PROBE_SOLANA_SECRET_KEY 未設定"
+      }
+    ]
+  }
+}
